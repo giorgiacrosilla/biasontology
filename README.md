@@ -1,12 +1,8 @@
----
-description: An overview of the project.
----
-
 # 🤣 Overview
 
 This website contains the documentation for the final project of  "Knowledge Representation and Knowledge Extraction" held by prof. Aldo Gangemi.&#x20;
 
-The group members are....
+The group members are Erica Andreose, Giorgia Crosilla, Chiara Parravicini and Daniele Spedicati.
 
 
 
