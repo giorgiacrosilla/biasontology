@@ -1,4 +1,4 @@
-# 🤣 Overview
+# Overview
 
 This website contains the documentation for the final project of  "Knowledge Representation and Knowledge Extraction" held by prof. Aldo Gangemi.&#x20;
 
@@ -12,7 +12,7 @@ The goal of the project is to create an ontology that represents and links all t
 
 #### What are cognitive biases?
 
-> The concept of “cognitive biases” is most commonly used to describe and qualify the deviations in human decision making. Cognitive biases can generally be described as systematic and universally occurring tendencies, inclinations, or dispositions that skew or distort information processes in ways that make their outcome inaccurate, suboptimal or simply wrong.
+> The concept of “cognitive biases” is most commonly used to describe and qualify the deviations in human decision making. Cognitive biases can generally be described as systematic and universally occurring tendencies, inclinations, or dispositions that skew or distort information processes in ways that make their outcome inaccurate, suboptimal or simply wrong.
 
 
 
