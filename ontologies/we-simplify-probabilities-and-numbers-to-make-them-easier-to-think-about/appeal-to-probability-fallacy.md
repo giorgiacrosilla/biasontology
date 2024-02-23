@@ -1,8 +1,6 @@
 # 🤓 Appeal to probability fallacy
 
-### <mark style="color:red;">C</mark>ontext literature and state of the art
-
-According to the definition provided on Wikipedia, the appeal to probability is “_the logical fallacy of taking something for granted because it would probably be the case (or might possibly be the case)_”. An example can be:
+{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/appealtoprobability.ttl" %}
 
 P1: X is possible.
 
@@ -171,6 +169,8 @@ Let's consider an instance to illustrate the ontology:
 &#x20; \- \*hasCertaintyLevel:\* "Low"
 
 &#x20; \- \*isBasedOnProbability:\* "Climate change denial argument relies on the possibility of models being incorrect."
+
+
 
 
 
