@@ -1,0 +1,117 @@
+@prefix : <http://www.semanticweb.org/bias/ontologies/2024/1/appealtoprobability/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <http://www.semanticweb.org/bias/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/bias/ontologies/2024/1/appealtoprobability/> .
+
+<http://www.semanticweb.org/bias/ontologies/2024/1/appealtoprobability> rdf:type owl:Ontology ;
+                                                                         owl:imports <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ,
+                                                                                     <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl> ;
+                                                                         <http://purl.org/dc/elements/1.1/creator> "Giorgia Crosilla"@en ;
+                                                                         <http://purl.org/dc/elements/1.1/title> "Appeal To Probability Fallacy"@en ;
+                                                                         rdfs:comment "This is the ontology that describes the behaviour of a person affected by the Appeal to Probability fallacy." .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://readit-project/ontology/inActivity
+<http://readit-project/ontology/inActivity> rdf:type owl:ObjectProperty ;
+                                            rdfs:domain <http://readit-project/ontology/Engagement> ;
+                                            rdfs:range <http://readit-project/ontology/Activity> .
+
+
+###  http://readit-project/ontology/includes
+<http://readit-project/ontology/includes> rdf:type owl:ObjectProperty ;
+                                          rdfs:domain <http://readit-project/ontology/Activity> ;
+                                          rdfs:range <http://readit-project/ontology/Observation> ;
+                                          rdfs:label "includes"@en .
+
+
+###  http://readit-project/ontology/isEngagedIn
+<http://readit-project/ontology/isEngagedIn> rdf:type owl:ObjectProperty ;
+                                             rdfs:domain <http://xmlns.com/foaf/0.1/Agent> ;
+                                             rdfs:range <http://readit-project/ontology/Engagement> ;
+                                             rdfs:label "is engaged in"@en .
+
+
+###  http://readit-project/ontology/isReflectionOn
+<http://readit-project/ontology/isReflectionOn> rdf:type owl:ObjectProperty ;
+                                                rdfs:domain <http://readit-project/ontology/Observation> ;
+                                                rdfs:range <http://readit-project/ontology/Engagement> ;
+                                                rdfs:label "is reflection on"@en .
+
+
+###  http://readit-project/ontology/producesObservation
+<http://readit-project/ontology/producesObservation> rdf:type owl:ObjectProperty ;
+                                                     rdfs:domain <https://w3id.org/framester/data/framestercore/SubjectiveInfluence> ;
+                                                     rdfs:range <http://readit-project/ontology/Observation> ;
+                                                     rdfs:label "produces observation"@en .
+
+
+###  http://www.semanticweb.org/bias/presentsEvidence
+bias:presentsEvidence rdf:type owl:ObjectProperty ;
+                      rdfs:domain <http://readit-project/ontology/Observation> ;
+                      rdfs:range <https://w3id.org/framester/data/framestercore/Evidence> ;
+                      rdfs:label "presents evidence"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue
+<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> rdfs:range rdfs:Literal .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://readit-project/ontology/Activity
+<http://readit-project/ontology/Activity> rdf:type owl:Class ;
+                                          rdfs:label "Activity"@en .
+
+
+###  http://readit-project/ontology/Engagement
+<http://readit-project/ontology/Engagement> rdf:type owl:Class ;
+                                            rdfs:label "Engagement"@en .
+
+
+###  http://readit-project/ontology/Observation
+<http://readit-project/ontology/Observation> rdf:type owl:Class ;
+                                             owl:equivalentClass <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> ;
+                                             rdfs:label "Observation"@en .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+<http://xmlns.com/foaf/0.1/Agent> rdf:type owl:Class ;
+                                  rdfs:label "Agent"@en .
+
+
+###  https://w3id.org/framester/data/framestercore/Evidence
+<https://w3id.org/framester/data/framestercore/Evidence> rdf:type owl:Class ;
+                                                         rdfs:label "Evidence"@en .
+
+
+###  https://w3id.org/framester/data/framestercore/SubjectiveInfluence
+<https://w3id.org/framester/data/framestercore/SubjectiveInfluence> rdf:type owl:Class ;
+                                                                    rdfs:label "Subjective Influence"@en .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
