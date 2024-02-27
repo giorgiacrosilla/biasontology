@@ -176,7 +176,7 @@ Let's consider an instance to illustrate the ontology:
 
 ### Framester Frames used:
 
-* ....
+* [Evidence](https://w3id.org/framester/data/framestercore/Evidence)
 
 ### ODP used:
 
