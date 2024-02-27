@@ -1,0 +1,317 @@
+@prefix : <http://www.semanticweb.org/giorgia/ontologies/2024/1/MurphysLaw/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix fr: <https://w3id.org/framester/data/framestercore/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <http://www.semanticweb.org/bias/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix reaction: <http://www.ontologydesignpatterns.org/cp/reaction.owl#> .
+@base <http://www.semanticweb.org/giorgia/ontologies/2024/1/MurphysLaw/> .
+
+<http://www.semanticweb.org/giorgia/ontologies/2024/1/MurphysLaw> rdf:type owl:Ontology ;
+                                                                   dc:creator "Giorgia Crosilla"@en ;
+                                                                   dc:title "Murphy's Law"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#isCloneOf
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#isCloneOf> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#follows
+<http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#follows> rdf:type owl:ObjectProperty ;
+                                                                    owl:inverseOf <http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#precedes> ;
+                                                                    rdf:type owl:TransitiveProperty ;
+                                                                    rdfs:domain reaction:Event ;
+                                                                    rdfs:range reaction:Event ;
+                                                                    rdfs:comment """A relation between entities, expressing a 'sequence' schema. 
+E.g. 'year 2000 follows 1999', 'preparing coffee' follows 'deciding what coffee to use', 'II World War follows I World War', etc. 
+It can be used between tasks, processes or time intervals, and subproperties would fit best in order to distinguish the different uses.""" ;
+                                                                    rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/sequence.owl> ;
+                                                                    rdfs:label "follows"@en ,
+                                                                               "segue"@it .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#precedes
+<http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#precedes> rdf:type owl:ObjectProperty ,
+                                                                              owl:TransitiveProperty ;
+                                                                     rdfs:domain owl:Thing ;
+                                                                     rdfs:range owl:Thing ;
+                                                                     rdfs:comment """A relation between entities, expressing a 'sequence' schema. 
+E.g. 'year 1999 precedes 2000', 'deciding what coffee to use' precedes 'preparing coffee', 'World War II follows World War I', 'in the Milan to Rome autoroute, Bologna precedes Florence', etc.
+It can then be used between tasks, processes, time intervals, spatially locate objects, situations, etc. 
+Subproperties can be defined in order to distinguish the different uses.""" ;
+                                                                     rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/sequence.owl> ;
+                                                                     rdfs:label "precede"@it ,
+                                                                                "precedes"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/reaction.owl#follows
+reaction:follows rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#follows> ;
+                 rdfs:domain reaction:Reaction ;
+                 rdfs:range reaction:Action .
+
+
+###  http://www.ontologydesignpatterns.org/cp/reaction.owl#hasConsequence
+reaction:hasConsequence rdf:type owl:ObjectProperty ;
+                        owl:inverseOf reaction:isConsequenceOf ;
+                        rdf:type owl:TransitiveProperty ;
+                        rdfs:domain reaction:Event ;
+                        rdfs:range reaction:Consequence ;
+                        rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl> .
+
+
+###  http://www.ontologydesignpatterns.org/cp/reaction.owl#hasOutcome
+reaction:hasOutcome rdf:type owl:ObjectProperty .
+
+
+###  http://www.ontologydesignpatterns.org/cp/reaction.owl#isConsequenceOf
+reaction:isConsequenceOf rdf:type owl:ObjectProperty ,
+                                  owl:TransitiveProperty ;
+                         rdfs:domain reaction:Consequence ;
+                         rdfs:range reaction:Event ;
+                         rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl> .
+
+
+###  http://www.ontologydesignpatterns.org/cp/reaction.owl#isOutcomeOf
+reaction:isOutcomeOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.ontologydesignpatterns.org/cp/reaction.owl#isPerformedBy
+reaction:isPerformedBy rdf:type owl:ObjectProperty ;
+                       owl:inverseOf reaction:performs ;
+                       rdfs:domain reaction:Action ;
+                       rdfs:range <http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#Agent> ;
+                       rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl> ;
+                       rdfs:label "is performed by"@en ,
+                                  "è eseguita da"@it .
+
+
+###  http://www.ontologydesignpatterns.org/cp/reaction.owl#isRaisedBy
+reaction:isRaisedBy rdf:type owl:ObjectProperty ;
+                    owl:inverseOf reaction:raise ;
+                    rdfs:domain reaction:Reaction ;
+                    rdfs:range reaction:Event ;
+                    rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl> ;
+                    rdfs:label "is raised by"@en ,
+                               "è provocata da"@it .
+
+
+###  http://www.ontologydesignpatterns.org/cp/reaction.owl#performs
+reaction:performs rdf:type owl:ObjectProperty ;
+                  rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#Agent> ;
+                  rdfs:range reaction:Action ;
+                  rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl> ;
+                  rdfs:label "esegue"@it ,
+                             "performs"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/reaction.owl#raise
+reaction:raise rdf:type owl:ObjectProperty ;
+               rdfs:domain reaction:Event ;
+               rdfs:range reaction:Reaction ;
+               rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl> ;
+               rdfs:label "provoca"@it ,
+                          "raise"@en .
+
+
+###  http://www.semanticweb.org/bias/contributesTo
+bias:contributesTo rdf:type owl:ObjectProperty ;
+                   rdfs:domain reaction:Event ;
+                   rdfs:range bias:HumouristicElement .
+
+
+###  http://www.semanticweb.org/bias/influences
+bias:influences rdf:type owl:ObjectProperty ;
+                owl:inverseOf bias:isInfluencedBy ;
+                rdfs:domain bias:AdverseConsequence ;
+                rdfs:range reaction:Event .
+
+
+###  http://www.semanticweb.org/bias/isInfluencedBy
+bias:isInfluencedBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/bias/General/isAffectedBy
+<http://www.semanticweb.org/bias/General/isAffectedBy> rdf:type owl:ObjectProperty ;
+                                                       rdfs:domain <http://www.semanticweb.org/bias/General/BiasedAgent> ;
+                                                       rdfs:range <http://www.semanticweb.org/bias/General/CognitiveBias> .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/dc/terms/Agent
+<http://purl.org/dc/terms/Agent> rdf:type owl:Class ;
+                                 owl:equivalentClass foaf:Agent .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#Agent
+<http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#Agent> rdf:type owl:Class ;
+                                                                   owl:equivalentClass <http://www.semanticweb.org/bias/General/BiasedAgent> ;
+                                                                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty reaction:performs ;
+                                                                                     owl:allValuesFrom reaction:Action
+                                                                                   ] ,
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty reaction:performs ;
+                                                                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                     owl:onClass reaction:Action
+                                                                                   ] ;
+                                                                   owl:disjointWith reaction:Action ;
+                                                                   <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#isCloneOf> "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent" ;
+                                                                   rdfs:comment "Any agentive Object , either physical, or social." ;
+                                                                   rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl> ;
+                                                                   rdfs:label "Agent"@en ,
+                                                                              "Agente"@it .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation
+<http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation> rdf:type owl:Class ;
+                                                                       rdfs:comment """A view on a set of entities. It can be seen as a 'relational context', reifying a relation.
+For example, a PlanExecution is a context including some actions executed by agents according to certain parameters and expected tasks to be achieved from a Plan; a DiagnosedSituation is a context of observed entities that is interpreted on the basis of a Diagnosis, etc.
+Situation is also able to represent reified n-ary relations, where isSettingFor is the top-level relation for all binary projections of the n-ary relation. If used in a transformation pattern for n-ary relations, the designer should take care of:
+- creating only one situation for each instance of an n-ary relation, otherwise the 'identification constraint' (Calvanese et al., IJCAI 2001) could be violated
+- adding an 'exact cardinality' restriction corresponding to the arity of the n-ary relation, otherwise the designer would actually represent a polymorphic relation.""" ;
+                                                                       rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/situation.owl> ;
+                                                                       rdfs:label "Situation"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/reaction.owl#Action
+reaction:Action rdf:type owl:Class ;
+                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                  owl:onProperty reaction:isPerformedBy ;
+                                  owl:someValuesFrom <http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#Agent>
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty reaction:hasOutcome ;
+                                  owl:allValuesFrom reaction:Event
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty reaction:isPerformedBy ;
+                                  owl:allValuesFrom <http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#Agent>
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty reaction:hasOutcome ;
+                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass reaction:Event
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty reaction:isPerformedBy ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass <http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#Agent>
+                                ] ;
+                rdfs:comment "Action can produce more than a single event. Mutiple events can share the same position in the sequence."@en ;
+                rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl> ;
+                rdfs:label "Action"@en ,
+                           "Azione"@it .
+
+
+###  http://www.ontologydesignpatterns.org/cp/reaction.owl#Consequence
+reaction:Consequence rdf:type owl:Class ;
+                     owl:equivalentClass bias:AdverseConsequence ;
+                     rdfs:subClassOf reaction:Event ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty reaction:isOutcomeOf ;
+                                       owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                       owl:onClass reaction:Action
+                                     ] ;
+                     rdfs:comment "A consequence is a kind of event which is not an outcome of any action, it is just caused by another event"@en ;
+                     rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl> ;
+                     rdfs:label "Conseguenza"@it ,
+                                "Consequence"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/reaction.owl#Event
+reaction:Event rdf:type owl:Class ;
+               rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation> ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty reaction:isOutcomeOf ;
+                                 owl:allValuesFrom reaction:Action
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty reaction:raise ;
+                                 owl:allValuesFrom reaction:Reaction
+                               ] ;
+               rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl> ;
+               rdfs:label "Event"@en ,
+                          "Evento"@it .
+
+
+###  http://www.ontologydesignpatterns.org/cp/reaction.owl#Reaction
+reaction:Reaction rdf:type owl:Class ;
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#follows> ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass reaction:Action
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty reaction:isRaisedBy ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass reaction:Event
+                                  ] ;
+                  rdfs:comment "Any action raised by some Event is a Reaction"@en ,
+                               "This class is not intended to be instantiated."@en ;
+                  rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl> ;
+                  rdfs:label "Reaction"@en ,
+                             "Reazione"@it .
+
+
+###  http://www.semanticweb.org/bias/AdverseConsequence
+bias:AdverseConsequence rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/bias/ContingencyActions
+bias:ContingencyActions rdf:type owl:Class ;
+                        rdfs:subClassOf reaction:Reaction .
+
+
+###  http://www.semanticweb.org/bias/HumouristicElement
+bias:HumouristicElement rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/bias/MurphysLaw
+bias:MurphysLaw rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.semanticweb.org/bias/General/CognitiveBias> .
+
+
+###  http://www.semanticweb.org/bias/General/BiasedAgent
+<http://www.semanticweb.org/bias/General/BiasedAgent> rdf:type owl:Class ;
+                                                      rdfs:subClassOf foaf:Agent .
+
+
+###  http://www.semanticweb.org/bias/General/CognitiveBias
+<http://www.semanticweb.org/bias/General/CognitiveBias> rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+foaf:Agent rdf:type owl:Class ;
+           rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+           rdfs:label "Agent" ;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

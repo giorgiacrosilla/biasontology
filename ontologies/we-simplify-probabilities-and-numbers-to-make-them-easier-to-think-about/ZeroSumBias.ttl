@@ -1,0 +1,203 @@
+@prefix : <http://www.semanticweb.org/giorgia/ontologies/2024/1/ZeroSumBias/> .
+@prefix fr: <https://w3id.org/framester/data/framestercore/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pcp: <http://www.ontologydesignpatterns.org/cp/owl/coparticipation.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <http://www.semanticweb.org/bias/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@base <http://www.semanticweb.org/giorgia/ontologies/2024/1/ZeroSumBias/> .
+
+<http://www.semanticweb.org/giorgia/ontologies/2024/1/ZeroSumBias> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://schema.org/loser
+schema:loser rdf:type owl:ObjectProperty ;
+             rdfs:domain <http://www.semanticweb.org/bias/General/NonBiasedAgent> ;
+             rdfs:range bias:BiasedOutcome .
+
+
+###  http://schema.org/winner
+schema:winner rdf:type owl:ObjectProperty ;
+              rdfs:domain <http://www.semanticweb.org/bias/General/BiasedAgent> ;
+              rdfs:range bias:BiasedOutcome .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/coparticipation.owl#coparticipatesWith
+pcp:coparticipatesWith rdf:type owl:ObjectProperty ;
+                       owl:inverseOf pcp:coparticipatesWith ;
+                       rdf:type owl:SymmetricProperty ;
+                       rdfs:domain <http://www.semanticweb.org/bias/General/NonBiasedAgent> ;
+                       rdfs:range <http://www.semanticweb.org/bias/General/BiasedAgent> ;
+                       rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/coparticipation.owl> ;
+                       rdfs:label "coparticipates with"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#hasParticipant
+<http://www.ontologydesignpatterns.org/cp/owl/participation.owl#hasParticipant> rdf:type owl:ObjectProperty ;
+                                                                                owl:inverseOf <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn> ;
+                                                                                rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                                                                                rdfs:range <http://xmlns.com/foaf/0.1/Agent> ;
+                                                                                rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                                                                                rdfs:label "has participant"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn
+<http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn> rdf:type owl:ObjectProperty ;
+                                                                                 rdfs:domain <http://www.semanticweb.org/bias/General/BiasedAgent> ,
+                                                                                             <http://www.semanticweb.org/bias/General/NonBiasedAgent> ;
+                                                                                 rdfs:range <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                                                                                 rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                                                                                 rdfs:label "is participant in"@en .
+
+
+###  http://www.semanticweb.org/bias/hasOutcome
+bias:hasOutcome rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf bias:hasOutcome ;
+                rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                rdfs:range bias:Outcome .
+
+
+###  http://www.semanticweb.org/bias/isPerceivedAs
+bias:isPerceivedAs rdf:type owl:ObjectProperty ;
+                   rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                   rdfs:range [ rdf:type owl:Class ;
+                                owl:unionOf ( fr:Competition
+                                              fr:Participation
+                                            )
+                              ] .
+
+
+###  http://www.semanticweb.org/bias/isPerceivedBy
+bias:isPerceivedBy rdf:type owl:ObjectProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( fr:Competition
+                                               fr:Participation
+                                             )
+                               ] ;
+                   rdfs:range <http://xmlns.com/foaf/0.1/Agent> .
+
+
+###  http://www.semanticweb.org/bias/General/isAffectedBy
+<http://www.semanticweb.org/bias/General/isAffectedBy> rdf:type owl:ObjectProperty ;
+                                                       rdfs:domain <http://www.semanticweb.org/bias/General/BiasedAgent> ;
+                                                       rdfs:range <http://www.semanticweb.org/bias/General/CognitiveBias> .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/dc/terms/Agent
+<http://purl.org/dc/terms/Agent> rdf:type owl:Class ;
+                                 owl:equivalentClass <http://xmlns.com/foaf/0.1/Agent> .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event
+<http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> rdf:type owl:Class ;
+                                                                       owl:disjointWith <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object> ,
+                                                                                        <http://xmlns.com/foaf/0.1/Agent> ;
+                                                                       rdfs:comment "Any physical, social, or mental process, event, or state." ;
+                                                                       rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                                                                       rdfs:label "Event"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object
+<http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object> rdf:type owl:Class ;
+                                                                        owl:equivalentClass <http://xmlns.com/foaf/0.1/Agent> ;
+                                                                        rdfs:comment "Any physical, social, or mental object, or substance" ;
+                                                                        rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                                                                        rdfs:label "Object"@en .
+
+
+###  http://www.semanticweb.org/bias/BiasedOutcome
+bias:BiasedOutcome rdf:type owl:Class ;
+                   rdfs:subClassOf bias:Outcome ;
+                   owl:disjointWith bias:NonBiasedOutcome .
+
+
+###  http://www.semanticweb.org/bias/NonBiasedOutcome
+bias:NonBiasedOutcome rdf:type owl:Class ;
+                      rdfs:subClassOf bias:Outcome .
+
+
+###  http://www.semanticweb.org/bias/Outcome
+bias:Outcome rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/bias/ZeroSumBias
+bias:ZeroSumBias rdf:type owl:Class ;
+                 rdfs:subClassOf <http://www.semanticweb.org/bias/General/CognitiveBias> .
+
+
+###  http://www.semanticweb.org/bias/General/BiasedAgent
+<http://www.semanticweb.org/bias/General/BiasedAgent> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> .
+
+
+###  http://www.semanticweb.org/bias/General/CognitiveBias
+<http://www.semanticweb.org/bias/General/CognitiveBias> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/bias/General/NonBiasedAgent
+<http://www.semanticweb.org/bias/General/NonBiasedAgent> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+<http://xmlns.com/foaf/0.1/Agent> rdf:type owl:Class ;
+                                  rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+                                  rdfs:label "Agent" ;
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+
+
+###  https://w3id.org/framester/data/framestercore/Competition
+fr:Competition rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty bias:isPerceivedBy ;
+                                     owl:someValuesFrom <http://www.semanticweb.org/bias/General/BiasedAgent>
+                                   ] ;
+               owl:disjointWith fr:Participation .
+
+
+###  https://w3id.org/framester/data/framestercore/Participation
+fr:Participation rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty bias:isPerceivedBy ;
+                                       owl:someValuesFrom <http://www.semanticweb.org/bias/General/NonBiasedAgent>
+                                     ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/bias/Competition
+bias:Competition rdf:type owl:NamedIndividual ,
+                          fr:Competition .
+
+
+###  http://www.semanticweb.org/bias/Event
+bias:Event rdf:type owl:NamedIndividual ,
+                    <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> .
+
+
+###  http://www.semanticweb.org/bias/Participation
+bias:Participation rdf:type owl:NamedIndividual ,
+                            fr:Participation .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

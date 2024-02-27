@@ -1,0 +1,223 @@
+@prefix : <http://www.semanticweb.org/giorgia/ontologies/2024/1/NormalcyBias/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix fr: <https://w3id.org/framester/data/framestercore/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix par: <http://www.ontologydesignpatterns.org/cp/owl/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <http://www.semanticweb.org/bias/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix hazard: <http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#> .
+@base <http://www.semanticweb.org/giorgia/ontologies/2024/1/NormalcyBias/> .
+
+<http://www.semanticweb.org/giorgia/ontologies/2024/1/NormalcyBias> rdf:type owl:Ontology ;
+                                                                     owl:imports par:parameter.owl ;
+                                                                     dc:creator "Giorgia Crosilla"@en ;
+                                                                     dc:title "Normalcy Bias"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#exposedTo
+hazard:exposedTo rdf:type owl:ObjectProperty ;
+                 rdfs:domain hazard:Object ;
+                 rdfs:range hazard:Hazard .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#hasParticipant
+hazard:hasParticipant rdf:type owl:ObjectProperty ;
+                      owl:inverseOf hazard:participantIn ;
+                      rdfs:domain hazard:HazardousEvent ,
+                                  bias:BiasedHazardousEvent ;
+                      rdfs:range hazard:HazardousSituation .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#hasQuality
+hazard:hasQuality rdf:type owl:ObjectProperty ;
+                  rdfs:domain hazard:HazardousEvent ;
+                  rdfs:range hazard:Exposure .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#involves
+hazard:involves rdf:type owl:ObjectProperty ;
+                rdfs:domain hazard:HazardousEvent ;
+                rdfs:range hazard:Hazard .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#participantIn
+hazard:participantIn rdf:type owl:ObjectProperty ;
+                     rdfs:domain hazard:HazardousSituation ;
+                     rdfs:range hazard:HazardousEvent ,
+                                bias:BiasedHazardousEvent .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/hasParameter
+par:hasParameter rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter> ,
+                                    [ owl:inverseOf par:isParameterFor
+                                    ] ;
+                 rdfs:domain par:Concept ;
+                 rdfs:range par:Parameter .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/isParameterFor
+par:isParameterFor rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#isParameterFor> ,
+                                      [ owl:inverseOf par:hasParameter
+                                      ] ;
+                   rdfs:domain par:Parameter ;
+                   rdfs:range par:Concept .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter
+<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter> rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> .
+
+
+###  http://www.semanticweb.org/bias/hasAwareness
+bias:hasAwareness rdf:type owl:ObjectProperty ;
+                  rdfs:domain hazard:Object ;
+                  rdfs:range bias:Awareness .
+
+
+###  http://www.semanticweb.org/bias/ignoresWarnings
+bias:ignoresWarnings rdf:type owl:ObjectProperty ;
+                     rdfs:domain hazard:Object ;
+                     rdfs:range bias:Warning .
+
+
+###  http://www.semanticweb.org/bias/isPerceivedBy
+bias:isPerceivedBy rdf:type owl:ObjectProperty ;
+                   rdfs:domain bias:BiasedHazardousEvent ;
+                   rdfs:range hazard:Object .
+
+
+###  http://www.semanticweb.org/bias/underestimates
+bias:underestimates rdf:type owl:ObjectProperty ;
+                    rdfs:domain hazard:Object ;
+                    rdfs:range hazard:Hazard .
+
+
+###  http://www.semanticweb.org/bias/General/isAffectedBy
+<http://www.semanticweb.org/bias/General/isAffectedBy> rdf:type owl:ObjectProperty ;
+                                                       rdfs:domain <http://www.semanticweb.org/bias/General/BiasedAgent> ;
+                                                       rdfs:range <http://www.semanticweb.org/bias/General/CognitiveBias> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/cp/owl/hasValue
+par:hasValue rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> ;
+             rdfs:domain par:Parameter ;
+             rdfs:range xsd:string .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue
+<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> rdfs:range xsd:boolean .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/dc/terms/Agent
+<http://purl.org/dc/terms/Agent> rdf:type owl:Class ;
+                                 owl:equivalentClass <http://xmlns.com/foaf/0.1/Agent> .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#Event
+hazard:Event rdf:type owl:Class .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#Exposure
+hazard:Exposure rdf:type owl:Class .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#Hazard
+hazard:Hazard rdf:type owl:Class .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#HazardousEvent
+hazard:HazardousEvent rdf:type owl:Class ;
+                      rdfs:subClassOf hazard:Event .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#HazardousSituation
+hazard:HazardousSituation rdf:type owl:Class .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#Object
+hazard:Object rdf:type owl:Class ;
+              owl:equivalentClass <http://www.semanticweb.org/bias/General/BiasedAgent> .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/Concept
+par:Concept rdf:type owl:Class ;
+            owl:equivalentClass bias:Awareness .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/Parameter
+par:Parameter rdf:type owl:Class ;
+              rdfs:subClassOf par:Concept .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept
+<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> rdf:type owl:Class ;
+                                                                     owl:equivalentClass bias:Warning .
+
+
+###  http://www.semanticweb.org/bias/Awareness
+bias:Awareness rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/bias/BiasedHazardousEvent
+bias:BiasedHazardousEvent rdf:type owl:Class ;
+                          rdfs:subClassOf hazard:Event .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias
+bias:NormalcyBias rdf:type owl:Class ;
+                  rdfs:subClassOf <http://www.semanticweb.org/bias/General/CognitiveBias> .
+
+
+###  http://www.semanticweb.org/bias/Warning
+bias:Warning rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/bias/General/BiasedAgent
+<http://www.semanticweb.org/bias/General/BiasedAgent> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> .
+
+
+###  http://www.semanticweb.org/bias/General/CognitiveBias
+<http://www.semanticweb.org/bias/General/CognitiveBias> rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+<http://xmlns.com/foaf/0.1/Agent> rdf:type owl:Class ;
+                                  rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+                                  rdfs:label "Agent" ;
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

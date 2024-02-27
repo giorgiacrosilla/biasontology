@@ -1,74 +1,135 @@
-@prefix : <http://www.semanticweb.org/bias/ontologies/2024/1/appealtoprobability/> .
+@prefix : <http://www.semanticweb.org/giorgia/ontologies/2024/1/AppealToProbability/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix fr: <https://w3id.org/framester/data/framestercore/> .
+@prefix eeo: <http://modellingdh.github.io/ont/odp/term/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix bias: <http://www.semanticweb.org/bias/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.semanticweb.org/bias/ontologies/2024/1/appealtoprobability/> .
+@base <http://www.semanticweb.org/giorgia/ontologies/2024/1/AppealToProbability/> .
 
-<http://www.semanticweb.org/bias/ontologies/2024/1/appealtoprobability> rdf:type owl:Ontology ;
-                                                                         owl:imports <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ,
-                                                                                     <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl> ;
-                                                                         <http://purl.org/dc/elements/1.1/creator> "Giorgia Crosilla"@en ;
-                                                                         <http://purl.org/dc/elements/1.1/title> "Appeal To Probability Fallacy"@en ;
-                                                                         rdfs:comment "This is the ontology that describes the behaviour of a person affected by the Appeal to Probability fallacy." .
+<http://www.semanticweb.org/giorgia/ontologies/2024/1/AppealToProbability> rdf:type owl:Ontology ;
+                                                                            dc:creator "Giorgia Crosilla"@en ;
+                                                                            dc:title "Appeal To Probability Fallacy"@en ;
+                                                                            rdfs:comment "This is an ontology that describes the behaviour of a person affected by the Appeal To Probability Fallacy."@en .
 
 #################################################################
 #    Annotation properties
 #################################################################
 
 ###  http://purl.org/dc/elements/1.1/creator
-<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+dc:creator rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/elements/1.1/title
-<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
 
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://readit-project/ontology/inActivity
-<http://readit-project/ontology/inActivity> rdf:type owl:ObjectProperty ;
-                                            rdfs:domain <http://readit-project/ontology/Engagement> ;
-                                            rdfs:range <http://readit-project/ontology/Activity> .
+###  http://modellingdh.github.io/ont/odp/term/hasEngagement
+eeo:hasEngagement rdf:type owl:ObjectProperty ;
+                  owl:inverseOf eeo:inActivity ;
+                  rdfs:range eeo:Engagement ;
+                  rdfs:label "has engagement"@en .
 
 
-###  http://readit-project/ontology/includes
-<http://readit-project/ontology/includes> rdf:type owl:ObjectProperty ;
-                                          rdfs:domain <http://readit-project/ontology/Activity> ;
-                                          rdfs:range <http://readit-project/ontology/Observation> ;
-                                          rdfs:label "includes"@en .
+###  http://modellingdh.github.io/ont/odp/term/inActivity
+eeo:inActivity rdf:type owl:ObjectProperty ;
+               rdfs:domain eeo:Engagement ;
+               rdfs:range <http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity> ;
+               <http://purl.org/dc/terms/description> "what activity/ies are affecting or affected by a certain engagement"@en ;
+               rdfs:label "in activity"@en .
 
 
-###  http://readit-project/ontology/isEngagedIn
-<http://readit-project/ontology/isEngagedIn> rdf:type owl:ObjectProperty ;
-                                             rdfs:domain <http://xmlns.com/foaf/0.1/Agent> ;
-                                             rdfs:range <http://readit-project/ontology/Engagement> ;
-                                             rdfs:label "is engaged in"@en .
+###  http://modellingdh.github.io/ont/odp/term/includes
+eeo:includes rdf:type owl:ObjectProperty ;
+             rdfs:domain <http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity> ;
+             rdfs:range eeo:Observation ;
+             <http://purl.org/dc/terms/description> "A relation of mereological nature that connects a given observation with the activity that originates them: it strengthens the argument that observations are always active processes from a cognitive standpoint, regardless of how conscious they may be."@en ;
+             rdfs:comment "A standard mereological property from another content pattern may be used in lieu of this one and therefore aligned with it."@en ;
+             rdfs:label "includes"@en .
 
 
-###  http://readit-project/ontology/isReflectionOn
-<http://readit-project/ontology/isReflectionOn> rdf:type owl:ObjectProperty ;
-                                                rdfs:domain <http://readit-project/ontology/Observation> ;
-                                                rdfs:range <http://readit-project/ontology/Engagement> ;
-                                                rdfs:label "is reflection on"@en .
+###  http://modellingdh.github.io/ont/odp/term/isEngagedIn
+eeo:isEngagedIn rdf:type owl:ObjectProperty ;
+                rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> ;
+                rdfs:range eeo:Engagement ;
+                <http://purl.org/dc/terms/description> "Because an activity may engage other participants than the one performing it, engagements are in general considered individual rather than collective, therefore each participants has their own engagement and only some of them will be conscious and/or documented."@en ;
+                rdfs:label "engaged in"@en .
 
 
-###  http://readit-project/ontology/producesObservation
-<http://readit-project/ontology/producesObservation> rdf:type owl:ObjectProperty ;
-                                                     rdfs:domain <https://w3id.org/framester/data/framestercore/SubjectiveInfluence> ;
-                                                     rdfs:range <http://readit-project/ontology/Observation> ;
-                                                     rdfs:label "produces observation"@en .
+###  http://modellingdh.github.io/ont/odp/term/isReflectedUponIn
+eeo:isReflectedUponIn rdf:type owl:ObjectProperty ;
+                      owl:inverseOf eeo:isReflectionOn ;
+                      rdfs:label "is reflected upon in"@en .
 
 
-###  http://www.semanticweb.org/bias/presentsEvidence
-bias:presentsEvidence rdf:type owl:ObjectProperty ;
-                      rdfs:domain <http://readit-project/ontology/Observation> ;
-                      rdfs:range <https://w3id.org/framester/data/framestercore/Evidence> ;
-                      rdfs:label "presents evidence"@en .
+###  http://modellingdh.github.io/ont/odp/term/isReflectionOn
+eeo:isReflectionOn rdf:type owl:ObjectProperty ;
+                   rdfs:domain eeo:Observation ;
+                   rdfs:range eeo:Engagement ;
+                   <http://purl.org/dc/terms/description> "Used to connect the subjective elements of an experience with the corresponding observation, which is extrapolated from the content being interacted with and in itself may not be including a critique."@en ;
+                   rdfs:label "is reflection on"@en .
+
+
+###  http://modellingdh.github.io/ont/odp/term/producedObservation
+eeo:producedObservation rdf:type owl:ObjectProperty ;
+                        rdfs:domain fr:SubjectiveInfluence ;
+                        rdfs:range eeo:Observation ;
+                        <http://purl.org/dc/terms/description> "This property can be used to denote that something is (even indirectly, not necessary through direct reflection) responsible for the existence of an observation."@en ;
+                        rdfs:label "produced observation"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter
+<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter> rdf:type owl:ObjectProperty ;
+                                                                          owl:inverseOf <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#isParameterFor> ;
+                                                                          rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> ;
+                                                                          rdfs:comment "A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16." ;
+                                                                          rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
+                                                                          rdfs:label "ha parametro"@it ,
+                                                                                     "has parameter"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#isParameterFor
+<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#isParameterFor> rdf:type owl:ObjectProperty ;
+                                                                            rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter> ;
+                                                                            rdfs:range <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> ;
+                                                                            rdfs:comment "A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16." ;
+                                                                            rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
+                                                                            rdfs:label "is parameter for"@en ,
+                                                                                       "è un parametro per"@it .
+
+
+###  http://www.semanticweb.org/bias/hasCertainty
+bias:hasCertainty rdf:type owl:ObjectProperty ;
+                  rdfs:domain eeo:Engagement ;
+                  rdfs:range fr:Certainty .
+
+
+###  http://www.semanticweb.org/bias/hasEvidence
+bias:hasEvidence rdf:type owl:ObjectProperty ;
+                 rdfs:domain eeo:Engagement ;
+                 rdfs:range fr:Evidence .
+
+
+###  http://www.semanticweb.org/bias/General/isAffectedBy
+<http://www.semanticweb.org/bias/General/isAffectedBy> rdf:type owl:ObjectProperty ;
+                                                       rdfs:domain <http://www.semanticweb.org/bias/General/BiasedAgent> ;
+                                                       rdfs:range <http://www.semanticweb.org/bias/General/CognitiveBias> .
 
 
 #################################################################
@@ -76,42 +137,168 @@ bias:presentsEvidence rdf:type owl:ObjectProperty ;
 #################################################################
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue
-<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> rdfs:range rdfs:Literal .
+<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> rdf:type owl:DatatypeProperty ;
+                                                                                   rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter> ;
+                                                                                   rdfs:range xsd:string ;
+                                                                                   rdfs:comment """Parametrizes values from a datatype. For example, a Parameter AgeForDriving hasParameterDataValue 18 on datatype xsd:int, in the Italian traffic code. In this example, AgeForDriving isDefinedIn the Norm ItalianTrafficCodeAgeDriving.
+More complex parametrization requires workarounds. E.g. AgeRangeForDrugUsage could parametrize data value: 14 to 50 on the datatype: xsd:int. Since complex datatypes are not allowed in OWL1.0, a solution to this can only work by creating two 'sub-parameters': MinimumAgeRangeForDrugUsage (that hasParameterDataValue 14) and MaximumAgeRangeForDrugUsage (that hasParameterDataValue 50), which are components of the main Parameter AgeRangeForDrugUsage.
+Ordering on subparameters can be created by using or specializing the object property 'precedes'.""" ;
+                                                                                   rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
+                                                                                   rdfs:label "ha valore"@it ,
+                                                                                              "has parameter data value"@en .
 
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://readit-project/ontology/Activity
-<http://readit-project/ontology/Activity> rdf:type owl:Class ;
-                                          rdfs:label "Activity"@en .
+###  http://modellingdh.github.io/ont/odp/term/Engagement
+eeo:Engagement rdf:type owl:Class ;
+               <http://purl.org/dc/terms/description> "The product of a reflection upon an observation, which embodies subjective traits of an experience (Example: \"After reading this passage of 'To Kill a Mockingbird', I came to a clearer understanding of the many facets of social intolerance\")."@en ;
+               rdfs:label "Engagement"@en .
 
 
-###  http://readit-project/ontology/Engagement
-<http://readit-project/ontology/Engagement> rdf:type owl:Class ;
-                                            rdfs:label "Engagement"@en .
+###  http://modellingdh.github.io/ont/odp/term/Observation
+eeo:Observation rdf:type owl:Class ;
+                <http://purl.org/dc/terms/description> "The product of an act of scrutiny which may or may not have been performed with a critical disposition (Example: \"My thoughts from reading this passage of 'To Kill a Mockingbird'\")."@en ;
+                rdfs:comment "A disjointness or alignment between this class and <http://www.ontologydesignpatterns.org/cp/owl/observation.owl#Observation> in the Observation content pattern is plausible but subject to debate, hence will not be formalised herein."@en ;
+                rdfs:label "Observation"@en .
 
 
-###  http://readit-project/ontology/Observation
-<http://readit-project/ontology/Observation> rdf:type owl:Class ;
-                                             owl:equivalentClass <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> ;
-                                             rdfs:label "Observation"@en .
+###  http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity
+<http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity> rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/Agent
+<http://purl.org/dc/terms/Agent> rdf:type owl:Class ;
+                                 owl:equivalentClass foaf:Agent .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept
+<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> rdf:type owl:Class ;
+                                                                     owl:equivalentClass fr:Certainty ;
+                                                                     rdfs:comment """A concept is a SocialObject, and isDefinedIn a Description . 
+Once defined, a Concept can be used in other descriptions. 
+The classifies relation relates concepts to entities at some time""" ;
+                                                                     rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
+                                                                     rdfs:label "Concept"@en ,
+                                                                                "Concetto"@it .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter
+<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> ;
+                                                                       rdfs:comment """A Concept that classifies something having a certain value, e.g. 'High' can be said of people taller than 185 cm.
+However, in order to formally represent this constraint, we need to add an anonymous type to a parameter instance, using a property that convey the semantics of the parameter, e.g.:
+High rdf:type Person and (some hasHeight (Height and (oneOf isTallerThan 185) and (oneOf hasUnitOfMeasure centimeter)))""" ;
+                                                                       rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
+                                                                       rdfs:label "Parameter"@en ,
+                                                                                  "Parametro"@it .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person
+<http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> rdf:type owl:Class ;
+                                                                  owl:equivalentClass <http://www.semanticweb.org/bias/General/BiasedAgent> .
+
+
+###  http://www.semanticweb.org/bias/Claim
+bias:Claim rdf:type owl:Class ;
+           rdfs:subClassOf eeo:Observation .
+
+
+###  http://www.semanticweb.org/bias/AppealToProbabilityFallacy/AppealToProbabilityFallacy
+<http://www.semanticweb.org/bias/AppealToProbabilityFallacy/AppealToProbabilityFallacy> rdf:type owl:Class ;
+                                                                                        rdfs:subClassOf <http://www.semanticweb.org/bias/General/CognitiveBias> ;
+                                                                                        rdfs:label "Appeal To Probability Fallacy"@en .
+
+
+###  http://www.semanticweb.org/bias/General/BiasedAgent
+<http://www.semanticweb.org/bias/General/BiasedAgent> rdf:type owl:Class ;
+                                                      rdfs:subClassOf foaf:Agent .
+
+
+###  http://www.semanticweb.org/bias/General/CognitiveBias
+<http://www.semanticweb.org/bias/General/CognitiveBias> rdf:type owl:Class ;
+                                                        rdfs:label "Cognitive Bias"@en .
 
 
 ###  http://xmlns.com/foaf/0.1/Agent
-<http://xmlns.com/foaf/0.1/Agent> rdf:type owl:Class ;
-                                  rdfs:label "Agent"@en .
+foaf:Agent rdf:type owl:Class ;
+           rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+           rdfs:label "Agent" ;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+
+
+###  https://w3id.org/framester/data/framestercore/Certainty
+fr:Certainty rdf:type owl:Class .
 
 
 ###  https://w3id.org/framester/data/framestercore/Evidence
-<https://w3id.org/framester/data/framestercore/Evidence> rdf:type owl:Class ;
-                                                         rdfs:label "Evidence"@en .
+fr:Evidence rdf:type owl:Class .
 
 
 ###  https://w3id.org/framester/data/framestercore/SubjectiveInfluence
-<https://w3id.org/framester/data/framestercore/SubjectiveInfluence> rdf:type owl:Class ;
-                                                                    rdfs:label "Subjective Influence"@en .
+fr:SubjectiveInfluence rdf:type owl:Class ;
+                       rdfs:isDefinedBy "https://w3id.org/framester/data/framestercore/SubjectiveInfluence"@en ;
+                       rdfs:label "Subjective Influence"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/bias/AppealToProbabilityFallacy
+bias:AppealToProbabilityFallacy rdf:type owl:NamedIndividual ,
+                                         <http://www.semanticweb.org/bias/AppealToProbabilityFallacy/AppealToProbabilityFallacy> .
+
+
+###  http://www.semanticweb.org/bias/CertaintyLevel
+bias:CertaintyLevel rdf:type owl:NamedIndividual ,
+                             fr:Certainty ;
+                    <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> "high" .
+
+
+###  http://www.semanticweb.org/bias/ConvincedPersonalOpinionOnPandemic
+bias:ConvincedPersonalOpinionOnPandemic rdf:type owl:NamedIndividual ,
+                                                 bias:Claim ;
+                                        eeo:isReflectionOn bias:SpreadingPandemic .
+
+
+###  http://www.semanticweb.org/bias/Reasoning
+bias:Reasoning rdf:type owl:NamedIndividual ,
+                        <http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity> ;
+               eeo:includes bias:ConvincedPersonalOpinionOnPandemic .
+
+
+###  http://www.semanticweb.org/bias/Sarah
+bias:Sarah rdf:type owl:NamedIndividual ,
+                    <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> ;
+           eeo:isEngagedIn bias:SpreadingPandemic ;
+           <http://www.semanticweb.org/bias/General/isAffectedBy> bias:AppealToProbabilityFallacy .
+
+
+###  http://www.semanticweb.org/bias/ScientificArticles
+bias:ScientificArticles rdf:type owl:NamedIndividual ,
+                                 fr:Evidence .
+
+
+###  http://www.semanticweb.org/bias/SpreadingPandemic
+bias:SpreadingPandemic rdf:type owl:NamedIndividual ,
+                                eeo:Engagement ;
+                       eeo:inActivity bias:Reasoning .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( eeo:Engagement
+                eeo:Observation
+                <http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity>
+                <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person>
+              )
+] .
 
 
 ###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
