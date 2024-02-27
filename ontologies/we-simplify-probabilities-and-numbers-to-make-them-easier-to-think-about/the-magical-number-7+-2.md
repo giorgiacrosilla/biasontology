@@ -17,111 +17,92 @@ References:
 
 ### <mark style="color:red;">L</mark>LM
 
-#### Can you give me a definition of "curse of knowledge"?
+#### Can you give me a definition of "The magical number 7+-2" bias?
 
-The "curse of knowledge" bias refers to a cognitive phenomenon in which individuals who possess a particular piece of information or expertise find it challenging to understand or communicate with others who lack that same knowledge. This bias can lead to the knowledgeable person assuming that others have a similar level of understanding, which may result in ineffective communication or difficulty in conveying ideas to those with less expertise. Essentially, the curse of knowledge bias impedes effective communication by creating a gap between what one knows and what others may comprehend, often leading to misunderstandings or misinterpretations. 
+The Magical Number Seven, Plus or Minus Two" bias refers to the cognitive bias related to the limitations of human short-term memory capacity. Coined by psychologist George A. Miller in 1956, it suggests that the average person can hold approximately seven (plus or minus two) pieces of information in their short-term memory at any given time. This bias implies that individuals may have difficulty processing and remembering information beyond this capacity, leading to errors in judgment, decision-making, and information retention. It highlights the constraints of human cognition and the importance of considering these limitations in various cognitive tasks, such as learning, problem-solving, and communication.
 
 #### Can you create 10 scenarios compelling with the bias?
 
-*1*Technical Jargon in Presentations: A software developer giving a presentation to a non-technical audience uses complex coding terms without explaining them, assuming everyone understands the terminology. 
+*1*Phone Numbers: When trying to remember a new phone number, individuals may find it challenging to retain all the digits at once, especially if the number is long. This can result in errors or the need to repeat the number multiple times to remember it accurately. 
 
-*2*Expert Teaching Beginners: A seasoned chef instructing a cooking class for beginners may unintentionally overlook basic cooking steps, assuming that everyone has a foundational understanding of culinary principles. 
+*2*PIN Codes: People may struggle to remember PIN codes for various accounts, such as ATM cards or mobile devices, particularly if they are not frequently used. This can lead to forgetting the code or inputting the wrong one multiple times before recalling it correctly. 
 
-*3*Medical Professionals Explaining Diagnoses: Doctors using intricate medical terms while discussing a diagnosis with patients may assume the patients comprehend the terminology, leading to confusion and anxiety. 
+*3*Shopping Lists: When tasked with remembering a list of items to buy at the grocery store, individuals may find it difficult to retain more than seven items in their short-term memory. This can result in forgetting some items or needing to write the list down to avoid missing anything. 
 
-*4*Financial Advisors and Investment Lingo: A financial advisor discussing investment strategies with a client may use financial jargon without considering that the client may not have a deep understanding of investment terminology. 
+*4*Meeting Agendas: In a business setting, participants in a meeting may struggle to recall all the agenda items discussed, especially if there are numerous topics covered. This can lead to incomplete or inaccurate recollections of the meeting's content. 
 
-*5*Academic Researchers Presenting Findings: Researchers presenting their findings in a specialized field might assume a general audience understands the nuances of their research without providing adequate background information. 
+*5*Test Questions: Students may experience difficulty remembering all the information needed to answer exam questions, particularly in subjects with complex concepts or extensive material. This can result in incomplete or partially correct responses due to exceeding the capacity of short-term memory. 
 
-*6*Engineers Designing User Interfaces: Engineers developing software interfaces may design complex user interfaces assuming users will easily grasp the intricacies, neglecting the fact that not all users are tech-savvy. 
+*6*Instructions with Multiple Steps: When given a series of instructions involving several steps, individuals may have trouble remembering all the steps without repetition or written documentation. This can lead to errors in completing tasks or omitting essential steps. 
 
-*7*Teachers Assisting Students: A math teacher may inadvertently skip explaining fundamental concepts, assuming students already know them, which can lead to confusion and hinder learning. 
+*7*Password Management: Individuals managing multiple passwords for various online accounts may struggle to recall them all accurately, especially if the passwords are complex or changed frequently. This can result in forgotten passwords or the need for password recovery assistance. 
 
-*8*Legal Professionals Communicating with Clients: Lawyers discussing legal matters with clients might use legal jargon without realizing that the clients may not have a legal background, leading to misunderstandings. 
+*8*Presentation Content: Speakers delivering presentations may find it challenging to remember all the points they intend to cover without referring to notes or slides. This can lead to omissions or disorganized delivery as they exceed their short-term memory capacity. 
 
-*9*IT Support Interactions: IT professionals providing support may assume a user's familiarity with technical terms, making it difficult for the user to follow troubleshooting instructions. 
+*9*Directions: When given verbal directions to navigate to a specific location, individuals may have difficulty retaining all the details, especially if there are numerous turns or landmarks mentioned. This can result in getting lost or needing to ask for clarification along the way. 
 
-*10*Subject Matter Experts in Cross-disciplinary Teams: In a team with members from different disciplines, a subject matter expert may unintentionally use terminology specific to their field, making it challenging for others to fully grasp the concepts being discussed. 
+*10*Remembering Names: When meeting new people in social or professional settings, individuals may struggle to remember everyone's names, particularly in larger groups. This can lead to awkward interactions or the need to ask for names to be repeated multiple times. 
 
 
-#### Now consider the scenario "IT Support Interactions" and give me a short user story from it.
+#### Now consider the scenario "shopping list" and give me a short user story from it.
 
 \*\*Scenario:\*\*
 
-As a non-technical user seeking IT support, I encountered the curse of knowledge bias during a troubleshooting interaction. When attempting to resolve an issue with my computer, the IT support technician used technical jargon and assumed I was familiar with various software terms. Unfortunately, I found it challenging to follow the instructions and articulate my concerns effectively. As a result, the support process became frustrating, and the resolution time was prolonged due to the communication gap. In future interactions, I hope for IT support personnel to recognize diverse levels of technical understanding and adjust their communication to ensure a smoother and more efficient troubleshooting experience for users like me.
+As a busy parent, I want to create a shopping list for groceries so that I can efficiently gather all the necessary items for the week without forgetting anything. However, I often find myself struggling to remember all the items needed, especially when the list grows beyond a certain number. I need a solution that helps me organize and remember the items on my list, ensuring a smooth and stress-free shopping experience. 
 
 #### If you should make an ontology based of the "curse of knowledge" which classes and properties would you create?
 
 #Classes: 
 
-KnowledgeablePerson: 
+CognitiveCapacity: Represents the cognitive capacity of an individual's short-term memory. 
 
-Description: Represents an individual possessing specific information or expertise. 
+InformationItem: Represents individual pieces of information to be stored in short-term memory. 
 
-Properties: 
+CognitiveTask: Represents tasks or activities that require the use of short-term memory. 
 
-hasExpertise: Indicates the domain or field in which the person has knowledge. 
+Error: Represents instances where cognitive limitations lead to mistakes or inaccuracies. 
 
-LessKnowledgeablePerson: 
-
-Description: Represents an individual with less information or expertise in a particular domain. 
-
-Properties: 
-
-strugglingWith: Indicates the specific concepts or terms the person finds challenging. 
-
-CommunicationInstance: 
-
-Description: Represents an instance of communication between individuals with varying levels of knowledge. 
-
-Properties: 
-
-involvesKnowledgeablePerson: Indicates the knowledgeable person involved in the communication. 
-
-involvesLessKnowledgeablePerson: Indicates the less knowledgeable person involved in the communication. 
-
-Context: 
-
-Description: Represents the setting or environment in which the communication takes place. 
-
-Properties: 
-
-includesTechnicalTerms: Indicates the presence of technical terms or specialized language. 
+ 
 
 #Properties: 
 
-Assumption: 
+hasCapacity: Describes the maximum number of information items that can be held in short-term memory. 
 
-Description: Represents the assumption made by a knowledgeable person regarding the understanding of a less knowledgeable person. 
+includesItem: Specifies the information items included in a cognitive task. 
 
-Domain: KnowledgeablePerson 
+resultsInError: Indicates instances where cognitive limitations result in errors in completing a task. 
 
-Range: LessKnowledgeablePerson 
+relatesToTask: Relates cognitive capacity to specific cognitive tasks. 
 
-CommunicationGap: 
+ 
 
-Description: Represents the gap in understanding between knowledgeable and less knowledgeable individuals during communication. 
+Example ontology instance: 
 
-Domain: CommunicationInstance 
+CognitiveCapacity: 
 
-Range: CommunicationInstance 
+hasCapacity: 7 (plus or minus 2) 
 
-ResolutionTime: 
+InformationItem: 
 
-Description: Represents the time taken to resolve an issue or misunderstanding. 
+Text: "Phone number" 
 
-Domain: CommunicationInstance 
+Text: "PIN code" 
 
-Range: Time 
+Text: "Shopping list item" 
 
-AdjustmentStrategy: 
+CognitiveTask: 
 
-Description: Represents the strategy employed to bridge the communication gap. 
+includesItem: "Phone number" 
 
-Domain: CommunicationInstance 
+includesItem: "PIN code" 
 
-Range: Text or Strategy 
+includesItem: "Shopping list item" 
 
+resultsInError: Forgetting shopping list items 
+
+Error: 
+
+relatesToTask: Forgetting shopping list items 
  
 
 ### Framester Frames used:
@@ -130,9 +111,11 @@ Range: Text or Strategy
 
 <!---->
 
-* [Evidence](https://w3id.org/framester/data/framestercore/Evidence)
+* [Evidence](https://w3id.org/framester/data/framestercore/SuccessOrFailure)
 
 ### ODP used:
 
-Co-partecipation
-Topic
+[Co-partecipation
+Topic](http://ontologydesignpatterns.org/wiki/Submissions:Reaction)
+[Activity_Reasoning](http://ontologydesignpatterns.org/wiki/Submissions:An_Ontology_Design_Pattern_for_Activity_Reasoning)
+
