@@ -111,7 +111,7 @@ relatesToTask: Forgetting shopping list items
 
 <!---->
 
-* [Evidence](https://w3id.org/framester/data/framestercore/SuccessOrFailure)
+* [SuccessOrFailure](https://w3id.org/framester/data/framestercore/SuccessOrFailure)
 
 ### ODP used:
 
