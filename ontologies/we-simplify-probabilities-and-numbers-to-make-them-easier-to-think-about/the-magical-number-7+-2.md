@@ -9,9 +9,11 @@
 
 References:
 
-{% embed url="https://en.wikipedia.org/wiki/Curse_of_knowledge" %}
+{% embed url="https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two" %}
 
-{% embed url="https://rationalwiki.org/wiki/Appeal_to_probability" %}
+{% embed url="https://www.britannica.com/biography/George-A-Miller#ref1200615" %}
+
+{% embed url="https://www.sciencedirect.com/science/article/pii/S0895717703900835" %}
 
 ***
 
