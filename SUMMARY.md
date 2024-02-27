@@ -5,6 +5,7 @@
 
 ## 🙃 Ontologies
 
+* [🕸️ General](ontologies/general.md)
 * [😵 We simplify probabilities and numbers to make them easier to think about](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/README.md)
   * [Mental Accounting](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/mental-accounting.md)
   * [🤓 Appeal to probability fallacy](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/appeal-to-probability-fallacy.md)

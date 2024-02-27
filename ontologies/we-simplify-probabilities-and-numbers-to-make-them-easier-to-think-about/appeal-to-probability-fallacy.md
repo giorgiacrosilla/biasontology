@@ -2,6 +2,8 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/appealtoprobability.ttl" %}
 
+<figure><img src="giorgiabias-appealtoprobability2.drawio.png" alt=""><figcaption></figcaption></figure>
+
 P1: X is possible.
 
 P2: (unstated) Anything which is possible, is certain.
@@ -172,5 +174,10 @@ Let's consider an instance to illustrate the ontology:
 
 
 
+### Framester Frames used:
 
+* ....
 
+### ODP used:
+
+* .....
