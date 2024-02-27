@@ -26,17 +26,17 @@ References:
 
 ### <mark style="color:red;">L</mark>LM
 
-#### Can you give me a definition of "appeal to probability fallacy"?&#x20;
+#### Can you give me a definition of "appeal to probability fallacy"?
 
 The appeal to probability fallacy, also known as the argument from probability, occurs when someone argues that because something is likely to happen, it is therefore true or should be believed. This fallacy disregards evidence or logical reasoning and relies on the probability of an event occurring rather than on conclusive support. The mere likelihood of an outcome does not necessarily make it true, and conclusions drawn solely from probability without proper evidence can be misleading. In critical thinking and argumentation, it is essential to consider both the probability of an event and the available evidence to make a valid and well-supported conclusion.
 
-#### Can you create 10 scenarios compelling with the bias?&#x20;
+#### Can you create 10 scenarios compelling with the bias?
 
 6\. \*\*Climate Change Denial:\*\*
 
-&#x20;  \*Claim:\* "We don't need to address climate change because scientists can't prove with 100% certainty that human activity is the sole cause."
+\*Claim:\* "We don't need to address climate change because scientists can't prove with 100% certainty that human activity is the sole cause."
 
-&#x20;  \*Fallacy:\* Demanding absolute certainty and using the absence of complete proof as justification for inaction.
+\*Fallacy:\* Demanding absolute certainty and using the absence of complete proof as justification for inaction.
 
 #### Now consider the scenario "climate change denial" and give me a short user story from it.
 
@@ -70,111 +70,91 @@ Classes:
 
 1\. \*\*Fallacy:\*\*
 
-&#x20;  \- \*Description:\* Represents the overarching concept of a logical fallacy.
-
-&#x20;&#x20;
+\- \*Description:\* Represents the overarching concept of a logical fallacy.
 
 2\. \*\*AppealToProbabilityFallacy:\*\*
 
-&#x20;  \- \*Subclass of:\* Fallacy
+\- \*Subclass of:\* Fallacy
 
-&#x20;  \- \*Description:\* Represents the specific fallacy where a conclusion is asserted to be likely true based on probabilities.
-
-&#x20;
+\- \*Description:\* Represents the specific fallacy where a conclusion is asserted to be likely true based on probabilities.
 
 3\. \*\*Claim:\*\*
 
-&#x20;  \- \*Description:\* Represents a statement or proposition that is made as part of an argument.
-
-&#x20;
+\- \*Description:\* Represents a statement or proposition that is made as part of an argument.
 
 4\. \*\*Evidence:\*\*
 
-&#x20;  \- \*Description:\* Represents information or data presented in support of a claim.
-
-&#x20;
+\- \*Description:\* Represents information or data presented in support of a claim.
 
 5\. \*\*Certainty:\*\*
 
-&#x20;  \- \*Description:\* Represents the level of certainty associated with a claim or argument.
-
-&#x20;
+\- \*Description:\* Represents the level of certainty associated with a claim or argument.
 
 Properties:
 
 1\. \*\*hasFallacyType:\*\*
 
-&#x20;  \- \*Domain:\* Fallacy
+\- \*Domain:\* Fallacy
 
-&#x20;  \- \*Range:\* xsd:string
+\- \*Range:\* xsd:string
 
-&#x20;  \- \*Description:\* Indicates the type of fallacy, such as "Appeal to Probability Fallacy."
-
-&#x20;
+\- \*Description:\* Indicates the type of fallacy, such as "Appeal to Probability Fallacy."
 
 2\. \*\*assertsClaim:\*\*
 
-&#x20;  \- \*Domain:\* Fallacy
+\- \*Domain:\* Fallacy
 
-&#x20;  \- \*Range:\* Claim
+\- \*Range:\* Claim
 
-&#x20;  \- \*Description:\* Indicates the claim associated with the fallacious argument.
-
-&#x20;
+\- \*Description:\* Indicates the claim associated with the fallacious argument.
 
 3\. \*\*presentsEvidence:\*\*
 
-&#x20;  \- \*Domain:\* Claim
+\- \*Domain:\* Claim
 
-&#x20;  \- \*Range:\* Evidence
+\- \*Range:\* Evidence
 
-&#x20;  \- \*Description:\* Links a claim to the evidence presented in support of that claim.
-
-&#x20;
+\- \*Description:\* Links a claim to the evidence presented in support of that claim.
 
 4\. \*\*hasCertaintyLevel:\*\*
 
-&#x20;  \- \*Domain:\* Claim
+\- \*Domain:\* Claim
 
-&#x20;  \- \*Range:\* Certainty
+\- \*Range:\* Certainty
 
-&#x20;  \- \*Description:\* Represents the level of certainty associated with a claim.
-
-&#x20;
+\- \*Description:\* Represents the level of certainty associated with a claim.
 
 5\. \*\*isBasedOnProbability:\*\*
 
-&#x20;  \- \*Domain:\* AppealToProbabilityFallacy
+\- \*Domain:\* AppealToProbabilityFallacy
 
-&#x20;  \- \*Range:\* Claim
+\- \*Range:\* Claim
 
-&#x20;  \- \*Description:\* Indicates that the fallacy involves basing a conclusion on probabilities rather than solid evidence.
-
-&#x20;
+\- \*Description:\* Indicates that the fallacy involves basing a conclusion on probabilities rather than solid evidence.
 
 \### Example Instance:
 
 Let's consider an instance to illustrate the ontology:
 
-&#x20;
-
 \- \*\*Instance: ProbabilityDenialArgument\*\*
 
-&#x20; \- \*Type:\* AppealToProbabilityFallacy
+\- \*Type:\* AppealToProbabilityFallacy
 
-&#x20; \- \*hasFallacyType:\* "Appeal to Probability Fallacy"
+\- \*hasFallacyType:\* "Appeal to Probability Fallacy"
 
-&#x20; \- \*assertsClaim:\* "Climate change is not a significant threat because there's a chance the models are incorrect."
+\- \*assertsClaim:\* "Climate change is not a significant threat because there's a chance the models are incorrect."
 
-&#x20; \- \*presentsEvidence:\* "Historical climate predictions that were inaccurate."
+\- \*presentsEvidence:\* "Historical climate predictions that were inaccurate."
 
-&#x20; \- \*hasCertaintyLevel:\* "Low"
+\- \*hasCertaintyLevel:\* "Low"
 
-&#x20; \- \*isBasedOnProbability:\* "Climate change denial argument relies on the possibility of models being incorrect."
-
-
+\- \*isBasedOnProbability:\* "Climate change denial argument relies on the possibility of models being incorrect."
 
 ### Framester Frames used:
+
+*
+
+<!---->
 
 * [Evidence](https://w3id.org/framester/data/framestercore/Evidence)
 
