@@ -203,7 +203,9 @@ High rdf:type Person and (some hasHeight (Height and (oneOf isTallerThan 185) an
 
 ###  http://www.semanticweb.org/bias/Claim
 bias:Claim rdf:type owl:Class ;
-           rdfs:subClassOf eeo:Observation .
+           rdfs:subClassOf eeo:Observation ;
+           <http://purl.org/dc/terms/description> "The claim is the thesis that the Agent states according to his/her personal opinion and it is supported by some kind of evidence."@en ;
+           rdfs:label "Claim"@en .
 
 
 ###  http://www.semanticweb.org/bias/AppealToProbabilityFallacy/AppealToProbabilityFallacy
@@ -214,7 +216,8 @@ bias:Claim rdf:type owl:Class ;
 
 ###  http://www.semanticweb.org/bias/General/BiasedAgent
 <http://www.semanticweb.org/bias/General/BiasedAgent> rdf:type owl:Class ;
-                                                      rdfs:subClassOf foaf:Agent .
+                                                      rdfs:subClassOf foaf:Agent ;
+                                                      <http://purl.org/dc/terms/description> "A BiasedAgent is an Agent affected by a bias." .
 
 
 ###  http://www.semanticweb.org/bias/General/CognitiveBias
@@ -258,34 +261,37 @@ bias:CertaintyLevel rdf:type owl:NamedIndividual ,
                     <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> "high" .
 
 
-###  http://www.semanticweb.org/bias/ConvincedPersonalOpinionOnPandemic
-bias:ConvincedPersonalOpinionOnPandemic rdf:type owl:NamedIndividual ,
-                                                 bias:Claim ;
-                                        eeo:isReflectionOn bias:SpreadingPandemic .
+###  http://www.semanticweb.org/bias/ClimateChange
+bias:ClimateChange rdf:type owl:NamedIndividual ,
+                            eeo:Engagement ;
+                   eeo:inActivity bias:Reasoning ;
+                   rdfs:comment "Climate Change actually happening according to a shared opinion based on facts."@en .
+
+
+###  http://www.semanticweb.org/bias/ConvincedPersonalOpinion
+bias:ConvincedPersonalOpinion rdf:type owl:NamedIndividual ,
+                                       bias:Claim ;
+                              eeo:isReflectionOn bias:ClimateChange ;
+                              rdfs:comment "Climate change is not a significant threat because there's a chance the models are incorrect."@en .
 
 
 ###  http://www.semanticweb.org/bias/Reasoning
 bias:Reasoning rdf:type owl:NamedIndividual ,
                         <http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity> ;
-               eeo:includes bias:ConvincedPersonalOpinionOnPandemic .
+               eeo:includes bias:ConvincedPersonalOpinion .
 
 
 ###  http://www.semanticweb.org/bias/Sarah
 bias:Sarah rdf:type owl:NamedIndividual ,
                     <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> ;
-           eeo:isEngagedIn bias:SpreadingPandemic ;
+           eeo:isEngagedIn bias:ClimateChange ;
            <http://www.semanticweb.org/bias/General/isAffectedBy> bias:AppealToProbabilityFallacy .
 
 
 ###  http://www.semanticweb.org/bias/ScientificArticles
 bias:ScientificArticles rdf:type owl:NamedIndividual ,
-                                 fr:Evidence .
-
-
-###  http://www.semanticweb.org/bias/SpreadingPandemic
-bias:SpreadingPandemic rdf:type owl:NamedIndividual ,
-                                eeo:Engagement ;
-                       eeo:inActivity bias:Reasoning .
+                                 fr:Evidence ;
+                        rdfs:comment "Some scientific articles state that historical climate predictions were inaccurate."@en .
 
 
 #################################################################

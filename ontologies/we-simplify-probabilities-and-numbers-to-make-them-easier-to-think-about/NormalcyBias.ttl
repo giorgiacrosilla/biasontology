@@ -69,24 +69,6 @@ hazard:participantIn rdf:type owl:ObjectProperty ;
                                 bias:BiasedHazardousEvent .
 
 
-###  http://www.ontologydesignpatterns.org/cp/owl/hasParameter
-par:hasParameter rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter> ,
-                                    [ owl:inverseOf par:isParameterFor
-                                    ] ;
-                 rdfs:domain par:Concept ;
-                 rdfs:range par:Parameter .
-
-
-###  http://www.ontologydesignpatterns.org/cp/owl/isParameterFor
-par:isParameterFor rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#isParameterFor> ,
-                                      [ owl:inverseOf par:hasParameter
-                                      ] ;
-                   rdfs:domain par:Parameter ;
-                   rdfs:range par:Concept .
-
-
 ###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter
 <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter> rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> .
 
@@ -101,12 +83,6 @@ bias:hasAwareness rdf:type owl:ObjectProperty ;
 bias:ignoresWarnings rdf:type owl:ObjectProperty ;
                      rdfs:domain hazard:Object ;
                      rdfs:range bias:Warning .
-
-
-###  http://www.semanticweb.org/bias/isPerceivedBy
-bias:isPerceivedBy rdf:type owl:ObjectProperty ;
-                   rdfs:domain bias:BiasedHazardousEvent ;
-                   rdfs:range hazard:Object .
 
 
 ###  http://www.semanticweb.org/bias/underestimates
@@ -124,13 +100,6 @@ bias:underestimates rdf:type owl:ObjectProperty ;
 #################################################################
 #    Data properties
 #################################################################
-
-###  http://www.ontologydesignpatterns.org/cp/owl/hasValue
-par:hasValue rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> ;
-             rdfs:domain par:Parameter ;
-             rdfs:range xsd:string .
-
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue
 <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> rdfs:range xsd:boolean .
@@ -171,16 +140,6 @@ hazard:Object rdf:type owl:Class ;
               owl:equivalentClass <http://www.semanticweb.org/bias/General/BiasedAgent> .
 
 
-###  http://www.ontologydesignpatterns.org/cp/owl/Concept
-par:Concept rdf:type owl:Class ;
-            owl:equivalentClass bias:Awareness .
-
-
-###  http://www.ontologydesignpatterns.org/cp/owl/Parameter
-par:Parameter rdf:type owl:Class ;
-              rdfs:subClassOf par:Concept .
-
-
 ###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept
 <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> rdf:type owl:Class ;
                                                                      owl:equivalentClass bias:Warning .
@@ -218,6 +177,68 @@ bias:Warning rdf:type owl:Class .
                                   rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
                                   rdfs:label "Agent" ;
                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/bias/AtRiskArea
+bias:AtRiskArea rdf:type owl:NamedIndividual ,
+                         hazard:HazardousSituation ;
+                hazard:participantIn bias:TornadoEvent ,
+                                     bias:TornadoNotApproaching .
+
+
+###  http://www.semanticweb.org/bias/Aware
+bias:Aware rdf:type owl:NamedIndividual ,
+                    bias:Awareness .
+
+
+###  http://www.semanticweb.org/bias/DestroyedHouses
+bias:DestroyedHouses rdf:type owl:NamedIndividual ,
+                              hazard:Exposure .
+
+
+###  http://www.semanticweb.org/bias/IgnoredWarning
+bias:IgnoredWarning rdf:type owl:NamedIndividual ,
+                             <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter> ;
+                    <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/bias/Sarah
+bias:Sarah rdf:type owl:NamedIndividual ,
+                    hazard:Object ;
+           hazard:exposedTo bias:Tornado ;
+           bias:ignoresWarnings bias:WarningOfTornadoApproaching ;
+           bias:underestimates bias:Tornado .
+
+
+###  http://www.semanticweb.org/bias/Tornado
+bias:Tornado rdf:type owl:NamedIndividual ,
+                      hazard:Hazard .
+
+
+###  http://www.semanticweb.org/bias/TornadoEvent
+bias:TornadoEvent rdf:type owl:NamedIndividual ,
+                           hazard:HazardousEvent ;
+                  hazard:hasQuality bias:DestroyedHouses ;
+                  hazard:involves bias:Tornado .
+
+
+###  http://www.semanticweb.org/bias/TornadoNotApproaching
+bias:TornadoNotApproaching rdf:type owl:NamedIndividual ,
+                                    bias:BiasedHazardousEvent .
+
+
+###  http://www.semanticweb.org/bias/WarningOfTornadoApproaching
+bias:WarningOfTornadoApproaching rdf:type owl:NamedIndividual ,
+                                          bias:Warning .
+
+
+###  http://www.semanticweb.org/bias/normalcyBias
+bias:normalcyBias rdf:type owl:NamedIndividual ,
+                           bias:NormalcyBias .
 
 
 ###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
