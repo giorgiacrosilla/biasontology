@@ -4,23 +4,23 @@
 
 <figure><img src="giorgiabias-appealtoprobability2.drawio.png" alt=""><figcaption></figcaption></figure>
 
-P1: X is possible.
+According to the definition provided on Wikipedia: “Normalcy bias, or normality bias, is a cognitive bias which leads people to disbelieve or minimize threat warnings”. The bias is manifested in cases of incoming natural disasters or calamities caused by human error where it’s estimated that about 70% of the population tends to minimize threats and so to display this bias.  
 
-P2: (unstated) Anything which is possible, is certain.
+People’s behaviour tends to be believing the less alarming option when in danger and this belief remains still until confirmation from other sources or unambiguous instructions are given. This bias can lead to a lack of preparedness, inadequate response to warnings, and a false sense of security, ultimately resulting in serious consequences. 
 
-C: X is certain.
+Abnormalcy bias and normalcy bias can often be noticed in conjunction when authorities decide not to say everything, they know about the danger both because they mistakenly think the threat is unlikely and believe that even if it does happen, people wouldn't be able to use the information to cope effectively (Omer 1994).  
 
-The fallaciousness of this line of logic should be apparent from the second, unstated premise (P2), which is logically inconsistent.
-
-An example of Appeal to probability fallacy is the Murphy’s law.
+<figure><img src="Screenshot 2023-12-29 153014.png" alt=""><figcaption></figcaption></figure>
 
 ***
 
 References:
 
-{% embed url="https://en.wikipedia.org/wiki/Appeal_to_probability" %}
+Omer H. and Alon N., The Continuity Principle: A Unified Approach to Disaster and Trauma, American Journal of Community Psychology, Vol. 22, No. 2, 1994. 
 
-{% embed url="https://rationalwiki.org/wiki/Appeal_to_probability" %}
+Nikolopoulou, K. (2023, April 6). What is normalcy bias? | Definition & example. Scribbr. https://www.scribbr.com/research-bias/normalcy-bias/  
+
+Murata, Atsuo, Tomoko Nakamura, and Waldemar Karwowski. 2015. Influence of Cognitive Biases in Distorting Decision Making and Leading to Critical Unfavorable Incidents, Safety 1, no. 1: 44-58. https://doi.org/10.3390/safety1010044 
 
 ***
 

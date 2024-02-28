@@ -166,9 +166,11 @@ Let's consider an instance to illustrate the ontology:
 
 ### Framester Frames used:
 
-*
+* [Certainty](https://w3id.org/framester/data/framestercore/Certainty)
 * [Evidence](https://w3id.org/framester/data/framestercore/Evidence)
+* [SubjectiveInfluence](https://w3id.org/framester/data/framestercore/SubjectiveInfluence)
 
 ### ODP used:
 
-* .....
+* [Experience and Observation](http://ontologydesignpatterns.org/wiki/Submissions:Experience_%26_Observation)
+* [Parameter](http://ontologydesignpatterns.org/wiki/Submissions:Parameter)

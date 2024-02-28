@@ -46,6 +46,8 @@ References:
 
 Bloch A., _Murphy's Law, and Other Reasons Why Things Go WRONG,_ Price/Stern/Sloan, Los Angeles, 1977.
 
+{% embed url="https://en.wikipedia.org/wiki/Murphy%27s_law" %}
+
 ***
 
 ### <mark style="color:red;">L</mark>LM
@@ -140,4 +142,4 @@ Intention 1:&#x20;
 
 ### ODP used:
 
-* Reaction
+* [Reaction](http://ontologydesignpatterns.org/wiki/Submissions:Reaction)

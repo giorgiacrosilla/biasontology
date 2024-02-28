@@ -4,23 +4,21 @@
 
 <figure><img src="giorgiabias-appealtoprobability2.drawio.png" alt=""><figcaption></figcaption></figure>
 
-P1: X is possible.
+According to the definition provided on Wikipedia: “Zero-sum thinking perceives situations as zero-sum games, where one person's gain would be another's loss”. When individuals think that a situation is zero-sum, they will be more likely to act competitively towards others, because they will see others as a competitive threat.  
 
-P2: (unstated) Anything which is possible, is certain.
+From the experiments undertaken by Meegan in 2010, it appeared that people are prone to perceive a competition for limited resources even when there are unlimited resources available. The same author finds this behaviour as a legacy coming from competition inside a group of people when resources were not guaranteed for all of them.  
 
-C: X is certain.
-
-The fallaciousness of this line of logic should be apparent from the second, unstated premise (P2), which is logically inconsistent.
-
-An example of Appeal to probability fallacy is the Murphy’s law.
+This bias can lead to envy and a tendency toward unhealthy competition among individuals. 
 
 ***
 
 References:
 
-{% embed url="https://en.wikipedia.org/wiki/Appeal_to_probability" %}
+{% embed url="https://en.wikipedia.org/wiki/Zero-sum_thinking" %}
 
-{% embed url="https://rationalwiki.org/wiki/Appeal_to_probability" %}
+Meegan DV. Zero-sum bias: perceived competition despite unlimited resources. Front Psychol. 2010 Nov 5;1:191. doi: 10.3389/fpsyg.2010.00191. PMID: 21833251; PMCID: PMC3153800. URL: 
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3153800/ . 
 
 ***
 
