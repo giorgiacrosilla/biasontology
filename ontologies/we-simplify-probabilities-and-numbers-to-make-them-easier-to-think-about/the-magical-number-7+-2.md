@@ -1,9 +1,8 @@
-# 🤓 The magical number 7+-2
+# The magical number 7+-2
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/appealtoprobability.ttl" %}
 
 <figure><img src="giorgiabias-appealtoprobability2.drawio.png" alt=""><figcaption></figcaption></figure>
-
 
 ***
 
@@ -25,99 +24,87 @@ The Magical Number Seven, Plus or Minus Two" bias refers to the cognitive bias r
 
 #### Can you create 10 scenarios compelling with the bias?
 
-*1*Phone Numbers: When trying to remember a new phone number, individuals may find it challenging to retain all the digits at once, especially if the number is long. This can result in errors or the need to repeat the number multiple times to remember it accurately. 
+_1_Phone Numbers: When trying to remember a new phone number, individuals may find it challenging to retain all the digits at once, especially if the number is long. This can result in errors or the need to repeat the number multiple times to remember it accurately.
 
-*2*PIN Codes: People may struggle to remember PIN codes for various accounts, such as ATM cards or mobile devices, particularly if they are not frequently used. This can lead to forgetting the code or inputting the wrong one multiple times before recalling it correctly. 
+_2_PIN Codes: People may struggle to remember PIN codes for various accounts, such as ATM cards or mobile devices, particularly if they are not frequently used. This can lead to forgetting the code or inputting the wrong one multiple times before recalling it correctly.
 
-*3*Shopping Lists: When tasked with remembering a list of items to buy at the grocery store, individuals may find it difficult to retain more than seven items in their short-term memory. This can result in forgetting some items or needing to write the list down to avoid missing anything. 
+_3_Shopping Lists: When tasked with remembering a list of items to buy at the grocery store, individuals may find it difficult to retain more than seven items in their short-term memory. This can result in forgetting some items or needing to write the list down to avoid missing anything.
 
-*4*Meeting Agendas: In a business setting, participants in a meeting may struggle to recall all the agenda items discussed, especially if there are numerous topics covered. This can lead to incomplete or inaccurate recollections of the meeting's content. 
+_4_Meeting Agendas: In a business setting, participants in a meeting may struggle to recall all the agenda items discussed, especially if there are numerous topics covered. This can lead to incomplete or inaccurate recollections of the meeting's content.
 
-*5*Test Questions: Students may experience difficulty remembering all the information needed to answer exam questions, particularly in subjects with complex concepts or extensive material. This can result in incomplete or partially correct responses due to exceeding the capacity of short-term memory. 
+_5_Test Questions: Students may experience difficulty remembering all the information needed to answer exam questions, particularly in subjects with complex concepts or extensive material. This can result in incomplete or partially correct responses due to exceeding the capacity of short-term memory.
 
-*6*Instructions with Multiple Steps: When given a series of instructions involving several steps, individuals may have trouble remembering all the steps without repetition or written documentation. This can lead to errors in completing tasks or omitting essential steps. 
+_6_Instructions with Multiple Steps: When given a series of instructions involving several steps, individuals may have trouble remembering all the steps without repetition or written documentation. This can lead to errors in completing tasks or omitting essential steps.
 
-*7*Password Management: Individuals managing multiple passwords for various online accounts may struggle to recall them all accurately, especially if the passwords are complex or changed frequently. This can result in forgotten passwords or the need for password recovery assistance. 
+_7_Password Management: Individuals managing multiple passwords for various online accounts may struggle to recall them all accurately, especially if the passwords are complex or changed frequently. This can result in forgotten passwords or the need for password recovery assistance.
 
-*8*Presentation Content: Speakers delivering presentations may find it challenging to remember all the points they intend to cover without referring to notes or slides. This can lead to omissions or disorganized delivery as they exceed their short-term memory capacity. 
+_8_Presentation Content: Speakers delivering presentations may find it challenging to remember all the points they intend to cover without referring to notes or slides. This can lead to omissions or disorganized delivery as they exceed their short-term memory capacity.
 
-*9*Directions: When given verbal directions to navigate to a specific location, individuals may have difficulty retaining all the details, especially if there are numerous turns or landmarks mentioned. This can result in getting lost or needing to ask for clarification along the way. 
+_9_Directions: When given verbal directions to navigate to a specific location, individuals may have difficulty retaining all the details, especially if there are numerous turns or landmarks mentioned. This can result in getting lost or needing to ask for clarification along the way.
 
-*10*Remembering Names: When meeting new people in social or professional settings, individuals may struggle to remember everyone's names, particularly in larger groups. This can lead to awkward interactions or the need to ask for names to be repeated multiple times. 
-
+_10_Remembering Names: When meeting new people in social or professional settings, individuals may struggle to remember everyone's names, particularly in larger groups. This can lead to awkward interactions or the need to ask for names to be repeated multiple times.
 
 #### Now consider the scenario "shopping list" and give me a short user story from it.
 
 \*\*Scenario:\*\*
 
-As a busy parent, I want to create a shopping list for groceries so that I can efficiently gather all the necessary items for the week without forgetting anything. However, I often find myself struggling to remember all the items needed, especially when the list grows beyond a certain number. I need a solution that helps me organize and remember the items on my list, ensuring a smooth and stress-free shopping experience. 
+As a busy parent, I want to create a shopping list for groceries so that I can efficiently gather all the necessary items for the week without forgetting anything. However, I often find myself struggling to remember all the items needed, especially when the list grows beyond a certain number. I need a solution that helps me organize and remember the items on my list, ensuring a smooth and stress-free shopping experience.
 
 #### If you should make an ontology based of the "curse of knowledge" which classes and properties would you create?
 
-#Classes: 
+\#Classes:
 
-CognitiveCapacity: Represents the cognitive capacity of an individual's short-term memory. 
+CognitiveCapacity: Represents the cognitive capacity of an individual's short-term memory.
 
-InformationItem: Represents individual pieces of information to be stored in short-term memory. 
+InformationItem: Represents individual pieces of information to be stored in short-term memory.
 
-CognitiveTask: Represents tasks or activities that require the use of short-term memory. 
+CognitiveTask: Represents tasks or activities that require the use of short-term memory.
 
-Error: Represents instances where cognitive limitations lead to mistakes or inaccuracies. 
+Error: Represents instances where cognitive limitations lead to mistakes or inaccuracies.
 
- 
+\#Properties:
 
-#Properties: 
+hasCapacity: Describes the maximum number of information items that can be held in short-term memory.
 
-hasCapacity: Describes the maximum number of information items that can be held in short-term memory. 
+includesItem: Specifies the information items included in a cognitive task.
 
-includesItem: Specifies the information items included in a cognitive task. 
+resultsInError: Indicates instances where cognitive limitations result in errors in completing a task.
 
-resultsInError: Indicates instances where cognitive limitations result in errors in completing a task. 
+relatesToTask: Relates cognitive capacity to specific cognitive tasks.
 
-relatesToTask: Relates cognitive capacity to specific cognitive tasks. 
+Example ontology instance:
 
- 
+CognitiveCapacity:
 
-Example ontology instance: 
+hasCapacity: 7 (plus or minus 2)
 
-CognitiveCapacity: 
+InformationItem:
 
-hasCapacity: 7 (plus or minus 2) 
+Text: "Phone number"
 
-InformationItem: 
+Text: "PIN code"
 
-Text: "Phone number" 
+Text: "Shopping list item"
 
-Text: "PIN code" 
+CognitiveTask:
 
-Text: "Shopping list item" 
+includesItem: "Phone number"
 
-CognitiveTask: 
+includesItem: "PIN code"
 
-includesItem: "Phone number" 
+includesItem: "Shopping list item"
 
-includesItem: "PIN code" 
+resultsInError: Forgetting shopping list items
 
-includesItem: "Shopping list item" 
+Error:
 
-resultsInError: Forgetting shopping list items 
-
-Error: 
-
-relatesToTask: Forgetting shopping list items 
- 
+relatesToTask: Forgetting shopping list items
 
 ### Framester Frames used:
 
 *
-
-<!---->
-
 * [SuccessOrFailure](https://w3id.org/framester/data/framestercore/SuccessOrFailure)
 
 ### ODP used:
 
-[Co-partecipation
-Topic](http://ontologydesignpatterns.org/wiki/Submissions:Reaction)
-[Activity_Reasoning](http://ontologydesignpatterns.org/wiki/Submissions:An_Ontology_Design_Pattern_for_Activity_Reasoning)
-
+* [Co-partecipation Topic](http://ontologydesignpatterns.org/wiki/Submissions:Reaction) [Activity\_Reasoning](http://ontologydesignpatterns.org/wiki/Submissions:An\_Ontology\_Design\_Pattern\_for\_Activity\_Reasoning)
