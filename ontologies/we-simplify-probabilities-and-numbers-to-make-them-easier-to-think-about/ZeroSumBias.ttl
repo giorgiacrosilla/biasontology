@@ -1,4 +1,5 @@
 @prefix : <http://www.semanticweb.org/giorgia/ontologies/2024/1/ZeroSumBias/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix fr: <https://w3id.org/framester/data/framestercore/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pcp: <http://www.ontologydesignpatterns.org/cp/owl/coparticipation.owl#> .
@@ -10,11 +11,24 @@
 @prefix schema: <http://schema.org/> .
 @base <http://www.semanticweb.org/giorgia/ontologies/2024/1/ZeroSumBias/> .
 
-<http://www.semanticweb.org/giorgia/ontologies/2024/1/ZeroSumBias> rdf:type owl:Ontology .
+<http://www.semanticweb.org/giorgia/ontologies/2024/1/ZeroSumBias> rdf:type owl:Ontology ;
+                                                                    dc:creator "Giorgia Crosilla"@en ;
+                                                                    dc:title "Zero Sum Bias"@en ;
+                                                                    rdfs:comment "This is an ontology that describes the behaviour of a person affected by Zero Sum Bias."@en ;
+                                                                    rdfs:label "Zero Sum Bias"@en ;
+                                                                    rdfs:seeAlso "http://www.ontologydesignpatterns.org/cp/owl/coparticipation.owl" .
 
 #################################################################
 #    Annotation properties
 #################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
 
 ###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
@@ -82,18 +96,29 @@ bias:isPerceivedAs rdf:type owl:ObjectProperty ;
 
 
 ###  http://www.semanticweb.org/bias/isPerceivedBy
-bias:isPerceivedBy rdf:type owl:ObjectProperty ;
-                   rdfs:domain [ rdf:type owl:Class ;
-                                 owl:unionOf ( bias:BiasedOutcome
-                                               bias:NonBiasedOutcome
-                                             )
-                               ] ,
-                               [ rdf:type owl:Class ;
-                                 owl:unionOf ( fr:Competition
-                                               fr:Participation
-                                             )
-                               ] ;
-                   rdfs:range <http://xmlns.com/foaf/0.1/Agent> .
+bias:isPerceivedBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/bias/isPerceivedByBiased
+bias:isPerceivedByBiased rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf bias:isPerceivedBy ;
+                         rdfs:domain [ owl:intersectionOf ( bias:BiasedOutcome
+                                                            fr:Competition
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                         rdfs:range <http://www.semanticweb.org/bias/General/BiasedAgent> .
+
+
+###  http://www.semanticweb.org/bias/isPerceivedByNonBiased
+bias:isPerceivedByNonBiased rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf bias:isPerceivedBy ;
+                            rdfs:domain [ owl:intersectionOf ( bias:NonBiasedOutcome
+                                                               fr:Participation
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ;
+                            rdfs:range <http://www.semanticweb.org/bias/General/NonBiasedAgent> .
 
 
 ###  http://www.semanticweb.org/bias/General/isAffectedBy
@@ -153,7 +178,8 @@ bias:Outcome rdf:type owl:Class .
 
 ###  http://www.semanticweb.org/bias/ZeroSumBias
 bias:ZeroSumBias rdf:type owl:Class ;
-                 rdfs:subClassOf <http://www.semanticweb.org/bias/General/CognitiveBias> .
+                 rdfs:subClassOf <http://www.semanticweb.org/bias/General/CognitiveBias> ;
+                 rdfs:label "Zero Sum Bias"@en .
 
 
 ###  http://www.semanticweb.org/bias/General/BiasedAgent
@@ -162,7 +188,8 @@ bias:ZeroSumBias rdf:type owl:Class ;
 
 
 ###  http://www.semanticweb.org/bias/General/CognitiveBias
-<http://www.semanticweb.org/bias/General/CognitiveBias> rdf:type owl:Class .
+<http://www.semanticweb.org/bias/General/CognitiveBias> rdf:type owl:Class ;
+                                                        rdfs:label "Cognitive Bias"@en .
 
 
 ###  http://www.semanticweb.org/bias/General/NonBiasedAgent
@@ -179,19 +206,13 @@ bias:ZeroSumBias rdf:type owl:Class ;
 
 ###  https://w3id.org/framester/data/framestercore/Competition
 fr:Competition rdf:type owl:Class ;
-               owl:equivalentClass [ rdf:type owl:Restriction ;
-                                     owl:onProperty bias:isPerceivedBy ;
-                                     owl:someValuesFrom <http://www.semanticweb.org/bias/General/BiasedAgent>
-                                   ] ;
-               owl:disjointWith fr:Participation .
+               owl:disjointWith fr:Participation ;
+               rdfs:comment "This is the imaginary competition imagined by the biased agent in situations where he/she could potentially stand out (i.e. grades at school, job promotion)." ;
+               rdfs:label "Competition"@en .
 
 
 ###  https://w3id.org/framester/data/framestercore/Participation
-fr:Participation rdf:type owl:Class ;
-                 owl:equivalentClass [ rdf:type owl:Restriction ;
-                                       owl:onProperty bias:isPerceivedBy ;
-                                       owl:someValuesFrom <http://www.semanticweb.org/bias/General/NonBiasedAgent>
-                                     ] .
+fr:Participation rdf:type owl:Class .
 
 
 #################################################################
