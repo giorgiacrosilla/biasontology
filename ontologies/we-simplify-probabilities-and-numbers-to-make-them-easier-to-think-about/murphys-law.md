@@ -4,161 +4,140 @@
 
 <figure><img src="giorgiabias-appealtoprobability2.drawio.png" alt=""><figcaption></figcaption></figure>
 
-P1: X is possible.
+Generally synthesized as "Anything that can go wrong will go wrong." the Murphy’s Law is one of the most famous biases, created by the aerospace engineer Edward A. Murphy Jr. around the end of 1940s. In 1977 Arthur Bloch published the humoristic book Murphy's Law, and Other Reasons Why Things Go WRONG in which the bias is defined as follows:&#x20;
 
-P2: (unstated) Anything which is possible, is certain.
 
-C: X is certain.
 
-The fallaciousness of this line of logic should be apparent from the second, unstated premise (P2), which is logically inconsistent.
+> MURPHY'S LAW:&#x20;
+>
+> If anything can go wrong, it will. &#x20;
+>
+> &#x20;
+>
+> Corollaries:&#x20;
+>
+> _1. Nothing is as easy as it looks._&#x20;
+>
+> _2. Everything takes longer than you think._&#x20;
+>
+> _3. If there is a possibility of several things going wrong, the one that will cause the most damage will be the one to go wrong._&#x20;
+>
+> _4. If you perceive that there are four possible ways in which a procedure can go wrong, and circumvent these, then a fifth way will promptly develop._&#x20;
+>
+> _5. Left to themselves, things tend to go from bad to worse._&#x20;
+>
+> _6. Whenever you set out to do something, something else must be done first._&#x20;
+>
+> _7. Every solution breeds new problems._&#x20;
+>
+> _8. It is impossible to make anything foolproof because fools are so ingenious._&#x20;
+>
+> _9. Nature always-sides with the hidden flaw._ &#x20;
+>
+> _10. Mother nature is a bitch._&#x20;
 
-An example of Appeal to probability fallacy is the Murphy’s law.
+&#x20;
+
+There is no scientific evidence for Murphy's Law, it is more of a common saying that reflects on human experience and observations. It is not a physical or natural law, but rather a principle that reflects the human tendency to notice and remember negative events, while positive events may be overlooked.&#x20;
 
 ***
 
 References:
 
-{% embed url="https://en.wikipedia.org/wiki/Appeal_to_probability" %}
-
-{% embed url="https://rationalwiki.org/wiki/Appeal_to_probability" %}
+Bloch A., _Murphy's Law, and Other Reasons Why Things Go WRONG,_ Price/Stern/Sloan, Los Angeles, 1977.
 
 ***
 
 ### <mark style="color:red;">L</mark>LM
 
-#### Can you give me a definition of "appeal to probability fallacy"?
+#### Can you give me a definition of "Murphy's Law"?
 
-The appeal to probability fallacy, also known as the argument from probability, occurs when someone argues that because something is likely to happen, it is therefore true or should be believed. This fallacy disregards evidence or logical reasoning and relies on the probability of an event occurring rather than on conclusive support. The mere likelihood of an outcome does not necessarily make it true, and conclusions drawn solely from probability without proper evidence can be misleading. In critical thinking and argumentation, it is essential to consider both the probability of an event and the available evidence to make a valid and well-supported conclusion.
+Murphy's Law is a popular adage that states, "Anything that can go wrong, will go wrong." It suggests that if something has the potential to go awry or fail, it is likely to do so at the most inconvenient or inopportune moment. The expression is often used humorously to acknowledge the unpredictability and challenges of life, particularly in situations where things seem to be going smoothly.
 
-#### Can you create 10 scenarios compelling with the bias?
+#### Can you create 10 scenarios compelling with the bias ? (only one shown here)
 
-6\. \*\*Climate Change Denial:\*\*
+Flat Tire on a Road Trip:&#x20;
 
-\*Claim:\* "We don't need to address climate change because scientists can't prove with 100% certainty that human activity is the sole cause."
+* Your car tire will go flat in the middle of nowhere when you are on a road trip, and you don't have a spare or the necessary tools.&#x20;
 
-\*Fallacy:\* Demanding absolute certainty and using the absence of complete proof as justification for inaction.
+#### Now consider the scenario "Flat Tire" and give me a short user story from it.
 
-#### Now consider the scenario "climate change denial" and give me a short user story from it.
+User Story: The Unexpected Adventure&#x20;
 
-\*\*User Story: Climate Change Denial\*\*
+As a road-trip enthusiast, I want to explore new places with ease, So that I can create memorable experiences.&#x20;
 
-\*\*User:\*\* Emily, a concerned citizen and environmental advocate.
+Scenario: Flat Tire on a Road Trip&#x20;
 
-\*\*Scenario:\*\*
+Acceptance Criteria:&#x20;
 
-Emily is passionate about addressing climate change and its potential impact on the planet. She engages in discussions with her friend Alex, who is skeptical about the severity of climate change. Alex argues that there's still uncertainty among scientists and points out instances where climate predictions were inaccurate.
+* Given that I am on a road trip, when I least expect it, then a flat tire occurs on my vehicle.&#x20;
+* Given the flat tire situation, when I assess the damage and realize I don't have a spare tire, then I feel a sense of frustration and uncertainty.&#x20;
+* Given the unexpected adventure of a flat tire, when I try to call for roadside assistance, then my phone battery dies, adding a new layer of challenge.&#x20;
+* Given the need for help, when a kind stranger passing by stops to offer assistance, then I appreciate the kindness of strangers and experience a sense of relief.&#x20;
+* Given the delay caused by the flat tire, when I finally get back on the road, then I realize that the detour led me to a hidden gem or a breathtaking scenic route, turning the setback into an unexpected adventure.&#x20;
+* Given the entire experience, when I share the story later with friends, then we laugh about the twists and turns of the journey, creating a lasting memory from what initially seemed like a road trip mishap.&#x20;
 
-\*\*Conversation:\*\*
 
-\*Emily:\* "Alex, I really think we need to take climate change seriously. The scientific consensus is strong, and the consequences could be devastating."
 
-\*Alex:\* "I'm not convinced. Scientists have been wrong before, and there's still uncertainty about the causes and the extent of climate change."
+#### We can now derive example-based-CQs from the user story.&#x20;
 
-\*Emily:\* "True, science isn't always perfect, but the overwhelming majority of climate scientists agree that human activities are causing global warming. We shouldn't ignore the risks."
+1. What did go wrong at first?&#x20;
 
-\*Alex:\* "I just think it's a natural cycle, and we shouldn't make drastic changes based on incomplete information."
+Flat tire&#x20;
 
-\*Emily:\* "It's not incomplete information; it's a consensus backed by extensive research. Waiting for 100% certainty could lead to irreversible damage. We need to act now to mitigate the impacts."
+2. Is this the only thing that went wrong, or afterwards something happened and made things even worse?&#x20;
 
-\*Alex:\* "But what if we spend trillions on measures that turn out to be unnecessary? I'd rather wait until we're absolutely sure."
+When trying to call for assistance, phone battery died. &#x20;
 
-\*Emily:\* "That's the appeal to probability fallacy, Alex. We can't wait for absolute certainty. The potential risks are too great. It's like refusing to evacuate during a hurricane because the forecast isn't 100% certain. We should prioritize the precautionary principle and take action before it's too late."
+3. In the end the outcome for the main character is positive or negative?&#x20;
 
-#### If you should make an ontology based of the "appeal to probability fallacy" which classes and properties would you create?
+Even though negative events happened subsequentially, the main character find some positive aspects in the overall experience and remembers this event not as a negative one. &#x20;
 
-Classes:
 
-1\. \*\*Fallacy:\*\*
 
-\- \*Description:\* Represents the overarching concept of a logical fallacy.
+#### If you should make an ontology based of the "Murphy's Law" which classes and properties would you create?
 
-2\. \*\*AppealToProbabilityFallacy:\*\*
+Classes:&#x20;
 
-\- \*Subclass of:\* Fallacy
+* Situation: Represents a set of circumstances or events in which Murphy's Law may come into play.&#x20;
+* Outcome: Represents the result or consequence of a situation influenced by Murphy's Law.&#x20;
+* Entity: Represents any object, person, or system affected by Murphy's Law within a given situation.&#x20;
+* Intention: Represents the original purpose or plan before Murphy's Law disrupts it.&#x20;
 
-\- \*Description:\* Represents the specific fallacy where a conclusion is asserted to be likely true based on probabilities.
+Properties:&#x20;
 
-3\. \*\*Claim:\*\*
+* hasSituation: Relates an entity to a situation, indicating the circumstances in which it is involved.&#x20;
+* hasOutcome: Relates a situation to its outcome, representing the result influenced by Murphy's Law.&#x20;
+* isAffectedBy: Relates an entity to Murphy's Law, indicating that the entity is influenced or affected by the law within a given situation.&#x20;
+* disruptsIntention: Relates a situation to its original intention, indicating that Murphy's Law has disrupted the initial plan or purpose.&#x20;
 
-\- \*Description:\* Represents a statement or proposition that is made as part of an argument.
+Example Instances:&#x20;
 
-4\. \*\*Evidence:\*\*
+Situation 1: &#x20;
 
-\- \*Description:\* Represents information or data presented in support of a claim.
+* Class: Situation&#x20;
+* Property: hasOutcome&#x20;
 
-5\. \*\*Certainty:\*\*
+Value: Outcome 1&#x20;
 
-\- \*Description:\* Represents the level of certainty associated with a claim or argument.
+Outcome 1:&#x20;
 
-Properties:
+* Class: Outcome&#x20;
+* Property: isAffectedBy&#x20;
 
-1\. \*\*hasFallacyType:\*\*
+Value: Entity 1&#x20;
 
-\- \*Domain:\* Fallacy
+Entity 1:&#x20;
 
-\- \*Range:\* xsd:string
+* Class: Entity&#x20;
+* Property: disruptsIntention&#x20;
 
-\- \*Description:\* Indicates the type of fallacy, such as "Appeal to Probability Fallacy."
+Value: Intention 1&#x20;
 
-2\. \*\*assertsClaim:\*\*
+Intention 1:&#x20;
 
-\- \*Domain:\* Fallacy
-
-\- \*Range:\* Claim
-
-\- \*Description:\* Indicates the claim associated with the fallacious argument.
-
-3\. \*\*presentsEvidence:\*\*
-
-\- \*Domain:\* Claim
-
-\- \*Range:\* Evidence
-
-\- \*Description:\* Links a claim to the evidence presented in support of that claim.
-
-4\. \*\*hasCertaintyLevel:\*\*
-
-\- \*Domain:\* Claim
-
-\- \*Range:\* Certainty
-
-\- \*Description:\* Represents the level of certainty associated with a claim.
-
-5\. \*\*isBasedOnProbability:\*\*
-
-\- \*Domain:\* AppealToProbabilityFallacy
-
-\- \*Range:\* Claim
-
-\- \*Description:\* Indicates that the fallacy involves basing a conclusion on probabilities rather than solid evidence.
-
-\### Example Instance:
-
-Let's consider an instance to illustrate the ontology:
-
-\- \*\*Instance: ProbabilityDenialArgument\*\*
-
-\- \*Type:\* AppealToProbabilityFallacy
-
-\- \*hasFallacyType:\* "Appeal to Probability Fallacy"
-
-\- \*assertsClaim:\* "Climate change is not a significant threat because there's a chance the models are incorrect."
-
-\- \*presentsEvidence:\* "Historical climate predictions that were inaccurate."
-
-\- \*hasCertaintyLevel:\* "Low"
-
-\- \*isBasedOnProbability:\* "Climate change denial argument relies on the possibility of models being incorrect."
-
-### Framester Frames used:
-
-*
-
-<!---->
-
-* [Evidence](https://w3id.org/framester/data/framestercore/Evidence)
+* Class: Intention&#x20;
 
 ### ODP used:
 
-* .....
-
+* Reaction
