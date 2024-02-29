@@ -2,7 +2,9 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MurphysLaw.ttl" %}
 
-<figure><img src="giorgiabias-appealtoprobability2.drawio.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="uml\giorgiabias-murphy2.jpg" alt=""><figcaption></figcaption></figure>
+
+### <mark style="color:red;">C</mark>ontext literature and state of the art
 
 Generally synthesized as "Anything that can go wrong will go wrong." the Murphy’s Law is one of the most famous biases, created by the aerospace engineer Edward A. Murphy Jr. around the end of 1940s. In 1977 Arthur Bloch published the humoristic book Murphy's Law, and Other Reasons Why Things Go WRONG in which the bias is defined as follows:&#x20;
 

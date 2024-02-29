@@ -2,7 +2,7 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.ttl" %}
 
-<figure><img src="uml/giorgiabias-appealtoprobability2 (2).jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="uml\giorgiabias-appealtoprobability2 (2).jpg" alt=""><figcaption></figcaption></figure>
 
 ### <mark style="color:red;">C</mark>ontext literature and state of the art
 

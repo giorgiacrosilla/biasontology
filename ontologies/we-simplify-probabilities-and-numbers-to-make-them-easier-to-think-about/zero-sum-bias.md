@@ -2,7 +2,9 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.ttl" %}
 
-<figure><img src="giorgiabias-appealtoprobability2.drawio.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="uml\giorgiabias-zerosum2.jpg" alt=""><figcaption></figcaption></figure>
+
+### <mark style="color:red;">C</mark>ontext literature and state of the art
 
 According to the definition provided on Wikipedia: “Zero-sum thinking perceives situations as zero-sum games, where one person's gain would be another's loss”. When individuals think that a situation is zero-sum, they will be more likely to act competitively towards others, because they will see others as a competitive threat.  
 
