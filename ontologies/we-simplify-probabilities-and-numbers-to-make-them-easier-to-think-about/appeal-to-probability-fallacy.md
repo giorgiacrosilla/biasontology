@@ -157,3 +157,6 @@ Let's consider an instance to illustrate the ontology:
 #### Framester frames used:
 
 #### ODP used:
+
+* [Experience and Observation](http://ontologydesignpatterns.org/wiki/Submissions:Experience_%26_Observation)
+* [Parameter](http://ontologydesignpatterns.org/wiki/Submissions:Parameter)

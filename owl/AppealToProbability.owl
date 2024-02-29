@@ -288,6 +288,7 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
 ###  http://www.semanticweb.org/bias/AppealToProbability/AppealToProbabilityFallacy
 <http://www.semanticweb.org/bias/AppealToProbability/AppealToProbabilityFallacy> rdf:type owl:NamedIndividual ,
                                                                                           <http://www.semanticweb.org/bias/AppealToProbabilityFallacy/AppealToProbabilityFallacy> ;
+                                                                                 rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
                                                                                  rdfs:label "Appeal to probability fallacy"@en .
 
 
@@ -295,6 +296,7 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
 <http://www.semanticweb.org/bias/AppealToProbability/CertaintyLevel> rdf:type owl:NamedIndividual ,
                                                                               fr:Certainty ;
                                                                      <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> "high" ;
+                                                                     rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
                                                                      rdfs:label "certainty level"@en .
 
 
@@ -303,6 +305,7 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
                                                                              eeo:Engagement ;
                                                                     eeo:inActivity <http://www.semanticweb.org/bias/AppealToProbability/Reasoning> ;
                                                                     rdfs:comment "Climate Change actually happening according to a shared opinion based on facts."@en ;
+                                                                    rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
                                                                     rdfs:label "climate change"@en .
 
 
@@ -311,6 +314,7 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
                                                                                         <http://www.semanticweb.org/bias/AppealToProbability/Claim> ;
                                                                                eeo:isReflectionOn <http://www.semanticweb.org/bias/AppealToProbability/ClimateChange> ;
                                                                                rdfs:comment "Climate change is not a significant threat because there's a chance the models are incorrect."@en ;
+                                                                               rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
                                                                                rdfs:label "convinced personal opinion"@en .
 
 
@@ -318,6 +322,7 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
 <http://www.semanticweb.org/bias/AppealToProbability/Reasoning> rdf:type owl:NamedIndividual ,
                                                                          <http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity> ;
                                                                 eeo:includes <http://www.semanticweb.org/bias/AppealToProbability/ConvincedPersonalOpinion> ;
+                                                                rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
                                                                 rdfs:label "reasoning" .
 
 
@@ -327,6 +332,7 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
                                                             eeo:isEngagedIn <http://www.semanticweb.org/bias/AppealToProbability/ClimateChange> ;
                                                             <http://www.semanticweb.org/bias/General/isAffectedBy> <http://www.semanticweb.org/bias/AppealToProbability/AppealToProbabilityFallacy> ;
                                                             rdfs:comment "Sarah is the biased agent, affected by the appeal to probability fallacy."@en ;
+                                                            rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
                                                             rdfs:label "Sarah" .
 
 
@@ -334,6 +340,7 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
 <http://www.semanticweb.org/bias/AppealToProbability/ScientificArticles> rdf:type owl:NamedIndividual ,
                                                                                   fr:Evidence ;
                                                                          rdfs:comment "Some scientific articles state that historical climate predictions were inaccurate."@en ;
+                                                                         rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
                                                                          rdfs:label "scientific articles"@en .
 
 

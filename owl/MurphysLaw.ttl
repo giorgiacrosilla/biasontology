@@ -13,7 +13,9 @@
 
 <http://www.semanticweb.org/giorgia/ontologies/2024/1/MurphysLaw> rdf:type owl:Ontology ;
                                                                    dc:creator "Giorgia Crosilla"@en ;
-                                                                   dc:title "Murphy's Law"@en .
+                                                                   dc:title "Murphy's Law"@en ;
+                                                                   rdfs:comment "This is an ontology that describes the behavior of a person that believes in the Murphy's Law."@en ;
+                                                                   rdfs:isDefinedBy "http://ontologydesignpatterns.org/wiki/Submissions:Reaction"@en .
 
 #################################################################
 #    Annotation properties
@@ -146,7 +148,7 @@ bias:contributesTo rdf:type owl:ObjectProperty ;
 ###  http://www.semanticweb.org/bias/influences
 bias:influences rdf:type owl:ObjectProperty ;
                 owl:inverseOf bias:isInfluencedBy ;
-                rdfs:domain bias:AdverseConsequence ;
+                rdfs:domain <http://www.semanticweb.org/bias/MurphysLaw/AdverseConsequence> ;
                 rdfs:range reaction:Event .
 
 
@@ -166,7 +168,8 @@ bias:isInfluencedBy rdf:type owl:ObjectProperty .
 
 ###  http://purl.org/dc/terms/Agent
 <http://purl.org/dc/terms/Agent> rdf:type owl:Class ;
-                                 owl:equivalentClass foaf:Agent .
+                                 owl:equivalentClass foaf:Agent ;
+                                 rdfs:label "Agent"@en .
 
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#Agent
@@ -232,7 +235,7 @@ reaction:Action rdf:type owl:Class ;
 
 ###  http://www.ontologydesignpatterns.org/cp/reaction.owl#Consequence
 reaction:Consequence rdf:type owl:Class ;
-                     owl:equivalentClass bias:AdverseConsequence ;
+                     owl:equivalentClass <http://www.semanticweb.org/bias/MurphysLaw/AdverseConsequence> ;
                      rdfs:subClassOf reaction:Event ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty reaction:isOutcomeOf ;
@@ -280,31 +283,43 @@ reaction:Reaction rdf:type owl:Class ;
                              "Reazione"@it .
 
 
-###  http://www.semanticweb.org/bias/AdverseConsequence
-bias:AdverseConsequence rdf:type owl:Class .
-
-
 ###  http://www.semanticweb.org/bias/ContingencyActions
 bias:ContingencyActions rdf:type owl:Class ;
-                        rdfs:subClassOf reaction:Reaction .
+                        rdfs:subClassOf reaction:Reaction ;
+                        rdfs:isDefinedBy "http://www.semanticweb.org/bias/MurphysLaw/"@en ;
+                        rdfs:label "Contingency Actions"@en .
 
 
 ###  http://www.semanticweb.org/bias/HumouristicElement
-bias:HumouristicElement rdf:type owl:Class .
+bias:HumouristicElement rdf:type owl:Class ;
+                        rdfs:isDefinedBy "http://www.semanticweb.org/bias/MurphysLaw/"@en ;
+                        rdfs:label "Humouristic Element"@en .
 
 
 ###  http://www.semanticweb.org/bias/MurphysLaw
 bias:MurphysLaw rdf:type owl:Class ;
-                rdfs:subClassOf <http://www.semanticweb.org/bias/General/CognitiveBias> .
+                rdfs:subClassOf <http://www.semanticweb.org/bias/General/CognitiveBias> ;
+                rdfs:isDefinedBy "http://www.semanticweb.org/bias/MurphysLaw/"@en ;
+                rdfs:label "Murphy's Law"@en .
 
 
 ###  http://www.semanticweb.org/bias/General/BiasedAgent
 <http://www.semanticweb.org/bias/General/BiasedAgent> rdf:type owl:Class ;
-                                                      rdfs:subClassOf foaf:Agent .
+                                                      rdfs:subClassOf foaf:Agent ;
+                                                      rdfs:isDefinedBy "http://www.semanticweb.org/bias/MurphysLaw/"@en ;
+                                                      rdfs:label "Biased Agent"@en .
 
 
 ###  http://www.semanticweb.org/bias/General/CognitiveBias
-<http://www.semanticweb.org/bias/General/CognitiveBias> rdf:type owl:Class .
+<http://www.semanticweb.org/bias/General/CognitiveBias> rdf:type owl:Class ;
+                                                        rdfs:isDefinedBy "http://www.semanticweb.org/bias/MurphysLaw/"@en ;
+                                                        rdfs:label "Cognitive Bias"@en .
+
+
+###  http://www.semanticweb.org/bias/MurphysLaw/AdverseConsequence
+<http://www.semanticweb.org/bias/MurphysLaw/AdverseConsequence> rdf:type owl:Class ;
+                                                                rdfs:isDefinedBy "http://www.semanticweb.org/bias/MurphysLaw/"@en ;
+                                                                rdfs:label "Adverse Consequence"@en .
 
 
 ###  http://xmlns.com/foaf/0.1/Agent
@@ -320,7 +335,7 @@ foaf:Agent rdf:type owl:Class ;
 
 ###  http://www.semanticweb.org/bias/CarNotWorking
 bias:CarNotWorking rdf:type owl:NamedIndividual ,
-                            bias:AdverseConsequence ;
+                            <http://www.semanticweb.org/bias/MurphysLaw/AdverseConsequence> ;
                    bias:influences bias:FollowingNegativeEvents .
 
 
@@ -334,7 +349,7 @@ bias:Driving rdf:type owl:NamedIndividual ,
 
 ###  http://www.semanticweb.org/bias/EverythingGoesWrong
 bias:EverythingGoesWrong rdf:type owl:NamedIndividual ,
-                                  bias:AdverseConsequence .
+                                  <http://www.semanticweb.org/bias/MurphysLaw/AdverseConsequence> .
 
 
 ###  http://www.semanticweb.org/bias/FlatTire

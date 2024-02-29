@@ -46,6 +46,7 @@ dc:title rdf:type owl:AnnotationProperty .
 eeo:hasEngagement rdf:type owl:ObjectProperty ;
                   owl:inverseOf eeo:inActivity ;
                   rdfs:range eeo:Engagement ;
+                  rdfs:isDefinedBy "http://modellingdh.github.io/ont/odp/term/" ;
                   rdfs:label "has engagement"@en .
 
 
@@ -54,6 +55,7 @@ eeo:inActivity rdf:type owl:ObjectProperty ;
                rdfs:domain eeo:Engagement ;
                rdfs:range <http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity> ;
                <http://purl.org/dc/terms/description> "what activity/ies are affecting or affected by a certain engagement"@en ;
+               rdfs:isDefinedBy "http://modellingdh.github.io/ont/odp/term/" ;
                rdfs:label "in activity"@en .
 
 
@@ -63,6 +65,7 @@ eeo:includes rdf:type owl:ObjectProperty ;
              rdfs:range eeo:Observation ;
              <http://purl.org/dc/terms/description> "A relation of mereological nature that connects a given observation with the activity that originates them: it strengthens the argument that observations are always active processes from a cognitive standpoint, regardless of how conscious they may be."@en ;
              rdfs:comment "A standard mereological property from another content pattern may be used in lieu of this one and therefore aligned with it."@en ;
+             rdfs:isDefinedBy "http://modellingdh.github.io/ont/odp/term/" ;
              rdfs:label "includes"@en .
 
 
@@ -71,12 +74,14 @@ eeo:isEngagedIn rdf:type owl:ObjectProperty ;
                 rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> ;
                 rdfs:range eeo:Engagement ;
                 <http://purl.org/dc/terms/description> "Because an activity may engage other participants than the one performing it, engagements are in general considered individual rather than collective, therefore each participants has their own engagement and only some of them will be conscious and/or documented."@en ;
+                rdfs:isDefinedBy "http://modellingdh.github.io/ont/odp/term/" ;
                 rdfs:label "engaged in"@en .
 
 
 ###  http://modellingdh.github.io/ont/odp/term/isReflectedUponIn
 eeo:isReflectedUponIn rdf:type owl:ObjectProperty ;
                       owl:inverseOf eeo:isReflectionOn ;
+                      rdfs:isDefinedBy "http://modellingdh.github.io/ont/odp/term/" ;
                       rdfs:label "is reflected upon in"@en .
 
 
@@ -85,6 +90,7 @@ eeo:isReflectionOn rdf:type owl:ObjectProperty ;
                    rdfs:domain eeo:Observation ;
                    rdfs:range eeo:Engagement ;
                    <http://purl.org/dc/terms/description> "Used to connect the subjective elements of an experience with the corresponding observation, which is extrapolated from the content being interacted with and in itself may not be including a critique."@en ;
+                   rdfs:isDefinedBy "http://modellingdh.github.io/ont/odp/term/" ;
                    rdfs:label "is reflection on"@en .
 
 
@@ -93,6 +99,7 @@ eeo:producedObservation rdf:type owl:ObjectProperty ;
                         rdfs:domain fr:SubjectiveInfluence ;
                         rdfs:range eeo:Observation ;
                         <http://purl.org/dc/terms/description> "This property can be used to denote that something is (even indirectly, not necessary through direct reflection) responsible for the existence of an observation."@en ;
+                        rdfs:isDefinedBy "http://modellingdh.github.io/ont/odp/term/" ;
                         rdfs:label "produced observation"@en .
 
 
@@ -119,19 +126,25 @@ eeo:producedObservation rdf:type owl:ObjectProperty ;
 ###  http://www.semanticweb.org/bias/AppealToProbability/hasCertainty
 <http://www.semanticweb.org/bias/AppealToProbability/hasCertainty> rdf:type owl:ObjectProperty ;
                                                                    rdfs:domain eeo:Engagement ;
-                                                                   rdfs:range fr:Certainty .
+                                                                   rdfs:range fr:Certainty ;
+                                                                   rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/" ;
+                                                                   rdfs:label "has certainty"@en .
 
 
 ###  http://www.semanticweb.org/bias/AppealToProbability/hasEvidence
 <http://www.semanticweb.org/bias/AppealToProbability/hasEvidence> rdf:type owl:ObjectProperty ;
                                                                   rdfs:domain eeo:Engagement ;
-                                                                  rdfs:range fr:Evidence .
+                                                                  rdfs:range fr:Evidence ;
+                                                                  rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/" ;
+                                                                  rdfs:label "has evidence"@en .
 
 
 ###  http://www.semanticweb.org/bias/General/isAffectedBy
 <http://www.semanticweb.org/bias/General/isAffectedBy> rdf:type owl:ObjectProperty ;
                                                        rdfs:domain <http://www.semanticweb.org/bias/General/BiasedAgent> ;
-                                                       rdfs:range <http://www.semanticweb.org/bias/General/CognitiveBias> .
+                                                       rdfs:range <http://www.semanticweb.org/bias/General/CognitiveBias> ;
+                                                       rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
+                                                       rdfs:label "is affected by"@en .
 
 
 #################################################################
@@ -157,6 +170,7 @@ Ordering on subparameters can be created by using or specializing the object pro
 ###  http://modellingdh.github.io/ont/odp/term/Engagement
 eeo:Engagement rdf:type owl:Class ;
                <http://purl.org/dc/terms/description> "The product of a reflection upon an observation, which embodies subjective traits of an experience (Example: \"After reading this passage of 'To Kill a Mockingbird', I came to a clearer understanding of the many facets of social intolerance\")."@en ;
+               rdfs:isDefinedBy "http://modellingdh.github.io/ont/odp/term/" ;
                rdfs:label "Engagement"@en .
 
 
@@ -164,12 +178,14 @@ eeo:Engagement rdf:type owl:Class ;
 eeo:Observation rdf:type owl:Class ;
                 <http://purl.org/dc/terms/description> "The product of an act of scrutiny which may or may not have been performed with a critical disposition (Example: \"My thoughts from reading this passage of 'To Kill a Mockingbird'\")."@en ;
                 rdfs:comment "A disjointness or alignment between this class and <http://www.ontologydesignpatterns.org/cp/owl/observation.owl#Observation> in the Observation content pattern is plausible but subject to debate, hence will not be formalised herein."@en ;
+                rdfs:isDefinedBy "http://modellingdh.github.io/ont/odp/term/" ;
                 rdfs:label "Observation"@en .
 
 
 ###  http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity
 <http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity> rdf:type owl:Class ;
                                                                        rdfs:comment "The activity represents the personal act of the agent that arises from interaction with the environment and generates personal reflection."@en ;
+                                                                       rdfs:isDefinedBy "http://modellingdh.github.io/ont/odp/term/" ;
                                                                        rdfs:label "Activity"@en .
 
 
@@ -204,6 +220,7 @@ High rdf:type Person and (some hasHeight (Height and (oneOf isTallerThan 185) an
 <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> rdf:type owl:Class ;
                                                                   owl:equivalentClass <http://www.semanticweb.org/bias/General/BiasedAgent> ;
                                                                   rdfs:comment "The biased agent." ;
+                                                                  rdfs:isDefinedBy "http://modellingdh.github.io/ont/odp/term/" ;
                                                                   rdfs:label "Person"@en .
 
 
@@ -211,6 +228,7 @@ High rdf:type Person and (some hasHeight (Height and (oneOf isTallerThan 185) an
 <http://www.semanticweb.org/bias/AppealToProbability/Claim> rdf:type owl:Class ;
                                                             rdfs:subClassOf eeo:Observation ;
                                                             <http://purl.org/dc/terms/description> "The claim is the thesis that the Agent states according to his/her personal opinion and it is supported by some kind of evidence."@en ;
+                                                            rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProability/" ;
                                                             rdfs:label "Claim"@en .
 
 
@@ -218,6 +236,7 @@ High rdf:type Person and (some hasHeight (Height and (oneOf isTallerThan 185) an
 <http://www.semanticweb.org/bias/AppealToProbabilityFallacy/AppealToProbabilityFallacy> rdf:type owl:Class ;
                                                                                         rdfs:subClassOf <http://www.semanticweb.org/bias/General/CognitiveBias> ;
                                                                                         rdfs:comment "The appeal to probability fallacy, also known as the argument from probability, occurs when someone argues that because something is likely to happen, it is therefore true or should be believed."@en ;
+                                                                                        rdfs:isDefinedBy "http://www.semanticweb.org/bias/General/" ;
                                                                                         rdfs:label "Appeal To Probability Fallacy"@en .
 
 
@@ -231,6 +250,7 @@ High rdf:type Person and (some hasHeight (Height and (oneOf isTallerThan 185) an
 ###  http://www.semanticweb.org/bias/General/CognitiveBias
 <http://www.semanticweb.org/bias/General/CognitiveBias> rdf:type owl:Class ;
                                                         rdfs:comment "Cognitive bias refers to systematic patterns of deviation from norm or rationality in judgment, often leading to perceptual distortion, inaccurate interpretation, illogical interpretation, or what is broadly called irrationality."@en ;
+                                                        rdfs:isDefinedBy "http://www.semanticweb.org/bias/General/" ;
                                                         rdfs:label "Cognitive Bias"@en .
 
 
@@ -268,6 +288,7 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
 ###  http://www.semanticweb.org/bias/AppealToProbability/AppealToProbabilityFallacy
 <http://www.semanticweb.org/bias/AppealToProbability/AppealToProbabilityFallacy> rdf:type owl:NamedIndividual ,
                                                                                           <http://www.semanticweb.org/bias/AppealToProbabilityFallacy/AppealToProbabilityFallacy> ;
+                                                                                 rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
                                                                                  rdfs:label "Appeal to probability fallacy"@en .
 
 
@@ -275,6 +296,7 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
 <http://www.semanticweb.org/bias/AppealToProbability/CertaintyLevel> rdf:type owl:NamedIndividual ,
                                                                               fr:Certainty ;
                                                                      <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> "high" ;
+                                                                     rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
                                                                      rdfs:label "certainty level"@en .
 
 
@@ -283,6 +305,7 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
                                                                              eeo:Engagement ;
                                                                     eeo:inActivity <http://www.semanticweb.org/bias/AppealToProbability/Reasoning> ;
                                                                     rdfs:comment "Climate Change actually happening according to a shared opinion based on facts."@en ;
+                                                                    rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
                                                                     rdfs:label "climate change"@en .
 
 
@@ -291,6 +314,7 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
                                                                                         <http://www.semanticweb.org/bias/AppealToProbability/Claim> ;
                                                                                eeo:isReflectionOn <http://www.semanticweb.org/bias/AppealToProbability/ClimateChange> ;
                                                                                rdfs:comment "Climate change is not a significant threat because there's a chance the models are incorrect."@en ;
+                                                                               rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
                                                                                rdfs:label "convinced personal opinion"@en .
 
 
@@ -298,6 +322,7 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
 <http://www.semanticweb.org/bias/AppealToProbability/Reasoning> rdf:type owl:NamedIndividual ,
                                                                          <http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity> ;
                                                                 eeo:includes <http://www.semanticweb.org/bias/AppealToProbability/ConvincedPersonalOpinion> ;
+                                                                rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
                                                                 rdfs:label "reasoning" .
 
 
@@ -307,6 +332,7 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
                                                             eeo:isEngagedIn <http://www.semanticweb.org/bias/AppealToProbability/ClimateChange> ;
                                                             <http://www.semanticweb.org/bias/General/isAffectedBy> <http://www.semanticweb.org/bias/AppealToProbability/AppealToProbabilityFallacy> ;
                                                             rdfs:comment "Sarah is the biased agent, affected by the appeal to probability fallacy."@en ;
+                                                            rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
                                                             rdfs:label "Sarah" .
 
 
@@ -314,6 +340,7 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
 <http://www.semanticweb.org/bias/AppealToProbability/ScientificArticles> rdf:type owl:NamedIndividual ,
                                                                                   fr:Evidence ;
                                                                          rdfs:comment "Some scientific articles state that historical climate predictions were inaccurate."@en ;
+                                                                         rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
                                                                          rdfs:label "scientific articles"@en .
 
 
