@@ -1,6 +1,6 @@
 # Mental Accounting
 
-
+### <mark style="color:red;">C</mark>ontext literature and state of the art
 <figure><img src="Danielebias-Mental-Accounting.drawio.png" alt=""><figcaption></figcaption></figure>
 
 **Mental accounting** is a cognitive bias in which individuals categorize their financial resources and transactions into separate mental "accounts" based on subjective criteria, rather than considering the overall financial picture. This bias was first proposed by economist Richard Thaler. 
