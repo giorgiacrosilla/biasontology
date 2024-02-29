@@ -1,6 +1,6 @@
 # 😳 Normalcy Bias
 
-{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/appealtoprobability.ttl" %}
+{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/ontologies/owl/normalcybias.ttl" %}
 
 <figure><img src="giorgiabias-appealtoprobability2.drawio.png" alt=""><figcaption></figcaption></figure>
 
@@ -150,14 +150,8 @@ Let's consider an instance to illustrate the ontology:
 
 \- \*isBasedOnProbability:\* "Climate change denial argument relies on the possibility of models being incorrect."
 
-### Framester Frames used:
-
-*
-
-<!---->
-
-* [Evidence](https://w3id.org/framester/data/framestercore/Evidence)
 
 ### ODP used:
 
-* .....
+* [HazardousSituation](http://ontologydesignpatterns.org/wiki/Submissions:HazardousSituation)
+* [Parameter](http://ontologydesignpatterns.org/wiki/Submissions:Parameter)

@@ -14,7 +14,9 @@
 <http://www.semanticweb.org/giorgia/ontologies/2024/1/AppealToProbability> rdf:type owl:Ontology ;
                                                                             dc:creator "Giorgia Crosilla"@en ;
                                                                             dc:title "Appeal To Probability Fallacy"@en ;
-                                                                            rdfs:comment "This is an ontology that describes the behaviour of a person affected by the Appeal To Probability Fallacy."@en .
+                                                                            rdfs:comment "This is an ontology that describes the behaviour of a person affected by the Appeal To Probability Fallacy."@en ;
+                                                                            rdfs:seeAlso "http://ontologydesignpatterns.org/wiki/Submissions:Experience_%26_Observation"@en ,
+                                                                                         "http://ontologydesignpatterns.org/wiki/Submissions:Parameter"@en .
 
 #################################################################
 #    Annotation properties
@@ -114,16 +116,16 @@ eeo:producedObservation rdf:type owl:ObjectProperty ;
                                                                                        "è un parametro per"@it .
 
 
-###  http://www.semanticweb.org/bias/hasCertainty
-bias:hasCertainty rdf:type owl:ObjectProperty ;
-                  rdfs:domain eeo:Engagement ;
-                  rdfs:range fr:Certainty .
+###  http://www.semanticweb.org/bias/AppealToProbability/hasCertainty
+<http://www.semanticweb.org/bias/AppealToProbability/hasCertainty> rdf:type owl:ObjectProperty ;
+                                                                   rdfs:domain eeo:Engagement ;
+                                                                   rdfs:range fr:Certainty .
 
 
-###  http://www.semanticweb.org/bias/hasEvidence
-bias:hasEvidence rdf:type owl:ObjectProperty ;
-                 rdfs:domain eeo:Engagement ;
-                 rdfs:range fr:Evidence .
+###  http://www.semanticweb.org/bias/AppealToProbability/hasEvidence
+<http://www.semanticweb.org/bias/AppealToProbability/hasEvidence> rdf:type owl:ObjectProperty ;
+                                                                  rdfs:domain eeo:Engagement ;
+                                                                  rdfs:range fr:Evidence .
 
 
 ###  http://www.semanticweb.org/bias/General/isAffectedBy
@@ -166,7 +168,9 @@ eeo:Observation rdf:type owl:Class ;
 
 
 ###  http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity
-<http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity> rdf:type owl:Class .
+<http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity> rdf:type owl:Class ;
+                                                                       rdfs:comment "The activity represents the personal act of the agent that arises from interaction with the environment and generates personal reflection."@en ;
+                                                                       rdfs:label "Activity"@en .
 
 
 ###  http://purl.org/dc/terms/Agent
@@ -198,30 +202,35 @@ High rdf:type Person and (some hasHeight (Height and (oneOf isTallerThan 185) an
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person
 <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> rdf:type owl:Class ;
-                                                                  owl:equivalentClass <http://www.semanticweb.org/bias/General/BiasedAgent> .
+                                                                  owl:equivalentClass <http://www.semanticweb.org/bias/General/BiasedAgent> ;
+                                                                  rdfs:comment "The biased agent." ;
+                                                                  rdfs:label "Person"@en .
 
 
-###  http://www.semanticweb.org/bias/Claim
-bias:Claim rdf:type owl:Class ;
-           rdfs:subClassOf eeo:Observation ;
-           <http://purl.org/dc/terms/description> "The claim is the thesis that the Agent states according to his/her personal opinion and it is supported by some kind of evidence."@en ;
-           rdfs:label "Claim"@en .
+###  http://www.semanticweb.org/bias/AppealToProbability/Claim
+<http://www.semanticweb.org/bias/AppealToProbability/Claim> rdf:type owl:Class ;
+                                                            rdfs:subClassOf eeo:Observation ;
+                                                            <http://purl.org/dc/terms/description> "The claim is the thesis that the Agent states according to his/her personal opinion and it is supported by some kind of evidence."@en ;
+                                                            rdfs:label "Claim"@en .
 
 
 ###  http://www.semanticweb.org/bias/AppealToProbabilityFallacy/AppealToProbabilityFallacy
 <http://www.semanticweb.org/bias/AppealToProbabilityFallacy/AppealToProbabilityFallacy> rdf:type owl:Class ;
                                                                                         rdfs:subClassOf <http://www.semanticweb.org/bias/General/CognitiveBias> ;
+                                                                                        rdfs:comment "The appeal to probability fallacy, also known as the argument from probability, occurs when someone argues that because something is likely to happen, it is therefore true or should be believed."@en ;
                                                                                         rdfs:label "Appeal To Probability Fallacy"@en .
 
 
 ###  http://www.semanticweb.org/bias/General/BiasedAgent
 <http://www.semanticweb.org/bias/General/BiasedAgent> rdf:type owl:Class ;
                                                       rdfs:subClassOf foaf:Agent ;
-                                                      <http://purl.org/dc/terms/description> "A BiasedAgent is an Agent affected by a bias." .
+                                                      <http://purl.org/dc/terms/description> "A BiasedAgent is an Agent affected by a bias." ;
+                                                      rdfs:label "Biased Agent"@en .
 
 
 ###  http://www.semanticweb.org/bias/General/CognitiveBias
 <http://www.semanticweb.org/bias/General/CognitiveBias> rdf:type owl:Class ;
+                                                        rdfs:comment "Cognitive bias refers to systematic patterns of deviation from norm or rationality in judgment, often leading to perceptual distortion, inaccurate interpretation, illogical interpretation, or what is broadly called irrationality."@en ;
                                                         rdfs:label "Cognitive Bias"@en .
 
 
@@ -233,11 +242,17 @@ foaf:Agent rdf:type owl:Class ;
 
 
 ###  https://w3id.org/framester/data/framestercore/Certainty
-fr:Certainty rdf:type owl:Class .
+fr:Certainty rdf:type owl:Class ;
+             rdfs:comment "The biased agent perceives his/her thesis as certain."@en ;
+             rdfs:isDefinedBy "https://w3id.org/framester/data/framestercore/Certainty"@en ;
+             rdfs:label "Certainty"@en .
 
 
 ###  https://w3id.org/framester/data/framestercore/Evidence
-fr:Evidence rdf:type owl:Class .
+fr:Evidence rdf:type owl:Class ;
+            rdfs:comment "The evidence that supports the biased agent's thesis."@en ;
+            rdfs:isDefinedBy "https://w3id.org/framester/data/framestercore/Evidence" ;
+            rdfs:label "Evidence"@en .
 
 
 ###  https://w3id.org/framester/data/framestercore/SubjectiveInfluence
@@ -250,48 +265,56 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/bias/AppealToProbabilityFallacy
-bias:AppealToProbabilityFallacy rdf:type owl:NamedIndividual ,
-                                         <http://www.semanticweb.org/bias/AppealToProbabilityFallacy/AppealToProbabilityFallacy> .
+###  http://www.semanticweb.org/bias/AppealToProbability/AppealToProbabilityFallacy
+<http://www.semanticweb.org/bias/AppealToProbability/AppealToProbabilityFallacy> rdf:type owl:NamedIndividual ,
+                                                                                          <http://www.semanticweb.org/bias/AppealToProbabilityFallacy/AppealToProbabilityFallacy> ;
+                                                                                 rdfs:label "Appeal to probability fallacy"@en .
 
 
-###  http://www.semanticweb.org/bias/CertaintyLevel
-bias:CertaintyLevel rdf:type owl:NamedIndividual ,
-                             fr:Certainty ;
-                    <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> "high" .
+###  http://www.semanticweb.org/bias/AppealToProbability/CertaintyLevel
+<http://www.semanticweb.org/bias/AppealToProbability/CertaintyLevel> rdf:type owl:NamedIndividual ,
+                                                                              fr:Certainty ;
+                                                                     <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> "high" ;
+                                                                     rdfs:label "certainty level"@en .
 
 
-###  http://www.semanticweb.org/bias/ClimateChange
-bias:ClimateChange rdf:type owl:NamedIndividual ,
-                            eeo:Engagement ;
-                   eeo:inActivity bias:Reasoning ;
-                   rdfs:comment "Climate Change actually happening according to a shared opinion based on facts."@en .
+###  http://www.semanticweb.org/bias/AppealToProbability/ClimateChange
+<http://www.semanticweb.org/bias/AppealToProbability/ClimateChange> rdf:type owl:NamedIndividual ,
+                                                                             eeo:Engagement ;
+                                                                    eeo:inActivity <http://www.semanticweb.org/bias/AppealToProbability/Reasoning> ;
+                                                                    rdfs:comment "Climate Change actually happening according to a shared opinion based on facts."@en ;
+                                                                    rdfs:label "climate change"@en .
 
 
-###  http://www.semanticweb.org/bias/ConvincedPersonalOpinion
-bias:ConvincedPersonalOpinion rdf:type owl:NamedIndividual ,
-                                       bias:Claim ;
-                              eeo:isReflectionOn bias:ClimateChange ;
-                              rdfs:comment "Climate change is not a significant threat because there's a chance the models are incorrect."@en .
+###  http://www.semanticweb.org/bias/AppealToProbability/ConvincedPersonalOpinion
+<http://www.semanticweb.org/bias/AppealToProbability/ConvincedPersonalOpinion> rdf:type owl:NamedIndividual ,
+                                                                                        <http://www.semanticweb.org/bias/AppealToProbability/Claim> ;
+                                                                               eeo:isReflectionOn <http://www.semanticweb.org/bias/AppealToProbability/ClimateChange> ;
+                                                                               rdfs:comment "Climate change is not a significant threat because there's a chance the models are incorrect."@en ;
+                                                                               rdfs:label "convinced personal opinion"@en .
 
 
-###  http://www.semanticweb.org/bias/Reasoning
-bias:Reasoning rdf:type owl:NamedIndividual ,
-                        <http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity> ;
-               eeo:includes bias:ConvincedPersonalOpinion .
+###  http://www.semanticweb.org/bias/AppealToProbability/Reasoning
+<http://www.semanticweb.org/bias/AppealToProbability/Reasoning> rdf:type owl:NamedIndividual ,
+                                                                         <http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity> ;
+                                                                eeo:includes <http://www.semanticweb.org/bias/AppealToProbability/ConvincedPersonalOpinion> ;
+                                                                rdfs:label "reasoning" .
 
 
-###  http://www.semanticweb.org/bias/Sarah
-bias:Sarah rdf:type owl:NamedIndividual ,
-                    <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> ;
-           eeo:isEngagedIn bias:ClimateChange ;
-           <http://www.semanticweb.org/bias/General/isAffectedBy> bias:AppealToProbabilityFallacy .
+###  http://www.semanticweb.org/bias/AppealToProbability/Sarah
+<http://www.semanticweb.org/bias/AppealToProbability/Sarah> rdf:type owl:NamedIndividual ,
+                                                                     <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> ;
+                                                            eeo:isEngagedIn <http://www.semanticweb.org/bias/AppealToProbability/ClimateChange> ;
+                                                            <http://www.semanticweb.org/bias/General/isAffectedBy> <http://www.semanticweb.org/bias/AppealToProbability/AppealToProbabilityFallacy> ;
+                                                            rdfs:comment "Sarah is the biased agent, affected by the appeal to probability fallacy."@en ;
+                                                            rdfs:label "Sarah" .
 
 
-###  http://www.semanticweb.org/bias/ScientificArticles
-bias:ScientificArticles rdf:type owl:NamedIndividual ,
-                                 fr:Evidence ;
-                        rdfs:comment "Some scientific articles state that historical climate predictions were inaccurate."@en .
+###  http://www.semanticweb.org/bias/AppealToProbability/ScientificArticles
+<http://www.semanticweb.org/bias/AppealToProbability/ScientificArticles> rdf:type owl:NamedIndividual ,
+                                                                                  fr:Evidence ;
+                                                                         rdfs:comment "Some scientific articles state that historical climate predictions were inaccurate."@en ;
+                                                                         rdfs:label "scientific articles"@en .
 
 
 #################################################################

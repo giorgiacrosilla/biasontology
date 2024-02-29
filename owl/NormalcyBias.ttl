@@ -1,0 +1,288 @@
+@prefix : <http://www.semanticweb.org/giorgia/ontologies/2024/1/NormalcyBias/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix fr: <https://w3id.org/framester/data/framestercore/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix par: <http://www.ontologydesignpatterns.org/cp/owl/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <http://www.semanticweb.org/bias/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix hazard: <http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#> .
+@base <http://www.semanticweb.org/giorgia/ontologies/2024/1/NormalcyBias/> .
+
+<http://www.semanticweb.org/giorgia/ontologies/2024/1/NormalcyBias> rdf:type owl:Ontology ;
+                                                                     owl:imports par:parameter.owl ;
+                                                                     dc:creator "Giorgia Crosilla"@en ;
+                                                                     dc:title "Normalcy Bias"@en ;
+                                                                     rdfs:comment "This is an ontology that explains the behaviour of a person affected by the Normalcy Bias."@en ;
+                                                                     rdfs:isDefinedBy "http://ontologydesignpatterns.org/wiki/Submissions:HazardousSituation"@en ,
+                                                                                      "http://ontologydesignpatterns.org/wiki/Submissions:Parameter"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#exposedTo
+hazard:exposedTo rdf:type owl:ObjectProperty ;
+                 rdfs:domain hazard:Object ;
+                 rdfs:range hazard:Hazard ;
+                 rdfs:label "exposed to"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#hasParticipant
+hazard:hasParticipant rdf:type owl:ObjectProperty ;
+                      owl:inverseOf hazard:participantIn ;
+                      rdfs:domain hazard:HazardousEvent ,
+                                  <http://www.semanticweb.org/bias/NormalcyBias/BiasedHazardousEvent> ;
+                      rdfs:range hazard:HazardousSituation ;
+                      rdfs:label "has participant"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#hasQuality
+hazard:hasQuality rdf:type owl:ObjectProperty ;
+                  rdfs:domain hazard:HazardousEvent ;
+                  rdfs:range hazard:Exposure ;
+                  rdfs:label "has quality"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#involves
+hazard:involves rdf:type owl:ObjectProperty ;
+                rdfs:domain hazard:HazardousEvent ;
+                rdfs:range hazard:Hazard ;
+                rdfs:label "involves"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#participantIn
+hazard:participantIn rdf:type owl:ObjectProperty ;
+                     rdfs:domain hazard:HazardousSituation ;
+                     rdfs:range hazard:HazardousEvent ,
+                                <http://www.semanticweb.org/bias/NormalcyBias/BiasedHazardousEvent> ;
+                     rdfs:label "participant in"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter
+<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter> rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> .
+
+
+###  http://www.semanticweb.org/bias/General/isAffectedBy
+<http://www.semanticweb.org/bias/General/isAffectedBy> rdf:type owl:ObjectProperty ;
+                                                       rdfs:domain <http://www.semanticweb.org/bias/General/BiasedAgent> ;
+                                                       rdfs:range <http://www.semanticweb.org/bias/General/CognitiveBias> ;
+                                                       rdfs:label "is affected by"@en .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/hasAwareness
+<http://www.semanticweb.org/bias/NormalcyBias/hasAwareness> rdf:type owl:ObjectProperty ;
+                                                            rdfs:domain hazard:Object ;
+                                                            rdfs:range <http://www.semanticweb.org/bias/NormalcyBias/Awareness> ;
+                                                            rdfs:label "has awareness"@en .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/ignoresWarnings
+<http://www.semanticweb.org/bias/NormalcyBias/ignoresWarnings> rdf:type owl:ObjectProperty ;
+                                                               rdfs:domain hazard:Object ;
+                                                               rdfs:range <http://www.semanticweb.org/bias/NormalcyBias/Warning> ;
+                                                               rdfs:label "ignores warnings"@en .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/underestimates
+<http://www.semanticweb.org/bias/NormalcyBias/underestimates> rdf:type owl:ObjectProperty ;
+                                                              rdfs:domain hazard:Object ;
+                                                              rdfs:range hazard:Hazard ;
+                                                              rdfs:label "underestimates"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue
+<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> rdfs:range xsd:boolean .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/dc/terms/Agent
+<http://purl.org/dc/terms/Agent> rdf:type owl:Class ;
+                                 owl:equivalentClass <http://xmlns.com/foaf/0.1/Agent> .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#Event
+hazard:Event rdf:type owl:Class ;
+             rdfs:label "Event"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#Exposure
+hazard:Exposure rdf:type owl:Class ;
+                rdfs:comment "Exposure refers to the state of being subjected to a potential hazard, risk, or harmful situation."@en ;
+                rdfs:label "Exposure"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#Hazard
+hazard:Hazard rdf:type owl:Class ;
+              rdfs:comment "A hazard is a source or situation that has the potential to cause harm, injury, damage, or some adverse effect. Hazards can be physical (such as a slippery surface), chemical (such as toxic substances), biological (such as infectious agents), or involve other elements like radiation or ergonomic factors"@en ;
+              rdfs:label "Hazard"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#HazardousEvent
+hazard:HazardousEvent rdf:type owl:Class ;
+                      rdfs:subClassOf hazard:Event ;
+                      rdfs:comment "The hazardous event that is actually happening."@en ;
+                      rdfs:label "Hazardous Event"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#HazardousSituation
+hazard:HazardousSituation rdf:type owl:Class ;
+                          rdfs:comment "A hazardous situation is a condition or circumstance in which there is an elevated risk of harm, danger, or potential damage to individuals, property, or the environment (i.e. living in an area that is known to be an \"at risk\" area for tornadoes\"."@en ;
+                          rdfs:label "Hazardous Situation"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#Object
+hazard:Object rdf:type owl:Class ;
+              owl:equivalentClass <http://www.semanticweb.org/bias/General/BiasedAgent> ;
+              rdfs:label "Object"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept
+<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> rdf:type owl:Class ;
+                                                                     owl:equivalentClass <http://www.semanticweb.org/bias/NormalcyBias/Warning> .
+
+
+###  http://www.semanticweb.org/bias/General/BiasedAgent
+<http://www.semanticweb.org/bias/General/BiasedAgent> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> ;
+                                                      rdfs:comment "A BiasedAgent is an Agent affected by a bias."@en ;
+                                                      rdfs:label "Biased Agent"@en .
+
+
+###  http://www.semanticweb.org/bias/General/CognitiveBias
+<http://www.semanticweb.org/bias/General/CognitiveBias> rdf:type owl:Class ;
+                                                        rdfs:comment "Cognitive bias refers to systematic patterns of deviation from norm or rationality in judgment, often leading to perceptual distortion, inaccurate interpretation, illogical interpretation, or what is broadly called irrationality."@en ;
+                                                        rdfs:label "Cognitive Bias" .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/Awareness
+<http://www.semanticweb.org/bias/NormalcyBias/Awareness> rdf:type owl:Class ;
+                                                         rdfs:comment "Awareness refers to the state of being conscious or mindful about the current dangerous situation."@en ;
+                                                         rdfs:label "Awareness"@en .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/BiasedHazardousEvent
+<http://www.semanticweb.org/bias/NormalcyBias/BiasedHazardousEvent> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf hazard:Event ;
+                                                                    rdfs:comment "A dangerous event is perceived to a lesser extent (non-dangerous) compared to reality."@en ;
+                                                                    rdfs:label "Biased Hazardous Event"@en .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/NormalcyBias
+<http://www.semanticweb.org/bias/NormalcyBias/NormalcyBias> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <http://www.semanticweb.org/bias/General/CognitiveBias> ;
+                                                            rdfs:comment "Normalcy bias is a cognitive bias that leads individuals to underestimate or ignore the possibility of a disaster or significant negative event occurring, assuming that things will continue to function in the same way as they always have"@en ;
+                                                            rdfs:label "Normalcy Bias"@en .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/Warning
+<http://www.semanticweb.org/bias/NormalcyBias/Warning> rdf:type owl:Class ;
+                                                       rdfs:comment "A warning is a statement or an action that alerts or informs someone about a potential danger, threat, or harmful situation."@en ;
+                                                       rdfs:label "Warning"@en .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+<http://xmlns.com/foaf/0.1/Agent> rdf:type owl:Class ;
+                                  rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+                                  rdfs:label "Agent" ;
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/bias/NormalcyBias/AtRiskArea
+<http://www.semanticweb.org/bias/NormalcyBias/AtRiskArea> rdf:type owl:NamedIndividual ,
+                                                                   hazard:HazardousSituation ;
+                                                          hazard:participantIn <http://www.semanticweb.org/bias/NormalcyBias/TornadoEvent> ,
+                                                                               <http://www.semanticweb.org/bias/NormalcyBias/TornadoNotApproaching> ;
+                                                          rdfs:label "area at risk"@en .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/Aware
+<http://www.semanticweb.org/bias/NormalcyBias/Aware> rdf:type owl:NamedIndividual ,
+                                                              <http://www.semanticweb.org/bias/NormalcyBias/Awareness> ;
+                                                     rdfs:label "awareness"@en .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/DestroyedHouses
+<http://www.semanticweb.org/bias/NormalcyBias/DestroyedHouses> rdf:type owl:NamedIndividual ,
+                                                                        hazard:Exposure ;
+                                                               rdfs:label "houses destroyed"@en .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/IgnoredWarning
+<http://www.semanticweb.org/bias/NormalcyBias/IgnoredWarning> rdf:type owl:NamedIndividual ,
+                                                                       <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter> ;
+                                                              <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> "true"^^xsd:boolean ;
+                                                              rdfs:label "warnings ignored"@en .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/Sarah
+<http://www.semanticweb.org/bias/NormalcyBias/Sarah> rdf:type owl:NamedIndividual ,
+                                                              hazard:Object ;
+                                                     hazard:exposedTo <http://www.semanticweb.org/bias/NormalcyBias/Tornado> ;
+                                                     <http://www.semanticweb.org/bias/NormalcyBias/ignoresWarnings> <http://www.semanticweb.org/bias/NormalcyBias/WarningOfTornadoApproaching> ;
+                                                     <http://www.semanticweb.org/bias/NormalcyBias/underestimates> <http://www.semanticweb.org/bias/NormalcyBias/Tornado> ;
+                                                     rdfs:label "Sarah"@en .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/Tornado
+<http://www.semanticweb.org/bias/NormalcyBias/Tornado> rdf:type owl:NamedIndividual ,
+                                                                hazard:Hazard ;
+                                                       rdfs:label "tornado"@en .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/TornadoEvent
+<http://www.semanticweb.org/bias/NormalcyBias/TornadoEvent> rdf:type owl:NamedIndividual ,
+                                                                     hazard:HazardousEvent ;
+                                                            hazard:hasQuality <http://www.semanticweb.org/bias/NormalcyBias/DestroyedHouses> ;
+                                                            hazard:involves <http://www.semanticweb.org/bias/NormalcyBias/Tornado> ;
+                                                            rdfs:label "tornado event"@en .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/TornadoNotApproaching
+<http://www.semanticweb.org/bias/NormalcyBias/TornadoNotApproaching> rdf:type owl:NamedIndividual ,
+                                                                              <http://www.semanticweb.org/bias/NormalcyBias/BiasedHazardousEvent> ;
+                                                                     rdfs:label "tornado not approaching"@en .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/WarningOfTornadoApproaching
+<http://www.semanticweb.org/bias/NormalcyBias/WarningOfTornadoApproaching> rdf:type owl:NamedIndividual ,
+                                                                                    <http://www.semanticweb.org/bias/NormalcyBias/Warning> ;
+                                                                           rdfs:label "warnings"@en .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/normalcyBias
+<http://www.semanticweb.org/bias/NormalcyBias/normalcyBias> rdf:type owl:NamedIndividual ,
+                                                                     <http://www.semanticweb.org/bias/NormalcyBias/NormalcyBias> ;
+                                                            rdfs:label "normalcy bias"@en .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

@@ -1,6 +1,6 @@
 # 😏 Zero-sum bias
 
-{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/appealtoprobability.ttl" %}
+{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/ontologies/owl/zerosumbias.ttl" %}
 
 <figure><img src="giorgiabias-appealtoprobability2.drawio.png" alt=""><figcaption></figcaption></figure>
 
@@ -150,12 +150,10 @@ Let's consider an instance to illustrate the ontology:
 
 ### Framester Frames used:
 
-*
+* [Competition](https://w3id.org/framester/data/framestercore/Competition)
 
-<!---->
-
-* [Evidence](https://w3id.org/framester/data/framestercore/Evidence)
+* [Attending](https://w3id.org/framester/data/framestercore/Attending)
 
 ### ODP used:
 
-* .....
+* [Co-participation](http://ontologydesignpatterns.org/wiki/Submissions:Co-participation)
