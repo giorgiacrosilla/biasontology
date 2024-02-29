@@ -2,15 +2,15 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.ttl" %}
 
-<figure><img src="uml\giorgiabias-zerosum2.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../uml/giorgiabias-zerosum2.jpg" alt=""><figcaption></figcaption></figure>
 
 ### <mark style="color:red;">C</mark>ontext literature and state of the art
 
-According to the definition provided on Wikipedia: “Zero-sum thinking perceives situations as zero-sum games, where one person's gain would be another's loss”. When individuals think that a situation is zero-sum, they will be more likely to act competitively towards others, because they will see others as a competitive threat.  
+According to the definition provided on Wikipedia: “Zero-sum thinking perceives situations as zero-sum games, where one person's gain would be another's loss”. When individuals think that a situation is zero-sum, they will be more likely to act competitively towards others, because they will see others as a competitive threat.
 
-From the experiments undertaken by Meegan in 2010, it appeared that people are prone to perceive a competition for limited resources even when there are unlimited resources available. The same author finds this behaviour as a legacy coming from competition inside a group of people when resources were not guaranteed for all of them.  
+From the experiments undertaken by Meegan in 2010, it appeared that people are prone to perceive a competition for limited resources even when there are unlimited resources available. The same author finds this behaviour as a legacy coming from competition inside a group of people when resources were not guaranteed for all of them.
 
-This bias can lead to envy and a tendency toward unhealthy competition among individuals. 
+This bias can lead to envy and a tendency toward unhealthy competition among individuals.
 
 ***
 
@@ -18,9 +18,9 @@ References:
 
 {% embed url="https://en.wikipedia.org/wiki/Zero-sum_thinking" %}
 
-Meegan DV. Zero-sum bias: perceived competition despite unlimited resources. Front Psychol. 2010 Nov 5;1:191. doi: 10.3389/fpsyg.2010.00191. PMID: 21833251; PMCID: PMC3153800. URL: 
+Meegan DV. Zero-sum bias: perceived competition despite unlimited resources. Front Psychol. 2010 Nov 5;1:191. doi: 10.3389/fpsyg.2010.00191. PMID: 21833251; PMCID: PMC3153800. URL:
 
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3153800/ . 
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3153800/ .
 
 ***
 
@@ -153,7 +153,6 @@ Let's consider an instance to illustrate the ontology:
 ### Framester Frames used:
 
 * [Competition](https://w3id.org/framester/data/framestercore/Competition)
-
 * [Attending](https://w3id.org/framester/data/framestercore/Attending)
 
 ### ODP used:

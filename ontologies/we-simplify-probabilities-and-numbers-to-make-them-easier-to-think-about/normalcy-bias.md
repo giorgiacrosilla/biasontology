@@ -2,9 +2,7 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.ttl" %}
 
-<figure><img src="uml\giorgiabias-normalcybias2 (1).jpg" alt=""><figcaption></figcaption></figure>
-
-### <mark style="color:red;">C</mark>ontext literature and state of the art
+<figure><img src="../../uml/giorgiabias-normalcybias2%20(1).jpg" alt=""><figcaption></figcaption></figure>
 
 According to the definition provided on Wikipedia: “Normalcy bias, or normality bias, is a cognitive bias which leads people to disbelieve or minimize threat warnings”. The bias is manifested in cases of incoming natural disasters or calamities caused by human error where it’s estimated that about 70% of the population tends to minimize threats and so to display this bias.
 
@@ -12,7 +10,7 @@ People’s behaviour tends to be believing the less alarming option when in dang
 
 Abnormalcy bias and normalcy bias can often be noticed in conjunction when authorities decide not to say everything, they know about the danger both because they mistakenly think the threat is unlikely and believe that even if it does happen, people wouldn't be able to use the information to cope effectively (Omer 1994).
 
-<figure><img src="Screenshot 2023-12-29 153014.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="Screenshot 2023-12-29 153014.png" alt=""><figcaption><p>Image taken from Murata, Atsuo, Tomoko Nakamura, and Waldemar Karwowski. 2015. Influence of Cognitive Biases in Distorting Decision Making and Leading to Critical Unfavorable Incidents, Safety 1, no. 1: 44-58. https://doi.org/10.3390/safety1010044</p></figcaption></figure>
 
 ***
 
