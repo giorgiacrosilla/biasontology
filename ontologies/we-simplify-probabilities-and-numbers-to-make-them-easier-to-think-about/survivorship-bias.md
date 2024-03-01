@@ -103,9 +103,9 @@ Properties:
 These classes and properties provide a framework for representing and understanding survivorship bias within various contexts and domains, allowing for more systematic analysis and management of its effects. 
 
 ### Framester used
-* Entity
+* [Entity](https://w3id.org/framester/data/framestercore/Entity)
 
 ### ODP used
-* Participation
-* collection
-* observation
+* [Participation](http://ontologydesignpatterns.org/wiki/Submissions:Participation)
+* [Collection](http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl)
+* [Observation](http://www.ontologydesignpatterns.org/cp/owl/observation.owl)
