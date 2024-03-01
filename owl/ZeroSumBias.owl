@@ -1,0 +1,389 @@
+@prefix : <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix fr: <https://w3id.org/framester/data/framestercore/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pcp: <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix zerosum: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#> .
+@base <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#> .
+
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#> rdf:type owl:Ontology ;
+                                                                                            dc:creator "Giorgia Crosilla"@en ;
+                                                                                            dc:title "Zero Sum Bias"@en ;
+                                                                                            rdfs:comment "This is an ontology that describes the behaviour of a person affected by Zero Sum Bias."@en ;
+                                                                                            rdfs:label "Zero Sum Bias"@en ;
+                                                                                            rdfs:seeAlso "http://www.ontologydesignpatterns.org/cp/owl/coparticipation.owl" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://schema.org/loser
+schema:loser rdf:type owl:ObjectProperty ;
+             owl:inverseOf zerosum:hasWinner ;
+             rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#BiasedAgent> ;
+             rdfs:range zerosum:BiasedOutcome ;
+             rdfs:isDefinedBy "http://schema.org/" ;
+             rdfs:label "winner" .
+
+
+###  http://schema.org/winner
+schema:winner rdf:type owl:ObjectProperty ;
+              owl:inverseOf zerosum:hasLoser ;
+              rdfs:domain <http://www.semanticweb.org/bias/General/NonBiasedAgent> ;
+              rdfs:range zerosum:BiasedOutcome ;
+              rdfs:isDefinedBy "http://schema.org/" ;
+              rdfs:label "loser" .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/coparticipation.owl#coparticipatesWith
+<http://www.ontologydesignpatterns.org/cp/owl/coparticipation.owl#coparticipatesWith> rdf:type owl:ObjectProperty ;
+                                                                                      owl:inverseOf <http://www.ontologydesignpatterns.org/cp/owl/coparticipation.owl#coparticipatesWith> ;
+                                                                                      rdf:type owl:SymmetricProperty ;
+                                                                                      rdfs:domain <http://www.semanticweb.org/bias/General/NonBiasedAgent> ;
+                                                                                      rdfs:range <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#BiasedAgent> ;
+                                                                                      rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/coparticipation.owl> ;
+                                                                                      rdfs:label "coparticipates with"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#hasParticipant
+<http://www.ontologydesignpatterns.org/cp/owl/participation.owl#hasParticipant> rdf:type owl:ObjectProperty ;
+                                                                                owl:inverseOf <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn> ;
+                                                                                rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                                                                                rdfs:range foaf:Agent ;
+                                                                                rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                                                                                rdfs:label "has participant"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn
+<http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn> rdf:type owl:ObjectProperty ;
+                                                                                 rdfs:domain foaf:Agent ;
+                                                                                 rdfs:range <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                                                                                 rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                                                                                 rdfs:label "is participant in"@en .
+
+
+###  http://www.semanticweb.org/bias/isPerceivedByNonBiased
+<http://www.semanticweb.org/bias/isPerceivedByNonBiased> rdf:type owl:ObjectProperty ;
+                                                         rdfs:subPropertyOf zerosum:isPerceivedBy ;
+                                                         owl:inverseOf zerosum:isPerceivingNonBiased ;
+                                                         rdfs:domain [ owl:intersectionOf ( <http://www.semanticweb.org/bias/ZeroSumBias/NonBiasedOutcome>
+                                                                                            fr:Attending
+                                                                                          ) ;
+                                                                       rdf:type owl:Class
+                                                                     ] ;
+                                                         rdfs:range <http://www.semanticweb.org/bias/General/NonBiasedAgent> ;
+                                                         rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#" ;
+                                                         rdfs:label "is perceived by non biased"@en .
+
+
+###  http://www.semanticweb.org/bias/General/isAffectedBy
+<http://www.semanticweb.org/bias/General/isAffectedBy> rdf:type owl:ObjectProperty ;
+                                                       rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#BiasedAgent> ;
+                                                       rdfs:range bias:CognitiveBias ;
+                                                       rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
+                                                       rdfs:label "is affected by"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#hasLoser
+zerosum:hasLoser rdf:type owl:ObjectProperty ;
+                 rdfs:domain zerosum:BiasedOutcome ;
+                 rdfs:range <http://www.semanticweb.org/bias/General/NonBiasedAgent> ;
+                 rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#"@en ;
+                 rdfs:label "has loser"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#hasOutcome
+zerosum:hasOutcome rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf zerosum:hasOutcome ;
+                   rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                   rdfs:range zerosum:Outcome ;
+                   rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#" ;
+                   rdfs:label "has outcome"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#hasWinner
+zerosum:hasWinner rdf:type owl:ObjectProperty ;
+                  rdfs:domain zerosum:BiasedOutcome ;
+                  rdfs:range <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#BiasedAgent> ;
+                  rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#" ;
+                  rdfs:label "has winner"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#isPerceivedAs
+zerosum:isPerceivedAs rdf:type owl:ObjectProperty ;
+                      rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#" ;
+                      rdfs:label "is perceived as"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#isPerceivedAsCompetition
+zerosum:isPerceivedAsCompetition rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf zerosum:isPerceivedAs ;
+                                 rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                                 rdfs:range fr:Competition ;
+                                 rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#" ;
+                                 rdfs:label "is perceived as competition"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#isPerceivedAsParticipation
+zerosum:isPerceivedAsParticipation rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf zerosum:isPerceivedAs ;
+                                   rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                                   rdfs:range fr:Attending ;
+                                   rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#" ;
+                                   rdfs:label "is perceived as partecipation"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#isPerceivedBy
+zerosum:isPerceivedBy rdf:type owl:ObjectProperty ;
+                      owl:inverseOf zerosum:isperceiving ;
+                      rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#" ;
+                      rdfs:label "is perceived by"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#isPerceivedByBiased
+zerosum:isPerceivedByBiased rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf zerosum:isPerceivedBy ;
+                            owl:inverseOf zerosum:isPerceivingBiased ;
+                            rdfs:domain [ owl:intersectionOf ( zerosum:BiasedOutcome
+                                                               fr:Competition
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ;
+                            rdfs:range <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#BiasedAgent> ;
+                            rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#" ;
+                            rdfs:label "is perceived by biased"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#isPerceivingBiased
+zerosum:isPerceivingBiased rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf zerosum:isperceiving ;
+                           rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#BiasedAgent> ;
+                           rdfs:range zerosum:BiasedOutcome ;
+                           rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#"@en ;
+                           rdfs:label "is perceiving biased"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#isPerceivingNonBiased
+zerosum:isPerceivingNonBiased rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf zerosum:isperceiving ;
+                              rdfs:label "is perceiving non biased"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#isperceiving
+zerosum:isperceiving rdf:type owl:ObjectProperty ;
+                     rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#"@en ;
+                     rdfs:label "is perceiving"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/dc/terms/Agent
+<http://purl.org/dc/terms/Agent> rdf:type owl:Class ;
+                                 owl:equivalentClass foaf:Agent .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event
+<http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> rdf:type owl:Class ;
+                                                                       owl:disjointWith <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object> ,
+                                                                                        foaf:Agent ;
+                                                                       rdfs:comment "Any physical, social, or mental process, event, or state." ;
+                                                                       rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                                                                       rdfs:label "Event"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object
+<http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object> rdf:type owl:Class ;
+                                                                        owl:equivalentClass foaf:Agent ;
+                                                                        rdfs:comment "Any physical, social, or mental object, or substance" ;
+                                                                        rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                                                                        rdfs:label "Object"@en .
+
+
+###  http://www.semanticweb.org/bias/General/NonBiasedAgent
+<http://www.semanticweb.org/bias/General/NonBiasedAgent> rdf:type owl:Class ;
+                                                         rdfs:subClassOf foaf:Agent ;
+                                                         rdfs:comment "Agent not affected by the bias."@en ;
+                                                         rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
+                                                         rdfs:label "Non Biased Agent"@en .
+
+
+###  http://www.semanticweb.org/bias/ZeroSumBias/NonBiasedOutcome
+<http://www.semanticweb.org/bias/ZeroSumBias/NonBiasedOutcome> rdf:type owl:Class ;
+                                                               rdfs:subClassOf zerosum:Outcome ;
+                                                               owl:disjointWith <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#BiasedAgent> ,
+                                                                                zerosum:BiasedOutcome ;
+                                                               rdfs:comment "The real outcome."@en ;
+                                                               rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#" ;
+                                                               rdfs:label "Non Biased Outcome"@en .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+foaf:Agent rdf:type owl:Class ;
+           rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+           rdfs:label "Agent" ;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias
+bias:CognitiveBias rdf:type owl:Class ;
+                   rdfs:comment "Cognitive bias refers to systematic patterns of deviation from norm or rationality in judgment, often leading to perceptual distortion, inaccurate interpretation, illogical interpretation, or what is broadly called irrationality."@en ;
+                   rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
+                   rdfs:label "Cognitive Bias"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#ZeroSumBias
+bias:ZeroSumBias rdf:type owl:Class ;
+                 rdfs:subClassOf bias:CognitiveBias ;
+                 rdfs:comment "Zero-sum bias refers to a cognitive bias where individuals perceive a situation as a zero-sum game, believing that any gain by one participant must be balanced by an equivalent loss by another."@en ;
+                 rdfs:label "Zero Sum Bias"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#BiasedAgent
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#BiasedAgent> rdf:type owl:Class ;
+                                                                                                       rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object> ,
+                                                                                                                       foaf:Agent ;
+                                                                                                       rdfs:comment "An agent afftected by Zero Sum bias"@en ;
+                                                                                                       rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
+                                                                                                       rdfs:label "Biased Agent"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#BiasedOutcome
+zerosum:BiasedOutcome rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty zerosum:isPerceivedBy ;
+                                            owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#BiasedAgent>
+                                          ] ;
+                      rdfs:subClassOf zerosum:Outcome ;
+                      rdfs:comment "The outcome perceived as competition by the biased agent."@en ;
+                      rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#" ;
+                      rdfs:label "Biased Outcome"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#Outcome
+zerosum:Outcome rdf:type owl:Class ;
+                rdfs:comment "The general outcome of an event."@en ;
+                rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#" ;
+                rdfs:label "Outcome"@en .
+
+
+###  https://w3id.org/framester/data/framestercore/Attending
+fr:Attending rdf:type owl:Class ;
+             owl:disjointWith fr:Competition ;
+             rdfs:comment "Participating at an event in a neutral way."@en ;
+             rdfs:isDefinedBy "https://w3id.org/framester/data/framestercore/" ;
+             rdfs:label "Attending"@en .
+
+
+###  https://w3id.org/framester/data/framestercore/Competition
+fr:Competition rdf:type owl:Class ;
+               rdfs:comment "This is the imaginary competition imagined by the biased agent in situations where he/she could potentially stand out (i.e. grades at school, job promotion)." ;
+               rdfs:isDefinedBy "https://w3id.org/framester/data/framestercore/"@en ;
+               rdfs:label "Competition"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#Aknowledgement
+zerosum:Aknowledgement rdf:type owl:NamedIndividual ,
+                                <http://www.semanticweb.org/bias/ZeroSumBias/NonBiasedOutcome> ;
+                       zerosum:isPerceivedBy zerosum:Classmates ;
+                       rdfs:label "aknowledgement"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#Classmates
+zerosum:Classmates rdf:type owl:NamedIndividual ,
+                            <http://www.semanticweb.org/bias/General/NonBiasedAgent> ;
+                   schema:winner zerosum:WinLoseCompetition ;
+                   <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn> zerosum:MathsTest ;
+                   zerosum:isPerceivingNonBiased zerosum:OnlyPartecipation ;
+                   rdfs:label "classmates"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#MathsTest
+zerosum:MathsTest rdf:type owl:NamedIndividual ,
+                           <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                  zerosum:hasOutcome zerosum:TestResults ;
+                  zerosum:isPerceivedAsCompetition zerosum:WinLoseCompetition ;
+                  zerosum:isPerceivedAsParticipation zerosum:OnlyPartecipation ;
+                  rdfs:label "maths test"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#OnlyPartecipation
+zerosum:OnlyPartecipation rdf:type owl:NamedIndividual ,
+                                   fr:Attending ;
+                          rdfs:label "participation"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#Sarah
+zerosum:Sarah rdf:type owl:NamedIndividual ,
+                       <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#BiasedAgent> ;
+              schema:loser zerosum:WinLoseCompetition ;
+              <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn> zerosum:MathsTest ;
+              zerosum:isPerceivingBiased zerosum:TestAsCompetition ,
+                                         zerosum:WinLoseCompetition ;
+              rdfs:label "Sarah" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#Student
+zerosum:Student rdf:type owl:NamedIndividual ,
+                         foaf:Agent ;
+                <http://www.ontologydesignpatterns.org/cp/owl/coparticipation.owl#coparticipatesWith> zerosum:Student ;
+                <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn> zerosum:MathsTest ;
+                rdfs:label "Student"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#TestAsCompetition
+zerosum:TestAsCompetition rdf:type owl:NamedIndividual ,
+                                   fr:Competition ;
+                          zerosum:isPerceivedBy zerosum:Sarah ;
+                          rdfs:label "test as competition"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#TestResults
+zerosum:TestResults rdf:type owl:NamedIndividual ,
+                             zerosum:Outcome ;
+                    rdfs:label "grades"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#WinLoseCompetition
+zerosum:WinLoseCompetition rdf:type owl:NamedIndividual ,
+                                    zerosum:BiasedOutcome ;
+                           zerosum:hasLoser zerosum:Classmates ;
+                           zerosum:hasWinner zerosum:Sarah ;
+                           rdfs:label "win lose competition"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl#ZeroSum
+zerosum:ZeroSum rdf:type owl:NamedIndividual ,
+                         bias:ZeroSumBias ;
+                rdfs:label "zero sum bias"@en .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
