@@ -1,6 +1,9 @@
 # Survivorship bias
 
 ### <mark style="color:red;">C</mark>ontext literature and state of the art
+
+**Survivorship bias** or survival bias is the logical error of concentrating on entities that passed a selection process while overlooking those that did not. This can lead to incorrect conclusions because of incomplete data. 
+
 <figure><img src="Danielebias-Survivorship-Bias.drawio.png" alt=""><figcaption></figcaption></figure>
 
 References:
@@ -40,7 +43,7 @@ Sure, here are ten example scenarios of survivorship bias:
 
 10. **Education Success Stories**: Success stories in education, such as high school valedictorians or college graduates who achieved remarkable career success, may overlook the challenges faced by students who dropped out or struggled academically. 
 
-#### Now consider the scenario "Tax Refund" and give me a short user story from it.
+#### Now consider the scenario "Surviovrs of Wars" and give me a short user story from it.
 
 User Story: As a documentary filmmaker, I want to create a compelling narrative about the experiences of veterans who survived combat, so that their stories can be shared with a wider audience and their sacrifices honored. 
 
@@ -64,5 +67,45 @@ Acceptance Criteria:
 
 #### We can now derive example-based-CQs from the user story.&#x20;
 
-1. Who are all the survivor of the Selection Process? 
+1. Who are the survivor of the selection war?
+  * veterans.
+2. Who did go through war and what role did it had at the end  of it?
+  * soldiers, as veteran, prisoner or death.
+3. Which member of war army passed  which selection?
+  * veteran, war.
 
+#### If you should make an ontology based of the "survivorship bias" which classes and properties would you create?
+
+To create an ontology of survivorship bias, we would define classes to represent various aspects and entities related to the concept, along with properties to describe their relationships and characteristics. Here's an outline of possible classes and properties for the ontology: 
+
+Classes: 
+1. **Survivorship Bias**: The overarching class representing the phenomenon of survivorship bias itself. 
+2. **Population**: Represents the entire group or population from which a subset is selected. 
+3. **Selection Process**: Describes the method used to select or filter individuals from the population. 
+4. **Survivors**: Represents the subset of individuals or entities that have "survived" the selection process. 
+5. **Non-Survivors**: Represents the individuals or entities that did not "survive" the selection process. 
+6. **Outcome**: Describes the result or observation that is biased due to survivorship bias. 
+7. **Factors**: Represents the variables or characteristics that influence survivorship bias. 
+8. **Domain-specific Context**: Represents the specific domain or field in which survivorship bias occurs (e.g., finance, medicine, history).  
+
+Properties: 
+1. **hasSelectionProcess**: Relates a population to the method used for selection. 
+2. **hasOutcome**: Relates survivorship bias to the biased result or observation. 
+3. **includesSurvivors**: Relates a population to the subset of survivors. 
+4. **includesNonSurvivors**: Relates a population to the subset of non-survivors. 
+5. **isInfluencedBy**: Relates survivorship bias to factors that influence it. 
+6. **occursInContext**: Relates survivorship bias to the specific domain or context in which it occurs. 
+7. **hasMagnitude**: Describes the extent or magnitude of survivorship bias present in a particular scenario. 
+8. **hasBiasType**: Describes the type or nature of survivorship bias (e.g., positive results bias, publication bias). 
+9. **isMitigatedBy**: Relates survivorship bias to methods or strategies used to mitigate its effects. 
+10. **isCausedBy**: Relates the outcome to the survivorship bias that causes it. 
+
+These classes and properties provide a framework for representing and understanding survivorship bias within various contexts and domains, allowing for more systematic analysis and management of its effects. 
+
+### Framester used
+* Entity
+
+### ODP used
+* Participation
+* collection
+* observation
