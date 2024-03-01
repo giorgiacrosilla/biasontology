@@ -187,6 +187,10 @@ Let's consider an instance to illustrate the ontology:
 \- isBasedOnProbability: "Climate change denial argument relies on the possibility of models being incorrect."
 
 #### Framester frames used:
+* [Certainty](https://w3id.org/framester/data/framestercore/Certainty)
+* [SubjectiveInfluence](https://w3id.org/framester/data/framestercore/SubjectiveInfluence)
+* [Evidence](https://w3id.org/framester/data/framestercore/Evidence)
+* [Probability](https://w3id.org/framester/data/framestercore/Probability)
 
 #### ODP used:
 

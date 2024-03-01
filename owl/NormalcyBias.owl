@@ -1,0 +1,418 @@
+@prefix : <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix fr: <https://w3id.org/framester/data/framestercore/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix par: <http://www.ontologydesignpatterns.org/cp/owl/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix hazard: <http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#> .
+@prefix normalcy: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#> .
+@base <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#> .
+
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#> rdf:type owl:Ontology ;
+                                                                                             owl:imports par:parameter.owl ;
+                                                                                             dc:creator "Giorgia Crosilla"@en ;
+                                                                                             dc:title "Normalcy Bias"@en ;
+                                                                                             rdfs:comment "This is an ontology that explains the behaviour of a person affected by the Normalcy Bias."@en ;
+                                                                                             rdfs:isDefinedBy "http://ontologydesignpatterns.org/wiki/Submissions:HazardousSituation"@en ,
+                                                                                                              "http://ontologydesignpatterns.org/wiki/Submissions:Parameter"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#casuallyFollows
+hazard:casuallyFollows rdf:type owl:ObjectProperty ;
+                       owl:inverseOf hazard:casuallyPrecedes ;
+                       rdfs:domain hazard:Consequence ;
+                       rdfs:range hazard:HazardousEvent ;
+                       rdfs:comment "http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#" ;
+                       rdfs:label "casually follows" .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#casuallyPrecedes
+hazard:casuallyPrecedes rdf:type owl:ObjectProperty ;
+                        rdfs:comment "http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#" ;
+                        rdfs:label "casually precedes" .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#exposedTo
+hazard:exposedTo rdf:type owl:ObjectProperty ;
+                 rdfs:domain hazard:Object ;
+                 rdfs:range hazard:Hazard ;
+                 rdfs:isDefinedBy "http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#" ;
+                 rdfs:label "exposed to"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#hasParticipant
+hazard:hasParticipant rdf:type owl:ObjectProperty ;
+                      owl:inverseOf hazard:participantIn ;
+                      rdfs:domain hazard:HazardousEvent ;
+                      rdfs:range hazard:HazardousSituation ;
+                      rdfs:isDefinedBy "http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#" ;
+                      rdfs:label "has participant"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#hasQuality
+hazard:hasQuality rdf:type owl:ObjectProperty ;
+                  rdfs:domain hazard:HazardousEvent ;
+                  rdfs:range hazard:Exposure ;
+                  rdfs:isDefinedBy "http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#" ;
+                  rdfs:label "has quality"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#involves
+hazard:involves rdf:type owl:ObjectProperty ;
+                owl:inverseOf hazard:isInvolvedIn ;
+                rdfs:domain hazard:HazardousEvent ;
+                rdfs:range hazard:Hazard ;
+                rdfs:isDefinedBy "http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#" ;
+                rdfs:label "involves"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#isInvolvedIn
+hazard:isInvolvedIn rdf:type owl:ObjectProperty ;
+                    rdfs:domain hazard:Hazard ;
+                    rdfs:range hazard:HazardousEvent ;
+                    rdfs:comment "http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#" ;
+                    rdfs:label "is involved in" .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#participantIn
+hazard:participantIn rdf:type owl:ObjectProperty ;
+                     rdfs:domain hazard:HazardousSituation ;
+                     rdfs:range hazard:HazardousEvent ;
+                     rdfs:isDefinedBy "http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#" ;
+                     rdfs:label "participant in"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter
+<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter> rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#isAffectedBy
+bias:isAffectedBy rdf:type owl:ObjectProperty ;
+                  rdfs:domain bias:BiasedAgent ;
+                  rdfs:range <http://www.semanticweb.org/bias/General/CognitiveBias> ;
+                  rdfs:isDefinedBy "http://www.semanticweb.org/bias/NormalcyBias/" ;
+                  rdfs:label "is affected by"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#hasFinalAwareness
+normalcy:hasFinalAwareness rdf:type owl:ObjectProperty ;
+                           rdfs:domain bias:BiasedAgent ;
+                           rdfs:range normalcy:FinalAwareness ;
+                           rdfs:comment "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#" ;
+                           rdfs:label "has final awareness" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#hasInitialAwareness
+normalcy:hasInitialAwareness rdf:type owl:ObjectProperty ;
+                             rdfs:domain hazard:Object ;
+                             rdfs:range normalcy:InitialAwareness ;
+                             rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#" ;
+                             rdfs:label "has initial awareness"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#ignoresWarnings
+normalcy:ignoresWarnings rdf:type owl:ObjectProperty ;
+                         rdfs:domain hazard:Object ;
+                         rdfs:range normalcy:Warning ;
+                         rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#" ;
+                         rdfs:label "ignores warnings"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#isBeingExperiencedBy
+normalcy:isBeingExperiencedBy rdf:type owl:ObjectProperty ;
+                              rdfs:domain hazard:HazardousEvent ;
+                              rdfs:range bias:BiasedAgent ;
+                              rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#" ;
+                              rdfs:label "is being experienced by"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#isPerceivedBy
+normalcy:isPerceivedBy rdf:type owl:ObjectProperty ;
+                       rdfs:domain normalcy:BiasedHazardousEvent ;
+                       rdfs:range bias:BiasedAgent ;
+                       rdfs:comment "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#" ;
+                       rdfs:label "is perceived by"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#produces
+normalcy:produces rdf:type owl:ObjectProperty ;
+                  rdfs:comment "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#" ;
+                  rdfs:label "produces" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#underestimates
+normalcy:underestimates rdf:type owl:ObjectProperty ;
+                        rdfs:domain hazard:Object ;
+                        rdfs:range hazard:Hazard ;
+                        rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#" ;
+                        rdfs:label "underestimates"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue
+<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> rdfs:range xsd:boolean .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/dc/terms/Agent
+<http://purl.org/dc/terms/Agent> rdf:type owl:Class ;
+                                 owl:equivalentClass foaf:Agent .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#Consequence
+hazard:Consequence rdf:type owl:Class ;
+                   rdfs:comment "The product or consequence of an HazardousEvent."@en ,
+                                "http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#" ;
+                   rdfs:label "Consequence"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#Event
+hazard:Event rdf:type owl:Class ;
+             rdfs:isDefinedBy "http://www.semanticweb.org/bias/NormalcyBias/"@en ;
+             rdfs:label "Event"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#Exposure
+hazard:Exposure rdf:type owl:Class ;
+                rdfs:comment "Exposure refers to the state of being subjected to a potential hazard, risk, or harmful situation."@en ;
+                rdfs:isDefinedBy "http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#" ;
+                rdfs:label "Exposure"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#Hazard
+hazard:Hazard rdf:type owl:Class ;
+              rdfs:comment "A hazard is a source or situation that has the potential to cause harm, injury, damage, or some adverse effect. Hazards can be physical (such as a slippery surface), chemical (such as toxic substances), biological (such as infectious agents), or involve other elements like radiation or ergonomic factors"@en ;
+              rdfs:isDefinedBy "http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#" ;
+              rdfs:label "Hazard"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#HazardousEvent
+hazard:HazardousEvent rdf:type owl:Class ;
+                      rdfs:subClassOf hazard:Event ;
+                      owl:disjointWith normalcy:BiasedHazardousEvent ;
+                      rdfs:comment "The hazardous event that is actually happening."@en ;
+                      rdfs:isDefinedBy "http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#"@en ;
+                      rdfs:label "Hazardous Event"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#HazardousSituation
+hazard:HazardousSituation rdf:type owl:Class ;
+                          rdfs:comment "A hazardous situation is a condition or circumstance in which there is an elevated risk of harm, danger, or potential damage to individuals, property, or the environment (i.e. living in an area that is known to be an \"at risk\" area for tornadoes\"."@en ;
+                          rdfs:isDefinedBy "http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#" ;
+                          rdfs:label "Hazardous Situation"@en .
+
+
+###  http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#Object
+hazard:Object rdf:type owl:Class ;
+              owl:equivalentClass bias:BiasedAgent ;
+              rdfs:isDefinedBy "http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#" ;
+              rdfs:label "Object"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept
+<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> rdf:type owl:Class ;
+                                                                     owl:equivalentClass normalcy:Warning .
+
+
+###  http://www.semanticweb.org/bias/General/CognitiveBias
+<http://www.semanticweb.org/bias/General/CognitiveBias> rdf:type owl:Class ;
+                                                        rdfs:comment "Cognitive bias refers to systematic patterns of deviation from norm or rationality in judgment, often leading to perceptual distortion, inaccurate interpretation, illogical interpretation, or what is broadly called irrationality."@en ;
+                                                        rdfs:isDefinedBy "http://www.semanticweb.org/bias/NormalcyBias/"@en ;
+                                                        rdfs:label "Cognitive Bias" .
+
+
+###  http://www.semanticweb.org/bias/NormalcyBias/NormalcyBias
+<http://www.semanticweb.org/bias/NormalcyBias/NormalcyBias> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <http://www.semanticweb.org/bias/General/CognitiveBias> ;
+                                                            rdfs:comment "Normalcy bias is a cognitive bias that leads individuals to underestimate or ignore the possibility of a disaster or significant negative event occurring, assuming that things will continue to function in the same way as they always have"@en ;
+                                                            rdfs:isDefinedBy "http://www.semanticweb.org/bias/NormalcyBias/"@en ;
+                                                            rdfs:label "Normalcy Bias"@en .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+foaf:Agent rdf:type owl:Class ;
+           rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+           rdfs:isDefinedBy "http://xmlns.com/foaf/0.1/" ;
+           rdfs:label "Agent" ;
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent
+bias:BiasedAgent rdf:type owl:Class ;
+                 rdfs:subClassOf foaf:Agent ;
+                 rdfs:comment "A BiasedAgent is an Agent affected by a bias."@en ;
+                 rdfs:label "Biased Agent"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#Awareness
+normalcy:Awareness rdf:type owl:Class ;
+                   rdfs:comment "Awareness refers to the state of being conscious or mindful about the current dangerous situation."@en ;
+                   rdfs:isDefinedBy "http://www.semanticweb.org/bias/NormalcyBias/"@en ;
+                   rdfs:label "Awareness"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#BiasedHazardousEvent
+normalcy:BiasedHazardousEvent rdf:type owl:Class ;
+                              rdfs:subClassOf hazard:Event ;
+                              rdfs:comment "A dangerous event is perceived to a lesser extent (non-dangerous) compared to reality."@en ;
+                              rdfs:isDefinedBy "http://www.semanticweb.org/bias/NormalcyBias/"@en ;
+                              rdfs:label "Biased Hazardous Event"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#FinalAwareness
+normalcy:FinalAwareness rdf:type owl:Class ;
+                        rdfs:subClassOf normalcy:Awareness ;
+                        rdfs:comment "Final awareness of the biased person about the hazardous event which is changed because of the exposure to the hazard."@en ,
+                                     "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#" ;
+                        rdfs:label "Final Awareness"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#InitialAwareness
+normalcy:InitialAwareness rdf:type owl:Class ;
+                          rdfs:subClassOf normalcy:Awareness ;
+                          rdfs:comment "Initial Awareness of the biased person about the hazardous event."@en ,
+                                       "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#" ;
+                          rdfs:label "Initial Awareness"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#Warning
+normalcy:Warning rdf:type owl:Class ;
+                 rdfs:comment "A warning is a statement or an action that alerts or informs someone about a potential danger, threat, or harmful situation."@en ;
+                 rdfs:isDefinedBy "http://www.semanticweb.org/bias/NormalcyBias/" ;
+                 rdfs:label "Warning"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#AtRiskArea
+normalcy:AtRiskArea rdf:type owl:NamedIndividual ,
+                             hazard:HazardousSituation ;
+                    hazard:participantIn normalcy:PandemicEvent ;
+                    rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#"@en ;
+                    rdfs:label "area at risk"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#Covid
+normalcy:Covid rdf:type owl:NamedIndividual ,
+                        hazard:Hazard ;
+               hazard:isInvolvedIn normalcy:PandemicEvent ;
+               rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#"@en ;
+               rdfs:label "covid"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#CovidNotApproaching
+normalcy:CovidNotApproaching rdf:type owl:NamedIndividual ,
+                                      normalcy:BiasedHazardousEvent ;
+                             normalcy:isPerceivedBy normalcy:Sarah ;
+                             rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#"@en ;
+                             rdfs:label "covid not approaching"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#CovidNotReal
+normalcy:CovidNotReal rdf:type owl:NamedIndividual ,
+                               normalcy:Awareness ;
+                      rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#"@en ;
+                      rdfs:label "covid not real"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#CovidReal
+normalcy:CovidReal rdf:type owl:NamedIndividual ,
+                            normalcy:FinalAwareness ;
+                   rdfs:label "covid is real" ,
+                              "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#IgnoredWarning
+normalcy:IgnoredWarning rdf:type owl:NamedIndividual ,
+                                 <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter> ;
+                        <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> "true"^^xsd:boolean ;
+                        rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#"@en ;
+                        rdfs:label "warnings ignored"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#Infection
+normalcy:Infection rdf:type owl:NamedIndividual ,
+                            hazard:Exposure ;
+                   rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#"@en ;
+                   rdfs:label "infection"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#PandemicEvent
+normalcy:PandemicEvent rdf:type owl:NamedIndividual ,
+                                hazard:HazardousEvent ;
+                       hazard:casuallyPrecedes normalcy:symptoms ;
+                       hazard:hasQuality normalcy:Infection ;
+                       hazard:involves normalcy:Covid ;
+                       normalcy:isBeingExperiencedBy normalcy:Sarah ;
+                       rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#"@en ;
+                       rdfs:label "pandemic event"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#Sarah
+normalcy:Sarah rdf:type owl:NamedIndividual ,
+                        hazard:Object ;
+               hazard:exposedTo normalcy:Covid ;
+               normalcy:hasFinalAwareness normalcy:CovidReal ;
+               normalcy:hasInitialAwareness normalcy:CovidNotReal ;
+               normalcy:ignoresWarnings normalcy:WarningOfCovidApproaching ;
+               normalcy:underestimates normalcy:Covid ;
+               rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#"@en ;
+               rdfs:label "Sarah"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#WarningOfCovidApproaching
+normalcy:WarningOfCovidApproaching rdf:type owl:NamedIndividual ,
+                                            normalcy:Warning ;
+                                   <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter> normalcy:IgnoredWarning ;
+                                   rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#"@en ;
+                                   rdfs:label "warnings"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#normalcyBias
+normalcy:normalcyBias rdf:type owl:NamedIndividual ,
+                               <http://www.semanticweb.org/bias/NormalcyBias/NormalcyBias> ;
+                      rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#"@en ;
+                      rdfs:label "normalcy bias"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#symptoms
+normalcy:symptoms rdf:type owl:NamedIndividual ,
+                           hazard:Consequence ;
+                  hazard:casuallyFollows normalcy:PandemicEvent ;
+                  normalcy:produces normalcy:CovidReal ;
+                  rdfs:label "symptoms"@en .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

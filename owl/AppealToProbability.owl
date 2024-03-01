@@ -98,6 +98,7 @@ eeo:isReflectionOn rdf:type owl:ObjectProperty ;
 
 ###  http://modellingdh.github.io/ont/odp/term/producedObservation
 eeo:producedObservation rdf:type owl:ObjectProperty ;
+                        owl:inverseOf atpbias:isProducedBy ;
                         rdfs:domain fr:SubjectiveInfluence ;
                         rdfs:range eeo:Observation ;
                         <http://purl.org/dc/terms/description> "This property can be used to denote that something is (even indirectly, not necessary through direct reflection) responsible for the existence of an observation."@en ;
@@ -109,6 +110,7 @@ eeo:producedObservation rdf:type owl:ObjectProperty ;
 par:hasParameter rdf:type owl:ObjectProperty ;
                  owl:inverseOf par:isParameterFor ;
                  rdfs:domain par:Concept ;
+                 rdfs:range par:Parameter ;
                  rdfs:comment "A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16." ;
                  rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
                  rdfs:label "ha parametro"@it ,
@@ -135,10 +137,48 @@ atpbias:hasCertainty rdf:type owl:ObjectProperty ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#hasEvidence
 atpbias:hasEvidence rdf:type owl:ObjectProperty ;
-                    rdfs:domain eeo:Engagement ;
+                    rdfs:domain eeo:Observation ;
                     rdfs:range fr:Evidence ;
                     rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl" ;
                     rdfs:label "has evidence"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#influences
+atpbias:influences rdf:type owl:ObjectProperty ;
+                   owl:inverseOf atpbias:isBasedOn ;
+                   rdfs:domain fr:Probability ;
+                   rdfs:range fr:SubjectiveInfluence ;
+                   rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#" ;
+                   rdfs:label "influences"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#isBasedOn
+atpbias:isBasedOn rdf:type owl:ObjectProperty ;
+                  rdfs:domain fr:SubjectiveInfluence ;
+                  rdfs:range fr:Probability ;
+                  rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#" ;
+                  rdfs:label "is based on" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#isProducedBy
+atpbias:isProducedBy rdf:type owl:ObjectProperty ;
+                     rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#" ;
+                     rdfs:label "is produced by"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#notBelieved
+atpbias:notBelieved rdf:type owl:ObjectProperty ;
+                    owl:inverseOf atpbias:preventsBelievingIn ;
+                    rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#" ;
+                    rdfs:label "is not believed because of" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#preventsBelievingIn
+atpbias:preventsBelievingIn rdf:type owl:ObjectProperty ;
+                            rdfs:domain eeo:Observation ;
+                            rdfs:range eeo:Engagement ;
+                            rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#" ;
+                            rdfs:label "prevents believing in"@en .
 
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#isAffectedBy
@@ -172,6 +212,7 @@ Ordering on subparameters can be created by using or specializing the object pro
 ###  http://modellingdh.github.io/ont/odp/term/Engagement
 eeo:Engagement rdf:type owl:Class ;
                <http://purl.org/dc/terms/description> "The product of a reflection upon an observation, which embodies subjective traits of an experience (Example: \"After reading this passage of 'To Kill a Mockingbird', I came to a clearer understanding of the many facets of social intolerance\")."@en ;
+               rdfs:comment "In the context of this ontology Engagement is considered with both the acception used by the ODP and the context in which the bias is happening. For example, if the bias prevents believing in climate change, due to a reflection on the topic, the Engagement is the climate change itself, so the context or situation."@en ;
                rdfs:isDefinedBy "http://modellingdh.github.io/ont/odp/term/" ;
                rdfs:label "Engagement"@en .
 
@@ -229,6 +270,7 @@ High rdf:type Person and (some hasHeight (Height and (oneOf isTallerThan 185) an
 ###  http://xmlns.com/foaf/0.1/Agent
 foaf:Agent rdf:type owl:Class ;
            rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+           rdfs:isDefinedBy "http://xmlns.com/foaf/0.1/" ;
            rdfs:label "Agent" ;
            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
 
@@ -266,7 +308,7 @@ atpbias:Claim rdf:type owl:Class ;
 
 ###  https://w3id.org/framester/data/framestercore/Certainty
 fr:Certainty rdf:type owl:Class ;
-             rdfs:comment "The biased agent perceives his/her thesis as certain."@en ;
+             rdfs:comment "The concept of certainty here refers to the certainty needed by the biased person in order to believe to the situation represented by Engagement (i.e. Alex needs absolute certainty in order to believe that climate change is real)."@en ;
              rdfs:isDefinedBy "https://w3id.org/framester/data/framestercore/Certainty"@en ;
              rdfs:label "Certainty"@en .
 
@@ -278,8 +320,16 @@ fr:Evidence rdf:type owl:Class ;
             rdfs:label "Evidence"@en .
 
 
+###  https://w3id.org/framester/data/framestercore/Probability
+fr:Probability rdf:type owl:Class ;
+               rdfs:comment "Probability represents the probability that the situation defined in the Engagement is not true." ;
+               rdfs:isDefinedBy "https://w3id.org/framester/data/framestercore/"@en ;
+               rdfs:label "Probability"@en .
+
+
 ###  https://w3id.org/framester/data/framestercore/SubjectiveInfluence
 fr:SubjectiveInfluence rdf:type owl:Class ;
+                       rdfs:comment "Subjective Influence is created by believing in the probabilities rather than the widely believed truth." ;
                        rdfs:isDefinedBy "https://w3id.org/framester/data/framestercore/SubjectiveInfluence"@en ;
                        rdfs:label "Subjective Influence"@en .
 
@@ -287,6 +337,23 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
 #################################################################
 #    Individuals
 #################################################################
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#AbsoluteCertainty
+atpbias:AbsoluteCertainty rdf:type owl:NamedIndividual ,
+                                   par:Parameter ;
+                          par:hasParameterDataValue "absolute" ;
+                          rdfs:label "absolute certainty" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#Alex
+atpbias:Alex rdf:type owl:NamedIndividual ,
+                      <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> ;
+             eeo:isEngagedIn atpbias:ClimateChange ;
+             bias:isAffectedBy atpbias:AppealToProbabilityFallacy ;
+             rdfs:comment "Alex is the biased agent, affected by the appeal to probability fallacy."@en ;
+             rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
+             rdfs:label "Alex" .
+
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#AppealToProbabilityFallacy
 atpbias:AppealToProbabilityFallacy rdf:type owl:NamedIndividual ,
@@ -298,38 +365,36 @@ atpbias:AppealToProbabilityFallacy rdf:type owl:NamedIndividual ,
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#CertaintyLevel
 atpbias:CertaintyLevel rdf:type owl:NamedIndividual ,
                                 fr:Certainty ;
-                       par:hasParameterDataValue "high" ;
+                       par:hasParameter atpbias:AbsoluteCertainty ;
                        rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
                        rdfs:label "certainty level"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#ClimateChange
+atpbias:ClimateChange rdf:type owl:NamedIndividual ,
+                               eeo:Engagement ;
+                      eeo:inActivity <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl##Reasoning> ;
+                      rdfs:comment "Climate Change actually happening according to a shared opinion based on facts."@en ;
+                      rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
+                      rdfs:label "climate change"@en .
 
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#ConvincedPersonalOpinion
 atpbias:ConvincedPersonalOpinion rdf:type owl:NamedIndividual ,
                                           eeo:Observation ;
-                                 eeo:isReflectionOn atpbias:ConvincedPersonalOpinionClimateChange ;
+                                 eeo:isReflectionOn atpbias:ClimateChange ;
                                  atpbias:hasEvidence atpbias:ScientificArticles ;
+                                 atpbias:isProducedBy atpbias:subjectivity ;
+                                 atpbias:preventsBelievingIn atpbias:ClimateChange ;
                                  rdfs:comment "Climate change is not a significant threat because there's a chance the models are incorrect."@en ;
                                  rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
                                  rdfs:label "convinced personal opinion"@en .
 
 
-###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#ConvincedPersonalOpinionClimateChange
-atpbias:ConvincedPersonalOpinionClimateChange rdf:type owl:NamedIndividual ,
-                                                       eeo:Engagement ;
-                                              eeo:inActivity <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl##Reasoning> ;
-                                              rdfs:comment "Climate Change actually happening according to a shared opinion based on facts."@en ;
-                                              rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
-                                              rdfs:label "climate change"@en .
-
-
-###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#Sarah
-atpbias:Sarah rdf:type owl:NamedIndividual ,
-                       <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> ;
-              eeo:isEngagedIn atpbias:ConvincedPersonalOpinionClimateChange ;
-              bias:isAffectedBy atpbias:AppealToProbabilityFallacy ;
-              rdfs:comment "Sarah is the biased agent, affected by the appeal to probability fallacy."@en ;
-              rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
-              rdfs:label "Sarah" .
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#ProbabilityClimateChange
+atpbias:ProbabilityClimateChange rdf:type owl:NamedIndividual ,
+                                          fr:Probability ;
+                                 rdfs:label "probability" .
 
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#ScientificArticles
@@ -338,6 +403,13 @@ atpbias:ScientificArticles rdf:type owl:NamedIndividual ,
                            rdfs:comment "Some scientific articles state that historical climate predictions were inaccurate."@en ;
                            rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
                            rdfs:label "scientific articles"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#subjectivity
+atpbias:subjectivity rdf:type owl:NamedIndividual ,
+                              fr:SubjectiveInfluence ;
+                     atpbias:isBasedOn atpbias:ProbabilityClimateChange ;
+                     rdfs:label "subjectivity" .
 
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl##Reasoning
