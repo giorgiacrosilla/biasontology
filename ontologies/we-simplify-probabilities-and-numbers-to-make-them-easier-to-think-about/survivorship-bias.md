@@ -4,7 +4,7 @@
 
 **Survivorship bias** or survival bias is the logical error of concentrating on entities that passed a selection process while overlooking those that did not. This can lead to incorrect conclusions because of incomplete data. 
 
-<figure><img src="Danielebias-Survivorship-Bias.drawio.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="Survivorship-Bias.jpg" alt=""><figcaption></figcaption></figure>
 
 References:
 
