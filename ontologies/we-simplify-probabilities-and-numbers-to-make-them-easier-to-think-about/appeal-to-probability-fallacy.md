@@ -2,7 +2,7 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.ttl" %}
 
-<figure><img src="../../uml/giorgiabias-appealtoprobability2 (2).jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../uml/giorgiabias-appealtoprobability2.jpg" alt=""><figcaption></figcaption></figure>
 
 ### <mark style="color:red;">C</mark>ontext literature and state of the art
 
@@ -68,11 +68,11 @@ Alex: "But what if we spend trillions on measures that turn out to be unnecessar
 
 Emily: "That's the appeal to probability fallacy, Alex. We can't wait for absolute certainty. The potential risks are too great. It's like refusing to evacuate during a hurricane because the forecast isn't 100% certain. We should prioritize the precautionary principle and take action before it's too late."
 
-#### We can now derive example-based-CQs from the user story.&#x20;
+#### We can now derive example-based-CQs from the user story.
 
-1. What is the level of certainty needed by Alex (biased) to consider climate change real?&#x20;
+1. What is the level of certainty needed by Alex (biased) to consider climate change real?
 
-&#x20;       Absolute certainty.&#x20;
+Absolute certainty.
 
 ```sparql
 select ?certainty where {
@@ -80,9 +80,9 @@ select ?certainty where {
 		atpbias:AbsoluteCertainty par:hasParameterDataValue ?certainty . }
 ```
 
-2. What is Alex's thinking based on that prevents him from believing in reality?&#x20;
+2. What is Alex's thinking based on that prevents him from believing in reality?
 
-&#x20;       Probability.&#x20;
+Probability.
 
 ```sparql
 select ?cause where {
@@ -91,9 +91,9 @@ select ?cause where {
 		atpbias:subjectivity atpbias:isBasedOn ?cause . }
 ```
 
-3. What evidence does Alex rely on to support his thesis?&#x20;
+3. What evidence does Alex rely on to support his thesis?
 
-&#x20;        Scientific articles which state that in the past scientific predictions about the topic were not   accurate.&#x20;
+Scientific articles which state that in the past scientific predictions about the topic were not accurate.
 
 ```sparql
 select ?evidence where {
@@ -187,6 +187,7 @@ Let's consider an instance to illustrate the ontology:
 \- isBasedOnProbability: "Climate change denial argument relies on the possibility of models being incorrect."
 
 #### Framester frames used:
+
 * [Certainty](https://w3id.org/framester/data/framestercore/Certainty)
 * [SubjectiveInfluence](https://w3id.org/framester/data/framestercore/SubjectiveInfluence)
 * [Evidence](https://w3id.org/framester/data/framestercore/Evidence)
