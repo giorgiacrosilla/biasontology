@@ -138,4 +138,14 @@ Range: Text or Strategy
 [Topic](http://ontologydesignpatterns.org/wiki/Submissions:Topic)
 [Co-partecipation](http://ontologydesignpatterns.org/wiki/Submissions:Co-participation)]
 
+### Competency questions:
+
+1. Which events involve biased agents assuming knowledge in a particular topic, resulting in a biased outcome due to the curse of knowledge bias?
+
+2. What are the topics in which biased agents possess expertise, leading to assumptions of knowledge and biased outcomes, compared to topics where non-biased agents have expertise, resulting in non-biased outcomes?
+
+3. How do biased agents' perceptions of their knowledge affect their participation in events, and consequently, the occurrence of the curse of knowledge bias?
+
+
+
 
