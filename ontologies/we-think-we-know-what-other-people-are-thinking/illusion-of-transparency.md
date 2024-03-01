@@ -56,6 +56,47 @@ The illusion of transparency bias is a cognitive phenomenon that highlights the 
 
 As Sarah navigates through the daily interactions with her friend, Alex, she can't help but feel a growing attraction. After weeks of contemplation, Sarah decides it's time to confess her romantic feelings. However, plagued by the illusion of transparency bias, she becomes convinced that her affection is blatantly obvious to Alex. One day, Sarah musters the courage to share her emotions. As she nervously stumbles through her confession, her heart races, and she assumes her shaky voice and flushed face are clear indicators of her romantic interest. In reality, Alex, although surprised, doesn't pick up on these subtle cues and is genuinely taken aback by Sarah's revelation. The illusion of transparency bias leads Sarah to believe that her feelings are laid bare for Alex to see, creating a mix of anxiety and anticipation. This user story explores the tension arising from the contrast between Sarah's perception of transparency and the actual level of awareness on Alex's part. 
 
+#### We can now derive example-based-CQs from the user story.&#x20;
+
+1. Who are the two agents involved in the event?&#x20;
+
+&#x20;       Biased Agent and Non Biased Agent.&#x20;
+
+```sparql
+
+SELECT ?BiasedAgent ?NonBiasedAgent
+WHERE {
+    ?NonBiasedAgent cp:isParticipantIn illusionoftransp:RomanticConfession .
+    ?NonBiasedAgent illusionoftransp:doNotPercieve illusionoftransp:Feeling .
+    ?BiasedAgent cp:isParticipantIn illusionoftransp:RomanticConfession .
+    ?BiasedAgent illusionoftransp:hasInternalState illusionoftransp:Feeling .
+}
+```
+
+2. What event triggers the bias and what topic is it about?&#x20;
+
+&#x20;       Event and Topic.&#x20;
+
+```sparql
+SELECT ?Topic ?Event
+WHERE {
+    ?Event illusionoftransp:hasOutcome illusionoftransp:Relationship .
+    ?Topic to:isTopicOf ?Event .
+}
+```
+
+3. Which agent is not influenced by the bias and what does he/she/it perceive as the outcome of the event?&#x20;
+
+&#x20;       Non Biased Agent and Non Biased Outcome.&#x20;
+
+```sparql
+SELECT ?NonBiasedAgent ?NonBiasedOutcome
+WHERE {
+    ?NonBiasedAgent illusionoftransp:doNotPercieve illusionoftransp:Feeling .
+    ?NonBiasedOutcome illusionoftransp:isPerceptionOf ?NonBiasedAgent . 
+}
+```
+
 #### If you should make an ontology based of the "Illusion of transparency" which classes and properties would you create?
 
 #Classes: 
