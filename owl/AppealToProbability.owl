@@ -1,22 +1,24 @@
-@prefix : <http://www.semanticweb.org/giorgia/ontologies/2024/1/AppealToProbability/> .
+@prefix : <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix fr: <https://w3id.org/framester/data/framestercore/> .
 @prefix eeo: <http://modellingdh.github.io/ont/odp/term/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix par: <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix bias: <http://www.semanticweb.org/bias/> .
+@prefix bias: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.semanticweb.org/giorgia/ontologies/2024/1/AppealToProbability/> .
+@prefix atpbias: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#> .
+@base <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#> .
 
-<http://www.semanticweb.org/giorgia/ontologies/2024/1/AppealToProbability> rdf:type owl:Ontology ;
-                                                                            dc:creator "Giorgia Crosilla"@en ;
-                                                                            dc:title "Appeal To Probability Fallacy"@en ;
-                                                                            rdfs:comment "This is an ontology that describes the behaviour of a person affected by the Appeal To Probability Fallacy."@en ;
-                                                                            rdfs:seeAlso "http://ontologydesignpatterns.org/wiki/Submissions:Experience_%26_Observation"@en ,
-                                                                                         "http://ontologydesignpatterns.org/wiki/Submissions:Parameter"@en .
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#> rdf:type owl:Ontology ;
+                                                                                                    dc:creator "Giorgia Crosilla"@en ;
+                                                                                                    dc:title "Appeal To Probability Fallacy"@en ;
+                                                                                                    rdfs:comment "This is an ontology that describes the behaviour of a person affected by the Appeal To Probability Fallacy."@en ;
+                                                                                                    rdfs:seeAlso "http://ontologydesignpatterns.org/wiki/Submissions:Experience_%26_Observation"@en ,
+                                                                                                                 "http://ontologydesignpatterns.org/wiki/Submissions:Parameter"@en .
 
 #################################################################
 #    Annotation properties
@@ -104,47 +106,47 @@ eeo:producedObservation rdf:type owl:ObjectProperty ;
 
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter
-<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter> rdf:type owl:ObjectProperty ;
-                                                                          owl:inverseOf <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#isParameterFor> ;
-                                                                          rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> ;
-                                                                          rdfs:comment "A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16." ;
-                                                                          rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
-                                                                          rdfs:label "ha parametro"@it ,
-                                                                                     "has parameter"@en .
+par:hasParameter rdf:type owl:ObjectProperty ;
+                 owl:inverseOf par:isParameterFor ;
+                 rdfs:domain par:Concept ;
+                 rdfs:comment "A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16." ;
+                 rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
+                 rdfs:label "ha parametro"@it ,
+                            "has parameter"@en .
 
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#isParameterFor
-<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#isParameterFor> rdf:type owl:ObjectProperty ;
-                                                                            rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter> ;
-                                                                            rdfs:range <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> ;
-                                                                            rdfs:comment "A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16." ;
-                                                                            rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
-                                                                            rdfs:label "is parameter for"@en ,
-                                                                                       "è un parametro per"@it .
+par:isParameterFor rdf:type owl:ObjectProperty ;
+                   rdfs:domain par:Parameter ;
+                   rdfs:range par:Concept ;
+                   rdfs:comment "A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16." ;
+                   rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
+                   rdfs:label "is parameter for"@en ,
+                              "è un parametro per"@it .
 
 
-###  http://www.semanticweb.org/bias/AppealToProbability/hasCertainty
-<http://www.semanticweb.org/bias/AppealToProbability/hasCertainty> rdf:type owl:ObjectProperty ;
-                                                                   rdfs:domain eeo:Engagement ;
-                                                                   rdfs:range fr:Certainty ;
-                                                                   rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/" ;
-                                                                   rdfs:label "has certainty"@en .
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#hasCertainty
+atpbias:hasCertainty rdf:type owl:ObjectProperty ;
+                     rdfs:domain eeo:Engagement ;
+                     rdfs:range fr:Certainty ;
+                     rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl" ;
+                     rdfs:label "has certainty"@en .
 
 
-###  http://www.semanticweb.org/bias/AppealToProbability/hasEvidence
-<http://www.semanticweb.org/bias/AppealToProbability/hasEvidence> rdf:type owl:ObjectProperty ;
-                                                                  rdfs:domain eeo:Engagement ;
-                                                                  rdfs:range fr:Evidence ;
-                                                                  rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/" ;
-                                                                  rdfs:label "has evidence"@en .
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#hasEvidence
+atpbias:hasEvidence rdf:type owl:ObjectProperty ;
+                    rdfs:domain eeo:Engagement ;
+                    rdfs:range fr:Evidence ;
+                    rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl" ;
+                    rdfs:label "has evidence"@en .
 
 
-###  http://www.semanticweb.org/bias/General/isAffectedBy
-<http://www.semanticweb.org/bias/General/isAffectedBy> rdf:type owl:ObjectProperty ;
-                                                       rdfs:domain <http://www.semanticweb.org/bias/General/BiasedAgent> ;
-                                                       rdfs:range <http://www.semanticweb.org/bias/General/CognitiveBias> ;
-                                                       rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
-                                                       rdfs:label "is affected by"@en .
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#isAffectedBy
+bias:isAffectedBy rdf:type owl:ObjectProperty ;
+                  rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#BiasedAgent> ;
+                  rdfs:range <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#CognitiveBias> ;
+                  rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl"@en ;
+                  rdfs:label "is affected by"@en .
 
 
 #################################################################
@@ -152,15 +154,15 @@ eeo:producedObservation rdf:type owl:ObjectProperty ;
 #################################################################
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue
-<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> rdf:type owl:DatatypeProperty ;
-                                                                                   rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter> ;
-                                                                                   rdfs:range xsd:string ;
-                                                                                   rdfs:comment """Parametrizes values from a datatype. For example, a Parameter AgeForDriving hasParameterDataValue 18 on datatype xsd:int, in the Italian traffic code. In this example, AgeForDriving isDefinedIn the Norm ItalianTrafficCodeAgeDriving.
+par:hasParameterDataValue rdf:type owl:DatatypeProperty ;
+                          rdfs:domain par:Parameter ;
+                          rdfs:range xsd:string ;
+                          rdfs:comment """Parametrizes values from a datatype. For example, a Parameter AgeForDriving hasParameterDataValue 18 on datatype xsd:int, in the Italian traffic code. In this example, AgeForDriving isDefinedIn the Norm ItalianTrafficCodeAgeDriving.
 More complex parametrization requires workarounds. E.g. AgeRangeForDrugUsage could parametrize data value: 14 to 50 on the datatype: xsd:int. Since complex datatypes are not allowed in OWL1.0, a solution to this can only work by creating two 'sub-parameters': MinimumAgeRangeForDrugUsage (that hasParameterDataValue 14) and MaximumAgeRangeForDrugUsage (that hasParameterDataValue 50), which are components of the main Parameter AgeRangeForDrugUsage.
 Ordering on subparameters can be created by using or specializing the object property 'precedes'.""" ;
-                                                                                   rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
-                                                                                   rdfs:label "ha valore"@it ,
-                                                                                              "has parameter data value"@en .
+                          rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
+                          rdfs:label "ha valore"@it ,
+                                     "has parameter data value"@en .
 
 
 #################################################################
@@ -195,63 +197,33 @@ eeo:Observation rdf:type owl:Class ;
 
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept
-<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> rdf:type owl:Class ;
-                                                                     owl:equivalentClass fr:Certainty ;
-                                                                     rdfs:comment """A concept is a SocialObject, and isDefinedIn a Description . 
+par:Concept rdf:type owl:Class ;
+            owl:equivalentClass fr:Certainty ;
+            rdfs:comment """A concept is a SocialObject, and isDefinedIn a Description . 
 Once defined, a Concept can be used in other descriptions. 
 The classifies relation relates concepts to entities at some time""" ;
-                                                                     rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
-                                                                     rdfs:label "Concept"@en ,
-                                                                                "Concetto"@it .
+            rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
+            rdfs:label "Concept"@en ,
+                       "Concetto"@it .
 
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter
-<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter> rdf:type owl:Class ;
-                                                                       rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> ;
-                                                                       rdfs:comment """A Concept that classifies something having a certain value, e.g. 'High' can be said of people taller than 185 cm.
+par:Parameter rdf:type owl:Class ;
+              rdfs:subClassOf par:Concept ;
+              rdfs:comment """A Concept that classifies something having a certain value, e.g. 'High' can be said of people taller than 185 cm.
 However, in order to formally represent this constraint, we need to add an anonymous type to a parameter instance, using a property that convey the semantics of the parameter, e.g.:
 High rdf:type Person and (some hasHeight (Height and (oneOf isTallerThan 185) and (oneOf hasUnitOfMeasure centimeter)))""" ;
-                                                                       rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
-                                                                       rdfs:label "Parameter"@en ,
-                                                                                  "Parametro"@it .
+              rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
+              rdfs:label "Parameter"@en ,
+                         "Parametro"@it .
 
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person
 <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> rdf:type owl:Class ;
-                                                                  owl:equivalentClass <http://www.semanticweb.org/bias/General/BiasedAgent> ;
+                                                                  owl:equivalentClass <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#BiasedAgent> ;
                                                                   rdfs:comment "The biased agent." ;
                                                                   rdfs:isDefinedBy "http://modellingdh.github.io/ont/odp/term/" ;
                                                                   rdfs:label "Person"@en .
-
-
-###  http://www.semanticweb.org/bias/AppealToProbability/Claim
-<http://www.semanticweb.org/bias/AppealToProbability/Claim> rdf:type owl:Class ;
-                                                            rdfs:subClassOf eeo:Observation ;
-                                                            <http://purl.org/dc/terms/description> "The claim is the thesis that the Agent states according to his/her personal opinion and it is supported by some kind of evidence."@en ;
-                                                            rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProability/" ;
-                                                            rdfs:label "Claim"@en .
-
-
-###  http://www.semanticweb.org/bias/AppealToProbabilityFallacy/AppealToProbabilityFallacy
-<http://www.semanticweb.org/bias/AppealToProbabilityFallacy/AppealToProbabilityFallacy> rdf:type owl:Class ;
-                                                                                        rdfs:subClassOf <http://www.semanticweb.org/bias/General/CognitiveBias> ;
-                                                                                        rdfs:comment "The appeal to probability fallacy, also known as the argument from probability, occurs when someone argues that because something is likely to happen, it is therefore true or should be believed."@en ;
-                                                                                        rdfs:isDefinedBy "http://www.semanticweb.org/bias/General/" ;
-                                                                                        rdfs:label "Appeal To Probability Fallacy"@en .
-
-
-###  http://www.semanticweb.org/bias/General/BiasedAgent
-<http://www.semanticweb.org/bias/General/BiasedAgent> rdf:type owl:Class ;
-                                                      rdfs:subClassOf foaf:Agent ;
-                                                      <http://purl.org/dc/terms/description> "A BiasedAgent is an Agent affected by a bias." ;
-                                                      rdfs:label "Biased Agent"@en .
-
-
-###  http://www.semanticweb.org/bias/General/CognitiveBias
-<http://www.semanticweb.org/bias/General/CognitiveBias> rdf:type owl:Class ;
-                                                        rdfs:comment "Cognitive bias refers to systematic patterns of deviation from norm or rationality in judgment, often leading to perceptual distortion, inaccurate interpretation, illogical interpretation, or what is broadly called irrationality."@en ;
-                                                        rdfs:isDefinedBy "http://www.semanticweb.org/bias/General/" ;
-                                                        rdfs:label "Cognitive Bias"@en .
 
 
 ###  http://xmlns.com/foaf/0.1/Agent
@@ -259,6 +231,37 @@ foaf:Agent rdf:type owl:Class ;
            rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
            rdfs:label "Agent" ;
            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+
+
+###  https://github.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#AppealToProbabilityFallacy
+<https://github.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#AppealToProbabilityFallacy> rdf:type owl:Class ;
+                                                                                                       rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#CognitiveBias> ;
+                                                                                                       rdfs:comment "The appeal to probability fallacy, also known as the argument from probability, occurs when someone argues that because something is likely to happen, it is therefore true or should be believed."@en ;
+                                                                                                       rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl" ;
+                                                                                                       rdfs:label "Appeal To Probability Fallacy"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#BiasedAgent
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#BiasedAgent> rdf:type owl:Class ;
+                                                                                                       rdfs:subClassOf foaf:Agent ;
+                                                                                                       <http://purl.org/dc/terms/description> "A BiasedAgent is an Agent affected by a bias." ;
+                                                                                                       rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl"@en ;
+                                                                                                       rdfs:label "Biased Agent"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#CognitiveBias
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#CognitiveBias> rdf:type owl:Class ;
+                                                                                                         rdfs:comment "Cognitive bias refers to systematic patterns of deviation from norm or rationality in judgment, often leading to perceptual distortion, inaccurate interpretation, illogical interpretation, or what is broadly called irrationality."@en ;
+                                                                                                         rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl" ;
+                                                                                                         rdfs:label "Cognitive Bias"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#Claim
+atpbias:Claim rdf:type owl:Class ;
+              rdfs:subClassOf eeo:Observation ;
+              <http://purl.org/dc/terms/description> "The claim is the thesis that the Agent states according to his/her personal opinion and it is supported by some kind of evidence."@en ;
+              rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
+              rdfs:label "Claim"@en .
 
 
 ###  https://w3id.org/framester/data/framestercore/Certainty
@@ -285,63 +288,64 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/bias/AppealToProbability/AppealToProbabilityFallacy
-<http://www.semanticweb.org/bias/AppealToProbability/AppealToProbabilityFallacy> rdf:type owl:NamedIndividual ,
-                                                                                          <http://www.semanticweb.org/bias/AppealToProbabilityFallacy/AppealToProbabilityFallacy> ;
-                                                                                 rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
-                                                                                 rdfs:label "Appeal to probability fallacy"@en .
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#AppealToProbabilityFallacy
+atpbias:AppealToProbabilityFallacy rdf:type owl:NamedIndividual ,
+                                            <https://github.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#AppealToProbabilityFallacy> ;
+                                   rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
+                                   rdfs:label "Appeal to probability fallacy"@en .
 
 
-###  http://www.semanticweb.org/bias/AppealToProbability/CertaintyLevel
-<http://www.semanticweb.org/bias/AppealToProbability/CertaintyLevel> rdf:type owl:NamedIndividual ,
-                                                                              fr:Certainty ;
-                                                                     <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> "high" ;
-                                                                     rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
-                                                                     rdfs:label "certainty level"@en .
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#CertaintyLevel
+atpbias:CertaintyLevel rdf:type owl:NamedIndividual ,
+                                fr:Certainty ;
+                       par:hasParameterDataValue "high" ;
+                       rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
+                       rdfs:label "certainty level"@en .
 
 
-###  http://www.semanticweb.org/bias/AppealToProbability/ClimateChange
-<http://www.semanticweb.org/bias/AppealToProbability/ClimateChange> rdf:type owl:NamedIndividual ,
-                                                                             eeo:Engagement ;
-                                                                    eeo:inActivity <http://www.semanticweb.org/bias/AppealToProbability/Reasoning> ;
-                                                                    rdfs:comment "Climate Change actually happening according to a shared opinion based on facts."@en ;
-                                                                    rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
-                                                                    rdfs:label "climate change"@en .
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#ConvincedPersonalOpinion
+atpbias:ConvincedPersonalOpinion rdf:type owl:NamedIndividual ,
+                                          eeo:Observation ;
+                                 eeo:isReflectionOn atpbias:ConvincedPersonalOpinionClimateChange ;
+                                 atpbias:hasEvidence atpbias:ScientificArticles ;
+                                 rdfs:comment "Climate change is not a significant threat because there's a chance the models are incorrect."@en ;
+                                 rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
+                                 rdfs:label "convinced personal opinion"@en .
 
 
-###  http://www.semanticweb.org/bias/AppealToProbability/ConvincedPersonalOpinion
-<http://www.semanticweb.org/bias/AppealToProbability/ConvincedPersonalOpinion> rdf:type owl:NamedIndividual ,
-                                                                                        <http://www.semanticweb.org/bias/AppealToProbability/Claim> ;
-                                                                               eeo:isReflectionOn <http://www.semanticweb.org/bias/AppealToProbability/ClimateChange> ;
-                                                                               rdfs:comment "Climate change is not a significant threat because there's a chance the models are incorrect."@en ;
-                                                                               rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
-                                                                               rdfs:label "convinced personal opinion"@en .
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#ConvincedPersonalOpinionClimateChange
+atpbias:ConvincedPersonalOpinionClimateChange rdf:type owl:NamedIndividual ,
+                                                       eeo:Engagement ;
+                                              eeo:inActivity <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl##Reasoning> ;
+                                              rdfs:comment "Climate Change actually happening according to a shared opinion based on facts."@en ;
+                                              rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
+                                              rdfs:label "climate change"@en .
 
 
-###  http://www.semanticweb.org/bias/AppealToProbability/Reasoning
-<http://www.semanticweb.org/bias/AppealToProbability/Reasoning> rdf:type owl:NamedIndividual ,
-                                                                         <http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity> ;
-                                                                eeo:includes <http://www.semanticweb.org/bias/AppealToProbability/ConvincedPersonalOpinion> ;
-                                                                rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
-                                                                rdfs:label "reasoning" .
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#Sarah
+atpbias:Sarah rdf:type owl:NamedIndividual ,
+                       <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> ;
+              eeo:isEngagedIn atpbias:ConvincedPersonalOpinionClimateChange ;
+              bias:isAffectedBy atpbias:AppealToProbabilityFallacy ;
+              rdfs:comment "Sarah is the biased agent, affected by the appeal to probability fallacy."@en ;
+              rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
+              rdfs:label "Sarah" .
 
 
-###  http://www.semanticweb.org/bias/AppealToProbability/Sarah
-<http://www.semanticweb.org/bias/AppealToProbability/Sarah> rdf:type owl:NamedIndividual ,
-                                                                     <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> ;
-                                                            eeo:isEngagedIn <http://www.semanticweb.org/bias/AppealToProbability/ClimateChange> ;
-                                                            <http://www.semanticweb.org/bias/General/isAffectedBy> <http://www.semanticweb.org/bias/AppealToProbability/AppealToProbabilityFallacy> ;
-                                                            rdfs:comment "Sarah is the biased agent, affected by the appeal to probability fallacy."@en ;
-                                                            rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
-                                                            rdfs:label "Sarah" .
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#ScientificArticles
+atpbias:ScientificArticles rdf:type owl:NamedIndividual ,
+                                    fr:Evidence ;
+                           rdfs:comment "Some scientific articles state that historical climate predictions were inaccurate."@en ;
+                           rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
+                           rdfs:label "scientific articles"@en .
 
 
-###  http://www.semanticweb.org/bias/AppealToProbability/ScientificArticles
-<http://www.semanticweb.org/bias/AppealToProbability/ScientificArticles> rdf:type owl:NamedIndividual ,
-                                                                                  fr:Evidence ;
-                                                                         rdfs:comment "Some scientific articles state that historical climate predictions were inaccurate."@en ;
-                                                                         rdfs:isDefinedBy "http://www.semanticweb.org/bias/AppealToProbability/"@en ;
-                                                                         rdfs:label "scientific articles"@en .
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl##Reasoning
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl##Reasoning> rdf:type owl:NamedIndividual ,
+                                                                                                                      <http://ontology.eil.utoronto.ca/icity/ActivitySpecification/Activity> ;
+                                                                                                             eeo:includes atpbias:ConvincedPersonalOpinion ;
+                                                                                                             rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
+                                                                                                             rdfs:label "reasoning" .
 
 
 #################################################################
