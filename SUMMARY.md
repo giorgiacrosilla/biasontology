@@ -1,17 +1,17 @@
 # Table of contents
 
-* [Overview](README.md)
-* [🤬 Methodology](methodology.md)
+* [🌏 Overview](README.md)
+* [👀 Methodology](methodology.md)
 
 ## 🙃 Ontologies
 
 * [🕸️ General](ontologies/general.md)
 * [😵 We simplify probabilities and numbers to make them easier to think about](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/README.md)
   * [💸 Mental Accounting](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/mental-accounting.md)
-  * [🤓 Appeal to probability fallacy](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/appeal-to-probability-fallacy.md)
+  * [🔣 Appeal to probability fallacy](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/appeal-to-probability-fallacy.md)
   * [😳 Normalcy Bias](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/normalcy-bias.md)
   * [😞 Murphy's law](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/murphys-law.md)
-  * [😏 Zero-sum bias](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/zero-sum-bias.md)
+  * [🏁 Zero-sum bias](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/zero-sum-bias.md)
   * [🏝️ Survivorship bias](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/survivorship-bias.md)
   * [👪 Subadditivity effect](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/subadditivity-effect.md)
   * [💵 Denomination effect](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/denomination-effect.md)

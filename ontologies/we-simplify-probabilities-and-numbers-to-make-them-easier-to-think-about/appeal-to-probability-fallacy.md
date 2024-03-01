@@ -1,4 +1,4 @@
-# 🤓 Appeal to probability fallacy
+# 🔣 Appeal to probability fallacy
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.ttl" %}
 

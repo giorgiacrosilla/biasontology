@@ -1,25 +1,14 @@
-# Overview
+# 🌏 Overview
 
 This website contains the documentation for the final project of  "Knowledge Representation and Knowledge Extraction" held by prof. Aldo Gangemi.&#x20;
 
 The group members are Erica Andreose, Giorgia Crosilla, Chiara Parravicini and Daniele Spedicati.
 
-
-
 ### What's the goal of the project?
 
-The goal of the project is to create an ontology that represents and links all the cognitive biases proposed in the picture below.&#x20;
+The goal of the course project is to map the 188 cognitive biases as listed in Cognitive Biases Codex ( [https://www.sog.unc.edu/sites/www.sog.unc.edu/files/course\_materials/Cognitive%20Biases%20Codex.pdf](https://www.sog.unc.edu/sites/www.sog.unc.edu/files/course\_materials/Cognitive%20Biases%20Codex.pdf)) (picture below), using the technologies developed in the Semantic Web community, creating an ontology that would allow to describe these cognitive phenomena. &#x20;
 
-#### What are cognitive biases?
-
-> The concept of “cognitive biases” is most commonly used to describe and qualify the deviations in human decision making. Cognitive biases can generally be described as systematic and universally occurring tendencies, inclinations, or dispositions that skew or distort information processes in ways that make their outcome inaccurate, suboptimal or simply wrong.
-
-
-
-<figure><img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Cognitive_bias_codex_en.svg" alt=""><figcaption><p>Wikipedia's complete (as of 2016) list of cognitive biases, beautifully arranged, and designed by John Manoogian III (jm3). Categories and descriptions originally by Buster Benson.</p></figcaption></figure>
-
-Our group decided to focus on the "Not Enough Meaning" portion of the wheel, in particular focusing on:\
-
+This specific group focuses its work only on a part of it, namely “We simplify probabilities and numbers to make them easier to think about”, “We think we know what other people are thinking”, in the right corner of the picture, under the definition of “Not enough meaning”.&#x20;
 
 * We simplify probabilities and numbers to make them easier to think about.
   * [<mark style="background-color:yellow;">mental accounting</mark>](#user-content-fn-1)[^1]
@@ -33,14 +22,21 @@ Our group decided to focus on the "Not Enough Meaning" portion of the wheel, in 
   *   [<mark style="background-color:green;">the magical number 7+-2</mark>](#user-content-fn-9)[^9]
 
 
-*   We think we know what other people are thinking.&#x20;
+* We think we know what other people are thinking.&#x20;
+  * [<mark style="background-color:green;">illusion of transparency</mark>](#user-content-fn-10)[^10]
+  * [<mark style="background-color:green;">curse of knowledge</mark>](#user-content-fn-11)[^11]
+  * [<mark style="background-color:green;">spotlight effect</mark>](#user-content-fn-12)[^12]
+  * [<mark style="background-color:blue;">extrinsic incentive error</mark>](#user-content-fn-13)[^13]
+  * [<mark style="background-color:blue;">illusion of external agency</mark>](#user-content-fn-14)[^14]
+  * [<mark style="background-color:blue;">illusion of asymmetric insight</mark>](#user-content-fn-15)[^15]
 
-    * [<mark style="background-color:green;">illusion of transparency</mark>](#user-content-fn-10)[^10]
-    * [<mark style="background-color:green;">curse of knowledge</mark>](#user-content-fn-11)[^11]
-    * [<mark style="background-color:green;">spotlight effect</mark>](#user-content-fn-12)[^12]
-    * [<mark style="background-color:blue;">extrinsic incentive error</mark>](#user-content-fn-13)[^13]
-    * [<mark style="background-color:blue;">illusion of external agency</mark>](#user-content-fn-14)[^14]
-    * [<mark style="background-color:blue;">illusion of asymmetric insight</mark>](#user-content-fn-15)[^15]
+#### What are cognitive biases?
+
+> The concept of “cognitive biases” is most commonly used to describe and qualify the deviations in human decision making. Cognitive biases can generally be described as systematic and universally occurring tendencies, inclinations, or dispositions that skew or distort information processes in ways that make their outcome inaccurate, suboptimal or simply wrong.
+
+
+
+<figure><img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Cognitive_bias_codex_en.svg" alt=""><figcaption><p>Wikipedia's complete (as of 2016) list of cognitive biases, beautifully arranged, and designed by John Manoogian III (jm3). Categories and descriptions originally by Buster Benson.</p></figcaption></figure>
 
 
 
