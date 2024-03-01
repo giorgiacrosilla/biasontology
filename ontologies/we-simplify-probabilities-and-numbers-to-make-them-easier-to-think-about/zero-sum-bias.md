@@ -32,123 +32,128 @@ The appeal to probability fallacy, also known as the argument from probability, 
 
 #### Can you create 10 scenarios compelling with the bias?
 
-6\. \*\*Climate Change Denial:\*\*
+Competition in Academics: Believing that if one student excels in a class, it automatically means that other students will perform poorly, rather than recognizing the potential for collective improvement.
 
-\*Claim:\* "We don't need to address climate change because scientists can't prove with 100% certainty that human activity is the sole cause."
+#### Now consider the scenario "Competition in academics" and give me a short user story from it.
 
-\*Fallacy:\* Demanding absolute certainty and using the absence of complete proof as justification for inaction.
+User Story: "Academic Competition Perspective Shift"&#x20;
 
-#### Now consider the scenario "climate change denial" and give me a short user story from it.
+Sarah, a diligent high school student, had always approached her studies with a competitive mindset. She constantly compared her grades to those of her classmates, believing that academic success was a zero-sum game. If someone else scored well, she felt that it somehow diminished her own achievements.&#x20;
 
-\*\*User Story: Climate Change Denial\*\*
+One day, the school announced a prestigious academic competition where students could showcase their research projects. Sarah, determined to outshine her peers, worked tirelessly on her project, fueled by the zero-sum bias that winning the competition meant others would inevitably lose.&#x20;
 
-\*\*User:\*\* Emily, a concerned citizen and environmental advocate.
+As the competition day approached, Sarah found herself immersed in the diverse projects of her classmates during a pre-competition showcase. Surprisingly, instead of feeling threatened, she began to appreciate the unique talents and perspectives each project brought to the table.&#x20;
 
-\*\*Scenario:\*\*
+During the competition, Sarah presented her research passionately but now with a newfound appreciation for the variety of subjects her classmates explored. When the results were announced, she was pleasantly surprised to win second place. However, the true transformation happened when she realized that her success didn't diminish the accomplishments of her peers.&#x20;
 
-Emily is passionate about addressing climate change and its potential impact on the planet. She engages in discussions with her friend Alex, who is skeptical about the severity of climate change. Alex argues that there's still uncertainty among scientists and points out instances where climate predictions were inaccurate.
+This experience prompted Sarah to reconsider her zero-sum bias in academics. She started collaborating with classmates, sharing knowledge, and celebrating each other's successes. In doing so, she not only fostered a more positive academic environment but also discovered the joy of learning and growing collectively.&#x20;
 
-\*\*Conversation:\*\*
+#### We can now derive example-based-CQs from the user story.
 
-\*Emily:\* "Alex, I really think we need to take climate change seriously. The scientific consensus is strong, and the consequences could be devastating."
+1. How did Sarah approach her studies?&#x20;
 
-\*Alex:\* "I'm not convinced. Scientists have been wrong before, and there's still uncertainty about the causes and the extent of climate change."
+&#x20;       As a competition. &#x20;
 
-\*Emily:\* "True, science isn't always perfect, but the overwhelming majority of climate scientists agree that human activities are causing global warming. We shouldn't ignore the risks."
+```sparql
+select ?perception where {
+		zerosum:Sarah pcp:isParticipantIn zerosum:MathsTest .
+		zerosum:MathsTest zerosum:isPerceivedAsCompetition ?perception . }
+```
 
-\*Alex:\* "I just think it's a natural cycle, and we shouldn't make drastic changes based on incomplete information."
+2. Who are the winners and the losers of the competition?&#x20;
 
-\*Emily:\* "It's not incomplete information; it's a consensus backed by extensive research. Waiting for 100% certainty could lead to irreversible damage. We need to act now to mitigate the impacts."
+&#x20;       Sarah is the winner and the classmates are losers.  &#x20;
 
-\*Alex:\* "But what if we spend trillions on measures that turn out to be unnecessary? I'd rather wait until we're absolutely sure."
+```sparql
+select ?loser ?winner where {
+		zerosum:Sarah zerosum:isPerceivingBiased zerosum:WinLoseCompetition . 
+		zerosum:WinLoseCompetition zerosum:hasLoser ?loser .
+		zerosum:WinLoseCompetition zerosum:hasWinner ?winner . }
+```
 
-\*Emily:\* "That's the appeal to probability fallacy, Alex. We can't wait for absolute certainty. The potential risks are too great. It's like refusing to evacuate during a hurricane because the forecast isn't 100% certain. We should prioritize the precautionary principle and take action before it's too late."
+3. How is the test perceived by the classmates instead?&#x20;
 
-#### If you should make an ontology based of the "appeal to probability fallacy" which classes and properties would you create?
+&#x20;       As only a test, not a competition with winners and losers. &#x20;
 
-Classes:
+```sparql
+select ?test where {
+	zerosum:Classmates pcp:isParticipantIn zerosum:MathsTest . 
+	zerosum:MathsTest zerosum:isPerceivedAsParticipation ?test . }
+```
 
-1\. \*\*Fallacy:\*\*
+#### If you should make an ontology based of the "Zero Sum Bias" which classes and properties would you create?
 
-\- \*Description:\* Represents the overarching concept of a logical fallacy.
+* Class: CognitiveBias&#x20;
 
-2\. \*\*AppealToProbabilityFallacy:\*\*
+Properties:&#x20;
 
-\- \*Subclass of:\* Fallacy
+Definition: A mental inclination or pattern of thought leading to systematic deviations from norm or rationality.&#x20;
 
-\- \*Description:\* Represents the specific fallacy where a conclusion is asserted to be likely true based on probabilities.
+Subclass of: MentalState&#x20;
 
-3\. \*\*Claim:\*\*
+* Class: ZeroSumBias&#x20;
 
-\- \*Description:\* Represents a statement or proposition that is made as part of an argument.
+Properties:&#x20;
 
-4\. \*\*Evidence:\*\*
+Definition: A specific cognitive bias where individuals perceive situations as zero-sum games, believing that one party's gain results in an equivalent loss for others.&#x20;
 
-\- \*Description:\* Represents information or data presented in support of a claim.
+Subclass of: CognitiveBias&#x20;
 
-5\. \*\*Certainty:\*\*
+* Class: PerceivedCompetition&#x20;
 
-\- \*Description:\* Represents the level of certainty associated with a claim or argument.
+Properties:&#x20;
 
-Properties:
+Definition: The subjective belief that success or gain in a given context is inherently competitive and comes at the expense of others.&#x20;
 
-1\. \*\*hasFallacyType:\*\*
+Subclass of: CognitiveAspect&#x20;
 
-\- \*Domain:\* Fallacy
+* Class: FixedResourceMindset&#x20;
 
-\- \*Range:\* xsd:string
+Properties:&#x20;
 
-\- \*Description:\* Indicates the type of fallacy, such as "Appeal to Probability Fallacy."
+Definition: The tendency to view resources or opportunities as fixed and limited rather than dynamic and expandable.&#x20;
 
-2\. \*\*assertsClaim:\*\*
+Subclass of: CognitiveAspect&#x20;
 
-\- \*Domain:\* Fallacy
+* Class: CompetitiveScenario&#x20;
 
-\- \*Range:\* Claim
+Properties:&#x20;
 
-\- \*Description:\* Indicates the claim associated with the fallacious argument.
+Definition: A situation where individuals are inclined to apply zero-sum thinking, often hindering collaboration and mutual benefit.&#x20;
 
-3\. \*\*presentsEvidence:\*\*
+Subclass of: SocialContext&#x20;
 
-\- \*Domain:\* Claim
+* Class: CollaborativePotential&#x20;
 
-\- \*Range:\* Evidence
+Properties:&#x20;
 
-\- \*Description:\* Links a claim to the evidence presented in support of that claim.
+Definition: The recognition that, despite initial perceptions, many situations have the potential for collaboration and mutual benefit.&#x20;
 
-4\. \*\*hasCertaintyLevel:\*\*
+Subclass of: CognitiveAspect&#x20;
 
-\- \*Domain:\* Claim
+* Class: PositiveMindsetTransformation&#x20;
 
-\- \*Range:\* Certainty
+Properties:&#x20;
 
-\- \*Description:\* Represents the level of certainty associated with a claim.
+Definition: The process of shifting from a zero-sum bias to a mindset that embraces collaboration, shared success, and positive interactions.&#x20;
 
-5\. \*\*isBasedOnProbability:\*\*
+Subclass of: CognitiveTransformation&#x20;
 
-\- \*Domain:\* AppealToProbabilityFallacy
+* Class: ExampleScenario&#x20;
 
-\- \*Range:\* Claim
+Properties:&#x20;
 
-\- \*Description:\* Indicates that the fallacy involves basing a conclusion on probabilities rather than solid evidence.
+Definition: Instances or situations illustrating the manifestation of zero-sum bias in various contexts.&#x20;
 
-\### Example Instance:
+Subclass of: CognitiveAspect&#x20;
 
-Let's consider an instance to illustrate the ontology:
+* Class: BiasMitigationStrategies&#x20;
 
-\- \*\*Instance: ProbabilityDenialArgument\*\*
+Properties:&#x20;
 
-\- \*Type:\* AppealToProbabilityFallacy
+Definition: Strategies or interventions aimed at mitigating the effects of zero-sum bias and promoting a more cooperative mindset.&#x20;
 
-\- \*hasFallacyType:\* "Appeal to Probability Fallacy"
-
-\- \*assertsClaim:\* "Climate change is not a significant threat because there's a chance the models are incorrect."
-
-\- \*presentsEvidence:\* "Historical climate predictions that were inaccurate."
-
-\- \*hasCertaintyLevel:\* "Low"
-
-\- \*isBasedOnProbability:\* "Climate change denial argument relies on the possibility of models being incorrect."
+Subclass of: CognitiveIntervention&#x20;
 
 ### Framester Frames used:
 
