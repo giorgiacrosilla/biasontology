@@ -2,7 +2,7 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.ttl" %}
 
-<figure><img src="../../uml/giorgiabias-appealtoprobability2%20(2).jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../uml/giorgiabias-appealtoprobability2 (2).jpg" alt=""><figcaption></figcaption></figure>
 
 ### <mark style="color:red;">C</mark>ontext literature and state of the art
 
@@ -67,6 +67,38 @@ Emily: "It's not incomplete information; it's a consensus backed by extensive re
 Alex: "But what if we spend trillions on measures that turn out to be unnecessary? I'd rather wait until we're absolutely sure."
 
 Emily: "That's the appeal to probability fallacy, Alex. We can't wait for absolute certainty. The potential risks are too great. It's like refusing to evacuate during a hurricane because the forecast isn't 100% certain. We should prioritize the precautionary principle and take action before it's too late."
+
+#### We can now derive example-based-CQs from the user story.&#x20;
+
+1. What is the level of certainty needed by Alex (biased) to consider climate change real?&#x20;
+
+&#x20;       Absolute certainty.&#x20;
+
+```sparql
+select ?certainty where {
+		atpbias:CertaintyLevel par:hasParameter atpbias:AbsoluteCertainty . 
+		atpbias:AbsoluteCertainty par:hasParameterDataValue ?certainty . }
+```
+
+2. What is Alex's thinking based on that prevents him from believing in reality?&#x20;
+
+&#x20;       Probability.&#x20;
+
+```sparql
+select ?cause where {
+		atpbias:ClimateChange atpbias:notBelieved atpbias:ConvincedPersonalOpinion . 
+		atpbias:ConvincedPersonalOpinion atpbias:isProducedBy atpbias:subjectivity . 
+		atpbias:subjectivity atpbias:isBasedOn ?cause . }
+```
+
+3. What evidence does Alex rely on to support his thesis?&#x20;
+
+&#x20;        Scientific articles which state that in the past scientific predictions about the topic were not   accurate.&#x20;
+
+```sparql
+select ?evidence where {
+		atpbias:ConvincedPersonalOpinion atpbias:hasEvidence ?evidence  }
+```
 
 #### If you should make an ontology based of the "appeal to probability fallacy" which classes and properties would you create?
 
@@ -158,5 +190,5 @@ Let's consider an instance to illustrate the ontology:
 
 #### ODP used:
 
-* [Experience and Observation](http://ontologydesignpatterns.org/wiki/Submissions:Experience_%26_Observation)
+* [Experience and Observation](http://ontologydesignpatterns.org/wiki/Submissions:Experience\_%26\_Observation)
 * [Parameter](http://ontologydesignpatterns.org/wiki/Submissions:Parameter)
