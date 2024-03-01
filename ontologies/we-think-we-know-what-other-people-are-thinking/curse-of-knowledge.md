@@ -52,6 +52,43 @@ The "curse of knowledge" bias refers to a cognitive phenomenon in which individu
 
 As a non-technical user seeking IT support, I encountered the curse of knowledge bias during a troubleshooting interaction. When attempting to resolve an issue with my computer, the IT support technician used technical jargon and assumed I was familiar with various software terms. Unfortunately, I found it challenging to follow the instructions and articulate my concerns effectively. As a result, the support process became frustrating, and the resolution time was prolonged due to the communication gap. In future interactions, I hope for IT support personnel to recognize diverse levels of technical understanding and adjust their communication to ensure a smoother and more efficient troubleshooting experience for users like me.
 
+#### We can now derive example-based-CQs from the user story.&#x20;
+
+1. What is the event that involves the biased agent and that returns the biased outcome?&#x20;
+
+&#x20;       Event and Biased Outcome.&#x20;
+
+```sparql
+SELECT ?Event ?BiasedOutcome
+WHERE {
+    ?Event cp:hasParticipant curseofknowlwedge:ITTechnician .
+    ?BiasedOutcome curseofknowledge:hasAssumedKnowledge curseofknowledge:ITTechnician .
+}
+```
+
+2. What is the topic the two agents are discussing?&#x20;
+
+&#x20;       Topic.&#x20;
+
+```sparql
+SELECT ?Topic 
+WHERE {
+    ?Topic to:isTopicOf curseofknowledge:PhoneCall .
+}
+```
+
+3. Which agent is not influenced by the bias and what does he/she/it perceive as the outcome of the conversation?&#x20;
+
+&#x20;       Non Biased Agent and Non Biased Outcome.&#x20;
+
+```sparql
+SELECT ?NonBiasedAgent ?NonBiasedOutcome 
+WHERE {
+    ?NonBiasedAgent curseofknowledge:hasNoExpertise curseofknowledge:Topic .
+    ?NonBiasedOutcome curseofknowledge:hasPercievedKnowledge ?NonBiasedAgent .
+}
+```
+
 #### If you should make an ontology based of the "curse of knowledge" which classes and properties would you create?
 
 #Classes: 
