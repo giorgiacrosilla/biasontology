@@ -2,7 +2,7 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.ttl" %}
 
-<figure><img src="../../uml/Daniele-Subadditivity-Effect.draw.io.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../uml/Subadditivity-effect.jpg" alt=""><figcaption></figcaption></figure>
 
 ### Context literature and state of the art
 The **subadditivity effect** is the tendency to judge probability of the whole to be less than the probabilities of the parts. 
@@ -118,4 +118,11 @@ Properties:
 
 7. **hasContext**: Describes the context or conditions under which the Subadditivity Effect occurs, such as decision-making, perception, or cognition. 
 
-This ontology provides a framework for representing and analyzing instances of the Subadditivity Effect across various contexts and scenarios. 
+This ontology provides a framework for representing and analyzing instances of the Subadditivity Effect across various contexts and scenarios.
+
+
+### Framester used
+
+### ODP used
+* [Collection](http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl)
+* [Observation](http://www.ontologydesignpatterns.org/cp/owl/observation.owl)
