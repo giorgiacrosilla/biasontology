@@ -1,13 +1,12 @@
 # 👀 Methodology
 
-The methodology adopted for this project is based on the Extreme Design Methodology (XD)([https://ceur-ws.org/Vol-516/pap21.pdf](https://ceur-ws.org/Vol-516/pap21.pdf)) and an approach that can be summarized in the following five stages:&#x20;
+The methodology adopted for this project is based on the ([Extreme Design Methodology (XD)](https://ceur-ws.org/Vol-516/pap21.pdf)) and an approach that can be summarized in the following five stages:&#x20;
 
 1. Context and literature state of the art;&#x20;
 2. Large Language Models;
 3. Ontology Design Patterns;
 4. Words as frame semantic triggers;
 5. New modules integration and alignment.
-
 
 
 This second approach summarizes the iterative tasks of the XD and rethinks it with the usage of the brand-new LLM with the goal of using them as a tool for Ontology Design.&#x20;
@@ -27,8 +26,8 @@ This third stage of our workflows starts its reasoning from the results of the L
 
 4. Words as frame semantic triggers&#x20;
 
-This stage does not appear as a part of the XD. It focuses on enriching the ontology with frame semantics. The designer extracts them from Framester using the QUOKKA tool (inserire link di entrambi).&#x20;
+This stage does not appear as a part of the XD. It focuses on enriching the ontology with frame semantics. The designer extracts them from [Framester](https://framester.github.io/) using the [QUOKKA](https://protege.stanford.edu/) tool.&#x20;
 
 5. New modules integration and alignment&#x20;
 
-Finally, the newly created ontology modules are integrated i the overall structure, the alignment with existing modules is ensured (XD tasks 8-10). Each module is modelled into an OWL file (formatted with?????) using Protégé (link).&#x20;
+Finally, the newly created ontology modules are integrated i the overall structure, the alignment with existing modules is ensured (XD tasks 8-10). Each module is modelled into an OWL file using [Protégé](https://protege.stanford.edu/).&#x20;
