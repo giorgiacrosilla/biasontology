@@ -83,7 +83,7 @@ Acceptance Criteria:
 
 ```sparql
 select ?wrong where { 
-		murphy:Driving reaction:hasOutcome ?wrong }
+		?Action reaction:hasOutcome ?wrong }
 ```
 
 2. What’s the consequences perceived after the first negative one?
@@ -92,8 +92,8 @@ select ?wrong where {
 
 ```sparql
 select ?consequence where {
-		murphy:CarNotWorking murphy:influences ?neg .
-		?neg reaction:hasConsequence ?consequence .}
+		?FirstConsequence murphy:influences ?FollowingEvents .
+		?FollowingEvents reaction:hasConsequence ?consequence .}
 ```
 
 3. What are the outcomes of the repairing actions undertaken by the protagonist?
@@ -102,8 +102,8 @@ select ?consequence where {
 
 ```sparql
 select ?event where {
-		murphy:RepairingActions reaction:precedes ?followingaction . 
-		?followingaction reaction:hasOutcome ?event . }
+		?contingencyActions reaction:precedes ?FollowingAction . 
+		?FollowingAction reaction:hasOutcome ?event . }
 ```
 
 #### If you should make an ontology based of the "Murphy's Law" which classes and properties would you create?

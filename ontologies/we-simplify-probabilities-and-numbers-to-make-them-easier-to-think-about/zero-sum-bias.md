@@ -56,8 +56,8 @@ This experience prompted Sarah to reconsider her zero-sum bias in academics. She
 
 ```sparql
 select ?perception where {
-		zerosum:Sarah pcp:isParticipantIn zerosum:MathsTest .
-		zerosum:MathsTest zerosum:isPerceivedAsCompetition ?perception . }
+		?Agent pcp:isParticipantIn ?Event .
+		?Event zerosum:isPerceivedAsCompetition ?perception . }
 ```
 
 2. Who are the winners and the losers of the competition?&#x20;
@@ -66,9 +66,9 @@ select ?perception where {
 
 ```sparql
 select ?loser ?winner where {
-		zerosum:Sarah zerosum:isPerceivingBiased zerosum:WinLoseCompetition . 
-		zerosum:WinLoseCompetition zerosum:hasLoser ?loser .
-		zerosum:WinLoseCompetition zerosum:hasWinner ?winner . }
+		?Agent zerosum:isPerceivingBiased ?BiasedOutcome . 
+		?BiasedOutcome zerosum:hasLoser ?loser .
+		?BiasedOutcome zerosum:hasWinner ?winner . }
 ```
 
 3. How is the test perceived by the classmates instead?&#x20;
@@ -77,8 +77,8 @@ select ?loser ?winner where {
 
 ```sparql
 select ?test where {
-	zerosum:Classmates pcp:isParticipantIn zerosum:MathsTest . 
-	zerosum:MathsTest zerosum:isPerceivedAsParticipation ?test . }
+	?Agent pcp:isParticipantIn ?Event . 
+	?Event zerosum:isPerceivedAsParticipation ?test . }
 ```
 
 #### If you should make an ontology based of the "Zero Sum Bias" which classes and properties would you create?

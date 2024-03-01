@@ -75,9 +75,9 @@ Emily: "That's the appeal to probability fallacy, Alex. We can't wait for absolu
 Absolute certainty.
 
 ```sparql
-select ?certainty where {
-		atpbias:CertaintyLevel par:hasParameter atpbias:AbsoluteCertainty . 
-		atpbias:AbsoluteCertainty par:hasParameterDataValue ?certainty . }
+select ?parameter where {
+		?Certainty par:hasParameter ?AbsoluteCertainty . 
+		?AbsoluteCertainty par:hasParameterDataValue ?parameter . }
 ```
 
 2. What is Alex's thinking based on that prevents him from believing in reality?
@@ -86,9 +86,9 @@ Probability.
 
 ```sparql
 select ?cause where {
-		atpbias:ClimateChange atpbias:notBelieved atpbias:ConvincedPersonalOpinion . 
-		atpbias:ConvincedPersonalOpinion atpbias:isProducedBy atpbias:subjectivity . 
-		atpbias:subjectivity atpbias:isBasedOn ?cause . }
+		?Engagement atpbias:notBelieved ?Observation . 
+		?Observation atpbias:isProducedBy ?subjectivity . 
+		?subjectivity atpbias:isBasedOn ?cause . }
 ```
 
 3. What evidence does Alex rely on to support his thesis?
@@ -97,7 +97,7 @@ Scientific articles which state that in the past scientific predictions about th
 
 ```sparql
 select ?evidence where {
-		atpbias:ConvincedPersonalOpinion atpbias:hasEvidence ?evidence  }
+		?Observation atpbias:hasEvidence ?evidence  }
 ```
 
 #### If you should make an ontology based of the "appeal to probability fallacy" which classes and properties would you create?

@@ -62,10 +62,10 @@ In the aftermath, Sarah became an advocate for public health awareness, sharing 
 
 ```sparql
 select ?warnings where {
-		normalcy:PandemicEvent normalcy:isBeingExperiencedBy normalcy:Sarah . 
-		normalcy Sarah normalcy:ignoresWarnings normalcy:WarningOfCovidApproaching .
-		normalcy:WarningOfCovidApproaching par:hasParameter ?warn .
-		?warn par:hasParameterDataValue ?warnings . }
+		?Event normalcy:isBeingExperiencedBy ?Agent . 
+		?Agent normalcy:ignoresWarnings ?WarningOfHazardApproaching .
+		?WarningOfHazardApproaching par:hasParameter ?warning .
+		?warning par:hasParameterDataValue ?warnings . }
 
 ```
 
@@ -75,8 +75,8 @@ select ?warnings where {
 
 ```sparql
 select ?awareness where {
-		normalcy:PandemicEvent normalcy:isBeingExperiencedBy normalcy:Sarah .
-		normalcy:Sarah normalcy:hasInitialAwareness ?awareness .}
+		?Event normalcy:isBeingExperiencedBy ?Agent .
+		?Agent normalcy:hasInitialAwareness ?awareness .}
 ```
 
 3. What is Sarah's awareness after contracting the virus?&#x20;
@@ -85,10 +85,10 @@ select ?awareness where {
 
 ```sparql
 select ?final where {
-		normalcy:Sarah hazard:exposedTo normalcy:Covid .
-		normalcy:Covid hazard:isInvolvedIn ?Event .
-		?Event hazard:casuallyPrecedes ?Cons .
-		?Cons normalcy:produces ?final .}
+		?Agent hazard:exposedTo ?Hazard .
+		?Hazard hazard:isInvolvedIn ?Event .
+		?Event hazard:casuallyPrecedes ?Consequence .
+		?Consequence normalcy:produces ?final .}
 ```
 
 #### If you should make an ontology based of the "Normalcy Bias" which classes and properties would you create?
