@@ -118,4 +118,11 @@ Properties:
 
 7. **hasContext**: Describes the context or conditions under which the Subadditivity Effect occurs, such as decision-making, perception, or cognition. 
 
-This ontology provides a framework for representing and analyzing instances of the Subadditivity Effect across various contexts and scenarios. 
+This ontology provides a framework for representing and analyzing instances of the Subadditivity Effect across various contexts and scenarios.
+
+
+### Framester used
+
+### ODP used
+* [Collection](http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl)
+* [Observation](http://www.ontologydesignpatterns.org/cp/owl/observation.owl)
