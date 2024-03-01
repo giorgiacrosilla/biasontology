@@ -77,17 +77,34 @@ Acceptance Criteria:
 
 #### We can now derive example-based-CQs from the user story.
 
-1. What did go wrong at first?
+1. What is the first negative event happened while driving?
 
-Flat tire
+&#x20;        Flat tire
 
-2. Is this the only thing that went wrong, or afterwards something happened and made things even worse?
+```sparql
+select ?wrong where { 
+		murphy:Driving reaction:hasOutcome ?wrong }
+```
 
-When trying to call for assistance, phone battery died.
+2. What’s the consequences perceived after the first negative one?
 
-3. In the end the outcome for the main character is positive or negative?
+&#x20;       Everything goes wrong.
 
-Even though negative events happened subsequentially, the main character find some positive aspects in the overall experience and remembers this event not as a negative one.
+```sparql
+select ?consequence where {
+		murphy:CarNotWorking murphy:influences ?neg .
+		?neg reaction:hasConsequence ?consequence .}
+```
+
+3. What are the outcomes of the repairing actions undertaken by the protagonist?
+
+&#x20;       Following negative events.
+
+```sparql
+select ?event where {
+		murphy:RepairingActions reaction:precedes ?followingaction . 
+		?followingaction reaction:hasOutcome ?event . }
+```
 
 #### If you should make an ontology based of the "Murphy's Law" which classes and properties would you create?
 
