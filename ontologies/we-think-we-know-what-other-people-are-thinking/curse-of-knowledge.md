@@ -1,6 +1,8 @@
 # 🤓 Curse of knowledge
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl" %}
+[Curse Of Knowledge OWL](https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl)
+
 <figure><img src="../../uml/CurseOfKnowledge.jpg" alt=""><figcaption></figcaption></figure>
 
 
@@ -55,8 +57,9 @@ As a non-technical user seeking IT support, I encountered the curse of knowledge
 
 1. What is the event that involves the biased agent and that returns the biased outcome?&#x20;
 
-&#x20;       Event and Biased Outcome.&#x20;
-&#x20;       Phone Call and Technical terminology.&#x20;
+- &#x20;       Event and Biased Outcome.&#x20;
+  
+- &#x20;       Phone Call and Technical terminology.&#x20;
 
 ```sparql
 SELECT ?Event ?BiasedOutcome
@@ -68,7 +71,7 @@ WHERE {
 
 2. What is the topic the two agents are discussing?&#x20;
 
-&#x20;       Topic.&#x20;
+- &#x20;       Topic.&#x20;
 
 ```sparql
 SELECT ?Topic 
