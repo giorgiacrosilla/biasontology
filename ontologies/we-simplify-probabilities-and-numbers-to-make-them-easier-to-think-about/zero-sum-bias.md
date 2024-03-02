@@ -2,6 +2,8 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.ttl" %}
 
+[Zero Sum Bias OWL](https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ZeroSumBias.owl)
+
 <figure><img src="../../uml/giorgiabias-zerosum2.jpg" alt=""><figcaption></figcaption></figure>
 
 ### <mark style="color:red;">C</mark>ontext literature and state of the art
@@ -26,9 +28,9 @@ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3153800/ .
 
 ### <mark style="color:red;">L</mark>LM
 
-#### Can you give me a definition of "appeal to probability fallacy"?
+#### Can you give me a definition of "Zero Sum Bias"?
 
-The appeal to probability fallacy, also known as the argument from probability, occurs when someone argues that because something is likely to happen, it is therefore true or should be believed. This fallacy disregards evidence or logical reasoning and relies on the probability of an event occurring rather than on conclusive support. The mere likelihood of an outcome does not necessarily make it true, and conclusions drawn solely from probability without proper evidence can be misleading. In critical thinking and argumentation, it is essential to consider both the probability of an event and the available evidence to make a valid and well-supported conclusion.
+Zero-sum bias refers to a cognitive bias where individuals perceive a situation as a zero-sum game, believing that any gain by one participant must be balanced by an equivalent loss by another. In other words, people with this bias tend to see resources, opportunities, or outcomes as fixed and limited, assuming that any advantage or success obtained by one party comes at the direct expense of others. This perspective can lead to a competitive mindset, hindering cooperation and collaboration, as individuals may perceive the success of others as a threat to their own well-being. In reality, many situations are not strictly zero-sum, and collaborative efforts can create win-win outcomes. 
 
 #### Can you create 10 scenarios compelling with the bias?
 

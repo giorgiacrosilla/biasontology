@@ -2,6 +2,8 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.ttl" %}
 
+[Appeal To Probability OWL](https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl)
+
 <figure><img src="../../uml/giorgiabias-appealtoprobability2.jpg" alt=""><figcaption></figcaption></figure>
 
 ### <mark style="color:red;">C</mark>ontext literature and state of the art

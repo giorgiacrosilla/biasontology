@@ -342,7 +342,7 @@ normalcy:CovidNotApproaching rdf:type owl:NamedIndividual ,
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#CovidNotReal
 normalcy:CovidNotReal rdf:type owl:NamedIndividual ,
-                               normalcy:Awareness ;
+                               normalcy:InitialAwareness ;
                       rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#"@en ;
                       rdfs:label "covid not real"@en .
 

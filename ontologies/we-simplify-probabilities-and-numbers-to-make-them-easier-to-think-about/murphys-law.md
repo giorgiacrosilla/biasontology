@@ -2,6 +2,8 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MurphysLaw.ttl" %}
 
+[Murphy's Law OWL](https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MurphysLaw.owl)
+
 <figure><img src="../../uml/giorgiabias-murphy2.jpg" alt=""><figcaption></figcaption></figure>
 
 ### <mark style="color:red;">C</mark>ontext literature and state of the art

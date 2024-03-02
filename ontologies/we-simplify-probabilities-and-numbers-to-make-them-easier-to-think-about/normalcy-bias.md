@@ -2,6 +2,8 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.ttl" %}
 
+[Normalcy Bias OWL](https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl)
+
 <figure><img src="../../uml/giorgiabias-normalcybias2.jpg" alt=""><figcaption></figcaption></figure>
 
 According to the definition provided on Wikipedia: “Normalcy bias, or normality bias, is a cognitive bias which leads people to disbelieve or minimize threat warnings”. The bias is manifested in cases of incoming natural disasters or calamities caused by human error where it’s estimated that about 70% of the population tends to minimize threats and so to display this bias.
