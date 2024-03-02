@@ -1,0 +1,308 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix cp: <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> .
+@prefix dc: <http://purl.org/dc/elements/1.1/#> .
+@prefix to: <http://www.ontologydesignpatterns.org/cp/owl/topic.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix curseofknowledge: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl> rdf:type owl:Ontology ;
+                                                                                                <http://purl.org/dc/elements/1.1/creator> "Erica Andreose"@it ;
+                                                                                                <http://purl.org/dc/elements/1.1/title> "Curse Of Knowledge ontology bias"@en ;
+                                                                                                rdfs:label "Ontology for Curse of Knowledge bias"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+rdf:type rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#hasParticipant
+<http://www.ontologydesignpatterns.org/cp/owl/participation.owl#hasParticipant> rdf:type owl:ObjectProperty ;
+                                                                                owl:inverseOf <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn> ;
+                                                                                rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                                                                                rdfs:range [ rdf:type owl:Class ;
+                                                                                             owl:unionOf ( bias:BiasedAgent
+                                                                                                           bias:NonBiasedAgent
+                                                                                                         )
+                                                                                           ] ;
+                                                                                rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                                                                                rdfs:label "has participant"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn
+<http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn> rdf:type owl:ObjectProperty ;
+                                                                                 rdfs:domain [ rdf:type owl:Class ;
+                                                                                               owl:unionOf ( bias:BiasedAgent
+                                                                                                             bias:NonBiasedAgent
+                                                                                                           )
+                                                                                             ] ;
+                                                                                 rdfs:range <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                                                                                 rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                                                                                 rdfs:label "is participant in"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/topic.owl#hasTopic
+to:hasTopic rdf:type owl:ObjectProperty ;
+            owl:inverseOf to:isTopicOf ;
+            rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+            rdfs:range to:Topic ;
+            rdfs:comment """The relation between something and its Topic (subject, argument, domain, theme, subject area, etc.). It can be used widely to talk about document annotations, subject directories, etc.
+hasTopic is very general. For example, consider the following cases:
+(1) A biography of Brigitte Bardot hasTopic 'star system'
+(2) The concept of 'starlet' hasTopic 'cinema'
+(3) A biography of Claude Chabrol hasTopic 'Nouvelle Vague'.""" ;
+            rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/topic.owl> ;
+            rdfs:label "ha argomento"@it ,
+                       "ha argomento {it}" ,
+                       "has topic"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/topic.owl#isTopicOf
+to:isTopicOf rdf:type owl:ObjectProperty ;
+             rdfs:domain to:Topic ;
+             rdfs:range <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+             rdfs:comment """The relation between something and its Topic (subject, argument, domain, theme, subject area, etc.). It can be used widely to talk about document annotations, subject directories, etc.
+hasTopic is very general. For example, consider the following cases:
+(1) A biography of Brigitte Bardot hasTopic 'star system'
+(2) The concept of 'starlet' hasTopic 'cinema'
+(3) A biography of Claude Chabrol hasTopic 'Nouvelle Vague'.""" ;
+             rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/topic.owl> ;
+             rdfs:label "is topic of"@en ,
+                        "è argomento di"@it .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl#assumesKnowledge
+curseofknowledge:assumesKnowledge rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf curseofknowledge:hasAssumedKnowledge ;
+                                  rdfs:domain bias:BiasedAgent ;
+                                  rdfs:range <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl/BiasedOutcome> ;
+                                  rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl> ;
+                                  rdfs:label "assumesKnowledge"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl#hasAssumedKnowledge
+curseofknowledge:hasAssumedKnowledge rdf:type owl:ObjectProperty ;
+                                     rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl/BiasedOutcome> ;
+                                     rdfs:range bias:BiasedAgent .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl#hasExpertise
+curseofknowledge:hasExpertise rdf:type owl:ObjectProperty ;
+                              rdfs:domain bias:BiasedAgent ;
+                              rdfs:range to:Topic ;
+                              rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl> ;
+                              rdfs:label "hasExpertise"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl#hasNoExpertise
+curseofknowledge:hasNoExpertise rdf:type owl:ObjectProperty ;
+                                rdfs:domain bias:NonBiasedAgent ;
+                                rdfs:range to:Topic ;
+                                rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl> ;
+                                rdfs:label "hasNoExpertise"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl#hasOutcome
+curseofknowledge:hasOutcome rdf:type owl:ObjectProperty ;
+                            rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                            rdfs:range [ rdf:type owl:Class ;
+                                         owl:unionOf ( <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl/BiasedOutcome>
+                                                       <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl/NonBiasedOutcome>
+                                                     )
+                                       ] ;
+                            rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl> ;
+                            rdfs:label "hasOutcome"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl#hasPercievedKnowledge
+curseofknowledge:hasPercievedKnowledge rdf:type owl:ObjectProperty ;
+                                       owl:inverseOf curseofknowledge:percieveKnowledge ;
+                                       rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl/NonBiasedOutcome> ;
+                                       rdfs:range bias:NonBiasedAgent .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl#percieveKnowledge
+curseofknowledge:percieveKnowledge rdf:type owl:ObjectProperty ;
+                                   rdfs:domain bias:NonBiasedAgent ;
+                                   rdfs:range <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl/NonBiasedOutcome> ;
+                                   rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl> ;
+                                   rdfs:label "percieveKnowledge"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#isAffectedBy
+bias:isAffectedBy rdf:type owl:ObjectProperty ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl/BiasedOutcome>
+                                              bias:BiasedAgent
+                                            )
+                              ] ;
+                  rdfs:range bias:CognitiveBias ;
+                  rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl> ;
+                  rdfs:label "isAffectedBy" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event
+<http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> rdf:type owl:Class ,
+                                                                                <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                                                                       rdfs:comment "Any physical, social, or mental process, event, or state." ;
+                                                                       rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                                                                       rdfs:label "Event"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/topic.owl#Topic
+to:Topic rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+<http://xmlns.com/foaf/0.1/Agent> rdf:type owl:Class ;
+                                  rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+                                  rdfs:label "Agent" ;
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl/BiasedOutcome
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl/BiasedOutcome> rdf:type owl:Class ;
+                                                                                                             rdfs:comment "Outcome affected by the bias Curse of Knowledge"@en ;
+                                                                                                             rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl> ;
+                                                                                                             rdfs:label "BiasedOutcome"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl/NonBiasedOutcome
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl/NonBiasedOutcome> rdf:type owl:Class ;
+                                                                                                                rdfs:comment "Outcome not effected by the Curse of Knowledge bias"@en ;
+                                                                                                                rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl> ;
+                                                                                                                rdfs:label "NonBiasedOutcome"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent
+bias:BiasedAgent rdf:type owl:Class ;
+                 rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> ;
+                 rdfs:comment "Agent (foaf:Agent) effected by the bias Curse of Knowledge"@en ;
+                 rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl> ;
+                 rdfs:label "BiasedAgent"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias
+bias:CognitiveBias rdf:type owl:Class ;
+                   rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl> ;
+                   rdfs:label "CognitiveBias"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#NonBiasedAgent
+bias:NonBiasedAgent rdf:type owl:Class ;
+                    rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> ;
+                    rdfs:comment "Agent (foaf:Agent) not effected by the bias"@en ;
+                    rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl> ;
+                    rdfs:label "NonBiasedAgent"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl/CurseOfKnowledge
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl/CurseOfKnowledge> rdf:type owl:Class ;
+                                                                                                       rdfs:subClassOf bias:CognitiveBias ;
+                                                                                                       rdfs:comment "Cognitive bias that occurs when an individual, who is communicating with others, assumes that others have information that is only available to themselves, assuming they all share a background and understanding."@en ;
+                                                                                                       rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl> ;
+                                                                                                       rdfs:label "CurseOfKnowledge"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/cp/owl/topic.owl#Topic
+to:Topic rdf:type owl:NamedIndividual ,
+                  to:Topic ;
+         to:isTopicOf curseofknowledge:PhoneCall .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl#Bias
+curseofknowledge:Bias rdf:type owl:NamedIndividual ,
+                               <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl/CurseOfKnowledge> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl#ITTechnician
+curseofknowledge:ITTechnician rdf:type owl:NamedIndividual ,
+                                       bias:BiasedAgent ;
+                              <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn> curseofknowledge:PhoneCall ;
+                              curseofknowledge:assumesKnowledge curseofknowledge:TechExplanation ;
+                              curseofknowledge:hasExpertise to:Topic ;
+                              bias:isAffectedBy curseofknowledge:Bias .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl#Misunderstanding
+curseofknowledge:Misunderstanding rdf:type owl:NamedIndividual ,
+                                           <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl/NonBiasedOutcome> ;
+                                  curseofknowledge:hasPercievedKnowledge curseofknowledge:User .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl#PhoneCall
+curseofknowledge:PhoneCall rdf:type owl:NamedIndividual ,
+                                    <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                           <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#hasParticipant> curseofknowledge:ITTechnician ,
+                                                                                                           curseofknowledge:User ;
+                           to:hasTopic to:Topic ;
+                           curseofknowledge:hasOutcome curseofknowledge:Misunderstanding ,
+                                                       curseofknowledge:TechExplanation .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl#TechExplanation
+curseofknowledge:TechExplanation rdf:type owl:NamedIndividual ,
+                                          <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl/BiasedOutcome> ;
+                                 curseofknowledge:hasAssumedKnowledge curseofknowledge:ITTechnician .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl#User
+curseofknowledge:User rdf:type owl:NamedIndividual ,
+                               bias:NonBiasedAgent ;
+                      <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn> curseofknowledge:PhoneCall ;
+                      curseofknowledge:hasNoExpertise to:Topic ;
+                      curseofknowledge:percieveKnowledge curseofknowledge:Misunderstanding .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+to:Topic rdfs:comment """A topic, or subject, argument, domain, theme, subject area, etc.
+Topics have a controversial intuition across common sense, document management systems, knowledge organization systems, etc.
+
+There is an interesting duality of topics: they are commonly interpreted as areas of shared knowledge within a Community (therefore as collections of social objects). On the other hand, existing directories and thesauri use 'topic' (or 'subject') more restrictively, as a relation between a document and a concept. 
+
+For example, thesauri do not usually distinguish when their 'concepts' (cf. skos:Concept) are actually intended as concepts (in the sense of Concept in this pattern) and when they are intended as topics. The distinction is clear when you compare these two sample sentences: 'the football topic is part of the sport topic' vs. 'the concept of football is part of the concept of sport'. 
+While the first is perfectly acceptable, the second is counterintuitive and even possibly wrong. This effect is due to the fact that concepts are 'intensional' notions and are not intended as areas of knowledge, document spaces, etc., which are 'extensional' notions.
+
+Accordingly to these basic observations, in this pattern Concept and Topic result to be disjoint, and an appropriate representation should be in place in order to model thesauri. E.g. skos:Concept should be mapped to the union of Concept and Topic.""" ;
+         rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/topic.owl> ;
+         rdfs:label "Argomento"@it ,
+                    "Topic"@en .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

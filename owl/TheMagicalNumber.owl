@@ -1,0 +1,311 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/#> .
+@prefix fr: <https://w3id.org/framester/data/framestercore#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix reaction: <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl#> .
+@prefix parameter: <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#> .
+@prefix magicalnumber: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> rdf:type owl:Ontology ;
+                                                                                                <http://purl.org/dc/elements/1.1/creator> "Erica Andreose" ;
+                                                                                                <http://purl.org/dc/elements/1.1/title> "Magical Number 7+-2 bias ontology"@en ;
+                                                                                                rdfs:comment "Magical Numbero 7+-2 bias ontology" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter
+parameter:hasParameter rdf:type owl:ObjectProperty ;
+                       rdfs:domain magicalnumber:InformationItem ;
+                       rdfs:range parameter:Parameter ;
+                       rdfs:comment "A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16." ;
+                       rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
+                       rdfs:label "ha parametro"@it ,
+                                  "has parameter"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/reaction.owl#hasConsequence
+reaction:hasConsequence rdf:type owl:ObjectProperty ;
+                        rdfs:domain reaction:Action ;
+                        rdfs:range <https://w3id.org/framester/data/framestercore/SuccessOrFailure> ;
+                        rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl/> ;
+                        rdfs:label "hasConsequence"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/reaction.owl#isPerformedBy
+reaction:isPerformedBy rdf:type owl:ObjectProperty ;
+                       owl:inverseOf reaction:performs ;
+                       rdfs:domain reaction:Action ;
+                       rdfs:range bias:BiasedAgent ;
+                       rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl> ;
+                       rdfs:label "is performed by"@en ,
+                                  "è eseguita da"@it .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/reaction.owl#performs
+reaction:performs rdf:type owl:ObjectProperty ;
+                  rdfs:domain bias:BiasedAgent ;
+                  rdfs:range reaction:Action ;
+                  rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl> ;
+                  rdfs:label "esegue"@it ,
+                             "performs"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#isAffectedBy
+bias:isAffectedBy rdf:type owl:ObjectProperty ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( bias:BiasedAgent
+                                              <https://w3id.org/framester/data/framestercore/SuccessOrFailure>
+                                            )
+                              ] ;
+                  rdfs:range bias:CognitiveBias ;
+                  rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl> ;
+                  rdfs:label "isAffectedBy"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#areIncludedIn
+magicalnumber:areIncludedIn rdf:type owl:ObjectProperty ;
+                            owl:inverseOf magicalnumber:include ;
+                            rdfs:domain magicalnumber:InformationItem ;
+                            rdfs:range reaction:Action ;
+                            rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
+                            rdfs:label "areIncludedIn"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#hasCognitiveCapacity
+magicalnumber:hasCognitiveCapacity rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf magicalnumber:isCognitiveCapacityOf ;
+                                   rdfs:domain bias:BiasedAgent ;
+                                   rdfs:range magicalnumber:CognitiveCapacity ;
+                                   rdfs:comment "Cognitive Capacity represents the storage memory capacity of the agent."@en ;
+                                   rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
+                                   rdfs:label "hasCognitiveCapacity"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#include
+magicalnumber:include rdf:type owl:ObjectProperty ;
+                      rdfs:domain reaction:Action ;
+                      rdfs:range magicalnumber:InformationItem ;
+                      rdfs:comment "The \"memorization\" action of the Agent includes several information items."@en ;
+                      rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
+                      rdfs:label "include"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#isCognitiveCapacityOf
+magicalnumber:isCognitiveCapacityOf rdf:type owl:ObjectProperty ;
+                                    rdfs:domain magicalnumber:CognitiveCapacity ;
+                                    rdfs:range bias:BiasedAgent .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#toBeStored
+magicalnumber:toBeStored rdf:type owl:ObjectProperty ;
+                         rdfs:domain magicalnumber:InformationItem ;
+                         rdfs:range magicalnumber:CognitiveCapacity ;
+                         rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
+                         rdfs:label "toBeStored"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#wantsToRemember
+magicalnumber:wantsToRemember rdf:type owl:ObjectProperty ;
+                              rdfs:domain bias:BiasedAgent ;
+                              rdfs:range magicalnumber:InformationItem ;
+                              rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
+                              rdfs:label "wantsToRemember"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue
+parameter:hasParameterDataValue rdf:type owl:DatatypeProperty ;
+                                rdfs:domain parameter:Parameter ;
+                                rdfs:range xsd:boolean ,
+                                           xsd:int ;
+                                rdfs:comment """Parametrizes values from a datatype. For example, a Parameter AgeForDriving hasParameterDataValue 18 on datatype xsd:int, in the Italian traffic code. In this example, AgeForDriving isDefinedIn the Norm ItalianTrafficCodeAgeDriving.
+More complex parametrization requires workarounds. E.g. AgeRangeForDrugUsage could parametrize data value: 14 to 50 on the datatype: xsd:int. Since complex datatypes are not allowed in OWL1.0, a solution to this can only work by creating two 'sub-parameters': MinimumAgeRangeForDrugUsage (that hasParameterDataValue 14) and MaximumAgeRangeForDrugUsage (that hasParameterDataValue 50), which are components of the main Parameter AgeRangeForDrugUsage.
+Ordering on subparameters can be created by using or specializing the object property 'precedes'.""" ;
+                                rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
+                                rdfs:label "ha valore"@it ,
+                                           "has parameter data value"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter
+parameter:Parameter rdf:type owl:Class ;
+                    rdfs:comment """A Concept that classifies something having a certain value, e.g. 'High' can be said of people taller than 185 cm.
+However, in order to formally represent this constraint, we need to add an anonymous type to a parameter instance, using a property that convey the semantics of the parameter, e.g.:
+High rdf:type Person and (some hasHeight (Height and (oneOf isTallerThan 185) and (oneOf hasUnitOfMeasure centimeter)))""" ;
+                    rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
+                    rdfs:label "Parameter"@en ,
+                               "Parametro"@it .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/reaction.owl#Action
+reaction:Action rdf:type owl:Class ;
+                rdfs:comment "Action can produce more than a single event. Mutiple events can share the same position in the sequence."@en ;
+                rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl> ;
+                rdfs:label "Action"@en ,
+                           "Azione"@it .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+<http://xmlns.com/foaf/0.1/Agent> rdf:type owl:Class ;
+                                  rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+                                  rdfs:label "Agent" ;
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent
+bias:BiasedAgent rdf:type owl:Class ;
+                 rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> ;
+                 rdfs:comment "Agent (foaf:Agent) who is effected by the bias."@en ;
+                 rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl> ;
+                 rdfs:label "BiasedAgent"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias
+bias:CognitiveBias rdf:type owl:Class ;
+                   rdfs:comment "Cognitive bias" ;
+                   rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl> ;
+                   rdfs:label "CognitiveBias"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#TheMagicalNumber
+bias:TheMagicalNumber rdf:type owl:Class ;
+                      rdfs:subClassOf bias:CognitiveBias ;
+                      rdfs:comment "\"The Magical Number Seven, Plus or Minus Two: Some Limits on Our Capacity for Processing Information\"[1] is one of the most highly cited papers in psychology.[2][3][4] It was written by the cognitive psychologist George A. Miller of Harvard University's Department of Psychology and published in 1956 in Psychological Review. It is often interpreted to argue that the number of objects an average human can hold in short-term memory is 7 ± 2. This has occasionally been referred to as Miller's law."@en ;
+                      rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl> ;
+                      rdfs:label "TheMagicalNumber"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#CognitiveCapacity
+magicalnumber:CognitiveCapacity rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#InformationItem
+magicalnumber:InformationItem rdf:type owl:Class ;
+                              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                owl:onProperty parameter:hasParameter ;
+                                                owl:minQualifiedCardinality "5"^^xsd:nonNegativeInteger ;
+                                                owl:onClass parameter:Parameter
+                                              ] ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty parameter:hasParameter ;
+                                                owl:maxQualifiedCardinality "9"^^xsd:nonNegativeInteger ;
+                                                owl:onClass parameter:Parameter
+                                              ] ;
+                              rdfs:comment "Information Item that the Agent wants to memorize."@en ;
+                              rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
+                              rdfs:label "InformationItem"@en .
+
+
+###  https://w3id.org/framester/data/framestercore/SuccessOrFailure
+<https://w3id.org/framester/data/framestercore/SuccessOrFailure> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty parameter:hasParameterDataValue ;
+                                                                                   owl:allValuesFrom xsd:boolean
+                                                                                 ] ;
+                                                                 rdfs:comment "Output of the action that returns a successfull on an unsuccessfull memorization action."@en ;
+                                                                 rdfs:isDefinedBy <https://w3id.org/framester/data/framestercore/SuccessOrFailure> ;
+                                                                 rdfs:label "SuccessOrFailure"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#BusyParent
+magicalnumber:BusyParent rdf:type owl:NamedIndividual ,
+                                  bias:BiasedAgent ;
+                         reaction:performs magicalnumber:CreateShoppingList ;
+                         bias:isAffectedBy magicalnumber:MagicalNumberBias ;
+                         magicalnumber:hasCognitiveCapacity magicalnumber:CognitiveCapacity ;
+                         magicalnumber:wantsToRemember magicalnumber:ListItem ;
+                         rdfs:comment "A busy parent wants to make a shopping list."@en ;
+                         rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
+                         rdfs:label "BusyParent" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#CognitiveCapacity
+magicalnumber:CognitiveCapacity rdf:type owl:NamedIndividual ,
+                                         magicalnumber:CognitiveCapacity ;
+                                magicalnumber:isCognitiveCapacityOf magicalnumber:BusyParent .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#CreateShoppingList
+magicalnumber:CreateShoppingList rdf:type owl:NamedIndividual ,
+                                          reaction:Action ;
+                                 reaction:hasConsequence magicalnumber:MemorizeOrNot ;
+                                 reaction:isPerformedBy magicalnumber:BusyParent ;
+                                 rdfs:comment "A shopping list to help the busy parent to go to the supermarket."@en ;
+                                 rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
+                                 rdfs:label "CreateShoppingList" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#ListItem
+magicalnumber:ListItem rdf:type owl:NamedIndividual ,
+                                magicalnumber:InformationItem ;
+                       parameter:hasParameter magicalnumber:TotalListItems ;
+                       rdfs:comment "List item of the shopping list."@en ;
+                       rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
+                       rdfs:label "ListItem" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#MagicalNumberBias
+magicalnumber:MagicalNumberBias rdf:type owl:NamedIndividual ,
+                                         bias:CognitiveBias ;
+                                rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
+                                rdfs:label "MagicalNumberBias" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#MemorizeOrNot
+magicalnumber:MemorizeOrNot rdf:type owl:NamedIndividual ,
+                                     <https://w3id.org/framester/data/framestercore/SuccessOrFailure> ;
+                            rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
+                            rdfs:label "MemorizeOrNot" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#TotalListItems
+magicalnumber:TotalListItems rdf:type owl:NamedIndividual ,
+                                      parameter:Parameter ;
+                             rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
+                             rdfs:label "TotalListItems" .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+magicalnumber:CognitiveCapacity rdfs:comment "Cognitive capacity that represent the memory capacity."@en ;
+                                rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
+                                rdfs:label "CognitiveCapacity"@en .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
