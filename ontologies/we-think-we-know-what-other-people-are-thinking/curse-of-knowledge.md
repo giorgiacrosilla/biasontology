@@ -79,8 +79,9 @@ WHERE {
 
 3. Which agent is not influenced by the bias and what does he/she/it perceive as the outcome of the conversation?&#x20;
 
-&#x20;       Non Biased Agent and Non Biased Outcome.&#x20;
-&#x20;       User and Misunderstanding.&#x20;
+- &#x20;       Non Biased Agent and Non Biased Outcome.&#x20;
+
+- &#x20;       User and Misunderstanding.&#x20;
 
 ```sparql
 SELECT ?NonBiasedAgent ?NonBiasedOutcome 
