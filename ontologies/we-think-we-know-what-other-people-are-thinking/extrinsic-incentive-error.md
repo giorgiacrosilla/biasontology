@@ -16,7 +16,7 @@ References:
 
 {% embed url="https://thedecisionlab.com/biases/extrinsic-incentive-bias" %}
 
-{% embed url="hhttps://en.wikipedia.org/wiki/Extrinsic_incentives_bias" %}
+{% embed url="https://en.wikipedia.org/wiki/Extrinsic_incentives_bias" %}
 
 {% embed url="https://link.springer.com/article/10.1007/s11031-022-09996-5" %}
 
