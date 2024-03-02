@@ -1,8 +1,10 @@
 # 🤓 Illusion of transparency
 
-{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/appealtoprobability.ttl" %}
+{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfTransparency.owl" %}
 
-<figure><img src="giorgiabias-appealtoprobability2.drawio.png" alt=""><figcaption></figcaption></figure>
+[Illusion Of Transparency OWL](https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfTransparency.owl)
+
+<figure><img src="../../uml/IllusionOfTransparency.owl" alt=""><figcaption></figcaption></figure>
 
 
 ***
@@ -29,25 +31,25 @@ The illusion of transparency bias is a cognitive phenomenon that highlights the 
 
 #### Can you create 10 scenarios compelling with the bias?
 
-*1*Job Interview Nervousness: Someone may feel extremely anxious during a job interview, assuming that their nervousness is apparent to the interviewer, even though the interviewer might not notice it as much. 
+*1.* Job Interview Nervousness: Someone may feel extremely anxious during a job interview, assuming that their nervousness is apparent to the interviewer, even though the interviewer might not notice it as much. 
 
-*2*Public Speaking Anxiety: A person giving a presentation might believe that their nervousness or self-doubt is evident to the audience, while the audience may not perceive these emotions as strongly. 
+*2.* Public Speaking Anxiety: A person giving a presentation might believe that their nervousness or self-doubt is evident to the audience, while the audience may not perceive these emotions as strongly. 
 
-*3*Romantic Confession: A person confessing their feelings to someone might believe that their romantic interest is clearly visible, whereas the other person may not pick up on these cues. 
+*3.* Romantic Confession: A person confessing their feelings to someone might believe that their romantic interest is clearly visible, whereas the other person may not pick up on these cues. 
 
-*4*Negotiation Stress: During a negotiation, one party might think their desperation or urgency is apparent to the other side, while the other party may not accurately interpret these internal feelings. 
+*4.* Negotiation Stress: During a negotiation, one party might think their desperation or urgency is apparent to the other side, while the other party may not accurately interpret these internal feelings. 
 
-*5*Embarrassment in a Social Setting: When someone is embarrassed in a social situation, they may assume that everyone around them notices and judges their embarrassment, though others might not be as aware. 
+*5.* Embarrassment in a Social Setting: When someone is embarrassed in a social situation, they may assume that everyone around them notices and judges their embarrassment, though others might not be as aware. 
 
-*6*Exam Stress: Students might feel overwhelmed during an exam, thinking that their stress is visible to their peers, even though others may be absorbed in their own concerns. 
+*6.* Exam Stress: Students might feel overwhelmed during an exam, thinking that their stress is visible to their peers, even though others may be absorbed in their own concerns. 
 
-*7*Hidden Disagreements in a Group Discussion: A team member may believe that their disagreement with a group decision is apparent to everyone, while others may not perceive the dissenting viewpoint. 
+*7.* Hidden Disagreements in a Group Discussion: A team member may believe that their disagreement with a group decision is apparent to everyone, while others may not perceive the dissenting viewpoint. 
 
-*8*Personal Insecurities in a Relationship: Individuals in a relationship may think that their insecurities are transparent to their partner, even if the partner is not fully aware of these internal struggles. 
+*8.* Personal Insecurities in a Relationship: Individuals in a relationship may think that their insecurities are transparent to their partner, even if the partner is not fully aware of these internal struggles. 
 
-*9*Workplace Frustration: Someone dealing with frustration at work may believe their dissatisfaction is obvious to colleagues, even if others are not picking up on these emotions. 
+*9.* Workplace Frustration: Someone dealing with frustration at work may believe their dissatisfaction is obvious to colleagues, even if others are not picking up on these emotions. 
 
-*10*Misinterpreted Facial Expressions: A person might believe that their facial expressions accurately convey their emotions, while others may misinterpret the expressions or not notice them at all. 
+*10.* Misinterpreted Facial Expressions: A person might believe that their facial expressions accurately convey their emotions, while others may misinterpret the expressions or not notice them at all. 
 
 
 #### Now consider the scenario "Romantic Confession" and give me a short user story from it.
@@ -60,48 +62,56 @@ As Sarah navigates through the daily interactions with her friend, Alex, she can
 
 1. Who are the two agents involved in the event?&#x20;
 
-&#x20;       Biased Agent and Non Biased Agent.&#x20;
+- &#x20;       Biased Agent and Non Biased Agent.&#x20;
+- 
+- &#x20;       Sarah and Alex.&#x20;
 
 ```sparql
 
 SELECT ?BiasedAgent ?NonBiasedAgent
 WHERE {
-    ?NonBiasedAgent cp:isParticipantIn illusionoftransp:RomanticConfession .
-    ?NonBiasedAgent illusionoftransp:doNotPercieve illusionoftransp:Feeling .
-    ?BiasedAgent cp:isParticipantIn illusionoftransp:RomanticConfession .
-    ?BiasedAgent illusionoftransp:hasInternalState illusionoftransp:Feeling .
+    ?NonBiasedAgent cp:isParticipantIn ?Event .
+    ?Event a cp:Event .
+    ?NonBiasedAgent illusionoftransp:doNotPercieve ?Feeling .
+    ?BiasedAgent cp:isParticipantIn ?Event .
+    ?BiasedAgent illusionoftransp:hasInternalState ?Feeling . 
 }
 ```
 
 2. What event triggers the bias and what topic is it about?&#x20;
 
-&#x20;       Event and Topic.&#x20;
+- &#x20;       Event and Topic.&#x20;
+
+- &#x20;       Romantic Confession and Feeling.&#x20;
 
 ```sparql
 SELECT ?Topic ?Event
 WHERE {
-    ?Event illusionoftransp:hasOutcome illusionoftransp:Relationship .
+    ?Event illusionoftransp:hasOutcome ?BiasedOutcome .
+    ?BiasedOutcome a illusionoftransp:BiasedOutcome .
     ?Topic to:isTopicOf ?Event .
 }
 ```
 
 3. Which agent is not influenced by the bias and what does he/she/it perceive as the outcome of the event?&#x20;
 
-&#x20;       Non Biased Agent and Non Biased Outcome.&#x20;
+- &#x20;       Non Biased Agent and Non Biased Outcome.&#x20;
+
+- &#x20;       Alex and Misunderstanding.&#x20;
 
 ```sparql
 SELECT ?NonBiasedAgent ?NonBiasedOutcome
 WHERE {
-    ?NonBiasedAgent illusionoftransp:doNotPercieve illusionoftransp:Feeling .
+    ?NonBiasedAgent illusionoftransp:doNotPercieve ?Feeling .
     ?NonBiasedOutcome illusionoftransp:isPerceptionOf ?NonBiasedAgent . 
-}
+}}
 ```
 
 #### If you should make an ontology based of the "Illusion of transparency" which classes and properties would you create?
 
 #Classes: 
 
-Individual: 
+- Individual: 
 
 Represents a person experiencing the illusion of transparency bias. 
 
@@ -109,11 +119,11 @@ InternalState:
 
 Represents the internal thoughts, feelings, and emotions of an individual. 
 
-Observer: 
+- Observer: 
 
 Represents another person or entity observing the individual. 
 
-#Properties: 
+Properties: 
 
 hasIllusionOfTransparencyBias: 
 
@@ -161,16 +171,17 @@ Represents a visible cue, like shaky voice or flushed face, contributing to the 
 ### Framester Frames used:
 
 *
-[Feeling](https://w3id.org/framester/data/framestercore/Feeling)
-<!---->
+- [Feeling](https://w3id.org/framester/data/framestercore/Feeling)
+
 
 * 
 
 ### ODP used:
 
 
-[Topic](http://ontologydesignpatterns.org/wiki/Submissions:Topic)
-[Co-partecipation](http://ontologydesignpatterns.org/wiki/Submissions:Co-participation)]
+- [Topic](http://ontologydesignpatterns.org/wiki/Submissions:Topic)
+- 
+- [Co-partecipation](http://ontologydesignpatterns.org/wiki/Submissions:Co-participation)]
 
 
 
