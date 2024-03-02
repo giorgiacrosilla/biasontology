@@ -167,6 +167,24 @@ High rdf:type Person and (some hasHeight (Height and (oneOf isTallerThan 185) an
                                "Parametro"@it .
 
 
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#ParameterBoolean
+parameter:ParameterBoolean rdf:type owl:Class ;
+                           rdfs:subClassOf parameter:Parameter ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty parameter:hasParameterDataValue ;
+                                             owl:allValuesFrom xsd:boolean
+                                           ] .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#ParameterInt
+parameter:ParameterInt rdf:type owl:Class ;
+                       rdfs:subClassOf parameter:Parameter ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty parameter:hasParameterDataValue ;
+                                         owl:allValuesFrom xsd:int
+                                       ] .
+
+
 ###  http://www.ontologydesignpatterns.org/cp/owl/reaction.owl#Action
 reaction:Action rdf:type owl:Class ;
                 rdfs:comment "Action can produce more than a single event. Mutiple events can share the same position in the sequence."@en ;
