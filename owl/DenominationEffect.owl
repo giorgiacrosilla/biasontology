@@ -1,0 +1,255 @@
+@prefix : <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix fr: <https://w3id.org/framester/data/framestercore/> .
+@prefix 0.1: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix frapo: <http://purl.org/cerif/frapo/> .
+@prefix frsyn: <https://w3id.org/framester/data/framestersyn/> .
+@prefix sequence: <http://ontologydesignpatterns.org/cp/owl/sequence.owl#> .
+@prefix participation: <http://ontologydesignpatterns.org/cp/owl/participation.owl#> .
+@prefix denominationeffect: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#> .
+@base <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#> .
+
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl> rdf:type owl:Ontology ;
+                                                                                                  owl:imports <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ,
+                                                                                                              <http://www.ontologydesignpatterns.org/cp/owl/sequence.owl> ;
+                                                                                                  dc:creator "Chiara Parravicini" ;
+                                                                                                  dc:title "Denomination Effect Bias ontology" ;
+                                                                                                  rdfs:comment "Denomination Effect Bias ontology" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#isCloneOf
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#isCloneOf> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://dbpedia.org/ontology/influencedBy
+<http://dbpedia.org/ontology/influencedBy> rdf:type owl:ObjectProperty ;
+                                           rdfs:domain frsyn:Spending.n.1 ;
+                                           rdfs:range denominationeffect:PsychologicalValue .
+
+
+###  http://purl.org/cerif/frapo/hasCurrency
+frapo:hasCurrency rdf:type owl:ObjectProperty ;
+                  rdfs:domain bias:BiasedAgent ;
+                  rdfs:range denominationeffect:Denomination .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#follows
+<http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#follows> rdfs:domain frsyn:Save.v.9 ;
+                                                                    rdfs:range frsyn:Spending.n.1 .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#precedes
+<http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#precedes> rdfs:domain frsyn:Spending.n.1 ;
+                                                                     rdfs:range frsyn:Save.v.9 .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#hasOutcome
+denominationeffect:hasOutcome rdf:type owl:ObjectProperty ;
+                              rdfs:domain frsyn:Save.v.9 ;
+                              rdfs:range frsyn:Behavior.n.1 .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#isSaved
+denominationeffect:isSaved rdf:type owl:ObjectProperty ;
+                           rdfs:domain denominationeffect:LagerDenomination ;
+                           rdfs:range frsyn:Save.v.9 .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#isSpent
+denominationeffect:isSpent rdf:type owl:ObjectProperty ;
+                           rdfs:domain denominationeffect:SmallerDenomination ;
+                           rdfs:range frsyn:Spending.n.1 .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl/hasPsychologicalValue
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl/hasPsychologicalValue> rdf:type owl:ObjectProperty ;
+                                                                                                                       rdfs:domain denominationeffect:Denomination ;
+                                                                                                                       rdfs:range denominationeffect:PsychologicalValue .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#isAffectedBy
+bias:isAffectedBy rdf:type owl:ObjectProperty ;
+                  rdfs:domain bias:BiasedAgent ;
+                  rdfs:range bias:CognitiveBias .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl/hasLevel
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl/hasLevel> rdf:type owl:DatatypeProperty ;
+                                                                                                          rdfs:domain denominationeffect:PsychologicalValue ;
+                                                                                                          rdfs:range rdfs:Literal .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/dc/terms/Agent
+<http://purl.org/dc/terms/Agent> rdf:type owl:Class ;
+                                 owl:equivalentClass 0.1:Agent .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#Agent
+<http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#Agent> rdf:type owl:Class ;
+                                                                   owl:equivalentClass bias:BiasedAgent ;
+                                                                   <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#isCloneOf> "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent" ;
+                                                                   rdfs:comment "Any agentive Object , either physical, or social." ;
+                                                                   rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl> ;
+                                                                   rdfs:label "Agent"@en ,
+                                                                              "Agente"@it .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object
+<http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object> owl:equivalentClass bias:BiasedAgent .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+0.1:Agent rdf:type owl:Class ;
+          rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+          rdfs:label "Agent" ;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#Denomination
+denominationeffect:Denomination rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#LagerDenomination
+denominationeffect:LagerDenomination rdf:type owl:Class ;
+                                     rdfs:subClassOf denominationeffect:Denomination .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#PsychologicalValue
+denominationeffect:PsychologicalValue rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#SmallerDenomination
+denominationeffect:SmallerDenomination rdf:type owl:Class ;
+                                       rdfs:subClassOf denominationeffect:Denomination .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent
+bias:BiasedAgent rdf:type owl:Class ;
+                 rdfs:subClassOf 0.1:Agent .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias
+bias:CognitiveBias rdf:type owl:Class ;
+                   rdfs:isDefinedBy <http://www.semanticweb.org/bias/> ;
+                   rdfs:label "CognitiveBias" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#DenominationEffect
+bias:DenominationEffect rdf:type owl:Class ;
+                        rdfs:subClassOf bias:CognitiveBias .
+
+
+###  https://w3id.org/framester/data/framestersyn/Behavior.n.1
+frsyn:Behavior.n.1 rdf:type owl:Class ;
+                   rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> .
+
+
+###  https://w3id.org/framester/data/framestersyn/Save.v.9
+frsyn:Save.v.9 rdf:type owl:Class ;
+               rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> .
+
+
+###  https://w3id.org/framester/data/framestersyn/Spending.n.1
+frsyn:Spending.n.1 rdf:type owl:Class ;
+                   rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#BiasedSpendingBehavior
+denominationeffect:BiasedSpendingBehavior rdf:type owl:NamedIndividual ,
+                                                   frsyn:Behavior.n.1 .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#DenominationEffectBias
+denominationeffect:DenominationEffectBias rdf:type owl:NamedIndividual ,
+                                                   bias:DenominationEffect .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#Emma
+denominationeffect:Emma rdf:type owl:NamedIndividual ,
+                                 bias:BiasedAgent ;
+                        frapo:hasCurrency <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#1DollarBill> ,
+                                          <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#50DollarsBill> ;
+                        <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn> denominationeffect:Spending1DollarBill ;
+                        bias:isAffectedBy denominationeffect:DenominationEffectBias .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#Saving50DollarBill
+denominationeffect:Saving50DollarBill rdf:type owl:NamedIndividual ,
+                                               frsyn:Save.v.9 ;
+                                      owl:differentFrom denominationeffect:Spending1DollarBill ;
+                                      <http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#follows> denominationeffect:Spending1DollarBill ;
+                                      denominationeffect:hasOutcome denominationeffect:BiasedSpendingBehavior .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#Spending1DollarBill
+denominationeffect:Spending1DollarBill rdf:type owl:NamedIndividual ,
+                                                frsyn:Spending.n.1 ;
+                                       <http://dbpedia.org/ontology/influencedBy> <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#1BillPsychologicalValue> ;
+                                       <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#hasParticipant> denominationeffect:Emma ;
+                                       <http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#precedes> denominationeffect:Saving50DollarBill .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#1BillPsychologicalValue
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#1BillPsychologicalValue> rdf:type owl:NamedIndividual ,
+                                                                                                                                  denominationeffect:PsychologicalValue ;
+                                                                                                                         <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl/hasLevel> "low"^^rdfs:Literal .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#1DollarBill
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#1DollarBill> rdf:type owl:NamedIndividual ,
+                                                                                                                      denominationeffect:SmallerDenomination ;
+                                                                                                             denominationeffect:isSpent denominationeffect:Spending1DollarBill ;
+                                                                                                             <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl/hasPsychologicalValue> <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#1BillPsychologicalValue> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#50BillPsychologicalValue
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#50BillPsychologicalValue> rdf:type owl:NamedIndividual ,
+                                                                                                                                   denominationeffect:PsychologicalValue ;
+                                                                                                                          <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl/hasLevel> "high"^^rdfs:Literal .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#50DollarsBill
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#50DollarsBill> rdf:type owl:NamedIndividual ,
+                                                                                                                        denominationeffect:LagerDenomination ;
+                                                                                                               denominationeffect:isSaved denominationeffect:Saving50DollarBill ;
+                                                                                                               <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl/hasPsychologicalValue> <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#50BillPsychologicalValue> .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
