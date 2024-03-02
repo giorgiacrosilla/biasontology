@@ -1,4 +1,4 @@
-@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix : <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SpotlightEffect.owl#> .
 @prefix cp: <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/#> .
 @prefix fr: <https://w3id.org/framester/data/framestercore#> .
@@ -10,13 +10,23 @@
 @prefix bias: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix spotlighteffect: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SpotlightEffect.owl#> .
-@base <http://www.w3.org/2002/07/owl#> .
+@base <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SpotlightEffect.owl#> .
 
-<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SpotlightEffect.owl> rdf:type owl:Ontology .
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SpotlightEffect.owl> rdf:type owl:Ontology ;
+                                                                                               <http://purl.org/dc/elements/1.1/creator> "Erica Andreose"@en ;
+                                                                                               <http://purl.org/dc/elements/1.1/title> "Spotlight effect bias ontology" .
 
 #################################################################
 #    Annotation properties
 #################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
 
 ###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .

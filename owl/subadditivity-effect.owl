@@ -49,13 +49,13 @@ collection:isMemberOf rdf:type owl:ObjectProperty .
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/componency.owl#hasComponent
 componency:hasComponent rdfs:domain subadditivityeffect:SumOfPartsEstimation ;
-                        rdfs:range componency:OWLClassImpl_8cd1f577_f55e_4949_aa3e_5b471c089763 ,
+                        rdfs:range componency:Object ,
                                    subadditivityeffect:WholeEstimation .
 
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/componency.owl#isComponentOf
-componency:isComponentOf rdfs:domain componency:OWLClassImpl_8cd1f577_f55e_4949_aa3e_5b471c089763 ;
-                         rdfs:range componency:OWLClassImpl_8cd1f577_f55e_4949_aa3e_5b471c089763 .
+componency:isComponentOf rdfs:domain componency:Object ;
+                         rdfs:range componency:Object .
 
 
 ###  http://www.semanticweb.org/bias/General/isAffectedBy
@@ -164,7 +164,7 @@ subadditivityeffect:Estimation rdf:type owl:Class ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Part
 subadditivityeffect:Part rdf:type owl:Class ;
-                         rdfs:subClassOf componency:OWLClassImpl_8cd1f577_f55e_4949_aa3e_5b471c089763 ,
+                         rdfs:subClassOf componency:Object ,
                                          [ rdf:type owl:Restriction ;
                                            owl:onProperty collection:isMemberOf ;
                                            owl:allValuesFrom subadditivityeffect:SumOfParts
@@ -250,7 +250,7 @@ subadditivityeffect:SumOfPartsEstimation rdf:type owl:Class ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Whole
 subadditivityeffect:Whole rdf:type owl:Class ;
-                          rdfs:subClassOf componency:OWLClassImpl_8cd1f577_f55e_4949_aa3e_5b471c089763 ,
+                          rdfs:subClassOf componency:Object ,
                                           [ rdf:type owl:Restriction ;
                                             owl:onProperty componency:hasComponent ;
                                             owl:allValuesFrom subadditivityeffect:Part
@@ -259,9 +259,9 @@ subadditivityeffect:Whole rdf:type owl:Class ;
                                             owl:onProperty subadditivityeffect:hasEffect ;
                                             owl:allValuesFrom subadditivityeffect:WholeEffect
                                           ] ;
+                          rdfs:comment "An object composed by different parts." ;
                           rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#" ;
-                          rdfs:label "An object composed by different parts." ,
-                                     "Whole" .
+                          rdfs:label "Whole" .
 
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#WholeEffect
