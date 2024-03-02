@@ -1,8 +1,10 @@
 # 7️⃣ The magical number 7+-2
 
-{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/appealtoprobability.ttl" %}
+{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl" %}
 
-<figure><img src="broken-reference" alt=""><figcaption></figcaption></figure>
+[The Magical Number OWL](https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl)
+
+<figure><img src="../../uml/TheMagicalNumber.jpg"><figcaption></figcaption></figure>
 
 ***
 
@@ -54,23 +56,23 @@ As a busy parent, I want to create a shopping list for groceries so that I can e
 
 \#Classes:
 
-CognitiveCapacity: Represents the cognitive capacity of an individual's short-term memory.
+-CognitiveCapacity: Represents the cognitive capacity of an individual's short-term memory.
 
-InformationItem: Represents individual pieces of information to be stored in short-term memory.
+-InformationItem: Represents individual pieces of information to be stored in short-term memory.
 
-CognitiveTask: Represents tasks or activities that require the use of short-term memory.
+-CognitiveTask: Represents tasks or activities that require the use of short-term memory.
 
-Error: Represents instances where cognitive limitations lead to mistakes or inaccuracies.
+-Error: Represents instances where cognitive limitations lead to mistakes or inaccuracies.
 
 \#Properties:
 
-hasCapacity: Describes the maximum number of information items that can be held in short-term memory.
+-hasCapacity: Describes the maximum number of information items that can be held in short-term memory.
 
-includesItem: Specifies the information items included in a cognitive task.
+-includesItem: Specifies the information items included in a cognitive task.
 
-resultsInError: Indicates instances where cognitive limitations result in errors in completing a task.
+-resultsInError: Indicates instances where cognitive limitations result in errors in completing a task.
 
-relatesToTask: Relates cognitive capacity to specific cognitive tasks.
+-relatesToTask: Relates cognitive capacity to specific cognitive tasks.
 
 Example ontology instance:
 
@@ -102,9 +104,9 @@ relatesToTask: Forgetting shopping list items
 
 ### Framester Frames used:
 
-*
-* [SuccessOrFailure](https://w3id.org/framester/data/framestercore/SuccessOrFailure)
+- [SuccessOrFailure](https://w3id.org/framester/data/framestercore/SuccessOrFailure)
 
 ### ODP used:
+- [Reaction](http://ontologydesignpatterns.org/wiki/Submissions:Reaction#)
+- [Parameter](http://ontologydesignpatterns.org/wiki/Submissions:Parameter#)
 
-* [Co-partecipation Topic](http://ontologydesignpatterns.org/wiki/Submissions:Reaction) [Activity\_Reasoning](http://ontologydesignpatterns.org/wiki/Submissions:An\_Ontology\_Design\_Pattern\_for\_Activity\_Reasoning)
