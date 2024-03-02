@@ -6,7 +6,7 @@ The group members are Erica Andreose, Giorgia Crosilla, Chiara Parravicini and D
 
 ### What's the goal of the project?
 
-The goal of the course project is to map the 188 cognitive biases as listed in Cognitive Biases Codex ( [https://www.sog.unc.edu/sites/www.sog.unc.edu/files/course\_materials/Cognitive%20Biases%20Codex.pdf](https://www.sog.unc.edu/sites/www.sog.unc.edu/files/course\_materials/Cognitive%20Biases%20Codex.pdf)) (picture below), using the technologies developed in the Semantic Web community, creating an ontology that would allow to describe these cognitive phenomena. &#x20;
+The goal of the course project is to map the 188 cognitive biases as listed in [Cognitive Biases Codex](https://www.sog.unc.edu/sites/www.sog.unc.edu/files/course\_materials/Cognitive%20Biases%20Codex.pdf) (picture below), using the technologies developed in the Semantic Web community, creating an ontology that would allow to describe these cognitive phenomena. &#x20;
 
 This specific group focuses its work only on a part of it, namely “We simplify probabilities and numbers to make them easier to think about”, “We think we know what other people are thinking”, in the right corner of the picture, under the definition of “Not enough meaning”.&#x20;
 
