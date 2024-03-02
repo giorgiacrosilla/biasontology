@@ -2,7 +2,7 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.ttl" %}
 
-<figure><img src="../../uml/Subadditivity-effect.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../uml/Subaddictivity-effect.jpg" alt=""><figcaption></figcaption></figure>
 
 ### Context literature and state of the art
 The **subadditivity effect** is the tendency to judge probability of the whole to be less than the probabilities of the parts. 
