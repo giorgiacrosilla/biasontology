@@ -2,6 +2,8 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SpotlightEffect.owl" %}
 
+[SpotlightEffect OWL](https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SpotlightEffect.owl)
+
 <figure><img src="../../uml/SpotlightEffect.jpg" alt=""><figcaption></figcaption></figure>
 
 
