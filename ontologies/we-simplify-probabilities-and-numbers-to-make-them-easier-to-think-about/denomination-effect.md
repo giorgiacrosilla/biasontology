@@ -2,6 +2,8 @@
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl" %}
 
+[Denomination Effect Bias OWL](https://github.com/giorgiacrosilla/biasontology/blob/main/owl/DenominationEffect.owl)
+
 <figure><img src="../../uml/DenominationEffect-formalization.jpg" alt=""><figcaption></figcaption></figure>
 
 ### <mark style="color:red;">C</mark>ontext literature and state of the art
