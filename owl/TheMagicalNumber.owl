@@ -8,7 +8,6 @@
 @prefix bias: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix reaction: <http://www.ontologydesignpatterns.org/cp/owl/reaction.owl#> .
-@prefix parameter: <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#> .
 @prefix magicalnumber: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#> .
 @base <http://www.w3.org/2002/07/owl#> .
 
@@ -36,15 +35,6 @@
 #################################################################
 #    Object Properties
 #################################################################
-
-###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter
-parameter:hasParameter rdf:type owl:ObjectProperty ;
-                       rdfs:domain magicalnumber:InformationItem ;
-                       rdfs:comment "A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16." ;
-                       rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
-                       rdfs:label "ha parametro"@it ,
-                                  "has parameter"@en .
-
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/reaction.owl#hasConsequence
 reaction:hasConsequence rdf:type owl:ObjectProperty ;
@@ -139,41 +129,25 @@ magicalnumber:wantsToRemember rdf:type owl:ObjectProperty ;
 #    Data properties
 #################################################################
 
-###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue
-parameter:hasParameterDataValue rdf:type owl:DatatypeProperty ;
-                                rdfs:domain parameter:ParameterInt ;
-                                rdfs:range xsd:boolean ,
-                                           xsd:int ;
-                                rdfs:comment """Parametrizes values from a datatype. For example, a Parameter AgeForDriving hasParameterDataValue 18 on datatype xsd:int, in the Italian traffic code. In this example, AgeForDriving isDefinedIn the Norm ItalianTrafficCodeAgeDriving.
-More complex parametrization requires workarounds. E.g. AgeRangeForDrugUsage could parametrize data value: 14 to 50 on the datatype: xsd:int. Since complex datatypes are not allowed in OWL1.0, a solution to this can only work by creating two 'sub-parameters': MinimumAgeRangeForDrugUsage (that hasParameterDataValue 14) and MaximumAgeRangeForDrugUsage (that hasParameterDataValue 50), which are components of the main Parameter AgeRangeForDrugUsage.
-Ordering on subparameters can be created by using or specializing the object property 'precedes'.""" ;
-                                rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
-                                rdfs:label "ha valore"@it ,
-                                           "has parameter data value"@en .
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#hasMaxValue
+magicalnumber:hasMaxValue rdf:type owl:DatatypeProperty ;
+                          rdfs:range xsd:int .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#hasMinValue
+magicalnumber:hasMinValue rdf:type owl:DatatypeProperty ;
+                          rdfs:range xsd:int .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#hasValue
+magicalnumber:hasValue rdf:type owl:DatatypeProperty ;
+                       rdfs:range xsd:boolean ;
+                       rdfs:isDefinedBy magicalnumber: .
 
 
 #################################################################
 #    Classes
 #################################################################
-
-###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter
-parameter:Parameter rdf:type owl:Class ;
-                    rdfs:comment """A Concept that classifies something having a certain value, e.g. 'High' can be said of people taller than 185 cm.
-However, in order to formally represent this constraint, we need to add an anonymous type to a parameter instance, using a property that convey the semantics of the parameter, e.g.:
-High rdf:type Person and (some hasHeight (Height and (oneOf isTallerThan 185) and (oneOf hasUnitOfMeasure centimeter)))""" ;
-                    rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
-                    rdfs:label "Parameter"@en ,
-                               "Parametro"@it .
-
-
-###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#ParameterInt
-parameter:ParameterInt rdf:type owl:Class ;
-                       rdfs:subClassOf parameter:Parameter ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty parameter:hasParameterDataValue ;
-                                         owl:allValuesFrom xsd:int
-                                       ] .
-
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/reaction.owl#Action
 reaction:Action rdf:type owl:Class ;
@@ -219,16 +193,6 @@ magicalnumber:CognitiveCapacity rdf:type owl:Class .
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#InformationItem
 magicalnumber:InformationItem rdf:type owl:Class ;
-                              rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                owl:onProperty parameter:hasParameter ;
-                                                owl:minQualifiedCardinality "5"^^xsd:nonNegativeInteger ;
-                                                owl:onClass parameter:Parameter
-                                              ] ,
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty parameter:hasParameter ;
-                                                owl:maxQualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                                                owl:onClass parameter:Parameter
-                                              ] ;
                               rdfs:comment "Information Item that the Agent wants to memorize."@en ;
                               rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
                               rdfs:label "InformationItem"@en .
@@ -236,11 +200,6 @@ magicalnumber:InformationItem rdf:type owl:Class ;
 
 ###  https://w3id.org/framester/data/framestercore/SuccessOrFailure
 <https://w3id.org/framester/data/framestercore/SuccessOrFailure> rdf:type owl:Class ;
-                                                                 rdfs:subClassOf parameter:Parameter ,
-                                                                                 [ rdf:type owl:Restriction ;
-                                                                                   owl:onProperty parameter:hasParameterDataValue ;
-                                                                                   owl:allValuesFrom xsd:boolean
-                                                                                 ] ;
                                                                  rdfs:comment "Output of the action that returns a successfull on an unsuccessfull memorization action."@en ;
                                                                  rdfs:isDefinedBy <https://w3id.org/framester/data/framestercore/SuccessOrFailure> ;
                                                                  rdfs:label "SuccessOrFailure"@en .
@@ -281,7 +240,6 @@ magicalnumber:CreateShoppingList rdf:type owl:NamedIndividual ,
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#ListItem
 magicalnumber:ListItem rdf:type owl:NamedIndividual ,
                                 magicalnumber:InformationItem ;
-                       parameter:hasParameter magicalnumber:TotalListItems ;
                        rdfs:comment "List item of the shopping list."@en ;
                        rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
                        rdfs:label "ListItem" .
@@ -297,13 +255,16 @@ magicalnumber:MagicalNumberBias rdf:type owl:NamedIndividual ,
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#MemorizeOrNot
 magicalnumber:MemorizeOrNot rdf:type owl:NamedIndividual ,
                                      <https://w3id.org/framester/data/framestercore/SuccessOrFailure> ;
+                            magicalnumber:hasValue "false"^^xsd:boolean ,
+                                                   "true"^^xsd:boolean ;
                             rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
                             rdfs:label "MemorizeOrNot" .
 
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#TotalListItems
-magicalnumber:TotalListItems rdf:type owl:NamedIndividual ,
-                                      parameter:ParameterInt ;
+magicalnumber:TotalListItems rdf:type owl:NamedIndividual ;
+                             magicalnumber:hasMaxValue 9 ;
+                             magicalnumber:hasMinValue 5 ;
                              rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
                              rdfs:label "TotalListItems" .
 
