@@ -61,6 +61,18 @@ cp:isParticipantIn rdf:type owl:ObjectProperty ;
                    rdfs:label "is participant in"@en .
 
 
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#isAffectedBy
+bias:isAffectedBy rdf:type owl:ObjectProperty ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( bias:BiasedAgent
+                                              spotlighteffect:BiasedOutcome
+                                            )
+                              ] ;
+                  rdfs:range bias:CognitiveBias ;
+                  rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl> ;
+                  rdfs:label "isAffectedBy" .
+
+
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SpotlightEffect.owl#hasInternalState
 spotlighteffect:hasInternalState rdf:type owl:ObjectProperty ;
                                  rdfs:subPropertyOf owl:topObjectProperty ;
@@ -81,18 +93,6 @@ spotlighteffect:hasOutcome rdf:type owl:ObjectProperty ;
                                       ] ;
                            rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SpotlightEffect.owl> ;
                            rdfs:label "hasOutcome"@en .
-
-
-###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SpotlightEffect.owl#isAffectedBy
-spotlighteffect:isAffectedBy rdf:type owl:ObjectProperty ;
-                             rdfs:domain [ rdf:type owl:Class ;
-                                           owl:unionOf ( bias:BiasedAgent
-                                                         spotlighteffect:BiasedOutcome
-                                                       )
-                                         ] ;
-                             rdfs:range bias:SpotlightEffect ;
-                             rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl> ;
-                             rdfs:label "isAffectedBy" .
 
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SpotlightEffect.owl#isInternalStateOf
@@ -253,8 +253,8 @@ spotlighteffect:LunchAtRestaurant rdf:type owl:NamedIndividual ,
 spotlighteffect:Mark rdf:type owl:NamedIndividual ,
                               bias:BiasedAgent ;
                      cp:isParticipantIn spotlighteffect:LunchAtRestaurant ;
+                     bias:isAffectedBy spotlighteffect:SpotlightEffect ;
                      spotlighteffect:hasInternalState spotlighteffect:Anxiety ;
-                     spotlighteffect:isAffectedBy spotlighteffect:SpotlightEffect ;
                      spotlighteffect:percieve spotlighteffect:UnpleasantLunch ;
                      rdfs:comment "Mark is effected by the Spotlight Effect bias and feels anxiety during lunch at restaurant."@en .
 
@@ -281,7 +281,7 @@ spotlighteffect:SpotlightEffect rdf:type owl:NamedIndividual ,
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SpotlightEffect.owl#UnpleasantLunch
 spotlighteffect:UnpleasantLunch rdf:type owl:NamedIndividual ,
                                          spotlighteffect:BiasedOutcome ;
-                                spotlighteffect:isAffectedBy spotlighteffect:SpotlightEffect ;
+                                bias:isAffectedBy spotlighteffect:SpotlightEffect ;
                                 spotlighteffect:isPerceptionOf spotlighteffect:Mark .
 
 
