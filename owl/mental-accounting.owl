@@ -1,0 +1,230 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <http://www.semanticweb.org/bias/General> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix mentalaccounting: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#> rdf:type owl:Ontology ;
+                                                                                                 rdfs:comment "Mental accounting is a cognitive bias in which individuals categorize their financial resources and transactions into separate mental \"accounts\" based on subjective criteria, rather than considering the overall financial picture. This bias was first proposed by economist Richard Thaler." ;
+                                                                                                 rdfs:label "Mental Accounting bias" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasAuthor
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasAuthor> rdf:type owl:AnnotationProperty ;
+                                                                                 rdfs:comment "Daniele Spedicati" .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/bias/General/isAffectedBy
+<http://www.semanticweb.org/bias/General/isAffectedBy> rdf:type owl:ObjectProperty ;
+                                                       rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent> ;
+                                                       rdfs:range <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias> ;
+                                                       rdfs:comment "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#hasExpence
+mentalaccounting:hasExpence rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf mentalaccounting:hasTransaction ;
+                            rdfs:domain [ rdf:type owl:Class ;
+                                          owl:unionOf ( mentalaccounting:Account
+                                                        mentalaccounting:CommercialTransaction
+                                                        mentalaccounting:Decision
+                                                      )
+                                        ] ;
+                            rdfs:range mentalaccounting:Expence ;
+                            rdfs:comment "links an Account to its Expence." ;
+                            rdfs:label "has expence" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#hasIncome
+mentalaccounting:hasIncome rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf mentalaccounting:hasTransaction ;
+                           rdfs:domain mentalaccounting:Account ;
+                           rdfs:range mentalaccounting:Income ;
+                           rdfs:comment "links an Account to its Income." ;
+                           rdfs:label "has income" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#hasPsychologicalValue
+mentalaccounting:hasPsychologicalValue rdf:type owl:ObjectProperty ;
+                                       rdfs:domain [ rdf:type owl:Class ;
+                                                     owl:unionOf ( mentalaccounting:Account
+                                                                   mentalaccounting:CommercialTransaction
+                                                                   mentalaccounting:Decision
+                                                                 )
+                                                   ] ;
+                                       rdfs:range mentalaccounting:PsychologicalValue ;
+                                       rdfs:comment "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl" ,
+                                                    "links a Transaction to the psychological value that it has for its agent." ;
+                                       rdfs:label "has psychological value" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#hasTransaction
+mentalaccounting:hasTransaction rdf:type owl:ObjectProperty ;
+                                rdfs:domain mentalaccounting:Account ;
+                                rdfs:range mentalaccounting:CommercialTransaction ;
+                                rdfs:comment "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl" ,
+                                             "links an Account to a transaction performed on it." ;
+                                rdfs:label "has transaction" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#leadsTo
+mentalaccounting:leadsTo rdf:type owl:ObjectProperty ;
+                         rdfs:domain mentalaccounting:CommercialTransaction ;
+                         rdfs:range mentalaccounting:Decision ;
+                         rdfs:comment "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl" ,
+                                      "links a transaction to a Decision or vice versa." ;
+                         rdfs:label "leads to" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#ownerOf
+mentalaccounting:ownerOf rdf:type owl:ObjectProperty ;
+                         rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent> ;
+                         rdfs:range mentalaccounting:Account ;
+                         rdfs:comment "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl" ,
+                                      "links the bias agent owner to an Account to it." ;
+                         rdfs:label "is owner of" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#takesDecision
+mentalaccounting:takesDecision rdf:type owl:ObjectProperty ;
+                               rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent> ;
+                               rdfs:range mentalaccounting:Decision ;
+                               rdfs:comment "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl" ,
+                                            "links a biased agent to a Decision." ;
+                               rdfs:label "takes decision" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://xmlns.com/foaf/0.1/Agent
+<http://xmlns.com/foaf/0.1/Agent> rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent> rdf:type owl:Class ;
+                                                                                                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                                                        owl:onProperty mentalaccounting:ownerOf ;
+                                                                                                                        owl:someValuesFrom mentalaccounting:Account
+                                                                                                                      ] ;
+                                                                                                  rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias> rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#MentalAccounting
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#MentalAccounting> rdf:type owl:Class ;
+                                                                                                       rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#Account
+mentalaccounting:Account rdf:type owl:Class ;
+                         owl:equivalentClass mentalaccounting:Invoice ;
+                         rdfs:comment "An accounting that a person has in its mind." ;
+                         rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl" ;
+                         rdfs:label "Account" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#CommercialTransaction
+mentalaccounting:CommercialTransaction rdf:type owl:Class ;
+                                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                             owl:onProperty mentalaccounting:hasPsychologicalValue ;
+                                                             owl:someValuesFrom mentalaccounting:PsychologicalValue
+                                                           ] ;
+                                       rdfs:comment "an exchnange of money between two parts." ;
+                                       rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl" ;
+                                       rdfs:label "Commercial Transaction" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#Deciding
+mentalaccounting:Deciding rdf:type owl:Class ;
+                          owl:equivalentClass mentalaccounting:Decision .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#Decision
+mentalaccounting:Decision rdf:type owl:Class ;
+                          rdfs:comment "A decision linked to a Transaction." ,
+                                       "Decision" ;
+                          rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#Expence
+mentalaccounting:Expence rdf:type owl:Class ;
+                         rdfs:subClassOf mentalaccounting:CommercialTransaction ;
+                         rdfs:comment "A transaction that subtracts money from an account." ;
+                         rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl" ;
+                         rdfs:label "Expence" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#Income
+mentalaccounting:Income rdf:type owl:Class ;
+                        rdfs:subClassOf mentalaccounting:CommercialTransaction ;
+                        rdfs:comment "A transaction that add money to an Account." ;
+                        rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl" ;
+                        rdfs:label "Income" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#Invoice
+mentalaccounting:Invoice rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#PsychologicalValue
+mentalaccounting:PsychologicalValue rdf:type owl:Class ;
+                                    rdfs:comment "Psychological value" ,
+                                                 "The value that a transaction has for a person." ;
+                                    rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#ExtraMoney
+mentalaccounting:ExtraMoney rdf:type owl:NamedIndividual .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#ExtraMoneyAccount
+mentalaccounting:ExtraMoneyAccount rdf:type owl:NamedIndividual ;
+                                   mentalaccounting:hasIncome mentalaccounting:TaxRefunding .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#LuxuryPurchase
+mentalaccounting:LuxuryPurchase rdf:type owl:NamedIndividual .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#MentalAccountingBias
+mentalaccounting:MentalAccountingBias rdf:type owl:NamedIndividual .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#Refunded
+mentalaccounting:Refunded rdf:type owl:NamedIndividual ;
+                          <http://www.semanticweb.org/bias/General/isAffectedBy> mentalaccounting:MentalAccountingBias ;
+                          mentalaccounting:ownerOf mentalaccounting:ExtraMoneyAccount ;
+                          mentalaccounting:takesDecision mentalaccounting:LuxuryPurchase .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#TaxRefunding
+mentalaccounting:TaxRefunding rdf:type owl:NamedIndividual ;
+                              mentalaccounting:hasPsychologicalValue mentalaccounting:ExtraMoney ;
+                              mentalaccounting:leadsTo mentalaccounting:LuxuryPurchase .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

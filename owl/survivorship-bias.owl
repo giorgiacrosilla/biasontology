@@ -1,0 +1,233 @@
+@prefix : <http://www.semanticweb.org/danie/ontologies/2024/1/untitled-ontology-55/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <http://www.semanticweb.org/bias/General> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix participation: <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> .
+@prefix survivorshipbias: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SurvivorshipBias.owl#> .
+@base <http://www.semanticweb.org/danie/ontologies/2024/1/untitled-ontology-55/> .
+
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SurvivorshipBias.owl> rdf:type owl:Ontology ;
+                                                                                                owl:imports <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ,
+                                                                                                            <http://www.ontologydesignpatterns.org/cp/owl/observation.owl> ,
+                                                                                                            <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                                                                                                <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasAuthor> "Daniele Spedicati" ;
+                                                                                                rdfs:comment "Survivorship bias or survival bias is the logical error of concentrating on entities that passed a selection process while overlooking those that did not. This can lead to incorrect conclusions because of incomplete data." ;
+                                                                                                rdfs:label "Survivorship Bias" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/bias/General/isAffectedBy
+<http://www.semanticweb.org/bias/General/isAffectedBy> rdf:type owl:ObjectProperty ;
+                                                       rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent> ;
+                                                       rdfs:range <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias> ,
+                                                                  <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#SurvivorshipBias> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#dontPassSelection
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#dontPassSelection> rdf:type owl:ObjectProperty ;
+                                                                                                                    rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn> ;
+                                                                                                                    rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#TestedEntity> ,
+                                                                                                                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                                                         owl:onProperty <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#dontPassSelection> ;
+                                                                                                                                                         owl:someValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Selection>
+                                                                                                                                                       ]
+                                                                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                                                                         owl:onProperty <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#hasRole> ;
+                                                                                                                                                         owl:someValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#NonSurvivor>
+                                                                                                                                                       ]
+                                                                                                                                                     ) ;
+                                                                                                                                  rdf:type owl:Class
+                                                                                                                                ] ;
+                                                                                                                    rdfs:range <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Selection> ;
+                                                                                                                    owl:propertyDisjointWith <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#passesSelection> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#groupSelection
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#groupSelection> rdf:type owl:ObjectProperty ;
+                                                                                                                 rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#TestedGroup> ;
+                                                                                                                 rdfs:range <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Selection> ;
+                                                                                                                 rdfs:comment "a property linking a group to its selection process." ,
+                                                                                                                              "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SurvivorshipBias.owl" ;
+                                                                                                                 rdfs:label "group goes through selection" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#hasRole
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#hasRole> rdf:type owl:ObjectProperty ;
+                                                                                                          rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#TestedEntity> ;
+                                                                                                          rdfs:range <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Role> ;
+                                                                                                          rdfs:comment "Links a tested entity with its role in that selection." ;
+                                                                                                          rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SurvivorshipBias.owl" ;
+                                                                                                          rdfs:label "has Role" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#makesObservation
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#makesObservation> rdf:type owl:ObjectProperty ;
+                                                                                                                   rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent> ;
+                                                                                                                   rdfs:range <http://www.ontologydesignpatterns.org/cp/owl/observation.owl#Observation> ;
+                                                                                                                   rdfs:comment "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SurvivorshipBias.owl" ,
+                                                                                                                                "links a Biased Agent with an Observation." ;
+                                                                                                                   rdfs:label "makes observation" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#passesSelection
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#passesSelection> rdf:type owl:ObjectProperty ;
+                                                                                                                  rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn> ;
+                                                                                                                  rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#TestedEntity> ,
+                                                                                                                              [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                                                       owl:onProperty <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#hasRole> ;
+                                                                                                                                                       owl:someValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Survivor>
+                                                                                                                                                     ]
+                                                                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                                                                       owl:onProperty <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#passesSelection> ;
+                                                                                                                                                       owl:someValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Selection>
+                                                                                                                                                     ]
+                                                                                                                                                   ) ;
+                                                                                                                                rdf:type owl:Class
+                                                                                                                              ] ;
+                                                                                                                  rdfs:range <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Selection> .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://xmlns.com/foaf/0.1/Agent
+<http://xmlns.com/foaf/0.1/Agent> rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent> rdf:type owl:Class ;
+                                                                                                  rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias> rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#NonSurvivor
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#NonSurvivor> rdf:type owl:Class ;
+                                                                                                              rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Role> ;
+                                                                                                              owl:disjointWith <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Survivor> ;
+                                                                                                              rdfs:comment "an entity that do not pass the selection." ;
+                                                                                                              rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SurvivorshipBias.owl" ;
+                                                                                                              rdfs:label "Non survivor" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Role
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Role> rdf:type owl:Class ;
+                                                                                                       rdfs:comment "The role covered by an entity during the selection phase." ;
+                                                                                                       rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SurvivorshipBias.owl" ;
+                                                                                                       rdfs:label "Role" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Selection
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Selection> rdf:type owl:Class ;
+                                                                                                            rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                                                                                                            rdfs:comment "An event that a group goes through and imply that only some mambers of this group make it." ;
+                                                                                                            rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SurvivorshipBias.owl" ;
+                                                                                                            rdfs:label "Selection" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Survivor
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Survivor> rdf:type owl:Class ;
+                                                                                                           rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Role> ;
+                                                                                                           rdfs:comment "An entity that passes the selection." ;
+                                                                                                           rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SurvivorshipBias.owl" ;
+                                                                                                           rdfs:label "Survivor" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#SurvivorshipBias
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#SurvivorshipBias> rdf:type owl:Class ;
+                                                                                                                   rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#TestedEntity
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#TestedEntity> rdf:type owl:Class ;
+                                                                                                               rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object> ,
+                                                                                                                               [ rdf:type owl:Class ;
+                                                                                                                                 owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                                                 owl:onProperty <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#hasRole> ;
+                                                                                                                                                 owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                                                                                                                                 owl:onClass <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#NonSurvivor>
+                                                                                                                                               ]
+                                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                                 owl:onProperty <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#hasRole> ;
+                                                                                                                                                 owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                                                                                                                                 owl:onClass <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Survivor>
+                                                                                                                                               ]
+                                                                                                                                             )
+                                                                                                                               ] ;
+                                                                                                               rdfs:comment "An entity member of a tested group that goes through a selection." ;
+                                                                                                               rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SurvivorshipBias.owl" ;
+                                                                                                               rdfs:label "Tested entity" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#TestedGroup
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#TestedGroup> rdf:type owl:Class ;
+                                                                                                              rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+                                                                                                              rdfs:comment "A group that goes through a selection." ;
+                                                                                                              rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SurvivorshipBias.owl" ;
+                                                                                                              rdfs:label "Tested group" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/bias/SubadditivityEffect/documentary
+<http://www.semanticweb.org/bias/SubadditivityEffect/documentary> rdf:type owl:NamedIndividual .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#death
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#death> rdf:type owl:NamedIndividual ,
+                                                                                                                 <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#NonSurvivor> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#documentaryDirector
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#documentaryDirector> rdf:type owl:NamedIndividual ,
+                                                                                                                               <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#prisoner
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#prisoner> rdf:type owl:NamedIndividual ,
+                                                                                                                    <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#NonSurvivor> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#soldier1
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#soldier1> rdf:type owl:NamedIndividual ;
+                                                                                                           <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#warArmy> ;
+                                                                                                           <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#dontPassSelection> <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#war> ;
+                                                                                                           <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#hasRole> <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#death> ,
+                                                                                                                                                                                                                     <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#prisoner> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#soldier2
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#soldier2> rdf:type owl:NamedIndividual ;
+                                                                                                           <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#warArmy> ;
+                                                                                                           <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#hasRole> <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#veteran> ;
+                                                                                                           <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#passesSelection> <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#war> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#survivorshipBias
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#survivorshipBias> rdf:type owl:NamedIndividual .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#veteran
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#veteran> rdf:type owl:NamedIndividual ,
+                                                                                                                   <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Survivor> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#war
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#war> rdf:type owl:NamedIndividual .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#warArmy
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#warArmy> rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
