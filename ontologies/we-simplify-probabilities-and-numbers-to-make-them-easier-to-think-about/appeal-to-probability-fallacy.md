@@ -198,4 +198,3 @@ Let's consider an instance to illustrate the ontology:
 #### ODP used:
 
 * [Experience and Observation](http://ontologydesignpatterns.org/wiki/Submissions:Experience\_%26\_Observation)
-* [Parameter](http://ontologydesignpatterns.org/wiki/Submissions:Parameter)

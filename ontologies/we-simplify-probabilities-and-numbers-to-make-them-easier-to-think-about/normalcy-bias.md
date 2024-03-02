@@ -34,33 +34,31 @@ The appeal to probability fallacy, also known as the argument from probability, 
 
 #### Can you create 10 scenarios compelling with the bias?
 
-3\. Health Pandemics:&#x20;
+3\. Health Pandemics:
 
-&#x20;  During the early stages of a global health crisis, some people may downplay the severity of the situation, assuming that the impact of a pandemic will be limited or that it won't reach their community.&#x20;
+During the early stages of a global health crisis, some people may downplay the severity of the situation, assuming that the impact of a pandemic will be limited or that it won't reach their community.
 
 #### Now consider the scenario "Health Pandemics" and give me a short user story from it.
 
 User Story: A Lesson in Normalcy Bias during a Health Pandemic
 
-Once upon a time, in a city called Serenityville, Sarah, a 32-year-old office worker, found herself caught in the midst of a rapidly spreading health pandemic.&#x20;
+Once upon a time, in a city called Serenityville, Sarah, a 32-year-old office worker, found herself caught in the midst of a rapidly spreading health pandemic.
 
-Sarah had always enjoyed the calm and routine of her daily life. She had heard about outbreaks in distant parts of the world but never truly believed that such a crisis could touch her peaceful community. The local news began reporting on the severity of the situation, with experts urging citizens to take precautionary measures.&#x20;
+Sarah had always enjoyed the calm and routine of her daily life. She had heard about outbreaks in distant parts of the world but never truly believed that such a crisis could touch her peaceful community. The local news began reporting on the severity of the situation, with experts urging citizens to take precautionary measures.
 
-However, Sarah, influenced by her normalcy bias, couldn't fathom the idea that her city might be significantly affected. She continued her routine, socializing freely, and neglecting the recommended safety precautions. Her friends, aware of the seriousness of the situation, tried to warn her, but Sarah reassured herself that her city was an exception.&#x20;
+However, Sarah, influenced by her normalcy bias, couldn't fathom the idea that her city might be significantly affected. She continued her routine, socializing freely, and neglecting the recommended safety precautions. Her friends, aware of the seriousness of the situation, tried to warn her, but Sarah reassured herself that her city was an exception.
 
-&#x20;
+As the pandemic intensified, Sarah's workplace implemented remote work policies, and public spaces began shutting down. Yet, Sarah clung to the belief that things would return to normal soon. She dismissed the possibility of a lockdown affecting her life, assuming that her community would remain untouched.
 
-As the pandemic intensified, Sarah's workplace implemented remote work policies, and public spaces began shutting down. Yet, Sarah clung to the belief that things would return to normal soon. She dismissed the possibility of a lockdown affecting her life, assuming that her community would remain untouched.&#x20;
+It wasn't until Sarah's own health was compromised that she began to acknowledge the reality of the situation. She tested positive for the virus, experiencing firsthand the consequences of underestimating the pandemic's impact. Fortunately, she recovered, but the experience served as a stark reminder of the dangers of normalcy bias.
 
-It wasn't until Sarah's own health was compromised that she began to acknowledge the reality of the situation. She tested positive for the virus, experiencing firsthand the consequences of underestimating the pandemic's impact. Fortunately, she recovered, but the experience served as a stark reminder of the dangers of normalcy bias.&#x20;
-
-In the aftermath, Sarah became an advocate for public health awareness, sharing her story to encourage others to overcome their normalcy bias, stay informed, and take necessary precautions in the face of unforeseen health crises.&#x20;
+In the aftermath, Sarah became an advocate for public health awareness, sharing her story to encourage others to overcome their normalcy bias, stay informed, and take necessary precautions in the face of unforeseen health crises.
 
 #### We can now derive example-based-CQs from the user story.
 
-1. Did Sarah ignore warnings when outbreaks of pandemic started to come out?&#x20;
+1. Did Sarah ignore warnings when outbreaks of pandemic started to come out?
 
-&#x20;      True.
+True.
 
 ```sparql
 select ?warnings where {
@@ -71,9 +69,9 @@ select ?warnings where {
 
 ```
 
-2. Was Sarah aware of the problems that the pandemic would cause to her city?&#x20;
+2. Was Sarah aware of the problems that the pandemic would cause to her city?
 
-&#x20;      No, because she was convinced that her city would never be affected by a lockdown.
+No, because she was convinced that her city would never be affected by a lockdown.
 
 ```sparql
 select ?awareness where {
@@ -81,9 +79,9 @@ select ?awareness where {
 		?Agent normalcy:hasInitialAwareness ?awareness .}
 ```
 
-3. What is Sarah's awareness after contracting the virus?&#x20;
+3. What is Sarah's awareness after contracting the virus?
 
-&#x20;      Sarah understands the reality of the situation and the danger of the virus.
+Sarah understands the reality of the situation and the danger of the virus.
 
 ```sparql
 select ?final where {
@@ -95,49 +93,47 @@ select ?final where {
 
 #### If you should make an ontology based of the "Normalcy Bias" which classes and properties would you create?
 
-Classes:&#x20;
+Classes:
 
 1\. Individual:
 
-&#x20;  \- Represents a person or an entity susceptible to normalcy bias.&#x20;
+\- Represents a person or an entity susceptible to normalcy bias.
 
 2\. Event:
 
-&#x20;  \- Represents a potential disruptive event or crisis that individuals may underestimate.&#x20;
+\- Represents a potential disruptive event or crisis that individuals may underestimate.
 
 3\. Awareness Level:
 
-&#x20;  \- Represents the cognitive state of an individual regarding their awareness of potential risks.&#x20;
+\- Represents the cognitive state of an individual regarding their awareness of potential risks.
 
-&#x20;
-
-Properties:&#x20;
+Properties:
 
 1\. hasNormalcyBias:
 
-&#x20;  \- Connects an Individual to their tendency to exhibit normalcy bias.&#x20;
+\- Connects an Individual to their tendency to exhibit normalcy bias.
 
-2\. underestimates:&#x20;
+2\. underestimates:
 
-&#x20;  \- Relates an Individual to an Event, indicating that the individual underestimates the severity or likelihood of the event.&#x20;
+\- Relates an Individual to an Event, indicating that the individual underestimates the severity or likelihood of the event.
 
 3\. ignoresWarnings:
 
-&#x20;  \- Connects an Individual to signals or warnings related to a potential crisis that they tend to ignore.&#x20;
+\- Connects an Individual to signals or warnings related to a potential crisis that they tend to ignore.
 
 4\. clingsToRoutine:
 
-&#x20;  \- Relates an Individual to their adherence to routine and reluctance to consider deviations from the norm.&#x20;
+\- Relates an Individual to their adherence to routine and reluctance to consider deviations from the norm.
 
 5\. experiencesEvent:
 
-&#x20;  \- Connects an Individual to an Event, representing the occurrence of a crisis or disruptive event.&#x20;
+\- Connects an Individual to an Event, representing the occurrence of a crisis or disruptive event.
 
 6\. hasAwarenessLevel:
 
-&#x20;  \- Connects an Individual to their cognitive state, indicating the level of awareness regarding potential risks.&#x20;
+\- Connects an Individual to their cognitive state, indicating the level of awareness regarding potential risks.
 
 ### ODP used:
 
 * [HazardousSituation](http://ontologydesignpatterns.org/wiki/Submissions:HazardousSituation)
-* [Parameter](http://ontologydesignpatterns.org/wiki/Submissions:Parameter)
+
