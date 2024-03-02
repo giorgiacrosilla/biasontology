@@ -1,7 +1,7 @@
 # 🤓 Curse of knowledge
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl" %}
-<figure><img src="uml/CurseOfKnowledge.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../uml/CurseOfKnowledge.jpg" alt=""><figcaption></figcaption></figure>
 
 
 ***
@@ -24,25 +24,25 @@ The "curse of knowledge" bias refers to a cognitive phenomenon in which individu
 
 #### Can you create 10 scenarios compelling with the bias?
 
-*1*Technical Jargon in Presentations: A software developer giving a presentation to a non-technical audience uses complex coding terms without explaining them, assuming everyone understands the terminology. 
+*1.* Technical Jargon in Presentations: A software developer giving a presentation to a non-technical audience uses complex coding terms without explaining them, assuming everyone understands the terminology. 
 
-*2*Expert Teaching Beginners: A seasoned chef instructing a cooking class for beginners may unintentionally overlook basic cooking steps, assuming that everyone has a foundational understanding of culinary principles. 
+*2.* Expert Teaching Beginners: A seasoned chef instructing a cooking class for beginners may unintentionally overlook basic cooking steps, assuming that everyone has a foundational understanding of culinary principles. 
 
-*3*Medical Professionals Explaining Diagnoses: Doctors using intricate medical terms while discussing a diagnosis with patients may assume the patients comprehend the terminology, leading to confusion and anxiety. 
+*3.* Medical Professionals Explaining Diagnoses: Doctors using intricate medical terms while discussing a diagnosis with patients may assume the patients comprehend the terminology, leading to confusion and anxiety. 
 
-*4*Financial Advisors and Investment Lingo: A financial advisor discussing investment strategies with a client may use financial jargon without considering that the client may not have a deep understanding of investment terminology. 
+*4.* Financial Advisors and Investment Lingo: A financial advisor discussing investment strategies with a client may use financial jargon without considering that the client may not have a deep understanding of investment terminology. 
 
-*5*Academic Researchers Presenting Findings: Researchers presenting their findings in a specialized field might assume a general audience understands the nuances of their research without providing adequate background information. 
+*5.* Academic Researchers Presenting Findings: Researchers presenting their findings in a specialized field might assume a general audience understands the nuances of their research without providing adequate background information. 
 
-*6*Engineers Designing User Interfaces: Engineers developing software interfaces may design complex user interfaces assuming users will easily grasp the intricacies, neglecting the fact that not all users are tech-savvy. 
+*6.* Engineers Designing User Interfaces: Engineers developing software interfaces may design complex user interfaces assuming users will easily grasp the intricacies, neglecting the fact that not all users are tech-savvy. 
 
-*7*Teachers Assisting Students: A math teacher may inadvertently skip explaining fundamental concepts, assuming students already know them, which can lead to confusion and hinder learning. 
+*7.* Teachers Assisting Students: A math teacher may inadvertently skip explaining fundamental concepts, assuming students already know them, which can lead to confusion and hinder learning. 
 
-*8*Legal Professionals Communicating with Clients: Lawyers discussing legal matters with clients might use legal jargon without realizing that the clients may not have a legal background, leading to misunderstandings. 
+*8.* Legal Professionals Communicating with Clients: Lawyers discussing legal matters with clients might use legal jargon without realizing that the clients may not have a legal background, leading to misunderstandings. 
 
-*9*IT Support Interactions: IT professionals providing support may assume a user's familiarity with technical terms, making it difficult for the user to follow troubleshooting instructions. 
+*9.* IT Support Interactions: IT professionals providing support may assume a user's familiarity with technical terms, making it difficult for the user to follow troubleshooting instructions. 
 
-*10*Subject Matter Experts in Cross-disciplinary Teams: In a team with members from different disciplines, a subject matter expert may unintentionally use terminology specific to their field, making it challenging for others to fully grasp the concepts being discussed. 
+*10.* Subject Matter Experts in Cross-disciplinary Teams: In a team with members from different disciplines, a subject matter expert may unintentionally use terminology specific to their field, making it challenging for others to fully grasp the concepts being discussed. 
 
 
 #### Now consider the scenario "IT Support Interactions" and give me a short user story from it.
@@ -56,12 +56,13 @@ As a non-technical user seeking IT support, I encountered the curse of knowledge
 1. What is the event that involves the biased agent and that returns the biased outcome?&#x20;
 
 &#x20;       Event and Biased Outcome.&#x20;
+&#x20;       Phone Call and Technical terminology.&#x20;
 
 ```sparql
 SELECT ?Event ?BiasedOutcome
 WHERE {
-    ?Event cp:hasParticipant curseofknowlwedge:ITTechnician .
-    ?BiasedOutcome curseofknowledge:hasAssumedKnowledge curseofknowledge:ITTechnician .
+    ?Event cp:hasParticipant ?BiasedAgent .
+    ?BiasedOutcome curseofknowledge:hasAssumedKnowledge ?BiasedAgent .
 }
 ```
 
@@ -72,18 +73,19 @@ WHERE {
 ```sparql
 SELECT ?Topic 
 WHERE {
-    ?Topic to:isTopicOf curseofknowledge:PhoneCall .
+    ?Topic to:isTopicOf ?Event .
 }
 ```
 
 3. Which agent is not influenced by the bias and what does he/she/it perceive as the outcome of the conversation?&#x20;
 
 &#x20;       Non Biased Agent and Non Biased Outcome.&#x20;
+&#x20;       User and Misunderstanding.&#x20;
 
 ```sparql
 SELECT ?NonBiasedAgent ?NonBiasedOutcome 
 WHERE {
-    ?NonBiasedAgent curseofknowledge:hasNoExpertise curseofknowledge:Topic .
+    ?NonBiasedAgent curseofknowledge:hasNoExpertise ?Topic .
     ?NonBiasedOutcome curseofknowledge:hasPercievedKnowledge ?NonBiasedAgent .
 }
 ```
@@ -92,7 +94,7 @@ WHERE {
 
 #Classes: 
 
-KnowledgeablePerson: 
+-KnowledgeablePerson: 
 
 Description: Represents an individual possessing specific information or expertise. 
 
@@ -100,15 +102,15 @@ Properties:
 
 hasExpertise: Indicates the domain or field in which the person has knowledge. 
 
-LessKnowledgeablePerson: 
+-LessKnowledgeablePerson: 
 
 Description: Represents an individual with less information or expertise in a particular domain. 
 
-#Properties: 
+Properties: 
 
 strugglingWith: Indicates the specific concepts or terms the person finds challenging. 
 
-CommunicationInstance: 
+-CommunicationInstance: 
 
 Description: Represents an instance of communication between individuals with varying levels of knowledge. 
 
@@ -118,7 +120,7 @@ involvesKnowledgeablePerson: Indicates the knowledgeable person involved in the 
 
 involvesLessKnowledgeablePerson: Indicates the less knowledgeable person involved in the communication. 
 
-Context: 
+-Context: 
 
 Description: Represents the setting or environment in which the communication takes place. 
 
@@ -128,7 +130,7 @@ includesTechnicalTerms: Indicates the presence of technical terms or specialized
 
 Properties: 
 
-Assumption: 
+-Assumption: 
 
 Description: Represents the assumption made by a knowledgeable person regarding the understanding of a less knowledgeable person. 
 
@@ -136,7 +138,7 @@ Domain: KnowledgeablePerson
 
 Range: LessKnowledgeablePerson 
 
-CommunicationGap: 
+-CommunicationGap: 
 
 Description: Represents the gap in understanding between knowledgeable and less knowledgeable individuals during communication. 
 
@@ -144,7 +146,7 @@ Domain: CommunicationInstance
 
 Range: CommunicationInstance 
 
-ResolutionTime: 
+-ResolutionTime: 
 
 Description: Represents the time taken to resolve an issue or misunderstanding. 
 
@@ -152,7 +154,7 @@ Domain: CommunicationInstance
 
 Range: Time 
 
-AdjustmentStrategy: 
+-AdjustmentStrategy: 
 
 Description: Represents the strategy employed to bridge the communication gap. 
 
@@ -160,27 +162,14 @@ Domain: CommunicationInstance
 
 Range: Text or Strategy 
 
-### Framester Frames used:
-
-*
-
-<!---->
-
-* 
 
 ### ODP used:
 
+- [Topic](http://ontologydesignpatterns.org/wiki/Submissions:Topic)
 
-[Topic](http://ontologydesignpatterns.org/wiki/Submissions:Topic)
-[Co-partecipation](http://ontologydesignpatterns.org/wiki/Submissions:Co-participation)]
+- [Co-partecipation](http://ontologydesignpatterns.org/wiki/Submissions:Co-participation)]
 
-### Competency questions:
 
-1. Which events involve biased agents assuming knowledge in a particular topic, resulting in a biased outcome due to the curse of knowledge bias?
-
-2. What are the topics in which biased agents possess expertise, leading to assumptions of knowledge and biased outcomes, compared to topics where non-biased agents have expertise, resulting in non-biased outcomes?
-
-3. How do biased agents' perceptions of their knowledge affect their participation in events, and consequently, the occurrence of the curse of knowledge bias?
 
 
 
