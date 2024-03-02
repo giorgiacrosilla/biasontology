@@ -1,7 +1,6 @@
 @prefix : <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix fr: <https://w3id.org/framester/data/framestercore/> .
-@prefix 0.1: <http://xmlns.com/foaf/0.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -114,28 +113,15 @@ bias:isAffectedBy rdf:type owl:ObjectProperty ;
 
 ###  http://purl.org/dc/terms/Agent
 <http://purl.org/dc/terms/Agent> rdf:type owl:Class ;
-                                 owl:equivalentClass 0.1:Agent .
-
-
-###  http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#Agent
-<http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#Agent> rdf:type owl:Class ;
-                                                                   owl:equivalentClass bias:BiasedAgent ;
-                                                                   <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#isCloneOf> "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent" ;
-                                                                   rdfs:comment "Any agentive Object , either physical, or social." ;
-                                                                   rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl> ;
-                                                                   rdfs:label "Agent"@en ,
-                                                                              "Agente"@it .
-
-
-###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object
-<http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object> owl:equivalentClass bias:BiasedAgent .
+                                 owl:equivalentClass <http://xmlns.com/foaf/0.1/Agent> .
 
 
 ###  http://xmlns.com/foaf/0.1/Agent
-0.1:Agent rdf:type owl:Class ;
-          rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
-          rdfs:label "Agent" ;
-          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+<http://xmlns.com/foaf/0.1/Agent> rdf:type owl:Class ;
+                                  rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object> ;
+                                  rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+                                  rdfs:label "Agent" ;
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
 
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/DenominationEffect.owl#Denomination
@@ -158,7 +144,7 @@ denominationeffect:SmallerDenomination rdf:type owl:Class ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent
 bias:BiasedAgent rdf:type owl:Class ;
-                 rdfs:subClassOf 0.1:Agent .
+                 rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> .
 
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias
