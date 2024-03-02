@@ -1,8 +1,7 @@
 # 🤓 Curse of knowledge
 
-{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/appealtoprobability.ttl" %}
-
-<figure><img src="giorgiabias-appealtoprobability2.drawio.png" alt=""><figcaption></figcaption></figure>
+{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl" %}
+<figure><img src="https://github.com/giorgiacrosilla/biasontology/blob/main/uml/CurseOfKnowledge.jpg" alt=""><figcaption></figcaption></figure>
 
 
 ***
