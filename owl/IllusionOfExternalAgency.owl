@@ -1,0 +1,216 @@
+@prefix : <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#> .
+@prefix cp: <http://www.ontologydesignpatterns.org/cp/owl/participation.owl/> .
+@prefix 0.1: <http://xmlns.com/foaf/0.1/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix participation: <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#> .
+@prefix externalagency: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#> .
+@base <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#> .
+
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#> rdf:type owl:Ontology ;
+                                                                                                         owl:imports <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                                                                                                         <http://purl.org/dc/elements/1.1/creator> "Chiara Parravicini" ;
+                                                                                                         <http://purl.org/dc/elements/1.1/title> "Illusion Of External Agency Bias ontology" ;
+                                                                                                         rdfs:comment "Illusion Of External Agency Bias ontology" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://dbpedia.org/ontology/causedBy
+dbo:causedBy rdf:type owl:ObjectProperty ;
+             rdfs:domain participation:Event ;
+             rdfs:range externalagency:Cause .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#hasParticipant
+participation:hasParticipant rdf:type owl:ObjectProperty ;
+                             rdfs:domain participation:Event ;
+                             rdfs:range bias:BiasedAgent ;
+                             rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                             rdfs:label "has participant"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn
+participation:isParticipantIn rdf:type owl:ObjectProperty ;
+                              rdfs:domain bias:BiasedAgent ;
+                              rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                              rdfs:label "is participant in"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#isAffectedBy
+bias:isAffectedBy rdf:type owl:ObjectProperty ;
+                  rdfs:domain bias:BiasedAgent ;
+                  rdfs:range bias:CognitiveBias .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#hasOutcome
+externalagency:hasOutcome rdf:type owl:ObjectProperty ;
+                          rdfs:domain participation:Event ;
+                          rdfs:range externalagency:Outcome .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#isAttributedTo
+externalagency:isAttributedTo rdf:type owl:ObjectProperty ;
+                              owl:inverseOf externalagency:lacks ;
+                              rdfs:domain externalagency:ExternalAgency ;
+                              rdfs:range participation:Event .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#lacks
+externalagency:lacks rdf:type owl:ObjectProperty ;
+                     rdfs:domain participation:Event ;
+                     rdfs:range externalagency:ExternalAgency .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#perceive
+externalagency:perceive rdf:type owl:ObjectProperty ;
+                        rdfs:domain bias:BiasedAgent ;
+                        rdfs:range externalagency:ExternalAgency .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/dc/terms/Agent
+<http://purl.org/dc/terms/Agent> rdf:type owl:Class ;
+                                 owl:equivalentClass 0.1:Agent .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#Agent
+<http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#Agent> rdf:type owl:Class ;
+                                                                   owl:equivalentClass bias:BiasedAgent .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event
+participation:Event rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Object
+participation:Object owl:equivalentClass bias:BiasedAgent .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+0.1:Agent rdf:type owl:Class ;
+          rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+          rdfs:label "Agent" ;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent
+bias:BiasedAgent rdf:type owl:Class ;
+                 rdfs:subClassOf 0.1:Agent .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias
+bias:CognitiveBias rdf:type owl:Class ;
+                   rdfs:comment "Cognitive bias" ;
+                   rdfs:isDefinedBy <http://www.semanticweb.org/bias/> ;
+                   rdfs:label "CognitiveBias" ,
+                              "CognitiveBias"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#IllusionOfExternalAgency
+bias:IllusionOfExternalAgency rdf:type owl:Class ;
+                              rdfs:subClassOf bias:CognitiveBias .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#BiasedOutcome
+externalagency:BiasedOutcome rdf:type owl:Class ;
+                             rdfs:subClassOf externalagency:Outcome .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#Cause
+externalagency:Cause rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#ExternalAgency
+externalagency:ExternalAgency rdf:type owl:Class ;
+                              rdfs:subClassOf externalagency:Cause .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#NonBiasedOutcome
+externalagency:NonBiasedOutcome rdf:type owl:Class ;
+                                rdfs:subClassOf externalagency:Outcome .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#Outcome
+externalagency:Outcome rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#RealCause
+externalagency:RealCause rdf:type owl:Class ;
+                         rdfs:subClassOf externalagency:Cause .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#BeingLucky
+externalagency:BeingLucky rdf:type owl:NamedIndividual ,
+                                   externalagency:BiasedOutcome ;
+                          dbo:causedBy externalagency:SweaterIllusoryAgency .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#IllusionOfExternalAgencyBias
+externalagency:IllusionOfExternalAgencyBias rdf:type owl:NamedIndividual ,
+                                                     bias:IllusionOfExternalAgency .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#PositiveOutcome
+externalagency:PositiveOutcome rdf:type owl:NamedIndividual ,
+                                        externalagency:NonBiasedOutcome ;
+                               dbo:causedBy externalagency:UnrelatedCauses .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#Samantha
+externalagency:Samantha rdf:type owl:NamedIndividual ,
+                                 bias:BiasedAgent ;
+                        participation:isParticipantIn externalagency:WearingBlueSweater ;
+                        bias:isAffectedBy externalagency:IllusionOfExternalAgencyBias ;
+                        externalagency:perceive externalagency:SweaterIllusoryAgency .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#SweaterIllusoryAgency
+externalagency:SweaterIllusoryAgency rdf:type owl:NamedIndividual ,
+                                              externalagency:ExternalAgency ;
+                                     externalagency:isAttributedTo externalagency:WearingBlueSweater .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#UnrelatedCauses
+externalagency:UnrelatedCauses rdf:type owl:NamedIndividual ,
+                                        externalagency:RealCause .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfExternalAgency.owl#WearingBlueSweater
+externalagency:WearingBlueSweater rdf:type owl:NamedIndividual ,
+                                           participation:Event ;
+                                  externalagency:hasOutcome externalagency:BeingLucky ,
+                                                            externalagency:PositiveOutcome ;
+                                  externalagency:lacks externalagency:SweaterIllusoryAgency .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

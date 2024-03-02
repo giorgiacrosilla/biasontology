@@ -1,0 +1,194 @@
+@prefix : <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#> .
+@prefix 0.1: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix participation: <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#> .
+@prefix coparticipation: <http://www.ontologydesignpatterns.org/cp/owl/coparticipation.owl#> .
+@prefix extrinsicincentive: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#> .
+@base <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#> .
+
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#> rdf:type owl:Ontology ;
+                                                                                                        <http://purl.org/dc/elements/1.1/creator> "Chiara Parravicini" ;
+                                                                                                        <http://purl.org/dc/elements/1.1/title> "Extrinsic Incentive Error Bias ontology" ;
+                                                                                                        rdfs:comment "Extrinsic Incentive Error Bias ontology" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/cp/owl/coparticipation.owl#coparticipatesWith
+coparticipation:coparticipatesWith rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf coparticipation:coparticipatesWith ;
+                                   rdf:type owl:SymmetricProperty ;
+                                   rdfs:domain [ rdf:type owl:Class ;
+                                                 owl:unionOf ( bias:BiasedAgent
+                                                               <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#NonBiasedAgent>
+                                                             )
+                                               ] ;
+                                   rdfs:range [ rdf:type owl:Class ;
+                                                owl:unionOf ( bias:BiasedAgent
+                                                              <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#NonBiasedAgent>
+                                                            )
+                                              ] ;
+                                   rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/coparticipation.owl> ;
+                                   rdfs:label "coparticipates with"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#hasParticipant
+participation:hasParticipant rdf:type owl:ObjectProperty ;
+                             owl:inverseOf participation:isParticipantIn ;
+                             rdfs:domain participation:Event ;
+                             rdfs:range 0.1:Agent ;
+                             rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                             rdfs:label "has participant"@en .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn
+participation:isParticipantIn rdf:type owl:ObjectProperty ;
+                              rdfs:domain 0.1:Agent ;
+                              rdfs:range participation:Event ;
+                              rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                              rdfs:label "is participant in"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#hasIncentive
+extrinsicincentive:hasIncentive rdf:type owl:ObjectProperty ;
+                                rdfs:domain 0.1:Agent ;
+                                rdfs:range extrinsicincentive:Incentive .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#isAffectedBy
+extrinsicincentive:isAffectedBy rdf:type owl:ObjectProperty ;
+                                rdfs:range [ rdf:type owl:Class ;
+                                             owl:unionOf ( extrinsicincentive:Incentive
+                                                           bias:ExtrinsicIncentiveError
+                                                         )
+                                           ] .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#perceive
+extrinsicincentive:perceive rdf:type owl:ObjectProperty ;
+                            rdfs:domain bias:BiasedAgent ;
+                            rdfs:range extrinsicincentive:Incentive .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/dc/terms/Agent
+<http://purl.org/dc/terms/Agent> rdf:type owl:Class ;
+                                 owl:equivalentClass 0.1:Agent .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event
+participation:Event rdf:type owl:Class ;
+                    rdfs:comment "Any physical, social, or mental process, event, or state." ;
+                    rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
+                    rdfs:label "Event"@en .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+0.1:Agent rdf:type owl:Class ;
+          rdfs:subClassOf bias:BiasedAgent ;
+          rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+          rdfs:label "Agent" ;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#ExtrinsicIncentive
+extrinsicincentive:ExtrinsicIncentive rdf:type owl:Class ;
+                                      rdfs:subClassOf extrinsicincentive:Incentive .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#Incentive
+extrinsicincentive:Incentive rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#IntrinsicIncentive
+extrinsicincentive:IntrinsicIncentive rdf:type owl:Class ;
+                                      rdfs:subClassOf extrinsicincentive:Incentive .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent
+bias:BiasedAgent rdf:type owl:Class ;
+                 rdfs:subClassOf 0.1:Agent .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias
+bias:CognitiveBias rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#ExtrinsicIncentiveError
+bias:ExtrinsicIncentiveError rdf:type owl:Class ;
+                             rdfs:subClassOf bias:CognitiveBias .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#NonBiasedAgent
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#NonBiasedAgent> rdf:type owl:Class ;
+                                                                                                                         rdfs:subClassOf 0.1:Agent .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#AttendingDevelopmentCourses
+extrinsicincentive:AttendingDevelopmentCourses rdf:type owl:NamedIndividual ,
+                                                        participation:Event .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#BiasedEmployee
+extrinsicincentive:BiasedEmployee rdf:type owl:NamedIndividual ,
+                                           bias:BiasedAgent ;
+                                  coparticipation:coparticipatesWith extrinsicincentive:NonBiasedEmployee ;
+                                  participation:isParticipantIn extrinsicincentive:AttendingDevelopmentCourses ;
+                                  extrinsicincentive:hasIncentive extrinsicincentive:LearningNewSkills ;
+                                  extrinsicincentive:isAffectedBy extrinsicincentive:ExtrinsicIncentiveErrorBias ;
+                                  extrinsicincentive:perceive extrinsicincentive:ImpressingTheBoss .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#ExtrinsicIncentiveErrorBias
+extrinsicincentive:ExtrinsicIncentiveErrorBias rdf:type owl:NamedIndividual ,
+                                                        bias:ExtrinsicIncentiveError .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#ImpressingTheBoss
+extrinsicincentive:ImpressingTheBoss rdf:type owl:NamedIndividual ,
+                                              extrinsicincentive:ExtrinsicIncentive .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#LearningNewSkills
+extrinsicincentive:LearningNewSkills rdf:type owl:NamedIndividual ,
+                                              extrinsicincentive:IntrinsicIncentive .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/ExtrinsicIncentiveError.owl#NonBiasedEmployee
+extrinsicincentive:NonBiasedEmployee rdf:type owl:NamedIndividual ,
+                                              <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#NonBiasedAgent> ;
+                                     coparticipation:coparticipatesWith extrinsicincentive:BiasedEmployee ;
+                                     participation:isParticipantIn extrinsicincentive:AttendingDevelopmentCourses ;
+                                     extrinsicincentive:hasIncentive extrinsicincentive:LearningNewSkills .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

@@ -1,0 +1,177 @@
+@prefix : <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#> .
+@prefix 0.1: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix asymmetricinsight: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#> .
+@base <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#> .
+
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#> rdf:type owl:Ontology ;
+                                                                                                            <http://purl.org/dc/elements/1.1/creator> "Chiara Parravicini" ;
+                                                                                                            <http://purl.org/dc/elements/1.1/title> "Illusion of Asymmetric Insight Bias ontology" ;
+                                                                                                            rdfs:comment "Illusion of Asymmetric Insight Bias ontology" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+<http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#isAffectedBy
+bias:isAffectedBy rdf:type owl:ObjectProperty ;
+                  rdfs:domain bias:BiasedAgent ;
+                  rdfs:range bias:CognitiveBias .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#hasAssumedInsight
+asymmetricinsight:hasAssumedInsight rdf:type owl:ObjectProperty ;
+                                    rdfs:domain asymmetricinsight:NonBiasedAgent ;
+                                    rdfs:range asymmetricinsight:Insight .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#perceive
+asymmetricinsight:perceive rdf:type owl:ObjectProperty ;
+                           rdfs:domain [ rdf:type owl:Class ;
+                                         owl:unionOf ( bias:BiasedAgent
+                                                       asymmetricinsight:NonBiasedAgent
+                                                     )
+                                       ] ;
+                           rdfs:range [ rdf:type owl:Class ;
+                                        owl:unionOf ( asymmetricinsight:InsightOfOthers
+                                                      asymmetricinsight:SelfInsight
+                                                    )
+                                      ] .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#perceiveBetterInsight
+asymmetricinsight:perceiveBetterInsight rdf:type owl:ObjectProperty ;
+                                        rdfs:domain bias:BiasedAgent ;
+                                        rdfs:range asymmetricinsight:NonBiasedAgent .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#hasAssumedInsightQuality
+asymmetricinsight:hasAssumedInsightQuality rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain asymmetricinsight:Insight ;
+                                           rdfs:range rdfs:Literal .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/dc/terms/Agent
+<http://purl.org/dc/terms/Agent> rdf:type owl:Class ;
+                                 owl:equivalentClass 0.1:Agent .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+0.1:Agent rdf:type owl:Class ;
+          rdfs:comment "An agent (eg. person, group, software or physical artifact)." ;
+          rdfs:label "Agent" ;
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> "stable" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent
+bias:BiasedAgent rdf:type owl:Class ;
+                 rdfs:subClassOf 0.1:Agent .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias
+bias:CognitiveBias rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#IllusionOfAsymmetricInsight
+bias:IllusionOfAsymmetricInsight rdf:type owl:Class ;
+                                 rdfs:subClassOf bias:CognitiveBias .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#Insight
+asymmetricinsight:Insight rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#InsightOfOthers
+asymmetricinsight:InsightOfOthers rdf:type owl:Class ;
+                                  rdfs:subClassOf asymmetricinsight:Insight .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#NonBiasedAgent
+asymmetricinsight:NonBiasedAgent rdf:type owl:Class ;
+                                 rdfs:subClassOf 0.1:Agent .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#SelfInsight
+asymmetricinsight:SelfInsight rdf:type owl:Class ;
+                              rdfs:subClassOf asymmetricinsight:Insight .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#ColleaguesInsightOfOthers
+asymmetricinsight:ColleaguesInsightOfOthers rdf:type owl:NamedIndividual ,
+                                                     asymmetricinsight:InsightOfOthers ;
+                                            asymmetricinsight:hasAssumedInsightQuality "bad"^^rdfs:Literal .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#ColleaguesSelfInsight
+asymmetricinsight:ColleaguesSelfInsight rdf:type owl:NamedIndividual ,
+                                                 asymmetricinsight:SelfInsight ;
+                                        asymmetricinsight:hasAssumedInsightQuality "bad"^^rdfs:Literal .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#IllusionOfAsymmetricInsightBias
+asymmetricinsight:IllusionOfAsymmetricInsightBias rdf:type owl:NamedIndividual ,
+                                                           bias:IllusionOfAsymmetricInsight .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#Maria
+asymmetricinsight:Maria rdf:type owl:NamedIndividual ,
+                                 bias:BiasedAgent ;
+                        bias:isAffectedBy asymmetricinsight:IllusionOfAsymmetricInsightBias ;
+                        asymmetricinsight:perceive asymmetricinsight:MariasInsightOfOthers ,
+                                                   asymmetricinsight:MariasSelfInsight ;
+                        asymmetricinsight:perceiveBetterInsight asymmetricinsight:MariasColleagues .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#MariasColleagues
+asymmetricinsight:MariasColleagues rdf:type owl:NamedIndividual ,
+                                            asymmetricinsight:NonBiasedAgent ;
+                                   asymmetricinsight:hasAssumedInsight asymmetricinsight:ColleaguesInsightOfOthers ,
+                                                                       asymmetricinsight:ColleaguesSelfInsight .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#MariasInsightOfOthers
+asymmetricinsight:MariasInsightOfOthers rdf:type owl:NamedIndividual ,
+                                                 asymmetricinsight:InsightOfOthers ;
+                                        asymmetricinsight:hasAssumedInsightQuality "good"^^rdfs:Literal .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfAsymmetricInsight.owl#MariasSelfInsight
+asymmetricinsight:MariasSelfInsight rdf:type owl:NamedIndividual ,
+                                             asymmetricinsight:SelfInsight ;
+                                    asymmetricinsight:hasAssumedInsightQuality "good"^^rdfs:Literal .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
