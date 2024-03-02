@@ -40,7 +40,6 @@
 ###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter
 parameter:hasParameter rdf:type owl:ObjectProperty ;
                        rdfs:domain magicalnumber:InformationItem ;
-                       rdfs:range parameter:Parameter ;
                        rdfs:comment "A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16." ;
                        rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
                        rdfs:label "ha parametro"@it ,
@@ -142,7 +141,7 @@ magicalnumber:wantsToRemember rdf:type owl:ObjectProperty ;
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue
 parameter:hasParameterDataValue rdf:type owl:DatatypeProperty ;
-                                rdfs:domain parameter:Parameter ;
+                                rdfs:domain parameter:ParameterInt ;
                                 rdfs:range xsd:boolean ,
                                            xsd:int ;
                                 rdfs:comment """Parametrizes values from a datatype. For example, a Parameter AgeForDriving hasParameterDataValue 18 on datatype xsd:int, in the Italian traffic code. In this example, AgeForDriving isDefinedIn the Norm ItalianTrafficCodeAgeDriving.
@@ -165,15 +164,6 @@ High rdf:type Person and (some hasHeight (Height and (oneOf isTallerThan 185) an
                     rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
                     rdfs:label "Parameter"@en ,
                                "Parametro"@it .
-
-
-###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#ParameterBoolean
-parameter:ParameterBoolean rdf:type owl:Class ;
-                           rdfs:subClassOf parameter:Parameter ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty parameter:hasParameterDataValue ;
-                                             owl:allValuesFrom xsd:boolean
-                                           ] .
 
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#ParameterInt
@@ -246,7 +236,8 @@ magicalnumber:InformationItem rdf:type owl:Class ;
 
 ###  https://w3id.org/framester/data/framestercore/SuccessOrFailure
 <https://w3id.org/framester/data/framestercore/SuccessOrFailure> rdf:type owl:Class ;
-                                                                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                 rdfs:subClassOf parameter:Parameter ,
+                                                                                 [ rdf:type owl:Restriction ;
                                                                                    owl:onProperty parameter:hasParameterDataValue ;
                                                                                    owl:allValuesFrom xsd:boolean
                                                                                  ] ;
@@ -312,7 +303,7 @@ magicalnumber:MemorizeOrNot rdf:type owl:NamedIndividual ,
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#TotalListItems
 magicalnumber:TotalListItems rdf:type owl:NamedIndividual ,
-                                      parameter:Parameter ;
+                                      parameter:ParameterInt ;
                              rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
                              rdfs:label "TotalListItems" .
 
