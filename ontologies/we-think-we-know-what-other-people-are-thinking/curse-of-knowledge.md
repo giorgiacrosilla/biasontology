@@ -1,7 +1,7 @@
 # 🤓 Curse of knowledge
 
 {% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/CurseOfKnowledge.owl" %}
-<figure><img src="https://github.com/giorgiacrosilla/biasontology/blob/main/uml/CurseOfKnowledge.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="uml/CurseOfKnowledge.jpg" alt=""><figcaption></figcaption></figure>
 
 
 ***
