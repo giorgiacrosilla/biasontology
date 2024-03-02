@@ -2,7 +2,7 @@
 
 {% embed url="https://service.tib.eu/webvowl/#file=DenominationEffect.owx" %}
 
-<figure><img src="" alt=""><figcaption></figcaption></figure>
+<figure><img src="uml/DenominationEffect-formalization.jpg" alt=""><figcaption></figcaption></figure>
 
 ### <mark style="color:red;">C</mark>ontext literature and state of the art
 
