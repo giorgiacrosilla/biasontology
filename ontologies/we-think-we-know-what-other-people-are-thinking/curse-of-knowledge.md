@@ -27,25 +27,25 @@ The "curse of knowledge" bias refers to a cognitive phenomenon in which individu
 
 #### Can you create 10 scenarios compelling with the bias?
 
-*1.* <u>Technical Jargon in Presentations</u>: A software developer giving a presentation to a non-technical audience uses complex coding terms without explaining them, assuming everyone understands the terminology. 
+*1.* Technical Jargon in Presentations: A software developer giving a presentation to a non-technical audience uses complex coding terms without explaining them, assuming everyone understands the terminology. 
 
-*2.* <u>Expert Teaching Beginners</u>: A seasoned chef instructing a cooking class for beginners may unintentionally overlook basic cooking steps, assuming that everyone has a foundational understanding of culinary principles. 
+*2.* Expert Teaching Beginners: A seasoned chef instructing a cooking class for beginners may unintentionally overlook basic cooking steps, assuming that everyone has a foundational understanding of culinary principles. 
 
-*3.* <u>Medical Professionals Explaining Diagnoses</u>: Doctors using intricate medical terms while discussing a diagnosis with patients may assume the patients comprehend the terminology, leading to confusion and anxiety. 
+*3.* Medical Professionals Explaining Diagnoses: Doctors using intricate medical terms while discussing a diagnosis with patients may assume the patients comprehend the terminology, leading to confusion and anxiety. 
 
-*4.* <u>Financial Advisors and Investment Ling</u>: A financial advisor discussing investment strategies with a client may use financial jargon without considering that the client may not have a deep understanding of investment terminology. 
+*4.* Financial Advisors and Investment Ling: A financial advisor discussing investment strategies with a client may use financial jargon without considering that the client may not have a deep understanding of investment terminology. 
 
-*5.* <u>Academic Researchers Presenting Findings</u>: Researchers presenting their findings in a specialized field might assume a general audience understands the nuances of their research without providing adequate background information. 
+*5.* Academic Researchers Presenting Findings: Researchers presenting their findings in a specialized field might assume a general audience understands the nuances of their research without providing adequate background information. 
 
-*6.* <u>Engineers Designing User Interfaces</u>: Engineers developing software interfaces may design complex user interfaces assuming users will easily grasp the intricacies, neglecting the fact that not all users are tech-savvy. 
+*6.* Engineers Designing User Interfaces: Engineers developing software interfaces may design complex user interfaces assuming users will easily grasp the intricacies, neglecting the fact that not all users are tech-savvy. 
 
-*7.* <u>Teachers Assisting Students</u>: A math teacher may inadvertently skip explaining fundamental concepts, assuming students already know them, which can lead to confusion and hinder learning. 
+*7.* Teachers Assisting Students: A math teacher may inadvertently skip explaining fundamental concepts, assuming students already know them, which can lead to confusion and hinder learning. 
 
-*8.* <u>Legal Professionals Communicating with Clients</u>: Lawyers discussing legal matters with clients might use legal jargon without realizing that the clients may not have a legal background, leading to misunderstandings. 
+*8.* Legal Professionals Communicating with Clients: Lawyers discussing legal matters with clients might use legal jargon without realizing that the clients may not have a legal background, leading to misunderstandings. 
 
-*9.* <u>IT Support Interaction</u>: IT professionals providing support may assume a user's familiarity with technical terms, making it difficult for the user to follow troubleshooting instructions. 
+*9.* IT Support Interaction: IT professionals providing support may assume a user's familiarity with technical terms, making it difficult for the user to follow troubleshooting instructions. 
 
-*10.* <u>Subject Matter Experts in Cross-disciplinary Teams</u>: In a team with members from different disciplines, a subject matter expert may unintentionally use terminology specific to their field, making it challenging for others to fully grasp the concepts being discussed. 
+*10.* Subject Matter Experts in Cross-disciplinary Teams: In a team with members from different disciplines, a subject matter expert may unintentionally use terminology specific to their field, making it challenging for others to fully grasp the concepts being discussed. 
 
 
 #### Now consider the scenario "IT Support Interactions" and give me a short user story from it.
