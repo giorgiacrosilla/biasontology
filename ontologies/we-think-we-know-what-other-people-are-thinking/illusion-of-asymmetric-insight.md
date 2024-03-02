@@ -94,8 +94,6 @@ WHERE {
 
 3. What is the assumed self-insight and insight of others of the non-biased agent?
 
-Scientific articles which state that in the past scientific predictions about the topic were not accurate.
-
 ```sparql
 SELECT ?selfInsightQuality ?insightOfOthersQuality
 WHERE {
