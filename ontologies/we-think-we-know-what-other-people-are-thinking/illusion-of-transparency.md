@@ -4,7 +4,7 @@
 
 [Illusion Of Transparency OWL](https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/IllusionOfTransparency.owl)
 
-<figure><img src="../../uml/IllusionOfTransparency.jpeg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../uml/IllusionOfTransparency.jpg" alt=""><figcaption></figcaption></figure>
 
 
 ***
