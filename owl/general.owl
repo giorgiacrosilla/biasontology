@@ -11,16 +11,25 @@
 <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#> rdf:type owl:Ontology ;
                                                                                         owl:imports <http://www.ontologydesignpatterns.org/cp/owl/classification.owl> ,
                                                                                                     <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ;
-                                                                                        <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasAuthor> "Daniele Spedicati" ;
+                                                                                        <http://purl.org/dc/elements/1.1/creator> "Daniele Spedicati" ;
+                                                                                        <http://purl.org/dc/elements/1.1/title> "bias ontology general hierarchy" ;
                                                                                         rdfs:comment """The concept of “cognitive biases” is most commonly used to describe and qualify the deviations in human decision making. Cognitive biases can generally be described as systematic and universally occurring tendencies, inclinations, or dispositions that skew or distort information processes in ways that make their outcome inaccurate, suboptimal or simply wrong.
 
-This ontology aims to describe the hierarchical relationships between the biases and the concepts that they can be grouped around.""" ,
-                                                                                                     "" ;
-                                                                                        rdfs:label "bias ontology general hierarchy" .
+This ontology aims to describe the hierarchical relationships between the biases and the concepts that they can be grouped around.""" .
 
 #################################################################
 #    Annotation properties
 #################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty ;
+                                          <http://purl.org/dc/elements/1.1/title> "Daniele Spedicati" .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty ;
+                                        <http://purl.org/dc/elements/1.1/title> "Bias general ontology" .
+
 
 ###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
@@ -31,13 +40,13 @@ This ontology aims to describe the hierarchical relationships between the biases
 #################################################################
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/classification.owl#isClassifiedBy
-<http://www.ontologydesignpatterns.org/cp/owl/classification.owl#isClassifiedBy> rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> .
+<http://www.ontologydesignpatterns.org/cp/owl/classification.owl#isClassifiedBy> rdfs:domain bias:CognitiveBias .
 
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#causedBy
 bias:causedBy rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/cp/owl/classification.owl#isClassifiedBy> ;
-              rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ;
+              rdfs:domain bias:CognitiveBias ;
               rdfs:range <http://www.ontologydesignpatterns.org/cp/owl/classification.owl#Concept> ;
               rdfs:comment "relates a bias to its causes (an element of the firs or second level grouping)." ;
               rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
@@ -54,8 +63,8 @@ bias:causes rdf:type owl:ObjectProperty ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#isAffectedBy
 bias:isAffectedBy rdf:type owl:ObjectProperty ;
-                  rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##BiasedAgent> ;
-                  rdfs:range <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ;
+                  rdfs:domain bias:BiasedAgent ;
+                  rdfs:range bias:CognitiveBias ;
                   rdfs:comment "links a Biased Agent with the agent he is subject to" ;
                   rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
                   rdfs:label "is affected by" .
@@ -79,7 +88,7 @@ bias:isAffectedBy rdf:type owl:ObjectProperty ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#AppealToProbabilityFallacy
 bias:AppealToProbabilityFallacy rdf:type owl:Class ;
-                                rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ,
+                                rdfs:subClassOf bias:CognitiveBias ,
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty bias:causedBy ;
                                                   owl:someValuesFrom bias:SecondLevelGrouping
@@ -89,12 +98,50 @@ bias:AppealToProbabilityFallacy rdf:type owl:Class ;
                                 rdfs:label "appeal to probability fallacy" .
 
 
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent
+bias:BiasedAgent rdf:type owl:Class ;
+                 rdfs:subClassOf 0.1:Agent ;
+                 rdfs:comment "an agent affected by a cognitive bias." ;
+                 rdfs:label "biased agent" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias
+bias:CognitiveBias rdf:type owl:Class ;
+                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                     owl:onProperty bias:causedBy ;
+                                     owl:someValuesFrom bias:FirstLevelGrouping
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty bias:causedBy ;
+                                     owl:someValuesFrom bias:SecondLevelGrouping
+                                   ] ;
+                   owl:disjointUnionOf ( bias:AppealToProbabilityFallacy
+                                         bias:CurseOfKnowledge
+                                         bias:DenominationEffect
+                                         bias:ExtrinsicIncentiveError
+                                         bias:IllusionOfAsymmetricInsight
+                                         bias:IllusionOfExternalAgency
+                                         bias:IllusionOfTransparency
+                                         bias:MentalAccounting
+                                         bias:MurphysLaw
+                                         bias:NormalcyBias
+                                         bias:SpotlightEffect
+                                         bias:SubadditivityEffect
+                                         bias:SurvivorshipBias
+                                         bias:TheMagicalNumber
+                                         bias:ZeroSumBias
+                                       ) ;
+                   rdfs:comment "A cognitive bias is a systematic pattern of deviation from norm or rationality in judgment. Individuals create their own \"subjective reality\" from their perception of the input." ;
+                   rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
+                   rdfs:label "Cognitive Bias" .
+
+
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CurseOfKnowledge
 bias:CurseOfKnowledge rdf:type owl:Class ;
-                      rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ,
+                      rdfs:subClassOf bias:CognitiveBias ,
                                       [ rdf:type owl:Restriction ;
                                         owl:onProperty bias:causedBy ;
-                                        owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##ThinkingOfKnowing>
+                                        owl:allValuesFrom bias:ThinkingOfKnowing
                                       ] ;
                       rdfs:comment "Curse of Knowledge: Difficulty in imagining what it's like for others not to know something you know." ;
                       rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
@@ -103,10 +150,10 @@ bias:CurseOfKnowledge rdf:type owl:Class ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#DenominationEffect
 bias:DenominationEffect rdf:type owl:Class ;
-                        rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ,
+                        rdfs:subClassOf bias:CognitiveBias ,
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty bias:causedBy ;
-                                          owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##Simplification>
+                                          owl:allValuesFrom bias:Simplification
                                         ] ;
                         rdfs:comment "Denomination Effect: Spending behavior influenced by the denomination of currency." ;
                         rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
@@ -115,10 +162,10 @@ bias:DenominationEffect rdf:type owl:Class ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#ExtrinsicIncentiveError
 bias:ExtrinsicIncentiveError rdf:type owl:Class ;
-                             rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ,
+                             rdfs:subClassOf bias:CognitiveBias ,
                                              [ rdf:type owl:Restriction ;
                                                owl:onProperty bias:causedBy ;
-                                               owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##ThinkingOfKnowing>
+                                               owl:allValuesFrom bias:ThinkingOfKnowing
                                              ] ;
                              rdfs:comment "Extrinsic Incentive Error: Overestimating the impact of external rewards on motivation or behavior." ;
                              rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
@@ -139,10 +186,10 @@ bias:FirstLevelGrouping rdf:type owl:Class ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#IllusionOfAsymmetricInsight
 bias:IllusionOfAsymmetricInsight rdf:type owl:Class ;
-                                 rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ,
+                                 rdfs:subClassOf bias:CognitiveBias ,
                                                  [ rdf:type owl:Restriction ;
                                                    owl:onProperty bias:causedBy ;
-                                                   owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##ThinkingOfKnowing>
+                                                   owl:allValuesFrom bias:ThinkingOfKnowing
                                                  ] ;
                                  rdfs:comment "Illusion of Asymmetric Insight: Belief that one knows more about others than they know about oneself." ;
                                  rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
@@ -151,10 +198,10 @@ bias:IllusionOfAsymmetricInsight rdf:type owl:Class ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#IllusionOfExternalAgency
 bias:IllusionOfExternalAgency rdf:type owl:Class ;
-                              rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ,
+                              rdfs:subClassOf bias:CognitiveBias ,
                                               [ rdf:type owl:Restriction ;
                                                 owl:onProperty bias:causedBy ;
-                                                owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##ThinkingOfKnowing>
+                                                owl:allValuesFrom bias:ThinkingOfKnowing
                                               ] ;
                               rdfs:comment "Illusion of External Agency: Attributing events to external forces rather than personal agency." ;
                               rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
@@ -163,10 +210,10 @@ bias:IllusionOfExternalAgency rdf:type owl:Class ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#IllusionOfTransparency
 bias:IllusionOfTransparency rdf:type owl:Class ;
-                            rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ,
+                            rdfs:subClassOf bias:CognitiveBias ,
                                             [ rdf:type owl:Restriction ;
                                               owl:onProperty bias:causedBy ;
-                                              owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##ThinkingOfKnowing>
+                                              owl:allValuesFrom bias:ThinkingOfKnowing
                                             ] ;
                             rdfs:comment "Illusion of Transparency: Overestimating the extent to which one's thoughts or feelings are known by others." ;
                             rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
@@ -175,10 +222,10 @@ bias:IllusionOfTransparency rdf:type owl:Class ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#MentalAccounting
 bias:MentalAccounting rdf:type owl:Class ;
-                      rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ,
+                      rdfs:subClassOf bias:CognitiveBias ,
                                       [ rdf:type owl:Restriction ;
                                         owl:onProperty bias:causedBy ;
-                                        owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##Simplification>
+                                        owl:allValuesFrom bias:Simplification
                                       ] ;
                       rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
                       rdfs:label "mental accounting" .
@@ -186,24 +233,40 @@ bias:MentalAccounting rdf:type owl:Class ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#MurphysLaw
 bias:MurphysLaw rdf:type owl:Class ;
-                rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ,
+                rdfs:subClassOf bias:CognitiveBias ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty bias:causedBy ;
-                                  owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##Simplification>
+                                  owl:allValuesFrom bias:Simplification
                                 ] ;
                 rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
                 rdfs:label "murphy’s law" .
 
 
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#NonBiasedAgent
+bias:NonBiasedAgent rdf:type owl:Class ;
+                    rdfs:subClassOf 0.1:Agent ;
+                    rdfs:comment "An agent that as a relationship with a non biased agent" ;
+                    rdfs:label "non biased agent" .
+
+
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#NormalcyBias
 bias:NormalcyBias rdf:type owl:Class ;
-                  rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ,
+                  rdfs:subClassOf bias:CognitiveBias ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty bias:causedBy ;
-                                    owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##Simplification>
+                                    owl:allValuesFrom bias:Simplification
                                   ] ;
                   rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
                   rdfs:label "normalcy bias" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#NotEnoughMeaning
+bias:NotEnoughMeaning rdf:type owl:Class ;
+                      rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ,
+                                      bias:FirstLevelGrouping ;
+                      rdfs:comment "it is one of the four main categoriziation of biases." ;
+                      rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
+                      rdfs:label "Not enough meaning" .
 
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#SecondLevelGrouping
@@ -218,12 +281,25 @@ bias:SecondLevelGrouping rdf:type owl:Class ;
                          rdfs:label "Second level grouping" .
 
 
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#Simplification
+bias:Simplification rdf:type owl:Class ;
+                    rdfs:subClassOf bias:SecondLevelGrouping ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> ;
+                                      owl:allValuesFrom bias:NotEnoughMeaning
+                                    ] ;
+                    owl:disjointWith bias:ThinkingOfKnowing ;
+                    rdfs:comment "A grouping of biases according to the semplificationo of numbers and probabilities." ;
+                    rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
+                    rdfs:label "We simplify probabilities and numbers to make them easier to think about" .
+
+
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#SpotlightEffect
 bias:SpotlightEffect rdf:type owl:Class ;
-                     rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ,
+                     rdfs:subClassOf bias:CognitiveBias ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty bias:causedBy ;
-                                       owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##ThinkingOfKnowing>
+                                       owl:allValuesFrom bias:ThinkingOfKnowing
                                      ] ;
                      rdfs:comment "Spotlight Effect: Overestimating how much attention others pay to our appearance or behavior." ;
                      rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
@@ -232,10 +308,10 @@ bias:SpotlightEffect rdf:type owl:Class ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#SubadditivityEffect
 bias:SubadditivityEffect rdf:type owl:Class ;
-                         rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ,
+                         rdfs:subClassOf bias:CognitiveBias ,
                                          [ rdf:type owl:Restriction ;
                                            owl:onProperty bias:causedBy ;
-                                           owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##Simplification>
+                                           owl:allValuesFrom bias:Simplification
                                          ] ;
                          rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
                          rdfs:label "subadditivity effect" .
@@ -243,10 +319,10 @@ bias:SubadditivityEffect rdf:type owl:Class ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#SurvivorshipBias
 bias:SurvivorshipBias rdf:type owl:Class ;
-                      rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ,
+                      rdfs:subClassOf bias:CognitiveBias ,
                                       [ rdf:type owl:Restriction ;
                                         owl:onProperty bias:causedBy ;
-                                        owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##Simplification>
+                                        owl:allValuesFrom bias:Simplification
                                       ] ;
                       rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
                       rdfs:label "survivorship bias" .
@@ -254,104 +330,37 @@ bias:SurvivorshipBias rdf:type owl:Class ;
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#TheMagicalNumber
 bias:TheMagicalNumber rdf:type owl:Class ;
-                      rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ,
+                      rdfs:subClassOf bias:CognitiveBias ,
                                       [ rdf:type owl:Restriction ;
                                         owl:onProperty bias:causedBy ;
-                                        owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##Simplification>
+                                        owl:allValuesFrom bias:Simplification
                                       ] ;
                       rdfs:comment "The Magical Number 7±2: Cognitive limit for short-term memory, around 7 items." ;
                       rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
                       rdfs:label "the magical number 7+-2" .
 
 
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#ThinkingOfKnowing
+bias:ThinkingOfKnowing rdf:type owl:Class ;
+                       rdfs:subClassOf bias:SecondLevelGrouping ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> ;
+                                         owl:allValuesFrom bias:NotEnoughMeaning
+                                       ] ;
+                       rdfs:comment "A group of biases characterised by the tendency to assume to know other's thoughts" ;
+                       rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
+                       rdfs:label "We think we know what other people are thinking." .
+
+
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#ZeroSumBias
 bias:ZeroSumBias rdf:type owl:Class ;
-                 rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> ,
+                 rdfs:subClassOf bias:CognitiveBias ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty bias:causedBy ;
-                                   owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##Simplification>
+                                   owl:allValuesFrom bias:Simplification
                                  ] ;
                  rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
                  rdfs:label "zero sum bias" .
-
-
-###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##BiasedAgent
-<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##BiasedAgent> rdf:type owl:Class ;
-                                                                                                   rdfs:subClassOf 0.1:Agent ;
-                                                                                                   rdfs:comment "an agent affected by a cognitive bias." ;
-                                                                                                   rdfs:label "biased agent" .
-
-
-###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias
-<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##CognitiveBias> rdf:type owl:Class ;
-                                                                                                     rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                                                                                       owl:onProperty bias:causedBy ;
-                                                                                                                       owl:someValuesFrom bias:FirstLevelGrouping
-                                                                                                                     ] ,
-                                                                                                                     [ rdf:type owl:Restriction ;
-                                                                                                                       owl:onProperty bias:causedBy ;
-                                                                                                                       owl:someValuesFrom bias:SecondLevelGrouping
-                                                                                                                     ] ;
-                                                                                                     owl:disjointUnionOf ( bias:AppealToProbabilityFallacy
-                                                                                                                           bias:CurseOfKnowledge
-                                                                                                                           bias:DenominationEffect
-                                                                                                                           bias:ExtrinsicIncentiveError
-                                                                                                                           bias:IllusionOfAsymmetricInsight
-                                                                                                                           bias:IllusionOfExternalAgency
-                                                                                                                           bias:IllusionOfTransparency
-                                                                                                                           bias:MentalAccounting
-                                                                                                                           bias:MurphysLaw
-                                                                                                                           bias:NormalcyBias
-                                                                                                                           bias:SpotlightEffect
-                                                                                                                           bias:SubadditivityEffect
-                                                                                                                           bias:SurvivorshipBias
-                                                                                                                           bias:TheMagicalNumber
-                                                                                                                           bias:ZeroSumBias
-                                                                                                                         ) ;
-                                                                                                     rdfs:comment "A cognitive bias is a systematic pattern of deviation from norm or rationality in judgment. Individuals create their own \"subjective reality\" from their perception of the input." ;
-                                                                                                     rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
-                                                                                                     rdfs:label "Cognitive Bias" .
-
-
-###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##NonBiasedAgent
-<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##NonBiasedAgent> rdf:type owl:Class ;
-                                                                                                      rdfs:subClassOf 0.1:Agent ;
-                                                                                                      rdfs:comment "An agent that as a relationship with a non biased agent" ;
-                                                                                                      rdfs:label "non biased agent" .
-
-
-###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##NotEnoughMeaning
-<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##NotEnoughMeaning> rdf:type owl:Class ;
-                                                                                                        rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ,
-                                                                                                                        bias:FirstLevelGrouping ;
-                                                                                                        rdfs:comment "it is one of the four main categoriziation of biases." ;
-                                                                                                        rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
-                                                                                                        rdfs:label "Not enough meaning" .
-
-
-###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##Simplification
-<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##Simplification> rdf:type owl:Class ;
-                                                                                                      rdfs:subClassOf bias:SecondLevelGrouping ,
-                                                                                                                      [ rdf:type owl:Restriction ;
-                                                                                                                        owl:onProperty <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> ;
-                                                                                                                        owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##NotEnoughMeaning>
-                                                                                                                      ] ;
-                                                                                                      owl:disjointWith <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##ThinkingOfKnowing> ;
-                                                                                                      rdfs:comment "A grouping of biases according to the semplificationo of numbers and probabilities." ;
-                                                                                                      rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
-                                                                                                      rdfs:label "We simplify probabilities and numbers to make them easier to think about" .
-
-
-###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##ThinkingOfKnowing
-<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##ThinkingOfKnowing> rdf:type owl:Class ;
-                                                                                                         rdfs:subClassOf bias:SecondLevelGrouping ,
-                                                                                                                         [ rdf:type owl:Restriction ;
-                                                                                                                           owl:onProperty <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> ;
-                                                                                                                           owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##NotEnoughMeaning>
-                                                                                                                         ] ;
-                                                                                                         rdfs:comment "A group of biases characterised by the tendency to assume to know other's thoughts" ;
-                                                                                                         rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#" ;
-                                                                                                         rdfs:label "We think we know what other people are thinking." .
 
 
 #################################################################
@@ -369,7 +378,7 @@ bias:notMeaning rdf:type owl:NamedIndividual .
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#simplification
 bias:simplification rdf:type owl:NamedIndividual ,
-                             <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl##Simplification> ;
+                             bias:Simplification ;
                     <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> bias:notMeaning .
 
 

@@ -9,16 +9,22 @@
 @base <http://www.w3.org/2002/07/owl#> .
 
 <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/MentalAccounting.owl#> rdf:type owl:Ontology ;
-                                                                                                 rdfs:comment "Mental accounting is a cognitive bias in which individuals categorize their financial resources and transactions into separate mental \"accounts\" based on subjective criteria, rather than considering the overall financial picture. This bias was first proposed by economist Richard Thaler." ;
-                                                                                                 rdfs:label "Mental Accounting bias" .
+                                                                                                 <http://purl.org/dc/elements/1.1/creator> "Daniele Spedicati" ;
+                                                                                                 <http://purl.org/dc/elements/1.1/title> "Mental Accounting" ;
+                                                                                                 rdfs:comment "Mental accounting is a cognitive bias in which individuals categorize their financial resources and transactions into separate mental \"accounts\" based on subjective criteria, rather than considering the overall financial picture. This bias was first proposed by economist Richard Thaler." .
 
 #################################################################
 #    Annotation properties
 #################################################################
 
-###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasAuthor
-<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasAuthor> rdf:type owl:AnnotationProperty ;
-                                                                                 rdfs:comment "Daniele Spedicati" .
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty ;
+                                          <http://purl.org/dc/elements/1.1/title> "Daniele Spedicati" .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty ;
+                                        <http://purl.org/dc/elements/1.1/title> "Mental Accounting" .
 
 
 ###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status

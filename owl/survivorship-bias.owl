@@ -13,9 +13,23 @@
                                                                                                 owl:imports <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ,
                                                                                                             <http://www.ontologydesignpatterns.org/cp/owl/observation.owl> ,
                                                                                                             <http://www.ontologydesignpatterns.org/cp/owl/participation.owl> ;
-                                                                                                <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasAuthor> "Daniele Spedicati" ;
-                                                                                                rdfs:comment "Survivorship bias or survival bias is the logical error of concentrating on entities that passed a selection process while overlooking those that did not. This can lead to incorrect conclusions because of incomplete data." ;
-                                                                                                rdfs:label "Survivorship Bias" .
+                                                                                                <http://purl.org/dc/elements/1.1/creator> "Daniele Spedicati" ;
+                                                                                                <http://purl.org/dc/elements/1.1/title> "Survivorship Bias" ;
+                                                                                                rdfs:comment "Survivorship bias or survival bias is the logical error of concentrating on entities that passed a selection process while overlooking those that did not. This can lead to incorrect conclusions because of incomplete data." .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty ;
+                                          <http://purl.org/dc/elements/1.1/creator> "Daniele Spedicati" .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty ;
+                                        <http://purl.org/dc/elements/1.1/title> "Survivorship Bias" .
+
 
 #################################################################
 #    Object Properties
@@ -127,7 +141,11 @@
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Selection
 <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Selection> rdf:type owl:Class ;
-                                                                                                            rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
+                                                                                                            rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ,
+                                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                                              owl:onProperty <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#hasParticipant> ;
+                                                                                                                              owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#TestedEntity>
+                                                                                                                            ] ;
                                                                                                             rdfs:comment "An event that a group goes through and imply that only some mambers of this group make it." ;
                                                                                                             rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SurvivorshipBias.owl" ;
                                                                                                             rdfs:label "Selection" .
@@ -161,6 +179,10 @@
                                                                                                                                                  owl:onClass <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Survivor>
                                                                                                                                                ]
                                                                                                                                              )
+                                                                                                                               ] ,
+                                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                                 owl:onProperty <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf> ;
+                                                                                                                                 owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#TestedGroup>
                                                                                                                                ] ;
                                                                                                                rdfs:comment "An entity member of a tested group that goes through a selection." ;
                                                                                                                rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SurvivorshipBias.owl" ;
@@ -169,7 +191,11 @@
 
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#TestedGroup
 <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#TestedGroup> rdf:type owl:Class ;
-                                                                                                              rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ;
+                                                                                                              rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection> ,
+                                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                                owl:onProperty <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember> ;
+                                                                                                                                owl:allValuesFrom <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#TestedEntity>
+                                                                                                                              ] ;
                                                                                                               rdfs:comment "A group that goes through a selection." ;
                                                                                                               rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SurvivorshipBias.owl" ;
                                                                                                               rdfs:label "Tested group" .

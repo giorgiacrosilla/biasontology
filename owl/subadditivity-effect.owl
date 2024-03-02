@@ -15,11 +15,25 @@
                                                                                                     owl:imports <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ,
                                                                                                                 <http://www.ontologydesignpatterns.org/cp/owl/componency.owl> ,
                                                                                                                 <http://www.ontologydesignpatterns.org/cp/owl/partof.owl> ;
-                                                                                                    <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasAuthor> "Daniele Spedicati" ;
+                                                                                                    <http://purl.org/dc/elements/1.1/creator> "Daniele Spedicati" ;
+                                                                                                    <http://purl.org/dc/elements/1.1/title> "Subadditivity Effect" ;
                                                                                                     rdfs:comment """The subadditivity effect is the tendency to judge probability of the whole to be less than the probabilities of the parts.
 
-In a 2012 article in Psychological Bulletin it is suggested the subadditivity effect can be explained by an information-theoretic generative mechanism that assumes a noisy conversion of objective evidence (observation) into subjective estimates (judgment). This explanation is different than support theory, proposed as an explanation by Tversky and Koehler, which requires additional assumptions.""" ;
-                                                                                                    rdfs:label "Subadditivity effect Ontology" .
+In a 2012 article in Psychological Bulletin it is suggested the subadditivity effect can be explained by an information-theoretic generative mechanism that assumes a noisy conversion of objective evidence (observation) into subjective estimates (judgment). This explanation is different than support theory, proposed as an explanation by Tversky and Koehler, which requires additional assumptions.""" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty ;
+                                          <http://purl.org/dc/elements/1.1/title> "Daniele Spedicati" .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty ;
+                                        rdfs:comment "Subadditivity Effect" .
+
 
 #################################################################
 #    Object Properties
