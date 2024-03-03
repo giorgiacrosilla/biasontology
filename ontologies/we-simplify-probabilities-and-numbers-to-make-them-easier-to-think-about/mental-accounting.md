@@ -87,9 +87,9 @@ Acceptance Criteria:
 1. How does the individual categorize the tax refund in terms of its use?
    * Extra Money Accounting.
   
-     ```SELECT ?Account WHERE { 
-
-?Account mentalaccounting:hasTransaction ?income. 
+```sparql
+SELECT ?Account WHERE { 
+	?Account mentalaccounting:hasTransaction ?income. 
 } 
 ```
 
@@ -99,16 +99,16 @@ Acceptance Criteria:
 
 ```sparql
 SELECT ?PsychologicalValue WHERE {
-  ?refound a mentalaccounting:CommercialTransaction.
+	?refound a mentalaccounting:CommercialTransaction.
 	?refound mentalaccounting:hasPsychologicalValue ?PsychologicalValue. 
 } 
-
 ```
 
 3. What decision is taken by the individual?
    * Luxury Purchase.
   
-```SELECT ?Decision WHERE { 
+```sparql
+SELECT ?Decision WHERE { 
 	?agent mentalaccounting:takesDecision ?Decision 
 } 
 ```
