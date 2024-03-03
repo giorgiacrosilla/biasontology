@@ -1,6 +1,6 @@
 # Subadditivity effect
 
-{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.ttl" %}
+{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/subadditivity-effect.owl" %}
 
 <figure><img src="../../uml/Subaddictivity-effect.jpg" alt=""><figcaption></figcaption></figure>
 
