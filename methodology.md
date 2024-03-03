@@ -27,7 +27,7 @@ From the user scenario proposed by Chat GPT, we derived competency questions (XD
 
 3. ODP&#x20;
 
-This third stage of our workflows starts its reasoning from the results of the LLM modeling and the CQs provided to align them with already existing patterns (XD task 7). Ontology Design Patterns are used to find a solution to frequent ontology design problems and contribute to a Pattern-based Ontology Design (link paper nella documentazione). The designer looks for existing ODPs in the repository of them (link sito web), aiming to find in them relationships and correlations that might allow to map classes and properties present in the developing ontology.
+This third stage of our workflows starts its reasoning from the results of the LLM modeling and the CQs provided to align them with already existing patterns (XD task 7). Ontology Design Patterns are used to find a solution to frequent ontology design problems and contribute to a Pattern-based Ontology Design. The designer looks for existing ODPs in the [repository](http://ontologydesignpatterns.org/wiki/Submissions:ContentOPs), aiming to find in them relationships and correlations that might allow to map classes and properties present in the developing ontology.
 
 4. Words as semantic triggers.
 
