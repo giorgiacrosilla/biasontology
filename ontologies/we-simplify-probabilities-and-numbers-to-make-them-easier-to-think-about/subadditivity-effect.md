@@ -77,15 +77,39 @@ Acceptance Criteria:
 
 10. Conduct a comprehensive project review upon completion to evaluate successes, lessons learned, and areas for improvement, informing future project planning and execution.
 
-***As can be noticed, the LLM mistaken the task required***
+***As can be noticed, the LLM mistaken the task required.***
 
 #### We can now derive example-based-CQs from the user story.&#x20;
 1. Which are the parts of the team?
    * Member1, Member2, ...
-2. What is the Effect of the Team as a whole?
+
+  ```sparql
+SELECT ?member WHERE { 
+?whole componency:hasComponent ?member. 
+} 
+```
+
+3. What is the Effect of the Team as a whole?
   * Team Effect
+
+```sparql
+SELECT ?effect WHERE { 
+?team componency:hasComponent subadditivityeffect:Member1. 
+?team subadditivityeffect:hasEffect ?effect. 
+} 
+```
+
 3. What is the effect of Member1?
   * Member1 Effort
+
+```sparql
+SELECT ?sum WHERE { 
+
+ subadditivityeffect:ActualTime subadditivityeffect:isDifferentFrom ?sumEstimation. 
+?sumEffect subadditivityeffect:hasEffect ?sumEstimation. 
+?sum subadditivityeffect:hasEffect ?sumEffect. 
+} 
+```
 
 
 #### If you should make an ontology based of the "appeal to probability fallacy" which classes and properties would you create?
