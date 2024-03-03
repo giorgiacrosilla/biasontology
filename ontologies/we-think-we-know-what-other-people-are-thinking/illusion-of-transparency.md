@@ -167,17 +167,14 @@ Instance of hasVisibleCues.
 Represents a visible cue, like shaky voice or flushed face, contributing to the illusion of transparency. 
 ### Framester Frames used:
 
-*
 - [Feeling](https://w3id.org/framester/data/framestercore/Feeling)
 
 
-* 
 
 ### ODP used:
 
 
 - [Topic](http://ontologydesignpatterns.org/wiki/Submissions:Topic)
-- 
 - [Co-partecipation](http://ontologydesignpatterns.org/wiki/Submissions:Co-participation)]
 
 
