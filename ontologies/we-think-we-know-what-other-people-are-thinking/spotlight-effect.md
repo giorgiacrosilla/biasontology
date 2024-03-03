@@ -131,10 +131,8 @@ WHERE {
 
 ### Framester Frames used:
 
-*
 - [Feeling](https://w3id.org/framester/data/framestercore/Feeling)
 
-* 
 
 ### ODP used:
 
