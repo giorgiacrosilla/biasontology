@@ -20,7 +20,7 @@ This stage of the workflow is focusing on using the LLM to develop have a first 
 
 * Give a definition of the bias studied (task 1): this step helps to integrate the knowledge gathered in stage 1.
 * Give 10 examples scenarios of the specified bias (task 2): here the role of the customer in the XD is substituted by the LLM.
-* Give user story based on one of the previously obtained scenarios (task 2) and the competency questions (CQs) related to it (task 4-6).&#x20;
+* Give user story based on one of the previously obtained scenarios (task 2).&#x20;
 * Production of a possible ontology by the LLM: here the Language Model is requested to impersonate the designer producing itself a possible model of the object of study.&#x20;
 
 From the user scenario proposed by Chat GPT, we derived competency questions (XD task 4) to understand what the ontology should represent and how it should do so. Subsequently, we formalized the competency questions into SPARQL queries, which were then tested in our final ontologies using Protégé.
