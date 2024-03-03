@@ -59,7 +59,6 @@ As a non-technical user seeking IT support, I encountered the curse of knowledge
 1. What is the event that involves the biased agent and that returns the biased outcome?&#x20;
 
 - &#x20;       Event and Biased Outcome.&#x20;
-  
 - &#x20;       Phone Call and Technical terminology.&#x20;
 
 ```sparql
@@ -73,6 +72,7 @@ WHERE {
 2. What is the topic the two agents are discussing?&#x20;
 
 - &#x20;       Topic.&#x20;
+- &#x20;       Argomento.&#x20;
 
 ```sparql
 SELECT ?Topic 
@@ -84,7 +84,6 @@ WHERE {
 3. Which agent is not influenced by the bias and what does he/she/it perceive as the outcome of the conversation?&#x20;
 
 - &#x20;       Non Biased Agent and Non Biased Outcome.&#x20;
-
 - &#x20;       User and Misunderstanding.&#x20;
 
 ```sparql
@@ -132,8 +131,6 @@ Description: Represents the setting or environment in which the communication ta
 Properties: 
 
 includesTechnicalTerms: Indicates the presence of technical terms or specialized language. 
-
-Properties: 
 
 -Assumption: 
 
