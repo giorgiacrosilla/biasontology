@@ -64,8 +64,7 @@ True.
 select ?warnings where {
 		?Event normalcy:isBeingExperiencedBy ?Agent . 
 		?Agent normalcy:ignoresWarnings ?WarningOfHazardApproaching .
-		?WarningOfHazardApproaching par:hasParameter ?warning .
-		?warning par:hasParameterDataValue ?warnings . }
+		?Warning normalcy:hasParameterDataValue ?warnings . }
 
 ```
 
