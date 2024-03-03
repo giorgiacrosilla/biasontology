@@ -1,4 +1,5 @@
 # Survivorship bias
+{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/survivorship-bias.owl" %}
 
 ### <mark style="color:red;">C</mark>ontext literature and state of the art
 
