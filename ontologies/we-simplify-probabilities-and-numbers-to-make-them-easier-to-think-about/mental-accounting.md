@@ -80,14 +80,40 @@ Acceptance Criteria:
 * I want to experience the joy and excitement of splurging on something special, knowing that it's a treat made possible by the tax refund.
 * I want to share my excitement with friends or family, enhancing the celebratory atmosphere surrounding my tax refund splurge.
 
-#### We can now derive example-based-CQs from the user story.&#x20;
+***As can be noticed the LLM misteken the tasks.***
+
+#### We can now derive example-based-CQs from the scenarios.&#x20;
 
 1. How does the individual categorize the tax refund in terms of its use?
    * Extra Money Accounting.
+  
+     ```SELECT ?Account WHERE { 
+
+?Account mentalaccounting:hasTransaction ?income. 
+} 
+```
+
+
 2. What is the perceived value of the tax refund to the individual?
    * Extra Money.
+
+```sparql
+SELECT ?PsychologicalValue WHERE {
+  ?refound a mentalaccounting:CommercialTransaction.
+	?refound mentalaccounting:hasPsychologicalValue ?PsychologicalValue. 
+} 
+
+```
+
 3. What decision is taken by the individual?
    * Luxury Purchase.
+  
+```SELECT ?Decision WHERE { 
+	?agent mentalaccounting:takesDecision ?Decision 
+} 
+```
+
+
   
 #### If you should make an ontology based of the "Mental Accounting" which classes and properties would you create?
 
