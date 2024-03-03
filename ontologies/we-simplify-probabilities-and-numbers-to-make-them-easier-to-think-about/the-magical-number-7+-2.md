@@ -26,31 +26,71 @@ The Magical Number Seven, Plus or Minus Two" bias refers to the cognitive bias r
 
 #### Can you create 10 scenarios compelling with the bias?
 
-_1_Phone Numbers: When trying to remember a new phone number, individuals may find it challenging to retain all the digits at once, especially if the number is long. This can result in errors or the need to repeat the number multiple times to remember it accurately.
+*1.* Phone Numbers: When trying to remember a new phone number, individuals may find it challenging to retain all the digits at once, especially if the number is long. This can result in errors or the need to repeat the number multiple times to remember it accurately.
 
-_2_PIN Codes: People may struggle to remember PIN codes for various accounts, such as ATM cards or mobile devices, particularly if they are not frequently used. This can lead to forgetting the code or inputting the wrong one multiple times before recalling it correctly.
+*2.* PIN Codes: People may struggle to remember PIN codes for various accounts, such as ATM cards or mobile devices, particularly if they are not frequently used. This can lead to forgetting the code or inputting the wrong one multiple times before recalling it correctly.
 
-_3_Shopping Lists: When tasked with remembering a list of items to buy at the grocery store, individuals may find it difficult to retain more than seven items in their short-term memory. This can result in forgetting some items or needing to write the list down to avoid missing anything.
+*3.* Shopping Lists: When tasked with remembering a list of items to buy at the grocery store, individuals may find it difficult to retain more than seven items in their short-term memory. This can result in forgetting some items or needing to write the list down to avoid missing anything.
 
-_4_Meeting Agendas: In a business setting, participants in a meeting may struggle to recall all the agenda items discussed, especially if there are numerous topics covered. This can lead to incomplete or inaccurate recollections of the meeting's content.
+*4.* Meeting Agendas: In a business setting, participants in a meeting may struggle to recall all the agenda items discussed, especially if there are numerous topics covered. This can lead to incomplete or inaccurate recollections of the meeting's content.
 
-_5_Test Questions: Students may experience difficulty remembering all the information needed to answer exam questions, particularly in subjects with complex concepts or extensive material. This can result in incomplete or partially correct responses due to exceeding the capacity of short-term memory.
+*5.* Test Questions: Students may experience difficulty remembering all the information needed to answer exam questions, particularly in subjects with complex concepts or extensive material. This can result in incomplete or partially correct responses due to exceeding the capacity of short-term memory.
 
-_6_Instructions with Multiple Steps: When given a series of instructions involving several steps, individuals may have trouble remembering all the steps without repetition or written documentation. This can lead to errors in completing tasks or omitting essential steps.
+*6.* Instructions with Multiple Steps: When given a series of instructions involving several steps, individuals may have trouble remembering all the steps without repetition or written documentation. This can lead to errors in completing tasks or omitting essential steps.
 
-_7_Password Management: Individuals managing multiple passwords for various online accounts may struggle to recall them all accurately, especially if the passwords are complex or changed frequently. This can result in forgotten passwords or the need for password recovery assistance.
+*7.* Password Management: Individuals managing multiple passwords for various online accounts may struggle to recall them all accurately, especially if the passwords are complex or changed frequently. This can result in forgotten passwords or the need for password recovery assistance.
 
-_8_Presentation Content: Speakers delivering presentations may find it challenging to remember all the points they intend to cover without referring to notes or slides. This can lead to omissions or disorganized delivery as they exceed their short-term memory capacity.
+*8.* Presentation Content: Speakers delivering presentations may find it challenging to remember all the points they intend to cover without referring to notes or slides. This can lead to omissions or disorganized delivery as they exceed their short-term memory capacity.
 
-_9_Directions: When given verbal directions to navigate to a specific location, individuals may have difficulty retaining all the details, especially if there are numerous turns or landmarks mentioned. This can result in getting lost or needing to ask for clarification along the way.
+*9.* Directions: When given verbal directions to navigate to a specific location, individuals may have difficulty retaining all the details, especially if there are numerous turns or landmarks mentioned. This can result in getting lost or needing to ask for clarification along the way.
 
-_10_Remembering Names: When meeting new people in social or professional settings, individuals may struggle to remember everyone's names, particularly in larger groups. This can lead to awkward interactions or the need to ask for names to be repeated multiple times.
+*10.* Remembering Names: When meeting new people in social or professional settings, individuals may struggle to remember everyone's names, particularly in larger groups. This can lead to awkward interactions or the need to ask for names to be repeated multiple times.
 
 #### Now consider the scenario "shopping list" and give me a short user story from it.
 
 \*\*Scenario:\*\*
 
 As a busy parent, I want to create a shopping list for groceries so that I can efficiently gather all the necessary items for the week without forgetting anything. However, I often find myself struggling to remember all the items needed, especially when the list grows beyond a certain number. I need a solution that helps me organize and remember the items on my list, ensuring a smooth and stress-free shopping experience.
+
+#### We can now derive example-based-CQs from the user story.&#x20;
+
+1. Who is the Biased Agent and what is the action he/she/it is trying to perform while effected by the bias?&#x20;
+
+- &#x20;       Biased Agent and Action.&#x20;
+- &#x20;       Busy Parent and Create Shopping List.&#x20;
+
+```sparql
+SELECT ?BiasedAgent ?Action
+WHERE {
+    ?BiasedAgent reaction:performs ?Action.
+}
+```
+
+2. What is the Information Item that the Biased Agent is trying to memorize? And what Minimum and Maximum values does it have?&#x20;
+
+- &#x20;       Information Item & Max & Min.&#x20;
+- &#x20;       List Item & 9 & 5.&#x20;
+
+```sparql
+SELECT ?InformationItem ?Max ?Min
+WHERE {
+    ?InformationItem magicalnumber:hasMaxValue ?Max .
+    ?InformationItem magicalnumber:hasMinValue ?Min .
+}
+```
+
+3. What Outcome can the Action have? What are the possible values of this outcome?&#x20;
+
+- &#x20;       Outcome & Value.&#x20;
+- &#x20;       Memorize or Not & Boolean: True or False.&#x20;
+
+```sparql
+SELECT ?Outcome ?Value
+WHERE {
+    ?Action reaction:hasConsequence ?Outcome .
+    ?Outcome magicalnumber:hasValue ?Value . 
+}
+```
 
 #### If you should make an ontology based of the "curse of knowledge" which classes and properties would you create?
 
