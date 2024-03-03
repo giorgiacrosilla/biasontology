@@ -63,7 +63,6 @@ As Sarah navigates through the daily interactions with her friend, Alex, she can
 1. Who are the two agents involved in the event?&#x20;
 
 - &#x20;       Biased Agent and Non Biased Agent.&#x20;
-- 
 - &#x20;       Sarah and Alex.&#x20;
 
 ```sparql
@@ -81,7 +80,6 @@ WHERE {
 2. What event triggers the bias and what topic is it about?&#x20;
 
 - &#x20;       Event and Topic.&#x20;
-
 - &#x20;       Romantic Confession and Feeling.&#x20;
 
 ```sparql
@@ -96,7 +94,6 @@ WHERE {
 3. Which agent is not influenced by the bias and what does he/she/it perceive as the outcome of the event?&#x20;
 
 - &#x20;       Non Biased Agent and Non Biased Outcome.&#x20;
-
 - &#x20;       Alex and Misunderstanding.&#x20;
 
 ```sparql
@@ -125,23 +122,23 @@ Represents another person or entity observing the individual.
 
 Properties: 
 
-hasIllusionOfTransparencyBias: 
+- hasIllusionOfTransparencyBias: 
 
 Relates an Individual to the fact that they are experiencing the illusion of transparency bias. 
 
-hasInternalState: 
+- hasInternalState: 
 
 Connects an Individual to their InternalState, representing their thoughts and emotions. 
 
-perceivesInternalState: 
+- perceivesInternalState: 
 
 Connects an Observer to the InternalState, representing the observer's perception of the individual's internal state. 
 
-hasVisibleCues: 
+- hasVisibleCues: 
 
 Indicates the visible cues that an Individual believes are apparent to others, contributing to the illusion of transparency. 
 
-awarenessDiscrepancy: 
+- awarenessDiscrepancy: 
 
 Represents the difference between an Individual's perception of how visible their internal state is and the Observer's actual perception. 
 
