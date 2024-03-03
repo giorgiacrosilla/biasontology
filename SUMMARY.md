@@ -15,7 +15,7 @@
   * [🏝️ Survivorship bias](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/survivorship-bias.md)
   * [👪 Subadditivity effect](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/subadditivity-effect.md)
   * [💵 Denomination effect](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/denomination-effect.md)
-  * [7️⃣ 7️⃣ The magical number 7+-2](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/the-magical-number-7+-2.md)
+  * [7️⃣ 7️⃣ 7️⃣ The magical number 7+-2](ontologies/we-simplify-probabilities-and-numbers-to-make-them-easier-to-think-about/the-magical-number-7+-2.md)
 * [🤯 We think we know what other people are thinking](ontologies/we-think-we-know-what-other-people-are-thinking/README.md)
   * [😍 Illusion of transparency](ontologies/we-think-we-know-what-other-people-are-thinking/illusion-of-transparency.md)
   * [🤓 Curse of knowledge](ontologies/we-think-we-know-what-other-people-are-thinking/curse-of-knowledge.md)
