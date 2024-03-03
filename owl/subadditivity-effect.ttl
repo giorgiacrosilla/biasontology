@@ -1,0 +1,371 @@
+@prefix : <http://www.semanticweb.org/danie/ontologies/2024/1/untitled-ontology-76/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bias: <http://www.semanticweb.org/bias/General/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix partof: <http://www.ontologydesignpatterns.org/cp/owl/partof.owl#> .
+@prefix collection: <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#> .
+@prefix componency: <http://www.ontologydesignpatterns.org/cp/owl/componency.owl#> .
+@prefix subadditivityeffect: <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#> .
+@base <http://www.semanticweb.org/danie/ontologies/2024/1/untitled-ontology-76/> .
+
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#> rdf:type owl:Ontology ;
+                                                                                                    owl:imports <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl> ,
+                                                                                                                <http://www.ontologydesignpatterns.org/cp/owl/componency.owl> ,
+                                                                                                                <http://www.ontologydesignpatterns.org/cp/owl/partof.owl> ;
+                                                                                                    <http://purl.org/dc/elements/1.1/creator> "Daniele Spedicati" ;
+                                                                                                    <http://purl.org/dc/elements/1.1/title> "Subadditivity Effect" ;
+                                                                                                    rdfs:comment """The subadditivity effect is the tendency to judge probability of the whole to be less than the probabilities of the parts.
+
+In a 2012 article in Psychological Bulletin it is suggested the subadditivity effect can be explained by an information-theoretic generative mechanism that assumes a noisy conversion of objective evidence (observation) into subjective estimates (judgment). This explanation is different than support theory, proposed as an explanation by Tversky and Koehler, which requires additional assumptions.""" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty ;
+                                          <http://purl.org/dc/elements/1.1/title> "Daniele Spedicati" .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty ;
+                                        rdfs:comment "Subadditivity Effect" .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#hasMember
+collection:hasMember rdf:type owl:ObjectProperty .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#isMemberOf
+collection:isMemberOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/componency.owl#hasComponent
+componency:hasComponent rdfs:domain subadditivityeffect:SumOfPartsEstimation ;
+                        rdfs:range componency:Object ,
+                                   subadditivityeffect:WholeEstimation .
+
+
+###  http://www.ontologydesignpatterns.org/cp/owl/componency.owl#isComponentOf
+componency:isComponentOf rdfs:domain componency:Object ;
+                         rdfs:range componency:Object .
+
+
+###  http://www.semanticweb.org/bias/General/isAffectedBy
+bias:isAffectedBy rdf:type owl:ObjectProperty ;
+                  rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent> ;
+                  rdfs:range <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias> ,
+                             <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#SubadditivityEffect> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#hasEffect
+subadditivityeffect:hasEffect rdf:type owl:ObjectProperty ;
+                              owl:inverseOf subadditivityeffect:isEffectOf ;
+                              rdfs:comment "the effect that parts, their sum or a whole have." ;
+                              rdfs:label "has effect" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#hasEstimation
+subadditivityeffect:hasEstimation rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf subadditivityeffect:isEstimationOf ;
+                                  rdfs:domain [ owl:intersectionOf ( subadditivityeffect:Effect
+                                                                     [ rdf:type owl:Class ;
+                                                                       owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty subadditivityeffect:hasEstimation ;
+                                                                                       owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                                                                       owl:onClass subadditivityeffect:SumOfPartsEstimation
+                                                                                     ]
+                                                                                     [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty subadditivityeffect:hasEstimation ;
+                                                                                       owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                                                                       owl:onClass subadditivityeffect:WholeEstimation
+                                                                                     ]
+                                                                                   )
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ] ;
+                                  rdfs:range subadditivityeffect:Estimation ;
+                                  rdfs:comment "The estimation that can be made about an effect" ;
+                                  rdfs:label "has estimation" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#isDifferentFrom
+subadditivityeffect:isDifferentFrom rdf:type owl:ObjectProperty ,
+                                             owl:SymmetricProperty .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#isEffectOf
+subadditivityeffect:isEffectOf rdf:type owl:ObjectProperty ;
+                               rdfs:domain subadditivityeffect:Effect ;
+                               rdfs:range owl:Thing ;
+                               rdfs:comment "the effect of a part, a whole or the sum of the parts." ;
+                               rdfs:label "is effect of" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#isEstimationOf
+subadditivityeffect:isEstimationOf rdf:type owl:ObjectProperty ;
+                                   rdfs:domain subadditivityeffect:Estimation ;
+                                   rdfs:range subadditivityeffect:Effect ;
+                                   rdfs:comment "The estimation of an effect." ;
+                                   rdfs:label "is estimation of" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#makesEstimation
+subadditivityeffect:makesEstimation rdf:type owl:ObjectProperty ;
+                                    rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent> ;
+                                    rdfs:range subadditivityeffect:Estimation .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#Collection
+collection:Collection rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+<http://xmlns.com/foaf/0.1/Agent> rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#BiasedAgent> rdf:type owl:Class ;
+                                                                                                  rdfs:subClassOf <http://xmlns.com/foaf/0.1/Agent> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias> rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#SubadditivityEffect
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#SubadditivityEffect> rdf:type owl:Class ;
+                                                                                                          rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias> .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Effect
+subadditivityeffect:Effect rdf:type owl:Class ;
+                           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                             owl:onProperty subadditivityeffect:isEffectOf ;
+                                             owl:someValuesFrom owl:Thing
+                                           ] ;
+                           rdfs:comment "The effect that something has." ;
+                           rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#" ;
+                           rdfs:label "Effect" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Estimation
+subadditivityeffect:Estimation rdf:type owl:Class ;
+                               rdfs:comment "The estimates about the effect of something." ;
+                               rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#" ;
+                               rdfs:label "Estimation" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Part
+subadditivityeffect:Part rdf:type owl:Class ;
+                         rdfs:subClassOf componency:Object ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty collection:isMemberOf ;
+                                           owl:allValuesFrom subadditivityeffect:SumOfParts
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty componency:isComponentOf ;
+                                           owl:allValuesFrom subadditivityeffect:Whole
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty subadditivityeffect:hasEffect ;
+                                           owl:allValuesFrom subadditivityeffect:PartEffect
+                                         ] ;
+                         rdfs:comment "An object contributing to a whole" ;
+                         rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#" ;
+                         rdfs:label "Part" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#PartEffect
+subadditivityeffect:PartEffect rdf:type owl:Class ;
+                               rdfs:subClassOf subadditivityeffect:Effect ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty subadditivityeffect:isEffectOf ;
+                                                 owl:allValuesFrom subadditivityeffect:Part
+                                               ] ;
+                               rdfs:comment "This class represent the effect that a part as as a single." ;
+                               rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#" ;
+                               rdfs:label "Effect of a part" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#SumOfParts
+subadditivityeffect:SumOfParts rdf:type owl:Class ;
+                               rdfs:subClassOf collection:Collection ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty collection:hasMember ;
+                                                 owl:allValuesFrom subadditivityeffect:Part
+                                               ] ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty subadditivityeffect:hasEffect ;
+                                                 owl:allValuesFrom subadditivityeffect:SumOfPartsEffect
+                                               ] ;
+                               rdfs:comment "This class represents the sum of the parts that constitute the whole. It must not be confused with this one." ;
+                               rdfs:isDefinedBy "" ;
+                               rdfs:label "Sum of parts" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#SumOfPartsEffect
+subadditivityeffect:SumOfPartsEffect rdf:type owl:Class ;
+                                     rdfs:subClassOf subadditivityeffect:Effect ,
+                                                     [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty subadditivityeffect:hasEstimation ;
+                                                                              owl:someValuesFrom subadditivityeffect:SumOfPartsEstimation
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty subadditivityeffect:hasEstimation ;
+                                                                              owl:allValuesFrom subadditivityeffect:SumOfPartsEstimation
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ] ,
+                                                     [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty subadditivityeffect:isEffectOf ;
+                                                                              owl:someValuesFrom subadditivityeffect:SumOfParts
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty subadditivityeffect:isEffectOf ;
+                                                                              owl:allValuesFrom subadditivityeffect:SumOfParts
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ] ;
+                                     rdfs:comment "The elements of this class represent the effect that the single parts have. It must not be confused with 'effect of the whole'." ;
+                                     rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#" ;
+                                     rdfs:label "Effect of the sum of the parts" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#SumOfPartsEstimation
+subadditivityeffect:SumOfPartsEstimation rdf:type owl:Class ;
+                                         rdfs:subClassOf subadditivityeffect:Estimation ;
+                                         owl:disjointWith subadditivityeffect:WholeEstimation ;
+                                         rdfs:comment "This class represent the estimates that an agent do about the effect of the sum of the parts." ;
+                                         rdfs:label "Estimation of the effect of the sum of the parts" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Whole
+subadditivityeffect:Whole rdf:type owl:Class ;
+                          rdfs:subClassOf componency:Object ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty componency:hasComponent ;
+                                            owl:allValuesFrom subadditivityeffect:Part
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty subadditivityeffect:hasEffect ;
+                                            owl:allValuesFrom subadditivityeffect:WholeEffect
+                                          ] ;
+                          rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#" ;
+                          rdfs:label "An object composed by different parts." ,
+                                     "Whole" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#WholeEffect
+subadditivityeffect:WholeEffect rdf:type owl:Class ;
+                                rdfs:subClassOf subadditivityeffect:Effect ,
+                                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty subadditivityeffect:hasEstimation ;
+                                                                         owl:someValuesFrom subadditivityeffect:WholeEstimation
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty subadditivityeffect:hasEstimation ;
+                                                                         owl:allValuesFrom subadditivityeffect:WholeEstimation
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ] ,
+                                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty subadditivityeffect:isEffectOf ;
+                                                                         owl:someValuesFrom subadditivityeffect:Whole
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty subadditivityeffect:isEffectOf ;
+                                                                         owl:allValuesFrom subadditivityeffect:Whole
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ] ;
+                                rdfs:comment "An individual of this class represent the effect that the whole as in its integrity, whenever its parts work coordinated. It must not be misteken with 'Effect of the sum of the parts" ;
+                                rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#" ;
+                                rdfs:label "Effect of the whole" .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#WholeEstimation
+subadditivityeffect:WholeEstimation rdf:type owl:Class ;
+                                    rdfs:subClassOf subadditivityeffect:Estimation ;
+                                    rdfs:comment "This class represents the estimates that the biased agent makes about the working of the system as a whole." ;
+                                    rdfs:label "Estimation of the Whole effect" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#ActualTime
+subadditivityeffect:ActualTime rdf:type owl:NamedIndividual .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#AllMembersEffort
+subadditivityeffect:AllMembersEffort rdf:type owl:NamedIndividual ;
+                                     subadditivityeffect:hasEstimation subadditivityeffect:EstimatedTime ;
+                                     subadditivityeffect:isEffectOf subadditivityeffect:SumOfMembers .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#BelievingToHaveMoreTime
+subadditivityeffect:BelievingToHaveMoreTime rdf:type owl:NamedIndividual .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#EstimatedTime
+subadditivityeffect:EstimatedTime rdf:type owl:NamedIndividual ;
+                                  subadditivityeffect:isDifferentFrom subadditivityeffect:ActualTime .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Member1
+subadditivityeffect:Member1 rdf:type owl:NamedIndividual ;
+                            collection:isMemberOf subadditivityeffect:SumOfMembers ;
+                            subadditivityeffect:hasEffect subadditivityeffect:Member1Effort .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Member1Effort
+subadditivityeffect:Member1Effort rdf:type owl:NamedIndividual .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Member2
+subadditivityeffect:Member2 rdf:type owl:NamedIndividual ;
+                            collection:isMemberOf subadditivityeffect:SumOfMembers ;
+                            bias:isAffectedBy subadditivityeffect:BelievingToHaveMoreTime .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#SumOfMembers
+subadditivityeffect:SumOfMembers rdf:type owl:NamedIndividual ;
+                                 subadditivityeffect:hasEffect subadditivityeffect:SumOfMembersEffort .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#SumOfMembersEffort
+subadditivityeffect:SumOfMembersEffort rdf:type owl:NamedIndividual .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#Team
+subadditivityeffect:Team rdf:type owl:NamedIndividual ,
+                                  subadditivityeffect:Whole ;
+                         componency:hasComponent subadditivityeffect:Member1 ,
+                                                 subadditivityeffect:Member2 ;
+                         subadditivityeffect:hasEffect subadditivityeffect:TeamEffort .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/SubadditivityEffect.owl#TeamEffort
+subadditivityeffect:TeamEffort rdf:type owl:NamedIndividual ;
+                               subadditivityeffect:hasEstimation subadditivityeffect:ActualTime .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
