@@ -240,6 +240,8 @@ magicalnumber:CreateShoppingList rdf:type owl:NamedIndividual ,
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#ListItem
 magicalnumber:ListItem rdf:type owl:NamedIndividual ,
                                 magicalnumber:InformationItem ;
+                       magicalnumber:hasMaxValue 9 ;
+                       magicalnumber:hasMinValue 5 ;
                        rdfs:comment "List item of the shopping list."@en ;
                        rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
                        rdfs:label "ListItem" .
@@ -259,14 +261,6 @@ magicalnumber:MemorizeOrNot rdf:type owl:NamedIndividual ,
                                                    "true"^^xsd:boolean ;
                             rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
                             rdfs:label "MemorizeOrNot" .
-
-
-###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl#TotalListItems
-magicalnumber:TotalListItems rdf:type owl:NamedIndividual ;
-                             magicalnumber:hasMaxValue 9 ;
-                             magicalnumber:hasMinValue 5 ;
-                             rdfs:isDefinedBy <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/TheMagicalNumber.owl> ;
-                             rdfs:label "TotalListItems" .
 
 
 #################################################################
