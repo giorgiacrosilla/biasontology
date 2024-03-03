@@ -1,6 +1,6 @@
 # Mental Accounting
 
-{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.ttl" %}
+{% embed url="https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/mental-accounting.owl" %}
 
 [Mental Accounting OWL](https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/Mental-Accounting.owl)
 
