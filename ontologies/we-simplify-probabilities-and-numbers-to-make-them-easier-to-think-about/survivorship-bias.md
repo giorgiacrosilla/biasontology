@@ -69,10 +69,32 @@ Acceptance Criteria:
 
 1. Who are the survivor of the selection war?
   * veterans.
+
+```sparql
+SELECT ?TestedEntity WHERE { 
+?TestedEntity survivorshipbias:passesSelection survivorshipbias:war. 
+} 
+```
+
 2. Who did go through war and what role did it had at the end  of it?
   * soldiers, as veteran, prisoner or death.
+
+```sparql
+SELECT ?TestedEntity ?Role WHERE { 
+?TestedEntitity  participation:isParticipantIn survivorshipbias:war. 
+?TestedEntity survivorshipbias:hasRole ?Role. 
+} 
+```
+
 3. Which member of war army passed  which selection?
-  * veteran, war.
+  * soldier1, war.
+
+```sparql
+SELECT ?TestedEntity ?Selection WHERE { 
+?TestedEntity collection:isMemeberOf survivorshipbias:warArmy. 
+	?TestedEntity survivorshipbias:passesSelection ?Selection. 
+} 
+```
 
 #### If you should make an ontology based of the "survivorship bias" which classes and properties would you create?
 
