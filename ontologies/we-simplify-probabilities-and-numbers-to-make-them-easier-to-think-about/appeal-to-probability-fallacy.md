@@ -78,8 +78,7 @@ Absolute certainty.
 
 ```sparql
 select ?parameter where {
-		?Certainty par:hasParameter ?AbsoluteCertainty . 
-		?AbsoluteCertainty par:hasParameterDataValue ?parameter . }
+		?CertaintyLevel atpbias:hasParameterDataValue ?parameter . }
 ```
 
 2. What is Alex's thinking based on that prevents him from believing in reality?
