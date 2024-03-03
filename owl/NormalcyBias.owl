@@ -14,7 +14,6 @@
 @base <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#> .
 
 <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#> rdf:type owl:Ontology ;
-                                                                                             owl:imports par:parameter.owl ;
                                                                                              dc:creator "Giorgia Crosilla"@en ;
                                                                                              dc:title "Normalcy Bias"@en ;
                                                                                              rdfs:comment "This is an ontology that explains the behaviour of a person affected by the Normalcy Bias."@en ;
@@ -106,10 +105,6 @@ hazard:participantIn rdf:type owl:ObjectProperty ;
                      rdfs:label "participant in"@en .
 
 
-###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter
-<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter> rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> .
-
-
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#isAffectedBy
 bias:isAffectedBy rdf:type owl:ObjectProperty ;
                   rdfs:domain bias:BiasedAgent ;
@@ -176,8 +171,10 @@ normalcy:underestimates rdf:type owl:ObjectProperty ;
 #    Data properties
 #################################################################
 
-###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue
-<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> rdfs:range xsd:boolean .
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#hasParameterDataValue
+<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#hasParameterDataValue> rdf:type owl:DatatypeProperty ;
+                                                                                                                        rdfs:domain normalcy:Warning ;
+                                                                                                                        rdfs:range xsd:boolean .
 
 
 #################################################################
@@ -237,11 +234,6 @@ hazard:Object rdf:type owl:Class ;
               owl:equivalentClass bias:BiasedAgent ;
               rdfs:isDefinedBy "http://semantic.cs.put.poznan.pl/ontologies/oshdo/HazardousSituation#" ;
               rdfs:label "Object"@en .
-
-
-###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept
-<http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept> rdf:type owl:Class ;
-                                                                     owl:equivalentClass normalcy:Warning .
 
 
 ###  http://www.semanticweb.org/bias/General/CognitiveBias
@@ -354,14 +346,6 @@ normalcy:CovidReal rdf:type owl:NamedIndividual ,
                               "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#" .
 
 
-###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#IgnoredWarning
-normalcy:IgnoredWarning rdf:type owl:NamedIndividual ,
-                                 <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter> ;
-                        <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue> "true"^^xsd:boolean ;
-                        rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#"@en ;
-                        rdfs:label "warnings ignored"@en .
-
-
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#Infection
 normalcy:Infection rdf:type owl:NamedIndividual ,
                             hazard:Exposure ;
@@ -395,7 +379,7 @@ normalcy:Sarah rdf:type owl:NamedIndividual ,
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#WarningOfCovidApproaching
 normalcy:WarningOfCovidApproaching rdf:type owl:NamedIndividual ,
                                             normalcy:Warning ;
-                                   <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter> normalcy:IgnoredWarning ;
+                                   <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#hasParameterDataValue> "true"^^xsd:boolean ;
                                    rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/NormalcyBias.owl#"@en ;
                                    rdfs:label "warnings"@en .
 

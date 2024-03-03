@@ -106,27 +106,6 @@ eeo:producedObservation rdf:type owl:ObjectProperty ;
                         rdfs:label "produced observation"@en .
 
 
-###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameter
-par:hasParameter rdf:type owl:ObjectProperty ;
-                 owl:inverseOf par:isParameterFor ;
-                 rdfs:domain par:Concept ;
-                 rdfs:range par:Parameter ;
-                 rdfs:comment "A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16." ;
-                 rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
-                 rdfs:label "ha parametro"@it ,
-                            "has parameter"@en .
-
-
-###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#isParameterFor
-par:isParameterFor rdf:type owl:ObjectProperty ;
-                   rdfs:domain par:Parameter ;
-                   rdfs:range par:Concept ;
-                   rdfs:comment "A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16." ;
-                   rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
-                   rdfs:label "is parameter for"@en ,
-                              "è un parametro per"@it .
-
-
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#hasCertainty
 atpbias:hasCertainty rdf:type owl:ObjectProperty ;
                      rdfs:domain eeo:Engagement ;
@@ -184,7 +163,7 @@ atpbias:preventsBelievingIn rdf:type owl:ObjectProperty ;
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#isAffectedBy
 bias:isAffectedBy rdf:type owl:ObjectProperty ;
                   rdfs:domain <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#BiasedAgent> ;
-                  rdfs:range <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#CognitiveBias> ;
+                  rdfs:range bias:CognitiveBias ;
                   rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl"@en ;
                   rdfs:label "is affected by"@en .
 
@@ -193,16 +172,16 @@ bias:isAffectedBy rdf:type owl:ObjectProperty ;
 #    Data properties
 #################################################################
 
-###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#hasParameterDataValue
-par:hasParameterDataValue rdf:type owl:DatatypeProperty ;
-                          rdfs:domain par:Parameter ;
-                          rdfs:range xsd:string ;
-                          rdfs:comment """Parametrizes values from a datatype. For example, a Parameter AgeForDriving hasParameterDataValue 18 on datatype xsd:int, in the Italian traffic code. In this example, AgeForDriving isDefinedIn the Norm ItalianTrafficCodeAgeDriving.
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#hasParameterDataValue
+atpbias:hasParameterDataValue rdf:type owl:DatatypeProperty ;
+                              rdfs:domain fr:Certainty ;
+                              rdfs:range xsd:string ;
+                              rdfs:comment """Parametrizes values from a datatype. For example, a Parameter AgeForDriving hasParameterDataValue 18 on datatype xsd:int, in the Italian traffic code. In this example, AgeForDriving isDefinedIn the Norm ItalianTrafficCodeAgeDriving.
 More complex parametrization requires workarounds. E.g. AgeRangeForDrugUsage could parametrize data value: 14 to 50 on the datatype: xsd:int. Since complex datatypes are not allowed in OWL1.0, a solution to this can only work by creating two 'sub-parameters': MinimumAgeRangeForDrugUsage (that hasParameterDataValue 14) and MaximumAgeRangeForDrugUsage (that hasParameterDataValue 50), which are components of the main Parameter AgeRangeForDrugUsage.
 Ordering on subparameters can be created by using or specializing the object property 'precedes'.""" ;
-                          rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
-                          rdfs:label "ha valore"@it ,
-                                     "has parameter data value"@en .
+                              rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
+                              rdfs:label "ha valore"@it ,
+                                         "has parameter data value"@en .
 
 
 #################################################################
@@ -237,28 +216,6 @@ eeo:Observation rdf:type owl:Class ;
                                  owl:equivalentClass foaf:Agent .
 
 
-###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Concept
-par:Concept rdf:type owl:Class ;
-            owl:equivalentClass fr:Certainty ;
-            rdfs:comment """A concept is a SocialObject, and isDefinedIn a Description . 
-Once defined, a Concept can be used in other descriptions. 
-The classifies relation relates concepts to entities at some time""" ;
-            rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
-            rdfs:label "Concept"@en ,
-                       "Concetto"@it .
-
-
-###  http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter
-par:Parameter rdf:type owl:Class ;
-              rdfs:subClassOf par:Concept ;
-              rdfs:comment """A Concept that classifies something having a certain value, e.g. 'High' can be said of people taller than 185 cm.
-However, in order to formally represent this constraint, we need to add an anonymous type to a parameter instance, using a property that convey the semantics of the parameter, e.g.:
-High rdf:type Person and (some hasHeight (Height and (oneOf isTallerThan 185) and (oneOf hasUnitOfMeasure centimeter)))""" ;
-              rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/parameter.owl> ;
-              rdfs:label "Parameter"@en ,
-                         "Parametro"@it .
-
-
 ###  http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person
 <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> rdf:type owl:Class ;
                                                                   owl:equivalentClass <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#BiasedAgent> ;
@@ -277,7 +234,7 @@ foaf:Agent rdf:type owl:Class ;
 
 ###  https://github.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#AppealToProbabilityFallacy
 <https://github.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#AppealToProbabilityFallacy> rdf:type owl:Class ;
-                                                                                                       rdfs:subClassOf <https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#CognitiveBias> ;
+                                                                                                       rdfs:subClassOf bias:CognitiveBias ;
                                                                                                        rdfs:comment "The appeal to probability fallacy, also known as the argument from probability, occurs when someone argues that because something is likely to happen, it is therefore true or should be believed."@en ;
                                                                                                        rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl" ;
                                                                                                        rdfs:label "Appeal To Probability Fallacy"@en .
@@ -291,19 +248,19 @@ foaf:Agent rdf:type owl:Class ;
                                                                                                        rdfs:label "Biased Agent"@en .
 
 
-###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#CognitiveBias
-<https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl#CognitiveBias> rdf:type owl:Class ;
-                                                                                                         rdfs:comment "Cognitive bias refers to systematic patterns of deviation from norm or rationality in judgment, often leading to perceptual distortion, inaccurate interpretation, illogical interpretation, or what is broadly called irrationality."@en ;
-                                                                                                         rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl" ;
-                                                                                                         rdfs:label "Cognitive Bias"@en .
-
-
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#Claim
 atpbias:Claim rdf:type owl:Class ;
               rdfs:subClassOf eeo:Observation ;
               <http://purl.org/dc/terms/description> "The claim is the thesis that the Agent states according to his/her personal opinion and it is supported by some kind of evidence."@en ;
               rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
               rdfs:label "Claim"@en .
+
+
+###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/General.owl#CognitiveBias
+bias:CognitiveBias rdf:type owl:Class ;
+                   rdfs:comment "Cognitive bias refers to systematic patterns of deviation from norm or rationality in judgment, often leading to perceptual distortion, inaccurate interpretation, illogical interpretation, or what is broadly called irrationality."@en ;
+                   rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/blob/main/owl/General.owl" ;
+                   rdfs:label "Cognitive Bias"@en .
 
 
 ###  https://w3id.org/framester/data/framestercore/Certainty
@@ -338,13 +295,6 @@ fr:SubjectiveInfluence rdf:type owl:Class ;
 #    Individuals
 #################################################################
 
-###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#AbsoluteCertainty
-atpbias:AbsoluteCertainty rdf:type owl:NamedIndividual ,
-                                   par:Parameter ;
-                          par:hasParameterDataValue "absolute" ;
-                          rdfs:label "absolute certainty" .
-
-
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#Alex
 atpbias:Alex rdf:type owl:NamedIndividual ,
                       <http://www.ontologydesignpatterns.org/cp/owl/persons.owl#Person> ;
@@ -365,7 +315,7 @@ atpbias:AppealToProbabilityFallacy rdf:type owl:NamedIndividual ,
 ###  https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl#CertaintyLevel
 atpbias:CertaintyLevel rdf:type owl:NamedIndividual ,
                                 fr:Certainty ;
-                       par:hasParameter atpbias:AbsoluteCertainty ;
+                       atpbias:hasParameterDataValue "absolute" ;
                        rdfs:isDefinedBy "https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/AppealToProbability.owl"@en ;
                        rdfs:label "certainty level"@en .
 
