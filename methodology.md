@@ -10,11 +10,11 @@ The methodology adopted for this project is based on the ([Extreme Design Method
 
 This second approach summarizes the iterative tasks of the XD and rethinks it with the usage of the brand-new LLM with the goal of using them as a tool for Ontology Design.
 
-1. Context and Literature state of the art
+### 1. Context and Literature state of the art
 
 In this phase of the project, that can be aligned with Task 1 form XD, the designers get familiar with the topic, gathering an initial overview of the problem and then moving forward deepening their knowledge about the domain of interest.
 
-2. Large Language Models
+### 2. Large Language Models
 
 This stage of the workflow is focusing on using the LLM to develop have a first development of the XD. The questions asked are the following:
 
@@ -25,14 +25,14 @@ This stage of the workflow is focusing on using the LLM to develop have a first 
 
 From the user scenario proposed by Chat GPT, we derived competency questions (XD task 4) to understand what the ontology should represent and how it should do so. Subsequently, we formalized the competency questions into SPARQL queries, which were then tested in our final ontologies using Protégé.
 
-3. ODP&#x20;
+### 3. ODP&#x20;
 
 This third stage of our workflows starts its reasoning from the results of the LLM modeling and the CQs provided to align them with already existing patterns (XD task 7). Ontology Design Patterns are used to find a solution to frequent ontology design problems and contribute to a Pattern-based Ontology Design. The designer looks for existing ODPs in the [repository](http://ontologydesignpatterns.org/wiki/Submissions:ContentOPs), aiming to find in them relationships and correlations that might allow to map classes and properties present in the developing ontology.
 
-4. Words as semantic triggers.
+### 4. Words as semantic triggers.
 
 This stage does not appear as a part of the XD. It focuses on enriching the ontology with frame semantics. The designer extracts them from [Framester](https://framester.github.io/) using the [QUOKKA](https://protege.stanford.edu/) tool.
 
-5. New modules integration and alignment.
+### 5. New modules integration and alignment.
 
 Finally, the newly created ontology modules are integrated i the overall structure, the alignment with existing modules is ensured (XD tasks 8-10). Each module is modelled into an OWL file using [Protégé](https://protege.stanford.edu/).
