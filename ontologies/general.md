@@ -12,3 +12,11 @@ Therefore, we have developed a model to represent this layering of concepts that
 This model conceptualizes both levels as concepts, using the class Concept of the ODP [Classification](http://ontologydesignpatterns.org/wiki/Submissions:Classification); additionaly, the broader level is defined as Collection of concepts using the ODP [Collection](http://ontologydesignpatterns.org/wiki/Submissions:Collection). 
 Furthermore, we have created a property that links each bias to both the levels, through the property isCausedBy. Also the class BiasedAgent, that represents the agent who is affected by a specific bias, is connected to the class CognitiveBias through the property isAffectedBy; the class NonBiasedAgent, on the other hand, represents other individuals who interact with the BiasedAgent but are not affected by the bias itself.
 Finally, we have modeled each bias as a class (and not as an individual of the class cognitive bias) since each bias can be described through [sub-categories](https://en.wikipedia.org/wiki/Confirmation_bias#Types).
+
+Link to the OWL file of the General ontology:
+{% embed url="https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/general.owl" %}
+
+Final viasualization of all our biases together:
+{% embed url="https://service.tib.eu/webvowl/#opts=doc=0;#iri=https://raw.githubusercontent.com/giorgiacrosilla/biasontology/main/owl/bisso.owl" %}
+
+
