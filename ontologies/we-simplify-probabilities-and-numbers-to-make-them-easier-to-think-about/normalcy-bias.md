@@ -63,7 +63,7 @@ True.
 ```sparql
 select ?warnings where {
 		?Event normalcy:isBeingExperiencedBy ?Agent . 
-		?Agent normalcy:ignoresWarnings ?WarningOfHazardApproaching .
+		?Agent normalcy:ignoresWarnings ?Warning .
 		?Warning normalcy:hasParameterDataValue ?warnings . }
 
 ```
