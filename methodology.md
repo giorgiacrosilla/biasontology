@@ -16,7 +16,7 @@ In this phase of the project, that can be aligned with Task 1 form XD, the desig
 
 ### 2. Large Language Models
 
-This stage of the workflow is focusing on using the LLM to develop have a first development of the XD. The questions asked are the following:
+This stage of the workflow is focusing on using the LLM to have a first development of the XD. The questions asked are the following:
 
 * Give a definition of the bias studied (task 1): this step helps to integrate the knowledge gathered in stage 1.
 * Give 10 examples scenarios of the specified bias (task 2): here the role of the customer in the XD is substituted by the LLM.
