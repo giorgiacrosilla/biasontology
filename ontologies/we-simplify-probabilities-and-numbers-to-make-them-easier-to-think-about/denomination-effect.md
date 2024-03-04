@@ -10,7 +10,7 @@
 
 According to Wikipedia, "The denomination effect is a form of cognitive bias relating to currency, suggesting people may be less likely to spend larger currency denominations than their equivalent value in smaller denominations. It was proposed by Priya Raghubir, professor at the New York University Stern School of Business, and Joydeep Srivastava, professor at University of Maryland, in their 2009 paper "Denomination Effect". 
 
-Raghubir and Srivastava conducted three studies in their research on the denomination effect; their findings suggested people may be more likely to spend money represented by smaller denominations and that consumers may prefer to receive money in a large denomination when there is a need to control spending. The denomination effect can occur when large denominations are perceived as less exchangeable than smaller denominations."  
+Raghubir and Srivastava conducted three studies in their research on the denomination effect; their findings suggested people may be more likely to spend money represented by smaller denominations and that consumers may prefer to receive money in a large denomination when there is a need to control spending. The denomination effect can occur when large denominations are perceived as less exchangeable than smaller denominations.  
 
 ***
 
@@ -131,56 +131,56 @@ WHERE {
 
 Creating an ontology for the "Denomination Effect" bias involves defining classes and properties to represent key concepts and relationships within the domain. Below is a simplified ontology with some essential classes and properties: 
 
-    Class: FinancialTransaction 
+- Class: FinancialTransaction 
 
-    Represents a financial transaction involving the exchange of money. 
+  Represents a financial transaction involving the exchange of money. 
 
-    Class: CurrencyDenomination 
+- Class: CurrencyDenomination 
 
-    Represents different monetary denominations (e.g., $1 bill, $5 bill, etc.). 
+  Represents different monetary denominations (e.g., $1 bill, $5 bill, etc.). 
 
-    Class: DecisionMaker 
+- Class: DecisionMaker 
 
-    Represents an individual making decisions related to financial transactions. 
+  Represents an individual making decisions related to financial transactions. 
 
-    Property: involvesTransaction 
+- Property: involvesTransaction 
 
-    Relates a DecisionMaker to a FinancialTransaction. 
+  Relates a DecisionMaker to a FinancialTransaction. 
 
-    Property: usesDenomination 
+- Property: usesDenomination 
 
-    Relates a FinancialTransaction to a CurrencyDenomination, indicating the denominations involved in the transaction. 
+  Relates a FinancialTransaction to a CurrencyDenomination, indicating the denominations involved in the transaction. 
 
-    Class: SpendingBehavior 
+- Class: SpendingBehavior 
 
-    Represents the overall behavior of a DecisionMaker when spending money. 
+  Represents the overall behavior of a DecisionMaker when spending money. 
 
-    Property: influencedByDenominationEffect 
+- Property: influencedByDenominationEffect 
 
-    Relates SpendingBehavior to CurrencyDenomination, indicating the influence of the denomination effect on spending decisions. 
+  Relates SpendingBehavior to CurrencyDenomination, indicating the influence of the denomination effect on spending decisions. 
 
-    Class: PsychologicalImpact 
+- Class: PsychologicalImpact 
 
-    Represents the psychological impact of monetary denominations on decision-making. 
+  Represents the psychological impact of monetary denominations on decision-making. 
 
-    Property: perceivedValue 
+- Property: perceivedValue 
 
-    Relates PsychologicalImpact to CurrencyDenomination, representing how individuals perceive the value of different denominations. 
+  Relates PsychologicalImpact to CurrencyDenomination, representing how individuals perceive the value of different denominations. 
 
-    Class: MoneyManagementStrategy 
+- Class: MoneyManagementStrategy 
 
-    Represents a strategy employed by a DecisionMaker to manage their money. 
+  Represents a strategy employed by a DecisionMaker to manage their money. 
 
-    Property: reserveStrategy 
+- Property: reserveStrategy 
 
-    Relates MoneyManagementStrategy to CurrencyDenomination, indicating the strategy of reserving certain denominations for specific purposes. 
+  Relates MoneyManagementStrategy to CurrencyDenomination, indicating the strategy of reserving certain denominations for specific purposes. 
 
 This ontology provides a basic structure to represent the key components and relationships associated with the denomination effect bias in the context of financial transactions and decision-making. Depending on the depth and specificity needed for a particular application or analysis, additional classes and properties may be defined. 
 
 #### Framester frames used:
 
-* [Behavior (subclass of Conduct)](https://w3id.org/framester/data/framestercore/Certainty](https://w3id.org/framester/data/framestersyn/Behavior.n.1 )
-* [Save (subclass of CommercePay)](https://w3id.org/framester/data/framestercore/SubjectiveInfluence](https://w3id.org/framester/data/framestersyn/Save.v.9 )
+* [Behavior (subclass of Conduct](https://w3id.org/framester/data/framestersyn/Behavior.n.1)
+* [Save (subclass of CommercePay)](https://w3id.org/framester/data/framestersyn/Save.v.9)
 * [Spending (subclass of CommercePay)](https://w3id.org/framester/data/framestersyn/Spending.n.1)
 
 #### ODP used:
