@@ -7,7 +7,7 @@
 <figure><img src="../../uml/ExternalAgency-formalization.jpg" alt=""><figcaption></figcaption></figure>
 
 The Illusion of External Agency is a cognitive bias where individuals mistakenly attribute their self-generated satisfaction to an external, influential, insightful and benevolent agent.
-This bias consists of illusions of influence, insight, and benevolence.For instance, when people underestimate their capacity to generate satisfaction with future outcomes and experience such self-generated satisfaction, they may conclude that it was caused by an external agent1. This bias can also lead to the false belief that positive outcomes occur due to external influences rather than personal effort.This cognitive bias suggests that belief in omniscient, omnipotent, and benevolent external agents, such as God, may derive in part from people’s failure to recognize that they have generated their own satisfaction.
+This bias consists of illusions of influence, insight, and benevolence. For instance, when people underestimate their capacity to generate satisfaction with future outcomes and experience such self-generated satisfaction, they may conclude that it was caused by an external agent. This bias can also lead to the false belief that positive outcomes occur due to external influences rather than personal effort.This cognitive bias suggests that belief in omniscient, omnipotent, and benevolent external agents, such as God, may derive in part from people’s failure to recognize that they have generated their own satisfaction.
 
 
 ***
