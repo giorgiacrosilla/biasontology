@@ -1,6 +1,6 @@
 # 👀 Methodology
 
-The methodology adopted for this project is based on the [Extreme Design Methodology (XD)](https://ceur-ws.org/Vol-516/pap21.pdf), which is an approach that can be summarized in the following five stages:
+The methodology adopted for this project is based both on the [Extreme Design Methodology (XD)](https://ceur-ws.org/Vol-516/pap21.pdf) and on another approach that can be summarized in the following five stages:
 
 1. Context and literature state of the art;
 2. Large Language Models;
