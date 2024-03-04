@@ -36,45 +36,45 @@ It's important to note that the term could be used in other fields or contexts, 
 
 Certainly! Here are ten hypothetical scenarios illustrating the denomination effect bias: 
 
-    Vending Machine Snack Choice: 
+- Vending Machine Snack Choice: 
 
-    Scenario: You have a $5 bill and a $1 bill. Despite having the same purchasing power, you choose to use the $1 bill for snacks from the vending machine, thinking it's more acceptable to spend smaller denominations casually. 
+  Scenario: You have a $5 bill and a $1 bill. Despite having the same purchasing power, you choose to use the $1 bill for snacks from the vending machine, thinking it's more acceptable to spend smaller denominations casually. 
 
-    Restaurant Tip Decision: 
+- Restaurant Tip Decision: 
 
-    Scenario: After a meal, you contemplate leaving a tip. Even though the total bill is $20, you decide to leave a $5 bill as a tip instead of a single $20 bill, feeling more comfortable parting with the smaller denomination. 
+  Scenario: After a meal, you contemplate leaving a tip. Even though the total bill is $20, you decide to leave a $5 bill as a tip instead of a single $20 bill, feeling more comfortable parting with the smaller denomination. 
 
-    Charitable Donation Choice: 
+- Charitable Donation Choice: 
 
-    Scenario: You're considering making a donation to a charity. You find yourself more willing to donate five $1 bills rather than a single $5 bill, as it feels less impactful. 
+  Scenario: You're considering making a donation to a charity. You find yourself more willing to donate five $1 bills rather than a single $5 bill, as it feels less impactful. 
 
-    Cash Register Change Preference: 
+- Cash Register Change Preference: 
 
-    Scenario: You receive change for a $10 purchase, including a $5 bill and five $1 bills. You decide to spend the $1 bills first, holding onto the $5 bill for longer, as it seems like a larger sum. 
+  Scenario: You receive change for a $10 purchase, including a $5 bill and five $1 bills. You decide to spend the $1 bills first, holding onto the $5 bill for longer, as it seems like a larger sum. 
 
-    Casual Spending with Coins: 
+- Casual Spending with Coins: 
 
-    Scenario: You have a handful of coins and a small bill. Instead of breaking the bill, you prefer to spend the coins first on small, impulsive purchases, considering them less valuable. 
+  Scenario: You have a handful of coins and a small bill. Instead of breaking the bill, you prefer to spend the coins first on small, impulsive purchases, considering them less valuable. 
 
-    Budgeting with Large Bills: 
+- Budgeting with Large Bills: 
 
-    Scenario: When budgeting for the week, you avoid breaking a $100 bill, even if smaller bills would be more practical. You perceive the larger denomination as more significant and hesitate to spend it on everyday expenses. 
+  Scenario: When budgeting for the week, you avoid breaking a $100 bill, even if smaller bills would be more practical. You perceive the larger denomination as more significant and hesitate to spend it on everyday expenses. 
 
-    Saving Larger Bills: 
+- Saving Larger Bills: 
 
-    Scenario: You receive a bonus in the form of a $50 bill and some $1 bills. While you're willing to spend the $1 bills, you decide to keep the $50 bill untouched, viewing it as savings for a more significant future expense. 
+  Scenario: You receive a bonus in the form of a $50 bill and some $1 bills. While you're willing to spend the $1 bills, you decide to keep the $50 bill untouched, viewing it as savings for a more significant future expense. 
 
-    Gift-Giving Decision: 
+- Gift-Giving Decision: 
 
-    Scenario: You're buying a gift for a friend with a budget of $20. Instead of using a single $20 bill, you opt to break it into smaller denominations, thinking it would make the gift seem more substantial. 
+  Scenario: You're buying a gift for a friend with a budget of $20. Instead of using a single $20 bill, you opt to break it into smaller denominations, thinking it would make the gift seem more substantial. 
 
-    Gambling Behavior: 
+- Gambling Behavior: 
 
-    Scenario: You visit a casino with $100 in your wallet. You find yourself more willing to spend smaller bills at the slot machines and save the $50 bill, considering it more valuable, even though the total amount is the same. 
+  Scenario: You visit a casino with $100 in your wallet. You find yourself more willing to spend smaller bills at the slot machines and save the $50 bill, considering it more valuable, even though the total amount is the same. 
 
-    Petty Cash Preference: 
+- Petty Cash Preference: 
 
-    Scenario: You manage a petty cash fund at work, which consists of various denominations. When making minor office purchases, you tend to use the smaller bills first, unconsciously preserving the larger bills for later use. 
+  Scenario: You manage a petty cash fund at work, which consists of various denominations. When making minor office purchases, you tend to use the smaller bills first, unconsciously preserving the larger bills for later use. 
 
 These scenarios are designed to illustrate how the denomination effect bias might influence decision-making in various financial situations. 
 
